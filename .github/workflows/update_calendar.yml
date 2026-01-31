@@ -1,0 +1,39 @@
+name: Update Racing Calendar
+
+on:
+  push:
+    paths:
+      - 'data/schedule.json'
+      - 'src/generator.py'
+  schedule:
+    - cron: '0 0 * * *' # Se ejecuta cada noche a las 00:00 UTC
+  workflow_dispatch: # Permite ejecutar el workflow manualmente
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Validate JSON
+        run: python src/validate.py
+
+      - name: Generate ICS
+        run: python src/generator.py
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          publish_branch: gh-pages
+          keep_files: true
