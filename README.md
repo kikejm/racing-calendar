@@ -48,5 +48,3 @@ El paso de validación en el flujo de trabajo (validate.py) actúa como un corta
 
 ### ⚠️ Notas Importantes
 Latencia: Google Calendar suele refrescar las suscripciones por URL cada 12-24 horas.
-
-Zonas Horarias: Los horarios introducidos en el JSON se procesan como UTC por defecto para evitar discrepancias según donde te encuentres.
