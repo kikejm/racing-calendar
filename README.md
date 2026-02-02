@@ -28,7 +28,7 @@ python src/generator.py
 ## 🌐 Suscripción Automática (Recomendado)
 No importes el archivo manualmente. Para tener las actualizaciones en tiempo real en tu móvil, añade el calendario por URL:
 
-* Copia este enlace: https://github.com/kikejm/racing-calendar/racing_pro_2026.ics
+* Copia este enlace: (https://kikejm.github.io/racing-calendar/racing_schedule.ics)
 
 * En Google Calendar, haz clic en el icono + junto a "Otros calendarios".
 
