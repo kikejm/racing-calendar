@@ -47,7 +47,15 @@ class EventTransformer:
         events = []
         base_title = entry.get('title', 'Event')
         clean_title = self._clean_title(base_title)
-        icon = self.icons["🏎️" if "🏎️" in base_title else "GT" if "🏁" in base_title else "DEFAULT"]
+
+        if "🏎️" in base_title:
+            cat_key = "F1"
+        elif "🏁" in base_title:
+            cat_key = "GT"
+        else:
+            cat_key = "DEFAULT"
+            
+        icon = self.icons[cat_key]
         desc = entry.get('description', '')
 
         if 'sessions' in entry:
