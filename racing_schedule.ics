@@ -1,858 +1,844 @@
 BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//RacingManager//ES
-CALSCALE:GREGORIAN
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP Australia
 DTSTART:20260306T023000Z
 DTEND:20260306T033000Z
-UID:🏎️_GP_Australia\,_Melbourne_P1_20260306@racing.com
+UID:2a9a597a-9cbf-5025-8e0e-8e304df1d7af@racing.com
 DESCRIPTION:Retransmisión: DAZN F1
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P2 | GP Australia
 DTSTART:20260306T060000Z
 DTEND:20260306T070000Z
-UID:🏎️_GP_Australia\,_Melbourne_P2_20260306@racing.com
+UID:d8dc2106-5e87-5c17-b01f-d78abac39c82@racing.com
 DESCRIPTION:Retransmisión: DAZN F1
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P3 | GP Australia
 DTSTART:20260307T023000Z
 DTEND:20260307T033000Z
-UID:🏎️_GP_Australia\,_Melbourne_P3_20260307@racing.com
+UID:966c3001-4383-5766-b49c-d594b85bd9e3@racing.com
 DESCRIPTION:Retransmisión: DAZN F1
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP Australia
 DTSTART:20260307T060000Z
 DTEND:20260307T070000Z
-UID:🏎️_GP_Australia\,_Melbourne_Qualy_20260307@racing.com
+UID:93e24199-36c1-5642-b654-25ecb8f7e193@racing.com
 DESCRIPTION:Retransmisión: DAZN F1
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP Australia
 DTSTART:20260308T050000Z
 DTEND:20260308T070000Z
-UID:🏎️_GP_Australia\,_Melbourne_Carrera_20260308@racing.com
+UID:1aaf56ff-b9b9-5bb7-aa51-2e6560756f8c@racing.com
 DESCRIPTION:Retransmisión: DAZN F1
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP de China
 DTSTART:20260313T043000Z
 DTEND:20260313T053000Z
-UID:🏎️_GP_de_China\,_Shanghai_-_Sprint_P1_20260313@racing.com
+UID:d8294c9a-ee8e-50cb-afdd-746ff6aa5c9f@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Sprint Qualy | GP de China
 DTSTART:20260313T083000Z
 DTEND:20260313T091400Z
-UID:🏎️_GP_de_China\,_Shanghai_-_Sprint_Sprint_Qualy_20260313@racing.c
- om
+UID:9990d37b-e8ff-53f8-972b-fbdb6b085758@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Sprint | GP de China
 DTSTART:20260314T040000Z
 DTEND:20260314T050000Z
-UID:🏎️_GP_de_China\,_Shanghai_-_Sprint_Sprint_20260314@racing.com
+UID:fd2ee4e5-65ea-588c-887e-1f7c1c15653d@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP de China
 DTSTART:20260314T080000Z
 DTEND:20260314T090000Z
-UID:🏎️_GP_de_China\,_Shanghai_-_Sprint_Qualy_20260314@racing.com
+UID:0ce13393-5c7c-52ed-baf7-10527d7540d6@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP de China
 DTSTART:20260315T080000Z
 DTEND:20260315T100000Z
-UID:🏎️_GP_de_China\,_Shanghai_-_Sprint_Carrera_20260315@racing.com
+UID:e85f6b54-160d-5818-86d3-0f608476ec01@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP de Japón
 DTSTART:20260327T033000Z
 DTEND:20260327T043000Z
-UID:🏎️_GP_de_Japón\,_Suzuka_P1_20260327@racing.com
+UID:f7e9439f-9056-5c77-813d-1ca61cd3f868@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P2 | GP de Japón
 DTSTART:20260327T070000Z
 DTEND:20260327T080000Z
-UID:🏎️_GP_de_Japón\,_Suzuka_P2_20260327@racing.com
+UID:54ae248b-1f25-57d0-8a19-5aa24f192b11@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P3 | GP de Japón
 DTSTART:20260328T033000Z
 DTEND:20260328T043000Z
-UID:🏎️_GP_de_Japón\,_Suzuka_P3_20260328@racing.com
+UID:153aed26-6cc1-5445-a64c-f4ffaddbf496@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP de Japón
 DTSTART:20260328T070000Z
 DTEND:20260328T080000Z
-UID:🏎️_GP_de_Japón\,_Suzuka_Qualy_20260328@racing.com
+UID:2a15794b-704b-5507-8b37-a64123ace64b@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP de Japón
 DTSTART:20260329T070000Z
 DTEND:20260329T090000Z
-UID:🏎️_GP_de_Japón\,_Suzuka_Carrera_20260329@racing.com
+UID:efe7b5ca-c25c-50c7-b6bd-4d0e6ac01ad4@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP de Bahréin
 DTSTART:20260410T133000Z
 DTEND:20260410T143000Z
-UID:🏎️_GP_de_Bahréin\,_Sakhir_P1_20260410@racing.com
+UID:1e6ce9eb-1524-5596-9b46-0b437f4e5834@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P2 | GP de Bahréin
 DTSTART:20260410T170000Z
 DTEND:20260410T180000Z
-UID:🏎️_GP_de_Bahréin\,_Sakhir_P2_20260410@racing.com
+UID:55d0b4ab-f209-514f-8062-bb11e79e39d4@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P3 | GP de Bahréin
 DTSTART:20260411T143000Z
 DTEND:20260411T153000Z
-UID:🏎️_GP_de_Bahréin\,_Sakhir_P3_20260411@racing.com
+UID:33a6d695-5eb4-54ee-ab92-1a840d544212@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP de Bahréin
 DTSTART:20260411T180000Z
 DTEND:20260411T190000Z
-UID:🏎️_GP_de_Bahréin\,_Sakhir_Qualy_20260411@racing.com
+UID:d6403e76-b256-5bb9-a72f-716013a1fae4@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP de Bahréin
 DTSTART:20260412T170000Z
 DTEND:20260412T190000Z
-UID:🏎️_GP_de_Bahréin\,_Sakhir_Carrera_20260412@racing.com
+UID:81da0174-86f3-52f6-93c5-c915ef021944@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP de Arabia Saudita
 DTSTART:20260417T153000Z
 DTEND:20260417T163000Z
-UID:🏎️_GP_de_Arabia_Saudita\,_Jeddah_P1_20260417@racing.com
+UID:7a5001a7-4e6e-5a55-a3fe-8e2791c1e979@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P2 | GP de Arabia Saudita
 DTSTART:20260417T190000Z
 DTEND:20260417T200000Z
-UID:🏎️_GP_de_Arabia_Saudita\,_Jeddah_P2_20260417@racing.com
+UID:af380922-050f-57cd-af53-08562a0973f3@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P3 | GP de Arabia Saudita
 DTSTART:20260418T153000Z
 DTEND:20260418T163000Z
-UID:🏎️_GP_de_Arabia_Saudita\,_Jeddah_P3_20260418@racing.com
+UID:27b954b7-cdd4-5940-b8d6-4aed9210c592@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP de Arabia Saudita
 DTSTART:20260418T190000Z
 DTEND:20260418T200000Z
-UID:🏎️_GP_de_Arabia_Saudita\,_Jeddah_Qualy_20260418@racing.com
+UID:8e2bcc68-5709-51f2-8c1c-7a503c34108a@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP de Arabia Saudita
 DTSTART:20260419T190000Z
 DTEND:20260419T210000Z
-UID:🏎️_GP_de_Arabia_Saudita\,_Jeddah_Carrera_20260419@racing.com
+UID:7784af0f-e2bd-568c-8f11-3741f80e1508@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP de Miami
 DTSTART:20260501T183000Z
 DTEND:20260501T193000Z
-UID:🏎️_GP_de_Miami\,_Miami_-_Sprint_P1_20260501@racing.com
+UID:fbf90fbf-cf36-514c-90bb-7517496ac1ab@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Sprint Qualy | GP de Miami
 DTSTART:20260501T223000Z
 DTEND:20260501T231400Z
-UID:🏎️_GP_de_Miami\,_Miami_-_Sprint_Sprint_Qualy_20260501@racing.com
+UID:0353e4cb-7c04-54ab-8b81-6738bd32d88e@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Sprint | GP de Miami
 DTSTART:20260502T180000Z
 DTEND:20260502T190000Z
-UID:🏎️_GP_de_Miami\,_Miami_-_Sprint_Sprint_20260502@racing.com
+UID:9f69fbab-7d75-5642-a48b-bc87179c0b68@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP de Miami
 DTSTART:20260502T220000Z
 DTEND:20260502T230000Z
-UID:🏎️_GP_de_Miami\,_Miami_-_Sprint_Qualy_20260502@racing.com
+UID:84c7a5f3-8c29-5aa0-bc1b-1747fc40cde2@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP de Miami
 DTSTART:20260503T220000Z
 DTEND:20260504T000000Z
-UID:🏎️_GP_de_Miami\,_Miami_-_Sprint_Carrera_20260503@racing.com
+UID:84ab03cc-c785-5306-a4f6-32d7f164aa85@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP de Canadá
 DTSTART:20260522T183000Z
 DTEND:20260522T193000Z
-UID:🏎️_GP_de_Canadá\,_Montreal_-_Sprint_P1_20260522@racing.com
+UID:0313150f-948f-515a-8586-9b09edfe7661@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Sprint Qualy | GP de Canadá
 DTSTART:20260522T223000Z
 DTEND:20260522T231400Z
-UID:🏎️_GP_de_Canadá\,_Montreal_-_Sprint_Sprint_Qualy_20260522@racing
- .com
+UID:bf4e75a1-1262-5ea0-991f-1036366a950a@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Sprint | GP de Canadá
 DTSTART:20260523T180000Z
 DTEND:20260523T190000Z
-UID:🏎️_GP_de_Canadá\,_Montreal_-_Sprint_Sprint_20260523@racing.com
+UID:6faacec8-7e5d-5de4-a5f8-0202899f81a0@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP de Canadá
 DTSTART:20260523T220000Z
 DTEND:20260523T230000Z
-UID:🏎️_GP_de_Canadá\,_Montreal_-_Sprint_Qualy_20260523@racing.com
+UID:4c9b613e-eb40-5cfc-865e-81ea1437740a@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP de Canadá
 DTSTART:20260524T220000Z
 DTEND:20260525T000000Z
-UID:🏎️_GP_de_Canadá\,_Montreal_-_Sprint_Carrera_20260524@racing.com
+UID:034dd8e8-b464-5c7d-bd31-cf745b1243b2@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP de Mónaco
 DTSTART:20260605T133000Z
 DTEND:20260605T143000Z
-UID:🏎️_GP_de_Mónaco\,_Mónaco_P1_20260605@racing.com
+UID:b8d4cdee-fc26-5ad4-8b25-c73719731240@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P2 | GP de Mónaco
 DTSTART:20260605T170000Z
 DTEND:20260605T180000Z
-UID:🏎️_GP_de_Mónaco\,_Mónaco_P2_20260605@racing.com
+UID:3c979682-bb8d-5533-94c0-22ffb8a3826b@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P3 | GP de Mónaco
 DTSTART:20260606T123000Z
 DTEND:20260606T133000Z
-UID:🏎️_GP_de_Mónaco\,_Mónaco_P3_20260606@racing.com
+UID:bde484cc-8da5-5cea-817a-2c5d8e219622@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP de Mónaco
 DTSTART:20260606T160000Z
 DTEND:20260606T170000Z
-UID:🏎️_GP_de_Mónaco\,_Mónaco_Qualy_20260606@racing.com
+UID:51809474-f3a4-5022-95c9-a69dd3c5c100@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP de Mónaco
 DTSTART:20260607T150000Z
 DTEND:20260607T170000Z
-UID:🏎️_GP_de_Mónaco\,_Mónaco_Carrera_20260607@racing.com
+UID:24d45181-c049-5e91-8e8e-1b15d67cb5fe@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP de España
 DTSTART:20260612T133000Z
 DTEND:20260612T143000Z
-UID:🏎️_GP_de_España\,_Barcelona_P1_20260612@racing.com
+UID:8cb4ba81-c1d6-5d52-b31e-deebea233180@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P2 | GP de España
 DTSTART:20260612T170000Z
 DTEND:20260612T180000Z
-UID:🏎️_GP_de_España\,_Barcelona_P2_20260612@racing.com
+UID:6b3b164e-0733-52a2-b805-a6d7b47f37dc@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P3 | GP de España
 DTSTART:20260613T123000Z
 DTEND:20260613T133000Z
-UID:🏎️_GP_de_España\,_Barcelona_P3_20260613@racing.com
+UID:a1c9f9ab-6515-572a-8499-ccd7b606214b@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP de España
 DTSTART:20260613T160000Z
 DTEND:20260613T170000Z
-UID:🏎️_GP_de_España\,_Barcelona_Qualy_20260613@racing.com
+UID:cc3d54fa-3f6b-5b88-8aa8-58964bf319b1@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP de España
 DTSTART:20260614T150000Z
 DTEND:20260614T170000Z
-UID:🏎️_GP_de_España\,_Barcelona_Carrera_20260614@racing.com
+UID:47ac6ec1-7d87-5ddf-a57f-96b3e0f168ad@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP de Austria
 DTSTART:20260626T133000Z
 DTEND:20260626T143000Z
-UID:🏎️_GP_de_Austria\,_Spielberg_P1_20260626@racing.com
+UID:abce72e1-1506-5e8e-90c0-8bf86700e96a@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P2 | GP de Austria
 DTSTART:20260626T170000Z
 DTEND:20260626T180000Z
-UID:🏎️_GP_de_Austria\,_Spielberg_P2_20260626@racing.com
+UID:d6f6b336-e669-579a-b56a-5f93258f3c90@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P3 | GP de Austria
 DTSTART:20260627T123000Z
 DTEND:20260627T133000Z
-UID:🏎️_GP_de_Austria\,_Spielberg_P3_20260627@racing.com
+UID:b56f5188-3d2b-5754-9e78-0eaf2bbfaaa1@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP de Austria
 DTSTART:20260627T160000Z
 DTEND:20260627T170000Z
-UID:🏎️_GP_de_Austria\,_Spielberg_Qualy_20260627@racing.com
+UID:b3fd4a82-68aa-547b-aaab-8fed40000a92@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP de Austria
 DTSTART:20260628T150000Z
 DTEND:20260628T170000Z
-UID:🏎️_GP_de_Austria\,_Spielberg_Carrera_20260628@racing.com
+UID:c327c9a0-4fc9-56f1-8ae8-75262bba0b0d@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP de Reino Unido
 DTSTART:20260703T133000Z
 DTEND:20260703T143000Z
-UID:🏎️_GP_de_Reino_Unido\,_Silverstone_-_Sprint_P1_20260703@racing.co
- m
+UID:6275e615-1622-5ad0-961b-c48112b4a4fe@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Sprint Qualy | GP de Reino Unido
 DTSTART:20260703T173000Z
 DTEND:20260703T181400Z
-UID:🏎️_GP_de_Reino_Unido\,_Silverstone_-_Sprint_Sprint_Qualy_20260703
- @racing.com
+UID:8ac15ec6-f247-5921-bb82-9091ad3ed782@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Sprint | GP de Reino Unido
 DTSTART:20260704T130000Z
 DTEND:20260704T140000Z
-UID:🏎️_GP_de_Reino_Unido\,_Silverstone_-_Sprint_Sprint_20260704@racin
- g.com
+UID:72b715d3-ab62-5d61-950a-4cbc8b3d1f5e@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP de Reino Unido
 DTSTART:20260704T170000Z
 DTEND:20260704T180000Z
-UID:🏎️_GP_de_Reino_Unido\,_Silverstone_-_Sprint_Qualy_20260704@racing
- .com
+UID:a1764153-8e71-5594-9990-e98887849238@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP de Reino Unido
 DTSTART:20260705T160000Z
 DTEND:20260705T180000Z
-UID:🏎️_GP_de_Reino_Unido\,_Silverstone_-_Sprint_Carrera_20260705@raci
- ng.com
+UID:9b91f798-2195-5a78-84cd-5507d93aa873@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP de Bélgica
 DTSTART:20260717T133000Z
 DTEND:20260717T143000Z
-UID:🏎️_GP_de_Bélgica\,_Spa-Francorchamps_P1_20260717@racing.com
+UID:fed82181-1d4a-5d03-b27f-b00a8ddd9197@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P2 | GP de Bélgica
 DTSTART:20260717T170000Z
 DTEND:20260717T180000Z
-UID:🏎️_GP_de_Bélgica\,_Spa-Francorchamps_P2_20260717@racing.com
+UID:d454cdbb-2af7-506e-9103-00d7dd57d993@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P3 | GP de Bélgica
 DTSTART:20260718T123000Z
 DTEND:20260718T133000Z
-UID:🏎️_GP_de_Bélgica\,_Spa-Francorchamps_P3_20260718@racing.com
+UID:ec53d83c-a360-596d-9ad8-47f81df4d280@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP de Bélgica
 DTSTART:20260718T160000Z
 DTEND:20260718T170000Z
-UID:🏎️_GP_de_Bélgica\,_Spa-Francorchamps_Qualy_20260718@racing.com
+UID:a64d4ab2-0e99-5ec6-8ee3-35bb0b2edd9c@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP de Bélgica
 DTSTART:20260719T150000Z
 DTEND:20260719T170000Z
-UID:🏎️_GP_de_Bélgica\,_Spa-Francorchamps_Carrera_20260719@racing.com
+UID:bbb046fc-fb2b-5db9-b33c-9bcf527b2f50@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP de Hungría
 DTSTART:20260724T133000Z
 DTEND:20260724T143000Z
-UID:🏎️_GP_de_Hungría\,_Budapest_P1_20260724@racing.com
+UID:880c9bd6-b77a-5f0e-8272-88dd240f6381@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P2 | GP de Hungría
 DTSTART:20260724T170000Z
 DTEND:20260724T180000Z
-UID:🏎️_GP_de_Hungría\,_Budapest_P2_20260724@racing.com
+UID:54ac2da9-9e08-5820-9f43-1e8223094e4b@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P3 | GP de Hungría
 DTSTART:20260725T123000Z
 DTEND:20260725T133000Z
-UID:🏎️_GP_de_Hungría\,_Budapest_P3_20260725@racing.com
+UID:9fcb0917-208c-5fe7-91a9-73a83742dddb@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP de Hungría
 DTSTART:20260725T160000Z
 DTEND:20260725T170000Z
-UID:🏎️_GP_de_Hungría\,_Budapest_Qualy_20260725@racing.com
+UID:2b92ea20-f9a1-55e3-bca8-e37d73c29c53@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP de Hungría
 DTSTART:20260726T150000Z
 DTEND:20260726T170000Z
-UID:🏎️_GP_de_Hungría\,_Budapest_Carrera_20260726@racing.com
+UID:fac4804c-0cc3-57f0-b32a-5a94b5e15d00@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP de Países Bajos
 DTSTART:20260821T123000Z
 DTEND:20260821T133000Z
-UID:🏎️_GP_de_Países_Bajos\,_Zandvoort_-_Sprint_P1_20260821@racing.co
- m
+UID:5034df6f-1ae8-52d2-9af9-44f8838eb6a4@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Sprint Qualifying | GP de Países Bajos
 DTSTART:20260821T163000Z
 DTEND:20260821T171400Z
-UID:🏎️_GP_de_Países_Bajos\,_Zandvoort_-_Sprint_Sprint_Qualifying_202
- 60821@racing.com
+UID:d89c5530-e495-5c97-b9f8-328bdbd83785@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Sprint | GP de Países Bajos
 DTSTART:20260822T120000Z
 DTEND:20260822T130000Z
-UID:🏎️_GP_de_Países_Bajos\,_Zandvoort_-_Sprint_Sprint_20260822@racin
- g.com
+UID:87ee77e2-cd50-55cd-9ad2-49dfec90a9bc@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP de Países Bajos
 DTSTART:20260822T160000Z
 DTEND:20260822T170000Z
-UID:🏎️_GP_de_Países_Bajos\,_Zandvoort_-_Sprint_Qualy_20260822@racing
- .com
+UID:c836fde2-c079-5139-a1ed-fd98b575e806@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP de Países Bajos
 DTSTART:20260823T150000Z
 DTEND:20260823T170000Z
-UID:🏎️_GP_de_Países_Bajos\,_Zandvoort_-_Sprint_Carrera_20260823@raci
- ng.com
+UID:3ad4b02c-3d3f-5598-96ad-2077cc844cce@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP de Italia
 DTSTART:20260904T123000Z
 DTEND:20260904T133000Z
-UID:🏎️_GP_de_Italia\,_Monza_P1_20260904@racing.com
+UID:0b6fbd08-0cf4-595c-a545-222d29b69fb5@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P2 | GP de Italia
 DTSTART:20260904T160000Z
 DTEND:20260904T170000Z
-UID:🏎️_GP_de_Italia\,_Monza_P2_20260904@racing.com
+UID:e4fbd287-38d6-5349-99a6-eeaca962e86b@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P3 | GP de Italia
 DTSTART:20260905T123000Z
 DTEND:20260905T133000Z
-UID:🏎️_GP_de_Italia\,_Monza_P3_20260905@racing.com
+UID:22c57dc8-e55b-57bf-bbf6-9ef69878afda@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP de Italia
 DTSTART:20260905T160000Z
 DTEND:20260905T170000Z
-UID:🏎️_GP_de_Italia\,_Monza_Qualy_20260905@racing.com
+UID:8f556f68-531a-55fe-a5c8-9eb20de487b3@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP de Italia
 DTSTART:20260906T150000Z
 DTEND:20260906T170000Z
-UID:🏎️_GP_de_Italia\,_Monza_Carrera_20260906@racing.com
+UID:fb6fbd26-6715-58fc-a8c4-6350f5c61248@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP de Madrid
 DTSTART:20260911T133000Z
 DTEND:20260911T143000Z
-UID:🏎️_GP_de_Madrid\,_Madrid_P1_20260911@racing.com
+UID:6c0dd38d-bb24-5304-a203-5729da65372e@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P2 | GP de Madrid
 DTSTART:20260911T170000Z
 DTEND:20260911T180000Z
-UID:🏎️_GP_de_Madrid\,_Madrid_P2_20260911@racing.com
+UID:9b067db8-7497-5e43-8edd-afb0868a07dc@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P3 | GP de Madrid
 DTSTART:20260912T123000Z
 DTEND:20260912T133000Z
-UID:🏎️_GP_de_Madrid\,_Madrid_P3_20260912@racing.com
+UID:d7531a5b-d026-52de-9731-b1c27483886d@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP de Madrid
 DTSTART:20260912T160000Z
 DTEND:20260912T170000Z
-UID:🏎️_GP_de_Madrid\,_Madrid_Qualy_20260912@racing.com
+UID:7277c5cf-39df-5d8c-b1c3-7646a18548df@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP de Madrid
 DTSTART:20260913T150000Z
 DTEND:20260913T170000Z
-UID:🏎️_GP_de_Madrid\,_Madrid_Carrera_20260913@racing.com
+UID:fe8731cc-36bf-5bd3-abd5-5b6e4db7143e@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP Azerbaiyán
 DTSTART:20260925T103000Z
 DTEND:20260925T113000Z
-UID:🏎️_GP_Azerbaiyán\,_Bakú_P1_20260925@racing.com
+UID:7a85c776-4e6c-5f3e-8743-f9831360fab3@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P2 | GP Azerbaiyán
 DTSTART:20260925T140000Z
 DTEND:20260925T150000Z
-UID:🏎️_GP_Azerbaiyán\,_Bakú_P2_20260925@racing.com
+UID:aaa4eab6-86d0-557e-85bd-c8d862b9a205@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P3 | GP Azerbaiyán
 DTSTART:20260926T103000Z
 DTEND:20260926T113000Z
-UID:🏎️_GP_Azerbaiyán\,_Bakú_P3_20260926@racing.com
+UID:f60dab5a-cf90-5714-a7e9-6b2b60de6ecf@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP Azerbaiyán
 DTSTART:20260926T140000Z
 DTEND:20260926T150000Z
-UID:🏎️_GP_Azerbaiyán\,_Bakú_Qualy_20260926@racing.com
+UID:be5b83c4-2a01-5c22-bcce-beb8b1d4f70f@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP Azerbaiyán
 DTSTART:20260927T130000Z
 DTEND:20260927T150000Z
-UID:🏎️_GP_Azerbaiyán\,_Bakú_Carrera_20260927@racing.com
+UID:ef49af60-b513-53cd-b64f-f6b3cdb2c57a@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP de Singapur
 DTSTART:20261009T103000Z
 DTEND:20261009T113000Z
-UID:🏎️_GP_de_Singapur\,_Singapur_-_Sprint_P1_20261009@racing.com
+UID:88dce134-d898-53e1-bdce-147a18f4b4de@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Sprint Qualy | GP de Singapur
 DTSTART:20261009T143000Z
 DTEND:20261009T151400Z
-UID:🏎️_GP_de_Singapur\,_Singapur_-_Sprint_Sprint_Qualy_20261009@racin
- g.com
+UID:fc0d09d6-b27d-5be6-b383-6adc845363bf@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Sprint | GP de Singapur
 DTSTART:20261010T110000Z
 DTEND:20261010T120000Z
-UID:🏎️_GP_de_Singapur\,_Singapur_-_Sprint_Sprint_20261010@racing.com
+UID:970c8dad-9bcd-533f-8793-850d2e4ea7b4@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP de Singapur
 DTSTART:20261010T150000Z
 DTEND:20261010T160000Z
-UID:🏎️_GP_de_Singapur\,_Singapur_-_Sprint_Qualy_20261010@racing.com
+UID:bc5fba8e-695f-50d1-9450-af2cec185d12@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP de Singapur
 DTSTART:20261011T140000Z
 DTEND:20261011T160000Z
-UID:🏎️_GP_de_Singapur\,_Singapur_-_Sprint_Carrera_20261011@racing.com
+UID:cbff3b37-fd0b-5b40-9c1f-6195c91f3043@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP de Estados Unidos
 DTSTART:20261023T193000Z
 DTEND:20261023T203000Z
-UID:🏎️_GP_de_Estados_Unidos\,_Austin_P1_20261023@racing.com
+UID:a8a65bf9-6c77-58e2-ab29-4b452ee5aa78@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P2 | GP de Estados Unidos
 DTSTART:20261023T230000Z
 DTEND:20261024T000000Z
-UID:🏎️_GP_de_Estados_Unidos\,_Austin_P2_20261023@racing.com
+UID:fa98cf88-ae1a-54d9-96da-1a7d011a753c@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P3 | GP de Estados Unidos
 DTSTART:20261024T193000Z
 DTEND:20261024T203000Z
-UID:🏎️_GP_de_Estados_Unidos\,_Austin_P3_20261024@racing.com
+UID:e68393c6-01ca-5445-92d9-81a6422240e7@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP de Estados Unidos
 DTSTART:20261024T230000Z
 DTEND:20261025T000000Z
-UID:🏎️_GP_de_Estados_Unidos\,_Austin_Qualy_20261024@racing.com
+UID:7ccd3291-3605-5a42-8b8b-1283461d6dff@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP de Estados Unidos
 DTSTART:20261025T210000Z
 DTEND:20261025T230000Z
-UID:🏎️_GP_de_Estados_Unidos\,_Austin_Carrera_20261025@racing.com
+UID:fce15ba1-2202-51bc-b501-7c405ce6c4d2@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP de Ciudad de México
 DTSTART:20261030T193000Z
 DTEND:20261030T203000Z
-UID:🏎️_GP_de_Ciudad_de_México\,_CDMX_P1_20261030@racing.com
+UID:730c89e4-f7d4-51f0-943a-5fb266cce67c@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P2 | GP de Ciudad de México
 DTSTART:20261030T230000Z
 DTEND:20261031T000000Z
-UID:🏎️_GP_de_Ciudad_de_México\,_CDMX_P2_20261030@racing.com
+UID:a31e396a-b687-59bd-b5f4-70ede32dc399@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P3 | GP de Ciudad de México
 DTSTART:20261031T183000Z
 DTEND:20261031T193000Z
-UID:🏎️_GP_de_Ciudad_de_México\,_CDMX_P3_20261031@racing.com
+UID:9943d55d-dd20-5374-89a5-714e6f6d8e69@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP de Ciudad de México
 DTSTART:20261031T220000Z
 DTEND:20261031T230000Z
-UID:🏎️_GP_de_Ciudad_de_México\,_CDMX_Qualy_20261031@racing.com
+UID:fc38fa3f-16da-599c-9832-d89bf0ecf2bc@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP de Ciudad de México
 DTSTART:20261101T210000Z
 DTEND:20261101T230000Z
-UID:🏎️_GP_de_Ciudad_de_México\,_CDMX_Carrera_20261101@racing.com
+UID:2377e632-1e19-5279-a42d-ef1f509ef092@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP de Brasil
 DTSTART:20261106T163000Z
 DTEND:20261106T173000Z
-UID:🏎️_GP_de_Brasil\,_São_Paulo_P1_20261106@racing.com
+UID:29fb7e9a-7e9d-51a5-9dda-8aa4b8faa04d@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P2 | GP de Brasil
 DTSTART:20261106T200000Z
 DTEND:20261106T210000Z
-UID:🏎️_GP_de_Brasil\,_São_Paulo_P2_20261106@racing.com
+UID:c7dc92d9-0218-5842-b77a-fae1b6d5ac04@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P3 | GP de Brasil
 DTSTART:20261107T153000Z
 DTEND:20261107T163000Z
-UID:🏎️_GP_de_Brasil\,_São_Paulo_P3_20261107@racing.com
+UID:85840c43-2448-5d34-8574-a29fefe88d92@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP de Brasil
 DTSTART:20261107T190000Z
 DTEND:20261107T200000Z
-UID:🏎️_GP_de_Brasil\,_São_Paulo_Qualy_20261107@racing.com
+UID:75471d3d-7bb1-5e86-a70a-7092ce215739@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP de Brasil
 DTSTART:20261108T180000Z
 DTEND:20261108T200000Z
-UID:🏎️_GP_de_Brasil\,_São_Paulo_Carrera_20261108@racing.com
+UID:bdc1f023-3c70-592b-9b7e-7e3e27cc8153@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP de Las Vegas
 DTSTART:20261120T013000Z
 DTEND:20261120T023000Z
-UID:🏎️_GP_de_Las_Vegas\,_Las_Vegas_P1_20261120@racing.com
+UID:516e4ade-50a6-5d17-be8e-42aab63ec9b3@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P2 | GP de Las Vegas
 DTSTART:20261120T050000Z
 DTEND:20261120T060000Z
-UID:🏎️_GP_de_Las_Vegas\,_Las_Vegas_P2_20261120@racing.com
+UID:52e1744f-05dc-57d1-8c57-ebe5e7e3a32a@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P3 | GP de Las Vegas
 DTSTART:20261121T013000Z
 DTEND:20261121T023000Z
-UID:🏎️_GP_de_Las_Vegas\,_Las_Vegas_P3_20261121@racing.com
+UID:8ef1da83-b0fa-59b6-998e-a64f2f55a880@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP de Las Vegas
 DTSTART:20261121T050000Z
 DTEND:20261121T060000Z
-UID:🏎️_GP_de_Las_Vegas\,_Las_Vegas_Qualy_20261121@racing.com
+UID:ecd50d7b-0b07-5af7-87d1-8d7318e343ba@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP de Las Vegas
 DTSTART:20261122T050000Z
 DTEND:20261122T070000Z
-UID:🏎️_GP_de_Las_Vegas\,_Las_Vegas_Carrera_20261122@racing.com
+UID:08ea2369-a229-5327-878c-30e249f8dbcd@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP de Qatar
 DTSTART:20261127T143000Z
 DTEND:20261127T153000Z
-UID:🏎️_GP_de_Qatar\,_Lusail_P1_20261127@racing.com
+UID:c86c6b75-166f-5e25-96af-1f6399de7015@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P2 | GP de Qatar
 DTSTART:20261127T180000Z
 DTEND:20261127T190000Z
-UID:🏎️_GP_de_Qatar\,_Lusail_P2_20261127@racing.com
+UID:97b2966c-6a88-5b00-997f-2ab0c84677ef@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P3 | GP de Qatar
 DTSTART:20261128T153000Z
 DTEND:20261128T163000Z
-UID:🏎️_GP_de_Qatar\,_Lusail_P3_20261128@racing.com
+UID:2a251624-0533-54d8-bb73-879f36d3b745@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP de Qatar
 DTSTART:20261128T190000Z
 DTEND:20261128T200000Z
-UID:🏎️_GP_de_Qatar\,_Lusail_Qualy_20261128@racing.com
+UID:60f94c8b-dbc5-50b7-b660-626614ca6d51@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP de Qatar
 DTSTART:20261129T170000Z
 DTEND:20261129T190000Z
-UID:🏎️_GP_de_Qatar\,_Lusail_Carrera_20261129@racing.com
+UID:3d96cba8-3b24-52a5-8300-c29fae7c11fe@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P1 | GP de Abu Dabi
 DTSTART:20261204T103000Z
 DTEND:20261204T113000Z
-UID:🏎️_GP_de_Abu_Dabi\,_Yas_Marina_P1_20261204@racing.com
+UID:96832e6a-120e-5792-bb2c-57c9a3d6d78d@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P2 | GP de Abu Dabi
 DTSTART:20261204T140000Z
 DTEND:20261204T150000Z
-UID:🏎️_GP_de_Abu_Dabi\,_Yas_Marina_P2_20261204@racing.com
+UID:a66a5cf7-774c-5427-a402-28c1b0381340@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ P3 | GP de Abu Dabi
 DTSTART:20261205T113000Z
 DTEND:20261205T123000Z
-UID:🏎️_GP_de_Abu_Dabi\,_Yas_Marina_P3_20261205@racing.com
+UID:2cacd800-5ded-5e98-b9fd-3d2aef5a5c0b@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Qualy | GP de Abu Dabi
 DTSTART:20261205T150000Z
 DTEND:20261205T160000Z
-UID:🏎️_GP_de_Abu_Dabi\,_Yas_Marina_Qualy_20261205@racing.com
+UID:03f491dc-b862-5f71-88b6-0a08d6ad1782@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏎️ Carrera | GP de Abu Dabi
 DTSTART:20261206T140000Z
 DTEND:20261206T160000Z
-UID:🏎️_GP_de_Abu_Dabi\,_Yas_Marina_Carrera_20261206@racing.com
+UID:beedf0a1-2ee8-50dd-81d9-6e64466f1828@racing.com
 DESCRIPTION:Retransmisión: DAZN / Movistar+
 END:VEVENT
 BEGIN:VEVENT
@@ -860,8 +846,7 @@ SUMMARY:🏁 Lamborghini Super Trofeo - Qualifying | GT Round 1: Circuit P
  aul Ricard
 DTSTART:20260411T090000Z
 DTEND:20260411T095000Z
-UID:🏁_GT_Round_1:_Circuit_Paul_Ricard_Lamborghini_Super_Trofeo_-_Qualif
- ying_20260411@racing.com
+UID:82d691e7-30e2-569e-867a-72d8caebec4f@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
@@ -869,8 +854,7 @@ SUMMARY:🏁 GT4 European Series - Pre-Qualifying | GT Round 1: Circuit Pa
  ul Ricard
 DTSTART:20260411T100000Z
 DTEND:20260411T110000Z
-UID:🏁_GT_Round_1:_Circuit_Paul_Ricard_GT4_European_Series_-_Pre-Qualify
- ing_20260411@racing.com
+UID:8342a170-8476-5be8-95c3-5e8792cd4cf6@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
@@ -878,16 +862,14 @@ SUMMARY:🏁 GT3 Revival Series - Pre-Qualifying | GT Round 1: Circuit Pau
  l Ricard
 DTSTART:20260411T111000Z
 DTEND:20260411T115500Z
-UID:🏁_GT_Round_1:_Circuit_Paul_Ricard_GT3_Revival_Series_-_Pre-Qualifyi
- ng_20260411@racing.com
+UID:624fb822-b2af-5626-b3fe-7be37afc5a95@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 GT World - Qualifying | GT Round 1: Circuit Paul Ricard
 DTSTART:20260411T120500Z
 DTEND:20260411T130500Z
-UID:🏁_GT_Round_1:_Circuit_Paul_Ricard_GT_World_-_Qualifying_20260411@ra
- cing.com
+UID:3a3d8003-cd29-5cbc-90f3-81800eff184b@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
@@ -895,8 +877,7 @@ SUMMARY:🏁 Lamborghini Super Trofeo - Race 1 | GT Round 1: Circuit Paul
  Ricard
 DTSTART:20260411T144000Z
 DTEND:20260411T153000Z
-UID:🏁_GT_Round_1:_Circuit_Paul_Ricard_Lamborghini_Super_Trofeo_-_Race_1
- _20260411@racing.com
+UID:1ce2b4f7-b083-5c66-95d0-0f118e6e718f@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
@@ -904,8 +885,7 @@ SUMMARY:🏁 GT4 European Series - Qualifying | GT Round 1: Circuit Paul R
  icard
 DTSTART:20260411T154500Z
 DTEND:20260411T163000Z
-UID:🏁_GT_Round_1:_Circuit_Paul_Ricard_GT4_European_Series_-_Qualifying_
- 20260411@racing.com
+UID:0ea66cbc-312c-5264-980c-ad01584a2328@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
@@ -913,24 +893,21 @@ SUMMARY:🏁 GT3 Revival Series - Qualifying | GT Round 1: Circuit Paul Ri
  card
 DTSTART:20260411T164000Z
 DTEND:20260411T171500Z
-UID:🏁_GT_Round_1:_Circuit_Paul_Ricard_GT3_Revival_Series_-_Qualifying_2
- 0260411@racing.com
+UID:48b8ecb2-fc27-5930-8ee1-e03897c6c56b@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 GT World - Race | GT Round 1: Circuit Paul Ricard
 DTSTART:20260411T180000Z
 DTEND:20260412T000000Z
-UID:🏁_GT_Round_1:_Circuit_Paul_Ricard_GT_World_-_Race_20260411@racing.c
- om
+UID:a43afea4-eca2-53f7-8362-fa3d4bf3a41b@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 GT3 Revival Series - Race 1 | GT Round 1: Circuit Paul Ricard
 DTSTART:20260412T093000Z
 DTEND:20260412T102000Z
-UID:🏁_GT_Round_1:_Circuit_Paul_Ricard_GT3_Revival_Series_-_Race_1_20260
- 412@racing.com
+UID:0527d862-b4b2-50c6-b462-215c0dd9e1b5@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
@@ -938,8 +915,7 @@ SUMMARY:🏁 GT4 European Series - Race 1 | GT Round 1: Circuit Paul Ricar
  d
 DTSTART:20260412T110000Z
 DTEND:20260412T120000Z
-UID:🏁_GT_Round_1:_Circuit_Paul_Ricard_GT4_European_Series_-_Race_1_2026
- 0412@racing.com
+UID:c720d1b0-0c21-5f91-b7b5-fc5f3aa06a9a@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
@@ -947,16 +923,14 @@ SUMMARY:🏁 Lamborghini Super Trofeo - Race 2 | GT Round 1: Circuit Paul
  Ricard
 DTSTART:20260412T123000Z
 DTEND:20260412T132000Z
-UID:🏁_GT_Round_1:_Circuit_Paul_Ricard_Lamborghini_Super_Trofeo_-_Race_2
- _20260412@racing.com
+UID:08f827d9-ab25-5e9a-8541-8a2c8192adc7@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 GT3 Revival Series - Race 2 | GT Round 1: Circuit Paul Ricard
 DTSTART:20260412T150000Z
 DTEND:20260412T155000Z
-UID:🏁_GT_Round_1:_Circuit_Paul_Ricard_GT3_Revival_Series_-_Race_2_20260
- 412@racing.com
+UID:2d8f266a-32b7-5241-908f-54feaf94159e@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
@@ -964,32 +938,28 @@ SUMMARY:🏁 GT4 European Series - Race 2 | GT Round 1: Circuit Paul Ricar
  d
 DTSTART:20260412T163000Z
 DTEND:20260412T173000Z
-UID:🏁_GT_Round_1:_Circuit_Paul_Ricard_GT4_European_Series_-_Race_2_2026
- 0412@racing.com
+UID:e586ca9d-0eb8-5998-b46e-5ad2e7daf2b6@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 Radical Cup UK - Qualifying | GT Round 2: Brands Hatch
 DTSTART:20260502T100000Z
 DTEND:20260502T102500Z
-UID:🏁_GT_Round_2:_Brands_Hatch_Radical_Cup_UK_-_Qualifying_20260502@rac
- ing.com
+UID:6b375773-3f96-540e-9869-17e813751374@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 GT World - Free Practice 1 | GT Round 2: Brands Hatch
 DTSTART:20260502T103500Z
 DTEND:20260502T113500Z
-UID:🏁_GT_Round_2:_Brands_Hatch_GT_World_-_Free_Practice_1_20260502@raci
- ng.com
+UID:94d55344-7bec-552a-9d74-a4206d46fea1@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 Miata Trophy - Qualifying | GT Round 2: Brands Hatch
 DTSTART:20260502T114500Z
 DTEND:20260502T120000Z
-UID:🏁_GT_Round_2:_Brands_Hatch_Miata_Trophy_-_Qualifying_20260502@racin
- g.com
+UID:cfdd360c-4907-5c28-bedb-a81ab25b1d1e@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
@@ -997,8 +967,7 @@ SUMMARY:🏁 Legends Cars Championship - Practice | GT Round 2: Brands Hat
  ch
 DTSTART:20260502T121000Z
 DTEND:20260502T122000Z
-UID:🏁_GT_Round_2:_Brands_Hatch_Legends_Cars_Championship_-_Practice_202
- 60502@racing.com
+UID:82ef2578-26c8-5b61-95fa-06bccae79b50@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
@@ -1006,213 +975,196 @@ SUMMARY:🏁 Sport 2000 Championship - Qualifying | GT Round 2: Brands Hat
  ch
 DTSTART:20260502T123000Z
 DTEND:20260502T125000Z
-UID:🏁_GT_Round_2:_Brands_Hatch_Sport_2000_Championship_-_Qualifying_202
- 60502@racing.com
+UID:266ef916-ab66-59e3-abe0-9f255cfdde82@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 GT World - Free Practice 2 | GT Round 2: Brands Hatch
 DTSTART:20260502T130000Z
 DTEND:20260502T140000Z
-UID:🏁_GT_Round_2:_Brands_Hatch_GT_World_-_Free_Practice_2_20260502@raci
- ng.com
+UID:9e1b1904-f98f-5405-a217-130c44891d01@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 Legends Cars - Race 1 | GT Round 2: Brands Hatch
 DTSTART:20260502T141000Z
 DTEND:20260502T142000Z
-UID:🏁_GT_Round_2:_Brands_Hatch_Legends_Cars_-_Race_1_20260502@racing.co
- m
+UID:f623cdb6-44e1-5459-b711-762fc584e079@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 Miata Trophy - Race 1 | GT Round 2: Brands Hatch
 DTSTART:20260502T150000Z
 DTEND:20260502T152000Z
-UID:🏁_GT_Round_2:_Brands_Hatch_Miata_Trophy_-_Race_1_20260502@racing.co
- m
+UID:1e1ded0b-ec13-55b6-b310-4940c5e66b39@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 Radical Cup UK - Race 1 | GT Round 2: Brands Hatch
 DTSTART:20260502T153500Z
 DTEND:20260502T162500Z
-UID:🏁_GT_Round_2:_Brands_Hatch_Radical_Cup_UK_-_Race_1_20260502@racing.
- com
+UID:61caff00-34b5-5f9a-8332-cda394a91c7f@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 Legends Cars - Race 2 | GT Round 2: Brands Hatch
 DTSTART:20260502T164000Z
 DTEND:20260502T165000Z
-UID:🏁_GT_Round_2:_Brands_Hatch_Legends_Cars_-_Race_2_20260502@racing.co
- m
+UID:532c7cad-7b30-5693-8f48-c5df7d4ac78e@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 Sport 2000 Championship - Race 1 | GT Round 2: Brands Hatch
 DTSTART:20260502T170500Z
 DTEND:20260502T173000Z
-UID:🏁_GT_Round_2:_Brands_Hatch_Sport_2000_Championship_-_Race_1_2026050
- 2@racing.com
+UID:f68852f2-49d0-556e-aa21-43d5f2e04338@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 GT World - Qualifying | GT Round 2: Brands Hatch
 DTSTART:20260502T174000Z
 DTEND:20260502T181500Z
-UID:🏁_GT_Round_2:_Brands_Hatch_GT_World_-_Qualifying_20260502@racing.co
- m
+UID:870cb35f-2b65-5450-b14b-187203da3f5e@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 Miata Trophy - Race 2 | GT Round 2: Brands Hatch
 DTSTART:20260502T183000Z
 DTEND:20260502T185000Z
-UID:🏁_GT_Round_2:_Brands_Hatch_Miata_Trophy_-_Race_2_20260502@racing.co
- m
+UID:428a1f73-13e9-5f4f-9b36-cc234a721868@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 Legends Cars - Race 3 | GT Round 2: Brands Hatch
 DTSTART:20260502T190500Z
 DTEND:20260502T192000Z
-UID:🏁_GT_Round_2:_Brands_Hatch_Legends_Cars_-_Race_3_20260502@racing.co
- m
+UID:094ddb66-89df-55db-8f3f-f3626fd0d081@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 750MC Roadsports - Qualifying | GT Round 2: Brands Hatch
 DTSTART:20260503T110000Z
 DTEND:20260503T112500Z
-UID:🏁_GT_Round_2:_Brands_Hatch_750MC_Roadsports_-_Qualifying_20260503@r
- acing.com
+UID:7f349dd9-9c3f-5448-b684-4e9106711e7a@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 GT World - Race 1 | GT Round 2: Brands Hatch
 DTSTART:20260503T121500Z
 DTEND:20260503T131500Z
-UID:🏁_GT_Round_2:_Brands_Hatch_GT_World_-_Race_1_20260503@racing.com
+UID:7cc726ed-8a58-50aa-aa0b-865fc7107105@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 Legends Cars - Race 4 | GT Round 2: Brands Hatch
 DTSTART:20260503T132500Z
 DTEND:20260503T133500Z
-UID:🏁_GT_Round_2:_Brands_Hatch_Legends_Cars_-_Race_4_20260503@racing.co
- m
+UID:784a03df-f8ce-59f8-9849-0afa2d486e52@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 Radical Cup UK - Race 2 | GT Round 2: Brands Hatch
 DTSTART:20260503T134500Z
 DTEND:20260503T143500Z
-UID:🏁_GT_Round_2:_Brands_Hatch_Radical_Cup_UK_-_Race_2_20260503@racing.
- com
+UID:d9b27fa2-90c5-58af-bb3d-142e325ed4bb@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 Sport 2000 Championship - Race 2 | GT Round 2: Brands Hatch
 DTSTART:20260503T151500Z
 DTEND:20260503T154000Z
-UID:🏁_GT_Round_2:_Brands_Hatch_Sport_2000_Championship_-_Race_2_2026050
- 3@racing.com
+UID:44885dce-c9e5-5a19-8c7f-e271a2af30af@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 Legends Cars - Race 5 | GT Round 2: Brands Hatch
 DTSTART:20260503T155000Z
 DTEND:20260503T160000Z
-UID:🏁_GT_Round_2:_Brands_Hatch_Legends_Cars_-_Race_5_20260503@racing.co
- m
+UID:9dc842b9-2520-515c-bc28-cfaced1c6fe7@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 GT World - Race 2 | GT Round 2: Brands Hatch
 DTSTART:20260503T164500Z
 DTEND:20260503T174500Z
-UID:🏁_GT_Round_2:_Brands_Hatch_GT_World_-_Race_2_20260503@racing.com
+UID:74b3eb01-b1e1-5da3-876e-02340de2a1fb@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 750MC Roadsports - Race 1 | GT Round 2: Brands Hatch
 DTSTART:20260503T180000Z
 DTEND:20260503T184500Z
-UID:🏁_GT_Round_2:_Brands_Hatch_750MC_Roadsports_-_Race_1_20260503@racin
- g.com
+UID:b35a10a6-7b66-5f07-8f95-5d68854f59b2@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 Legends Cars - Race 6 | GT Round 2: Brands Hatch
 DTSTART:20260503T190000Z
 DTEND:20260503T191500Z
-UID:🏁_GT_Round_2:_Brands_Hatch_Legends_Cars_-_Race_6_20260503@racing.co
- m
+UID:504e8c5a-b26a-5601-a404-14c2589365c2@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 GT Prologue: 24h of Spa
 DTSTART;VALUE=DATE:20260519
 DTEND;VALUE=DATE:20260521
-UID:🏁_GT_Prologue:_24h_of_Spa_20260519@racing.com
+UID:99f58037-ef50-519a-9066-fa99ffbb2c0e@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 GT Round 3: Monza
 DTSTART;VALUE=DATE:20260530
 DTEND;VALUE=DATE:20260601
-UID:🏁_GT_Round_3:_Monza_20260530@racing.com
+UID:e7c5e62a-9027-5fe9-9558-7172d78f2263@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 GT Round 4: 24h of Spa
 DTSTART;VALUE=DATE:20260625
 DTEND;VALUE=DATE:20260629
-UID:🏁_GT_Round_4:_24h_of_Spa_20260625@racing.com
+UID:b27a4d01-7dd7-501b-81e6-14fcdfb3c6bb@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 GT Round 5: Misano
 DTSTART;VALUE=DATE:20260718
 DTEND;VALUE=DATE:20260720
-UID:🏁_GT_Round_5:_Misano_20260718@racing.com
+UID:b5a52a49-fbc7-56c5-87f7-99700e63f572@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 GT Round 6: Magny-Cours
 DTSTART;VALUE=DATE:20260801
 DTEND;VALUE=DATE:20260803
-UID:🏁_GT_Round_6:_Magny-Cours_20260801@racing.com
+UID:5d850f29-a914-5c8d-9648-a5b4f775a229@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 GT Round 7: Nürburgring
 DTSTART;VALUE=DATE:20260829
 DTEND;VALUE=DATE:20260831
-UID:🏁_GT_Round_7:_Nürburgring_20260829@racing.com
+UID:6db35a5f-9866-5412-8281-b8cad74e1643@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 GT Round 8: Zandvoort
 DTSTART;VALUE=DATE:20260919
 DTEND;VALUE=DATE:20260921
-UID:🏁_GT_Round_8:_Zandvoort_20260919@racing.com
+UID:f623e5e1-f722-55b6-b218-39b7b932080c@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 GT Round 9: Barcelona
 DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261005
-UID:🏁_GT_Round_9:_Barcelona_20261003@racing.com
+UID:25cb14cf-d0e6-5ee6-8233-8462564a0e5c@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏁 GT Round 10: Portimao
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261019
-UID:🏁_GT_Round_10:_Portimao_20261017@racing.com
+UID:105d001c-76a2-5208-b9e8-868351757c0a@racing.com
 DESCRIPTION:Retransmisión: GTWorld YouTube / Eurosport
 END:VEVENT
 END:VCALENDAR
