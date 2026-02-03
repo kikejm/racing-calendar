@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Calendario de Carreras</title>
+    <meta name="description" content="Genera un enlace de suscripción iCal para calendarios de F1 y GT.">
+    
+    <style>
+        /* --- Clean Code CSS: Variables y BEM-like naming --- */
+        :root { 
+            --color-bg: #0f0f13; 
+            --color-panel: #1e1e24; 
+            --color-accent: #e10600; 
+            --color-accent-hover: #ff1a1a;
+            --color-text: #ffffff; 
+            --color-text-muted: #888;
+            --color-border: #333;
+            --color-error: #ff4444;
+            --color-success: #4ade80;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --space-md: 16px;
+            --space-lg: 24px;
+        }
+        
+        *, *::before, *::after { box-sizing: border-box; }
+
+        body { 
+            background: var(--color-bg); 
+            color: var(--color-text); 
+            font-family: system-ui, -apple-system, sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            display: flex; 
+            justify-content: center; 
+            min-height: 100vh;
+        }
+
+        .app-container { 
+            max-width: 500px; 
+            width: 100%; 
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .header__title { 
+            font-weight: 800; 
+            text-align: center; 
+            margin: 10px 0 20px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .card { 
+            background: var(--color-panel); 
+            padding: var(--space-lg); 
+            border-radius: var(--radius-lg); 
+            border: 1px solid var(--color-border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .section-title { 
+            margin: 0 0 15px 0; 
+            color: var(--color-text-muted); 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            font-weight: 700;
+        }
+        
+        .section-title--mt { margin-top: 25px; }
+
+        .grid-options { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 12px; 
+        }
+
+        /* Accesibilidad mejorada para checkboxes */
+        .checkbox-wrapper { position: relative; }
+        
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            border: 1px solid transparent;
+            user-select: none;
+            color: var(--color-text);
+        }
+
+        /* Estados del Checkbox */
+        .checkbox-input:checked + .checkbox-label {
+            background: rgba(225, 6, 0, 0.15);
+            border-color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        .checkbox-input:focus-visible + .checkbox-label {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+        }
+
+        .checkbox-wrapper:hover .checkbox-label { background: rgba(255,255,255,0.1); }
+
+        .btn { 
+            width: 100%; 
+            border: none; 
+            padding: var(--space-md); 
+            font-weight: 700; 
+            border-radius: var(--radius-md); 
+            font-size: 1rem; 
+            cursor: pointer; 
+            transition: background 0.2s;
+            text-transform: uppercase;
+        }
+
+        .btn--primary { 
+            background: var(--color-accent); 
+            color: white; 
+            margin-top: 25px;
+        }
+        .btn--primary:hover { background: var(--color-accent-hover); }
+
+        .btn--copy {
+            width: auto;
+            background: #333;
+            color: #fff;
+            padding: 8px 16px;
+            font-size: 0.85rem;
+        }
+        .btn--copy:hover { background: #444; }
+
+        .feedback-msg {
+            color: var(--color-error);
+            font-size: 0.85rem;
+            text-align: center;
+            margin-top: 10px;
+            font-weight: 600;
+            min-height: 1.2em; /* Reserva espacio */
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .feedback-msg.is-visible { opacity: 1; }
+
+        #result-area { display: none; margin-top: 10px; animation: fadeIn 0.3s ease; }
+
+        .url-box {
+            display: flex;
+            gap: 10px;
+            background: #000;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+        }
+
+        .url-input { 
+            flex-grow: 1;
+            background: transparent;
+            border: none;
+            color: var(--color-success);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .hint { font-size: 0.8rem; color: #666; text-align: center; margin-top: 10px; display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        .shake { animation: shake 0.3s ease-in-out; }
+    </style>
+</head>
+<body>
+
+    <main class="app-container">
+        <h1 class="header__title">🏎️ Racing Schedule</h1>
+        
+        <section class="card" id="generator-card">
+            <h2 class="section-title">Series</h2>
+            <div class="grid-options">
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="cat-f1" name="cats" value="f1" checked class="checkbox-input sr-only">
+                    <label for="cat-f1" class="checkbox-label">Formula 1</label>
+                </div>
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="cat-gt" name="cats" value="gt" checked class="checkbox-input sr-only">
+                    <label for="cat-gt" class="checkbox-label">GT World</label>
+                </div>
+            </div>
+
+            <h2 class="section-title section-title--mt">Sesiones</h2>
+            <div class="grid-options">
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="sess-prac" name="sessions" value="practice" class="checkbox-input sr-only">
+                    <label for="sess-prac" class="checkbox-label">Prácticas</label>
+                </div>
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="sess-qual" name="sessions" value="qualifying" checked class="checkbox-input sr-only">
+                    <label for="sess-qual" class="checkbox-label">Clasificación</label>
+                </div>
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="sess-spri" name="sessions" value="sprint" checked class="checkbox-input sr-only">
+                    <label for="sess-spri" class="checkbox-label">Sprint</label>
+                </div>
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="sess-race" name="sessions" value="race" checked class="checkbox-input sr-only">
+                    <label for="sess-race" class="checkbox-label">Carrera</label>
+                </div>
+            </div>
+
+            <button id="btn-generate" class="btn btn--primary">Generar Calendario</button>
+            <div id="error-msg" class="feedback-msg" aria-live="polite">⚠️ Selecciona al menos una categoría.</div>
+        </section>
+
+        <section id="result-area" class="card" aria-hidden="true">
+            <h2 class="section-title">Enlace de Suscripción (iCal)</h2>
+            <div class="url-box">
+                <input type="text" id="urlInput" class="url-input" readonly aria-label="URL generada">
+                <button id="btn-copy" class="btn btn--copy">Copiar</button>
+            </div>
+            <span class="hint">Compatible con Google Calendar, Apple Calendar & Outlook</span>
+        </section>
+    </main>
+
+    <script type="module">
+        const CONFIG = {
+            API_PORT: 8080, 
+            API_ENDPOINT: '/calendar.ics',
+            get BASE_URL() {
+                if (window.APP_BACKEND_URL) return window.APP_BACKEND_URL;
+                const { protocol, hostname } = window.location;
+                if (hostname === 'localhost' || hostname === '127.0.0.1') {
+                    return `${protocol}//${hostname}:${CONFIG.API_PORT}`;
+                }
+                return window.location.origin;
+            },
+            TEXT: {
+                COPY_DEFAULT: 'Copiar',
+                COPY_SUCCESS: '¡Copiado!',
+                COPY_ERROR: 'Error',
+            }
+        };
+
+        class CalendarApp {
+            constructor() {
+                this.dom = {
+                    btnGenerate: document.getElementById('btn-generate'),
+                    btnCopy: document.getElementById('btn-copy'),
+                    card: document.getElementById('generator-card'),
+                    errorMsg: document.getElementById('error-msg'),
+                    resultArea: document.getElementById('result-area'),
+                    urlInput: document.getElementById('urlInput'),
+                    // Seleccionamos todos los checkboxes del DOM
+                    checkboxes: document.querySelectorAll('input[type="checkbox"]'), 
+                };
+                
+                this.init();
+            }
+
+            init() {
+                // 1. Reactividad total: Actualizar al cambiar cualquier checkbox
+                this.dom.checkboxes.forEach(cb => {
+                    cb.addEventListener('change', () => this.updateUrl());
+                });
+
+                // 2. Botón Copiar
+                this.dom.btnCopy.addEventListener('click', () => this.handleCopy());
+
+                // 3. Botón Generar (opcional, ahora sirve como feedback visual)
+                this.dom.btnGenerate.addEventListener('click', () => {
+                    this.updateUrl();
+                    this.triggerShake(this.dom.resultArea);
+                });
+
+                // 4. Generación inicial automática al cargar
+                this.updateUrl();
+            }
+
+            getCheckedValues(name) {
+                return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`))
+                    .map(cb => cb.value);
+            }
+
+            updateUrl() {
+                const cats = this.getCheckedValues('cats');
+                const sessions = this.getCheckedValues('sessions');
+                
+                // Validación: Debe haber al menos una categoría seleccionada
+                const isValid = cats.length > 0;
+
+                this.handleValidationState(isValid);
+
+                if (isValid) {
+                    const url = this.buildUrl(cats, sessions);
+                    this.displayResult(url);
+                } else {
+                    this.displayErrorState();
+                }
+            }
+
+            handleValidationState(isValid) {
+                this.dom.btnGenerate.disabled = !isValid;
+                this.dom.btnCopy.disabled = !isValid;
+                this.dom.errorMsg.classList.toggle('is-visible', !isValid);
+                
+                if (!isValid) {
+                    this.triggerShake(this.dom.card);
+                }
+            }
+
+            displayErrorState() {
+                this.dom.urlInput.value = "⚠️ Selecciona al menos una categoría";
+                this.dom.urlInput.style.color = "var(--color-error)";
+            }
+
+            buildUrl(cats, sessions) {
+                const params = new URLSearchParams();
+                cats.forEach(c => params.append("cats", c));
+                sessions.forEach(s => params.append("sessions", s));
+                return `${CONFIG.BASE_URL}${CONFIG.API_ENDPOINT}?${params.toString()}`;
+            }
+
+            displayResult(url) {
+                this.dom.urlInput.style.color = "var(--color-success)";
+                this.dom.urlInput.value = url;
+                this.dom.resultArea.style.display = "block";
+            }
+
+            async handleCopy() {
+                if (this.dom.btnCopy.disabled) return;
+
+                try {
+                    await navigator.clipboard.writeText(this.dom.urlInput.value);
+                    this.updateCopyButton(true);
+                } catch (err) {
+                    console.error('Copy failed:', err);
+                    this.dom.urlInput.select();
+                    this.updateCopyButton(false);
+                }
+            }
+
+            updateCopyButton(success) {
+                const btn = this.dom.btnCopy;
+                btn.textContent = success ? CONFIG.TEXT.COPY_SUCCESS : CONFIG.TEXT.COPY_ERROR;
+                btn.style.background = success ? 'var(--color-success)' : 'var(--color-error)';
+                btn.style.color = success ? '#000' : '#fff';
+
+                setTimeout(() => {
+                    btn.textContent = CONFIG.TEXT.COPY_DEFAULT;
+                    btn.style.background = '';
+                    btn.style.color = '';
+                }, 2000);
+            }
+
+            triggerShake(element) {
+                element.classList.remove('shake');
+                void element.offsetWidth; // Forzar reflow
+                element.classList.add('shake');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => new CalendarApp());
+    </script>
+</body>
+</html>

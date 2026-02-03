@@ -1,0 +1,5 @@
+-r requirements.txt  # Incluye las dependencias base
+
+pytest>=8.0.0        # Para Testing unitario
+ruff>=0.1.0          # Linter y Formatter (reemplaza a Black, Isort y Flake8)
+httpx>=0.26.0        # Cliente HTTP para testear la API de FastAPI
