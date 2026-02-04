@@ -12,7 +12,7 @@ import uvicorn
 from fastapi import Depends, FastAPI, HTTPException, Query, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from icalendar import Calendar, Event
+from icalendar import Alarm, Calendar, Event, vGeo
 from pydantic import BaseModel, ConfigDict, Field, model_validator, computed_field
 from pydantic_settings import BaseSettings
 
@@ -89,6 +89,15 @@ class SessionModel(TimeAwareModel):
 class EventModel(TimeAwareModel):
     title: str
     description: str = ""
+    location: Optional[str] = None
+    geo_lat: Optional[float] = None
+    geo_lon: Optional[float] = None
+    url: Optional[str] = None
+    broadcasters: List[str] = Field(default_factory=list)
+    categories: List[str] = Field(default_factory=list)
+    status: str = "CONFIRMED"
+    priority: int = 0
+    sequence: int = 0
     start: Optional[datetime] = None
     end: Optional[datetime] = None
     sessions: List[SessionModel] = Field(default_factory=list)
@@ -142,91 +151,108 @@ class CalendarService:
                 
         return False
 
-    def _create_ical_event(self, 
-                           uid_seed: str, 
-                           summary: str, 
-                           start: datetime | date, 
-                           end: datetime | date, 
-                           description: str, 
-                           is_all_day: bool = False) -> Event:
+    def _format_description(self, event: EventModel, session_name: str, is_html: bool = False) -> str:
+        lines = []
+        if is_html:
+            lines.append(f"<b>{session_name}</b><br>")
+            if event.broadcasters:
+                lines.append(f"📺 <b>TV:</b> {', '.join(event.broadcasters)}<br>")
+            if event.location:
+                lines.append(f"📍 {event.location}<br>")
+            if event.url:
+                lines.append(f"🔗 <a href='{event.url}'>Info Oficial</a><br>")
+            if event.description:
+                lines.append(f"<br><i>{event.description}</i>")
+            return "".join(lines)
+        else:
+            lines.append(session_name)
+            if event.broadcasters:
+                lines.append(f"📺 TV: {', '.join(event.broadcasters)}")
+            if event.location:
+                lines.append(f"📍 {event.location}")
+            if event.url:
+                lines.append(f"🔗 {event.url}")
+            if event.description:
+                lines.append(f"\n{event.description}")
+            return "\n".join(lines)
+
+    def _create_ical_event(self, uid_seed: str, summary: str, start: datetime | date, end: datetime | date, 
+                           event_data: EventModel, session_name: str, is_all_day: bool = False) -> Event:
         evt = Event()
         evt.add('summary', summary)
         evt.add('dtstart', start)
         
-        # RFC 5545: Eventos de día completo terminan al día siguiente
         if is_all_day and isinstance(end, date) and not isinstance(end, datetime):
              evt.add('dtend', end + timedelta(days=1))
         else:
             evt.add('dtend', end)
+
+        # Descripciones (Texto plano + HTML)
+        desc_text = self._format_description(event_data, session_name, is_html=False)
+        desc_html = self._format_description(event_data, session_name, is_html=True)
+        evt.add('description', desc_text)
+        evt.add('X-ALT-DESC', desc_html, parameters={'FMTTYPE': 'text/html'})
+
+        # Metadatos extendidos
+        if event_data.location:
+            evt.add('location', event_data.location)
+        if event_data.geo_lat is not None and event_data.geo_lon is not None:
+            evt.add('geo', vGeo((event_data.geo_lat, event_data.geo_lon)))
+        if event_data.url:
+            evt.add('url', event_data.url)
+        if event_data.categories:
+            evt.add('categories', event_data.categories)
             
-        evt.add('description', description)
-        evt.add('dtstamp', datetime.now(timezone.utc))
+        evt.add('priority', event_data.priority)
+        evt.add('status', event_data.status)
+        evt.add('sequence', event_data.sequence)
+        evt.add('transp', 'TRANSPARENT')
         
-        # UUID determinista para evitar duplicados al actualizar el calendario
+        evt.add('dtstamp', datetime.now(timezone.utc))
         uid = f"{uuid5(NAMESPACE_DNS, uid_seed)}@racing-manager.com"
         evt.add('uid', uid)
+
+        # Alarma (Notificación 15 min antes)
+        alarm = Alarm()
+        alarm.add("action", "DISPLAY")
+        alarm.add("description", f"Arranca: {summary}")
+        alarm.add("trigger", timedelta(minutes=-15))
+        evt.add_component(alarm)
+
         return evt
 
-    def generate_calendar(self, 
-                          events: List[EventModel], 
-                          filter_cats: Optional[Set[str]] = None, 
-                          filter_sessions: Optional[Set[str]] = None) -> Calendar:
-        
+    def generate_calendar(self, events: List[EventModel], filter_cats: Optional[Set[str]] = None, filter_sessions: Optional[Set[str]] = None) -> Calendar:
         cal = Calendar()
         cal.add('prodid', '-//RacingManager//Dynamic//ES')
         cal.add('version', '2.0')
         cal.add('x-wr-calname', 'Racing Schedule')
-        cal.add('x-published-ttl', 'PT1H') # Refresco sugerido: 1 hora
+        cal.add('x-published-ttl', 'PT1H')
 
         for entry in events:
             category = self._determine_category(entry.title)
-            
-            # Filtrado por categoría
             if filter_cats and category not in filter_cats:
                 continue
 
             icon = self.settings.ICONS.get(category.upper(), self.settings.ICONS["DEFAULT"])
             clean_title = self._clean_title(entry.title)
 
-            # A. Procesar sesiones individuales (Horarios exactos)
             if entry.sessions:
                 for session in entry.sessions:
-                    # Filtrado por tipo de sesión (ej. solo "Race")
                     if filter_sessions:
                         if not self._is_session_match(session.name, filter_sessions):
                             continue
                     
-                    try:
-                        summary = f"{icon} {session.name} | {clean_title}"
-                        # Seed único: Evento + Sesión + Fecha
-                        seed = f"{entry.title}|{session.name}|{session.start.isoformat()}"
-                        
-                        evt = self._create_ical_event(
-                            uid_seed=seed,
-                            summary=summary,
-                            start=session.start,
-                            end=session.end,
-                            description=entry.description
-                        )
-                        cal.add_component(evt)
-                    except ValueError as e:
-                        logger.warning(f"Saltando sesión inválida en '{entry.title}': {e}")
+                    summary = f"{icon} {session.name} | {clean_title}"
+                    seed = f"{entry.title}|{session.name}|{session.start.isoformat()}"
+                    
+                    evt = self._create_ical_event(seed, summary, session.start, session.end, entry, session.name)
+                    cal.add_component(evt)
 
-            # B. Procesar evento completo (Día entero)
             elif entry.start and entry.end:
-
-                if filter_sessions: 
-                    continue
-                
+                if filter_sessions: continue
                 summary = f"{icon} {clean_title}"
-                evt = self._create_ical_event(
-                    uid_seed=f"{entry.title}|main",
-                    summary=summary,
-                    start=entry.start.date(),
-                    end=entry.end.date(),
-                    description=entry.description,
-                    is_all_day=True
-                )
+                evt = self._create_ical_event(f"{entry.title}|main", summary, entry.start.date(), entry.end.date(), 
+                                            entry, clean_title, is_all_day=True)
                 cal.add_component(evt)
 
         return cal
@@ -317,7 +343,7 @@ async def get_calendar_ics(
 def health_check():
     return {"status": "ok", "timestamp": datetime.now(timezone.utc)}
 
-
+app.mount("/data", StaticFiles(directory="data"), name="data")
 app.mount("/", StaticFiles(directory="public", html=True), name="static")
 
 if __name__ == "__main__":

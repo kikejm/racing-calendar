@@ -1,7 +1,14 @@
 [
   {
     "title": "🏎️ GP Australia, Melbourne",
-    "description": "Retransmisión: DAZN F1",
+    "location": "Albert Park Circuit, Melbourne, Australia",
+    "geo_lat": -37.8497,
+    "geo_lon": 144.9680,
+    "url": "https://www.formula1.com/en/racing/2026/Australia.html",
+    "broadcasters": ["DAZN F1"],
+    "categories": ["F1", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Ronda 1. El inicio de la temporada 2026 en el parque Albert Park.",
     "sessions": [
       {"name": "P1", "start": "2026-03-06T02:30:00Z", "end": "2026-03-06T03:30:00Z"},
       {"name": "P2", "start": "2026-03-06T06:00:00Z", "end": "2026-03-06T07:00:00Z"},
@@ -12,7 +19,14 @@
   },
   {
     "title": "🏎️ GP de China, Shanghai - Sprint",
-    "description": "Retransmisión: DAZN / Movistar+",
+    "location": "Shanghai International Circuit, Shanghai, China",
+    "geo_lat": 31.3389,
+    "geo_lon": 121.2210,
+    "url": "https://www.formula1.com/en/racing/2026/China.html",
+    "broadcasters": ["DAZN F1", "Movistar+"],
+    "categories": ["F1", "Sprint", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Ronda 2. Formato Sprint en el inmenso circuito de Shanghai.",
     "sessions": [
       {"name": "P1", "start": "2026-03-13T04:30:00Z", "end": "2026-03-13T05:30:00Z"},
       {"name": "Sprint Qualy", "start": "2026-03-13T08:30:00Z", "end": "2026-03-13T09:14:00Z"},
@@ -23,7 +37,14 @@
   },
   {
     "title": "🏎️ GP de Japón, Suzuka",
-    "description": "Retransmisión: DAZN / Movistar+",
+    "location": "Suzuka Circuit, Suzuka, Japan",
+    "geo_lat": 34.8431,
+    "geo_lon": 136.5410,
+    "url": "https://www.formula1.com/en/racing/2026/Japan.html",
+    "broadcasters": ["DAZN F1", "Movistar+"],
+    "categories": ["F1", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Ronda 3. Las curvas en S y la 130R esperan en uno de los circuitos más técnicos.",
     "sessions": [
       {"name": "P1", "start": "2026-03-27T03:30:00Z", "end": "2026-03-27T04:30:00Z"},
       {"name": "P2", "start": "2026-03-27T07:00:00Z", "end": "2026-03-27T08:00:00Z"},
@@ -34,7 +55,14 @@
   },
   {
     "title": "🏎️ GP de Bahréin, Sakhir",
-    "description": "Retransmisión: DAZN / Movistar+",
+    "location": "Bahrain International Circuit, Sakhir, Bahrain",
+    "geo_lat": 26.0325,
+    "geo_lon": 50.5106,
+    "url": "https://www.formula1.com/en/racing/2026/Bahrain.html",
+    "broadcasters": ["DAZN F1", "Movistar+"],
+    "categories": ["F1", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Ronda 4. Carrera nocturna bajo los focos del desierto.",
     "sessions": [
       {"name": "P1", "start": "2026-04-10T13:30:00Z", "end": "2026-04-10T14:30:00Z"},
       {"name": "P2", "start": "2026-04-10T17:00:00Z", "end": "2026-04-10T18:00:00Z"},
@@ -45,7 +73,14 @@
   },
   {
     "title": "🏎️ GP de Arabia Saudita, Jeddah",
-    "description": "Retransmisión: DAZN / Movistar+",
+    "location": "Jeddah Corniche Circuit, Jeddah, Saudi Arabia",
+    "geo_lat": 21.6319,
+    "geo_lon": 39.1044,
+    "url": "https://www.formula1.com/en/racing/2026/Saudi_Arabia.html",
+    "broadcasters": ["DAZN F1", "Movistar+"],
+    "categories": ["F1", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Ronda 5. El circuito callejero más rápido del mundo.",
     "sessions": [
       {"name": "P1", "start": "2026-04-17T15:30:00Z", "end": "2026-04-17T16:30:00Z"},
       {"name": "P2", "start": "2026-04-17T19:00:00Z", "end": "2026-04-17T20:00:00Z"},
@@ -56,7 +91,14 @@
   },
   {
     "title": "🏎️ GP de Miami, Miami - Sprint",
-    "description": "Retransmisión: DAZN / Movistar+",
+    "location": "Miami International Autodrome, Miami, USA",
+    "geo_lat": 25.9581,
+    "geo_lon": -80.2389,
+    "url": "https://www.formula1.com/en/racing/2026/Miami.html",
+    "broadcasters": ["DAZN F1", "Movistar+"],
+    "categories": ["F1", "Sprint", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Ronda 6. Glamour y velocidad alrededor del Hard Rock Stadium.",
     "sessions": [
       {"name": "P1", "start": "2026-05-01T18:30:00Z", "end": "2026-05-01T19:30:00Z"},
       {"name": "Sprint Qualy", "start": "2026-05-01T22:30:00Z", "end": "2026-05-01T23:14:00Z"},
@@ -67,7 +109,14 @@
   },
   {
     "title": "🏎️ GP de Canadá, Montreal - Sprint",
-    "description": "Retransmisión: DAZN / Movistar+",
+    "location": "Circuit Gilles Villeneuve, Montreal, Canada",
+    "geo_lat": 45.5006,
+    "geo_lon": -73.5228,
+    "url": "https://www.formula1.com/en/racing/2026/Canada.html",
+    "broadcasters": ["DAZN F1", "Movistar+"],
+    "categories": ["F1", "Sprint", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Ronda 7. El Muro de los Campeones espera en la Île Notre-Dame.",
     "sessions": [
       {"name": "P1", "start": "2026-05-22T18:30:00Z", "end": "2026-05-22T19:30:00Z"},
       {"name": "Sprint Qualy", "start": "2026-05-22T22:30:00Z", "end": "2026-05-22T23:14:00Z"},
@@ -78,7 +127,14 @@
   },
   {
     "title": "🏎️ GP de Mónaco, Mónaco",
-    "description": "Retransmisión: DAZN / Movistar+",
+    "location": "Circuit de Monaco, Monte Carlo, Monaco",
+    "geo_lat": 43.7347,
+    "geo_lon": 7.4206,
+    "url": "https://www.formula1.com/en/racing/2026/Monaco.html",
+    "broadcasters": ["DAZN F1", "Movistar+"],
+    "categories": ["F1", "Motorsport", "Classic"],
+    "status": "CONFIRMED",
+    "description": "Ronda 8. La joya de la corona, donde la clasificación es todo.",
     "sessions": [
       {"name": "P1", "start": "2026-06-05T13:30:00Z", "end": "2026-06-05T14:30:00Z"},
       {"name": "P2", "start": "2026-06-05T17:00:00Z", "end": "2026-06-05T18:00:00Z"},
@@ -89,7 +145,14 @@
   },
   {
     "title": "🏎️ GP de España, Barcelona",
-    "description": "Retransmisión: DAZN / Movistar+",
+    "location": "Circuit de Barcelona-Catalunya, Montmeló, Spain",
+    "geo_lat": 41.5700,
+    "geo_lon": 2.2611,
+    "url": "https://www.formula1.com/es/racing/2026/barcelona-catalunya.html",
+    "broadcasters": ["DAZN F1", "Movistar+"],
+    "categories": ["F1", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Ronda 9. El clásico europeo y prueba definitiva para la aerodinámica.",
     "sessions": [
       { "name": "P1", "start": "2026-06-12T13:30:00Z", "end": "2026-06-12T14:30:00Z" },
       { "name": "P2", "start": "2026-06-12T17:00:00Z", "end": "2026-06-12T18:00:00Z" },
@@ -100,7 +163,14 @@
   },
   {
     "title": "🏎️ GP de Austria, Spielberg",
-    "description": "Retransmisión: DAZN / Movistar+",
+    "location": "Red Bull Ring, Spielberg, Austria",
+    "geo_lat": 47.2197,
+    "geo_lon": 14.7647,
+    "url": "https://www.formula1.com/en/racing/2026/Austria.html",
+    "broadcasters": ["DAZN F1", "Movistar+"],
+    "categories": ["F1", "Sprint", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Ronda 10. Velocidad pura entre las montañas de Estiria.",
     "sessions": [
         { "name": "P1", "start": "2026-06-26T13:30:00Z", "end": "2026-06-26T14:30:00Z" },
         { "name": "P2", "start": "2026-06-26T17:00:00Z", "end": "2026-06-26T18:00:00Z" },
@@ -111,7 +181,14 @@
   },
   {
     "title": "🏎️ GP de Reino Unido, Silverstone - Sprint",
-    "description": "Retransmisión: DAZN / Movistar+",
+    "location": "Silverstone Circuit, Silverstone, UK",
+    "geo_lat": 52.0786,
+    "geo_lon": -1.0169,
+    "url": "https://www.formula1.com/en/racing/2026/Great_Britain.html",
+    "broadcasters": ["DAZN F1", "Movistar+"],
+    "categories": ["F1", "Sprint", "Motorsport", "Classic"],
+    "status": "CONFIRMED",
+    "description": "Ronda 11. La cuna de la F1 con formato Sprint.",
     "sessions": [
       { "name": "P1", "start": "2026-07-03T13:30:00Z", "end": "2026-07-03T14:30:00Z" },
       { "name": "Sprint Qualy", "start": "2026-07-03T17:30:00Z", "end": "2026-07-03T18:14:00Z" },
@@ -122,7 +199,14 @@
   },
   {
     "title": "🏎️ GP de Bélgica, Spa-Francorchamps",
-    "description": "Retransmisión: DAZN / Movistar+",
+    "location": "Circuit de Spa-Francorchamps, Stavelot, Belgium",
+    "geo_lat": 50.4372,
+    "geo_lon": 5.9714,
+    "url": "https://www.formula1.com/en/racing/2026/Belgium.html",
+    "broadcasters": ["DAZN F1", "Movistar+"],
+    "categories": ["F1", "Motorsport", "Classic"],
+    "status": "CONFIRMED",
+    "description": "Ronda 12. Eau Rouge y Raidillon en el circuito más largo del calendario.",
     "sessions": [
       { "name": "P1", "start": "2026-07-17T13:30:00Z", "end": "2026-07-17T14:30:00Z" },
       { "name": "P2", "start": "2026-07-17T17:00:00Z", "end": "2026-07-17T18:00:00Z" },
@@ -133,7 +217,14 @@
   },
   {
     "title": "🏎️ GP de Hungría, Budapest",
-    "description": "Retransmisión: DAZN / Movistar+",
+    "location": "Hungaroring, Mogyoród, Hungary",
+    "geo_lat": 47.5830,
+    "geo_lon": 19.2486,
+    "url": "https://www.formula1.com/en/racing/2026/Hungary.html",
+    "broadcasters": ["DAZN F1", "Movistar+"],
+    "categories": ["F1", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Ronda 13. El 'Mónaco sin muros', técnico y exigente.",
     "sessions": [
         { "name": "P1", "start": "2026-07-24T13:30:00Z", "end": "2026-07-24T14:30:00Z" },
         { "name": "P2", "start": "2026-07-24T17:00:00Z", "end": "2026-07-24T18:00:00Z" },
@@ -144,7 +235,14 @@
   },
   {
     "title": "🏎️ GP de Países Bajos, Zandvoort - Sprint",
-    "description": "Retransmisión: DAZN / Movistar+",
+    "location": "Circuit Zandvoort, Zandvoort, Netherlands",
+    "geo_lat": 52.3888,
+    "geo_lon": 4.5409,
+    "url": "https://www.formula1.com/en/racing/2026/Netherlands.html",
+    "broadcasters": ["DAZN F1", "Movistar+"],
+    "categories": ["F1", "Sprint", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Ronda 14. Curvas peraltadas y ambiente naranja junto a la playa.",
     "sessions": [
       { "name": "P1", "start": "2026-08-21T12:30:00Z", "end": "2026-08-21T13:30:00Z" },
       { "name": "Sprint Qualifying", "start": "2026-08-21T16:30:00Z", "end": "2026-08-21T17:14:00Z" },
@@ -155,7 +253,14 @@
   },
   {
     "title": "🏎️ GP de Italia, Monza",
-    "description": "Retransmisión: DAZN / Movistar+",
+    "location": "Autodromo Nazionale Monza, Monza, Italy",
+    "geo_lat": 45.6156,
+    "geo_lon": 9.2811,
+    "url": "https://www.formula1.com/en/racing/2026/Italy.html",
+    "broadcasters": ["DAZN F1", "Movistar+"],
+    "categories": ["F1", "Motorsport", "Classic"],
+    "status": "CONFIRMED",
+    "description": "Ronda 15. El Templo de la Velocidad.",
     "sessions": [
       { "name": "P1", "start": "2026-09-04T12:30:00Z", "end": "2026-09-04T13:30:00Z" },
       { "name": "P2", "start": "2026-09-04T16:00:00Z", "end": "2026-09-04T17:00:00Z" },
@@ -166,7 +271,14 @@
   },
   {
     "title": "🏎️ GP de Madrid, Madrid",
-    "description": "Retransmisión: DAZN / Movistar+",
+    "location": "IFEMA Madrid Circuit, Madrid, Spain",
+    "geo_lat": 40.4717,
+    "geo_lon": -3.6152,
+    "url": "https://www.formula1.com/en/racing/2026/Spain.html",
+    "broadcasters": ["DAZN F1", "Movistar+"],
+    "categories": ["F1", "Motorsport", "New"],
+    "status": "CONFIRMED",
+    "description": "Ronda 16. ¡Estreno! Nuevo circuito semi-urbano en IFEMA.",
     "sessions": [
       { "name": "P1", "start": "2026-09-11T13:30:00Z", "end": "2026-09-11T14:30:00Z" },
       { "name": "P2", "start": "2026-09-11T17:00:00Z", "end": "2026-09-11T18:00:00Z" },
@@ -177,7 +289,14 @@
   },
   {
     "title": "🏎️ GP Azerbaiyán, Bakú",
-    "description": "Retransmisión: DAZN / Movistar+",
+    "location": "Baku City Circuit, Baku, Azerbaijan",
+    "geo_lat": 40.3725,
+    "geo_lon": 49.8533,
+    "url": "https://www.formula1.com/en/racing/2026/Azerbaijan.html",
+    "broadcasters": ["DAZN F1", "Movistar+"],
+    "categories": ["F1", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Ronda 17. Rectas interminables y la sección del castillo.",
     "sessions": [
       { "name": "P1", "start": "2026-09-25T10:30:00Z", "end": "2026-09-25T11:30:00Z" },
       { "name": "P2", "start": "2026-09-25T14:00:00Z", "end": "2026-09-25T15:00:00Z" },
@@ -188,7 +307,14 @@
   },
   {
     "title": "🏎️ GP de Singapur, Singapur - Sprint",
-    "description": "Retransmisión: DAZN / Movistar+",
+    "location": "Marina Bay Street Circuit, Singapore",
+    "geo_lat": 1.2914,
+    "geo_lon": 103.8640,
+    "url": "https://www.formula1.com/en/racing/2026/Singapore.html",
+    "broadcasters": ["DAZN F1", "Movistar+"],
+    "categories": ["F1", "Sprint", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Ronda 18. La carrera original nocturna, prueba física extrema.",
     "sessions": [
       { "name": "P1", "start": "2026-10-09T10:30:00Z", "end": "2026-10-09T11:30:00Z" },
       { "name": "Sprint Qualy", "start": "2026-10-09T14:30:00Z", "end": "2026-10-09T15:14:00Z" },
@@ -198,30 +324,51 @@
     ]
   },
   {
-  "title": "🏎️ GP de Estados Unidos, Austin",
-  "description": "Retransmisión: DAZN / Movistar+",
-  "sessions": [
-    { "name": "P1", "start": "2026-10-23T19:30:00Z", "end": "2026-10-23T20:30:00Z" },
-    { "name": "P2", "start": "2026-10-23T23:00:00Z", "end": "2026-10-24T00:00:00Z" },
-    { "name": "P3", "start": "2026-10-24T19:30:00Z", "end": "2026-10-24T20:30:00Z" },
-    { "name": "Qualy", "start": "2026-10-24T23:00:00Z", "end": "2026-10-25T00:00:00Z" },
-    { "name": "Carrera", "start": "2026-10-25T21:00:00Z", "end": "2026-10-25T23:00:00Z" }
-  ]
+    "title": "🏎️ GP de Estados Unidos, Austin",
+    "location": "Circuit of The Americas, Austin, USA",
+    "geo_lat": 30.1328,
+    "geo_lon": -97.6411,
+    "url": "https://www.formula1.com/en/racing/2026/United-States.html",
+    "broadcasters": ["DAZN F1", "Movistar+"],
+    "categories": ["F1", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Ronda 19. Desniveles y la icónica subida a la curva 1.",
+    "sessions": [
+      { "name": "P1", "start": "2026-10-23T19:30:00Z", "end": "2026-10-23T20:30:00Z" },
+      { "name": "P2", "start": "2026-10-23T23:00:00Z", "end": "2026-10-24T00:00:00Z" },
+      { "name": "P3", "start": "2026-10-24T19:30:00Z", "end": "2026-10-24T20:30:00Z" },
+      { "name": "Qualy", "start": "2026-10-24T23:00:00Z", "end": "2026-10-25T00:00:00Z" },
+      { "name": "Carrera", "start": "2026-10-25T21:00:00Z", "end": "2026-10-25T23:00:00Z" }
+    ]
   },
   {
-  "title": "🏎️ GP de Ciudad de México, CDMX",
-  "description": "Retransmisión: DAZN / Movistar+",
-  "sessions": [
-    { "name": "P1", "start": "2026-10-30T19:30:00Z", "end": "2026-10-30T20:30:00Z" },
-    { "name": "P2", "start": "2026-10-30T23:00:00Z", "end": "2026-10-31T00:00:00Z" },
-    { "name": "P3", "start": "2026-10-31T18:30:00Z", "end": "2026-10-31T19:30:00Z" },
-    { "name": "Qualy", "start": "2026-10-31T22:00:00Z", "end": "2026-10-31T23:00:00Z" },
-    { "name": "Carrera", "start": "2026-11-01T21:00:00Z", "end": "2026-11-01T23:00:00Z" }
-  ]
+    "title": "🏎️ GP de Ciudad de México, CDMX",
+    "location": "Autódromo Hermanos Rodríguez, Mexico City, Mexico",
+    "geo_lat": 19.4042,
+    "geo_lon": -99.0907,
+    "url": "https://www.formula1.com/en/racing/2026/Mexico.html",
+    "broadcasters": ["DAZN F1", "Movistar+"],
+    "categories": ["F1", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Ronda 20. La fiesta en el Foro Sol a más de 2000m de altura.",
+    "sessions": [
+      { "name": "P1", "start": "2026-10-30T19:30:00Z", "end": "2026-10-30T20:30:00Z" },
+      { "name": "P2", "start": "2026-10-30T23:00:00Z", "end": "2026-10-31T00:00:00Z" },
+      { "name": "P3", "start": "2026-10-31T18:30:00Z", "end": "2026-10-31T19:30:00Z" },
+      { "name": "Qualy", "start": "2026-10-31T22:00:00Z", "end": "2026-10-31T23:00:00Z" },
+      { "name": "Carrera", "start": "2026-11-01T21:00:00Z", "end": "2026-11-01T23:00:00Z" }
+    ]
   },
   {
     "title": "🏎️ GP de Brasil, São Paulo",
-    "description": "Retransmisión: DAZN / Movistar+",
+    "location": "Autódromo de Interlagos, São Paulo, Brazil",
+    "geo_lat": -23.7036,
+    "geo_lon": -46.6997,
+    "url": "https://www.formula1.com/en/racing/2026/Brazil.html",
+    "broadcasters": ["DAZN F1", "Movistar+"],
+    "categories": ["F1", "Motorsport", "Classic"],
+    "status": "CONFIRMED",
+    "description": "Ronda 21. Clima impredecible y la 'S' de Senna.",
     "sessions": [
       { "name": "P1", "start": "2026-11-06T16:30:00Z", "end": "2026-11-06T17:30:00Z" },
       { "name": "P2", "start": "2026-11-06T20:00:00Z", "end": "2026-11-06T21:00:00Z" },
@@ -232,7 +379,14 @@
   },
   {
     "title": "🏎️ GP de Las Vegas, Las Vegas",
-    "description": "Retransmisión: DAZN / Movistar+",
+    "location": "Las Vegas Strip Circuit, Las Vegas, USA",
+    "geo_lat": 36.1147,
+    "geo_lon": -115.1728,
+    "url": "https://www.formula1.com/en/racing/2026/Las-Vegas.html",
+    "broadcasters": ["DAZN F1", "Movistar+"],
+    "categories": ["F1", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Ronda 22. A fondo por el Strip de Las Vegas.",
     "sessions": [
       { "name": "P1", "start": "2026-11-20T01:30:00Z", "end": "2026-11-20T02:30:00Z" },
       { "name": "P2", "start": "2026-11-20T05:00:00Z", "end": "2026-11-20T06:00:00Z" },
@@ -243,7 +397,14 @@
   },
   {
     "title": "🏎️ GP de Qatar, Lusail",
-    "description": "Retransmisión: DAZN / Movistar+",
+    "location": "Lusail International Circuit, Lusail, Qatar",
+    "geo_lat": 25.4888,
+    "geo_lon": 51.4542,
+    "url": "https://www.formula1.com/en/racing/2026/Qatar.html",
+    "broadcasters": ["DAZN F1", "Movistar+"],
+    "categories": ["F1", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Ronda 23. Penúltima cita en el desierto catarí.",
     "sessions": [
       { "name": "P1", "start": "2026-11-27T14:30:00Z", "end": "2026-11-27T15:30:00Z" },
       { "name": "P2", "start": "2026-11-27T18:00:00Z", "end": "2026-11-27T19:00:00Z" },
@@ -254,7 +415,14 @@
   },
   {
     "title": "🏎️ GP de Abu Dabi, Yas Marina",
-    "description": "Retransmisión: DAZN / Movistar+",
+    "location": "Yas Marina Circuit, Abu Dhabi, UAE",
+    "geo_lat": 24.4672,
+    "geo_lon": 54.6031,
+    "url": "https://www.formula1.com/en/racing/2026/united-arab-emirates.html",
+    "broadcasters": ["DAZN F1", "Movistar+"],
+    "categories": ["F1", "Motorsport", "Finale"],
+    "status": "CONFIRMED",
+    "description": "Ronda 24. La gran final de la temporada.",
     "sessions": [
       { "name": "P1", "start": "2026-12-04T10:30:00Z", "end": "2026-12-04T11:30:00Z" },
       { "name": "P2", "start": "2026-12-04T14:00:00Z", "end": "2026-12-04T15:00:00Z" },
@@ -265,248 +433,181 @@
   },
   {
     "title": "🏁 GT Round 1: Circuit Paul Ricard",
-    "description": "Retransmisión: GTWorld YouTube / Eurosport",
+    "location": "Circuit Paul Ricard, Le Castellet, France",
+    "geo_lat": 43.2506,
+    "geo_lon": 5.7917,
+    "url": "https://www.gt-world-challenge-europe.com/",
+    "broadcasters": ["GTWorld YouTube", "Eurosport"],
+    "categories": ["GT", "Endurance", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Inicio de temporada GT World Challenge Europe.",
     "sessions": [
-      {
-        "name": "Lamborghini Super Trofeo - Qualifying",
-        "start": "2026-04-11T09:00:00Z",
-        "end": "2026-04-11T09:50:00Z"
-      },
-      {
-        "name": "GT4 European Series - Pre-Qualifying",
-        "start": "2026-04-11T10:00:00Z",
-        "end": "2026-04-11T11:00:00Z"
-      },
-      {
-        "name": "GT3 Revival Series - Pre-Qualifying",
-        "start": "2026-04-11T11:10:00Z",
-        "end": "2026-04-11T11:55:00Z"
-      },
-      {
-        "name": "GT World - Qualifying",
-        "start": "2026-04-11T12:05:00Z",
-        "end": "2026-04-11T13:05:00Z"
-      },
-      {
-        "name": "Lamborghini Super Trofeo - Race 1",
-        "start": "2026-04-11T14:40:00Z",
-        "end": "2026-04-11T15:30:00Z"
-      },
-      {
-        "name": "GT4 European Series - Qualifying",
-        "start": "2026-04-11T15:45:00Z",
-        "end": "2026-04-11T16:30:00Z"
-      },
-      {
-        "name": "GT3 Revival Series - Qualifying",
-        "start": "2026-04-11T16:40:00Z",
-        "end": "2026-04-11T17:15:00Z"
-      },
-      {
-        "name": "GT World - Race",
-        "start": "2026-04-11T18:00:00Z",
-        "end": "2026-04-12T00:00:00Z"
-      },
-      {
-        "name": "GT3 Revival Series - Race 1",
-        "start": "2026-04-12T09:30:00Z",
-        "end": "2026-04-12T10:20:00Z"
-      },
-      {
-        "name": "GT4 European Series - Race 1",
-        "start": "2026-04-12T11:00:00Z",
-        "end": "2026-04-12T12:00:00Z"
-      },
-      {
-        "name": "Lamborghini Super Trofeo - Race 2",
-        "start": "2026-04-12T12:30:00Z",
-        "end": "2026-04-12T13:20:00Z"
-      },
-      {
-        "name": "GT3 Revival Series - Race 2",
-        "start": "2026-04-12T15:00:00Z",
-        "end": "2026-04-12T15:50:00Z"
-      },
-      {
-        "name": "GT4 European Series - Race 2",
-        "start": "2026-04-12T16:30:00Z",
-        "end": "2026-04-12T17:30:00Z"
-      }
+      { "name": "Lamborghini Super Trofeo - Qualifying", "start": "2026-04-11T09:00:00Z", "end": "2026-04-11T09:50:00Z" },
+      { "name": "GT4 European Series - Pre-Qualifying", "start": "2026-04-11T10:00:00Z", "end": "2026-04-11T11:00:00Z" },
+      { "name": "GT3 Revival Series - Pre-Qualifying", "start": "2026-04-11T11:10:00Z", "end": "2026-04-11T11:55:00Z" },
+      { "name": "GT World - Qualifying", "start": "2026-04-11T12:05:00Z", "end": "2026-04-11T13:05:00Z" },
+      { "name": "Lamborghini Super Trofeo - Race 1", "start": "2026-04-11T14:40:00Z", "end": "2026-04-11T15:30:00Z" },
+      { "name": "GT4 European Series - Qualifying", "start": "2026-04-11T15:45:00Z", "end": "2026-04-11T16:30:00Z" },
+      { "name": "GT3 Revival Series - Qualifying", "start": "2026-04-11T16:40:00Z", "end": "2026-04-11T17:15:00Z" },
+      { "name": "GT World - Race", "start": "2026-04-11T18:00:00Z", "end": "2026-04-12T00:00:00Z" },
+      { "name": "GT3 Revival Series - Race 1", "start": "2026-04-12T09:30:00Z", "end": "2026-04-12T10:20:00Z" },
+      { "name": "GT4 European Series - Race 1", "start": "2026-04-12T11:00:00Z", "end": "2026-04-12T12:00:00Z" },
+      { "name": "Lamborghini Super Trofeo - Race 2", "start": "2026-04-12T12:30:00Z", "end": "2026-04-12T13:20:00Z" },
+      { "name": "GT3 Revival Series - Race 2", "start": "2026-04-12T15:00:00Z", "end": "2026-04-12T15:50:00Z" },
+      { "name": "GT4 European Series - Race 2", "start": "2026-04-12T16:30:00Z", "end": "2026-04-12T17:30:00Z" }
     ]
   },
   {
-  "title": "🏁 GT Round 2: Brands Hatch",
-  "description": "Retransmisión: GTWorld YouTube / Eurosport",
-  "sessions": [
-    {
-      "name": "Radical Cup UK - Qualifying",
-      "start": "2026-05-02T10:00:00Z",
-      "end": "2026-05-02T10:25:00Z"
-    },
-    {
-      "name": "GT World - Free Practice 1",
-      "start": "2026-05-02T10:35:00Z",
-      "end": "2026-05-02T11:35:00Z"
-    },
-    {
-      "name": "Miata Trophy - Qualifying",
-      "start": "2026-05-02T11:45:00Z",
-      "end": "2026-05-02T12:00:00Z"
-    },
-    {
-      "name": "Legends Cars Championship - Practice",
-      "start": "2026-05-02T12:10:00Z",
-      "end": "2026-05-02T12:20:00Z"
-    },
-    {
-      "name": "Sport 2000 Championship - Qualifying",
-      "start": "2026-05-02T12:30:00Z",
-      "end": "2026-05-02T12:50:00Z"
-    },
-    {
-      "name": "GT World - Free Practice 2",
-      "start": "2026-05-02T13:00:00Z",
-      "end": "2026-05-02T14:00:00Z"
-    },
-    {
-      "name": "Legends Cars - Race 1",
-      "start": "2026-05-02T14:10:00Z",
-      "end": "2026-05-02T14:20:00Z"
-    },
-    {
-      "name": "Miata Trophy - Race 1",
-      "start": "2026-05-02T15:00:00Z",
-      "end": "2026-05-02T15:20:00Z"
-    },
-    {
-      "name": "Radical Cup UK - Race 1",
-      "start": "2026-05-02T15:35:00Z",
-      "end": "2026-05-02T16:25:00Z"
-    },
-    {
-      "name": "Legends Cars - Race 2",
-      "start": "2026-05-02T16:40:00Z",
-      "end": "2026-05-02T16:50:00Z"
-    },
-    {
-      "name": "Sport 2000 Championship - Race 1",
-      "start": "2026-05-02T17:05:00Z",
-      "end": "2026-05-02T17:30:00Z"
-    },
-    {
-      "name": "GT World - Qualifying",
-      "start": "2026-05-02T17:40:00Z",
-      "end": "2026-05-02T18:15:00Z"
-    },
-    {
-      "name": "Miata Trophy - Race 2",
-      "start": "2026-05-02T18:30:00Z",
-      "end": "2026-05-02T18:50:00Z"
-    },
-    {
-      "name": "Legends Cars - Race 3",
-      "start": "2026-05-02T19:05:00Z",
-      "end": "2026-05-02T19:20:00Z"
-    },
-    {
-      "name": "750MC Roadsports - Qualifying",
-      "start": "2026-05-03T11:00:00Z",
-      "end": "2026-05-03T11:25:00Z"
-    },
-    {
-      "name": "GT World - Race 1",
-      "start": "2026-05-03T12:15:00Z",
-      "end": "2026-05-03T13:15:00Z"
-    },
-    {
-      "name": "Legends Cars - Race 4",
-      "start": "2026-05-03T13:25:00Z",
-      "end": "2026-05-03T13:35:00Z"
-    },
-    {
-      "name": "Radical Cup UK - Race 2",
-      "start": "2026-05-03T13:45:00Z",
-      "end": "2026-05-03T14:35:00Z"
-    },
-    {
-      "name": "Sport 2000 Championship - Race 2",
-      "start": "2026-05-03T15:15:00Z",
-      "end": "2026-05-03T15:40:00Z"
-    },
-    {
-      "name": "Legends Cars - Race 5",
-      "start": "2026-05-03T15:50:00Z",
-      "end": "2026-05-03T16:00:00Z"
-    },
-    {
-      "name": "GT World - Race 2",
-      "start": "2026-05-03T16:45:00Z",
-      "end": "2026-05-03T17:45:00Z"
-    },
-    {
-      "name": "750MC Roadsports - Race 1",
-      "start": "2026-05-03T18:00:00Z",
-      "end": "2026-05-03T18:45:00Z"
-    },
-    {
-      "name": "Legends Cars - Race 6",
-      "start": "2026-05-03T19:00:00Z",
-      "end": "2026-05-03T19:15:00Z"
-    }
-  ]
+    "title": "🏁 GT Round 2: Brands Hatch",
+    "location": "Brands Hatch, Kent, UK",
+    "geo_lat": 51.3569,
+    "geo_lon": 0.2630,
+    "url": "https://www.gt-world-challenge-europe.com/",
+    "broadcasters": ["GTWorld YouTube", "Eurosport"],
+    "categories": ["GT", "Sprint", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Acción rápida en el mítico circuito británico.",
+    "sessions": [
+      { "name": "Radical Cup UK - Qualifying", "start": "2026-05-02T10:00:00Z", "end": "2026-05-02T10:25:00Z" },
+      { "name": "GT World - Free Practice 1", "start": "2026-05-02T10:35:00Z", "end": "2026-05-02T11:35:00Z" },
+      { "name": "Miata Trophy - Qualifying", "start": "2026-05-02T11:45:00Z", "end": "2026-05-02T12:00:00Z" },
+      { "name": "Legends Cars Championship - Practice", "start": "2026-05-02T12:10:00Z", "end": "2026-05-02T12:20:00Z" },
+      { "name": "Sport 2000 Championship - Qualifying", "start": "2026-05-02T12:30:00Z", "end": "2026-05-02T12:50:00Z" },
+      { "name": "GT World - Free Practice 2", "start": "2026-05-02T13:00:00Z", "end": "2026-05-02T14:00:00Z" },
+      { "name": "Legends Cars - Race 1", "start": "2026-05-02T14:10:00Z", "end": "2026-05-02T14:20:00Z" },
+      { "name": "Miata Trophy - Race 1", "start": "2026-05-02T15:00:00Z", "end": "2026-05-02T15:20:00Z" },
+      { "name": "Radical Cup UK - Race 1", "start": "2026-05-02T15:35:00Z", "end": "2026-05-02T16:25:00Z" },
+      { "name": "Legends Cars - Race 2", "start": "2026-05-02T16:40:00Z", "end": "2026-05-02T16:50:00Z" },
+      { "name": "Sport 2000 Championship - Race 1", "start": "2026-05-02T17:05:00Z", "end": "2026-05-02T17:30:00Z" },
+      { "name": "GT World - Qualifying", "start": "2026-05-02T17:40:00Z", "end": "2026-05-02T18:15:00Z" },
+      { "name": "Miata Trophy - Race 2", "start": "2026-05-02T18:30:00Z", "end": "2026-05-02T18:50:00Z" },
+      { "name": "Legends Cars - Race 3", "start": "2026-05-02T19:05:00Z", "end": "2026-05-02T19:20:00Z" },
+      { "name": "750MC Roadsports - Qualifying", "start": "2026-05-03T11:00:00Z", "end": "2026-05-03T11:25:00Z" },
+      { "name": "GT World - Race 1", "start": "2026-05-03T12:15:00Z", "end": "2026-05-03T13:15:00Z" },
+      { "name": "Legends Cars - Race 4", "start": "2026-05-03T13:25:00Z", "end": "2026-05-03T13:35:00Z" },
+      { "name": "Radical Cup UK - Race 2", "start": "2026-05-03T13:45:00Z", "end": "2026-05-03T14:35:00Z" },
+      { "name": "Sport 2000 Championship - Race 2", "start": "2026-05-03T15:15:00Z", "end": "2026-05-03T15:40:00Z" },
+      { "name": "Legends Cars - Race 5", "start": "2026-05-03T15:50:00Z", "end": "2026-05-03T16:00:00Z" },
+      { "name": "GT World - Race 2", "start": "2026-05-03T16:45:00Z", "end": "2026-05-03T17:45:00Z" },
+      { "name": "750MC Roadsports - Race 1", "start": "2026-05-03T18:00:00Z", "end": "2026-05-03T18:45:00Z" },
+      { "name": "Legends Cars - Race 6", "start": "2026-05-03T19:00:00Z", "end": "2026-05-03T19:15:00Z" }
+    ]
   },
   {
     "title": "🏁 GT Prologue: 24h of Spa",
-    "start": "2026-05-19",
-    "end": "2026-05-20",
-    "description": "Retransmisión: GTWorld YouTube / Eurosport"
+    "location": "Circuit de Spa-Francorchamps, Stavelot, Belgium",
+    "geo_lat": 50.4372,
+    "geo_lon": 5.9714,
+    "start": "2026-05-19T08:00:00Z",
+    "end": "2026-05-20T16:00:00Z",
+    "broadcasters": ["GTWorld YouTube"],
+    "categories": ["GT", "Test"],
+    "status": "CONFIRMED",
+    "url": "https://www.crowdstrike24hoursofspa.com/",
+    "description": "Test oficial previo a las 24h de Spa."
   },
   {
     "title": "🏁 GT Round 3: Monza",
-    "start": "2026-05-30",
-    "end": "2026-05-31",
-    "description": "Retransmisión: GTWorld YouTube / Eurosport"
+    "location": "Autodromo Nazionale Monza, Monza, Italy",
+    "geo_lat": 45.6156,
+    "geo_lon": 9.2811,
+    "start": "2026-05-30T00:00:00Z",
+    "end": "2026-05-31T23:59:00Z",
+    "broadcasters": ["GTWorld YouTube", "Eurosport"],
+    "categories": ["GT", "Endurance"],
+    "status": "CONFIRMED",
+    "url": "https://www.gt-world-challenge-europe.com/",
+    "description": "Resistencia en el Templo de la Velocidad."
   },
   {
     "title": "🏁 GT Round 4: 24h of Spa",
-    "start": "2026-06-25",
-    "end": "2026-06-28",
-    "description": "Retransmisión: GTWorld YouTube / Eurosport"
+    "location": "Circuit de Spa-Francorchamps, Stavelot, Belgium",
+    "geo_lat": 50.4372,
+    "geo_lon": 5.9714,
+    "start": "2026-06-25T00:00:00Z",
+    "end": "2026-06-28T23:59:00Z",
+    "broadcasters": ["GTWorld YouTube", "Eurosport"],
+    "categories": ["GT", "Endurance", "Classic"],
+    "status": "CONFIRMED",
+    "url": "https://www.crowdstrike24hoursofspa.com/",
+    "description": "La carrera de GT más importante del mundo."
   },
   {
     "title": "🏁 GT Round 5: Misano",
-    "start": "2026-07-18",
-    "end": "2026-07-19",
-    "description": "Retransmisión: GTWorld YouTube / Eurosport"
+    "location": "Misano World Circuit, Misano Adriatico, Italy",
+    "geo_lat": 43.9625,
+    "geo_lon": 12.6843,
+    "start": "2026-07-18T00:00:00Z",
+    "end": "2026-07-19T23:59:00Z",
+    "broadcasters": ["GTWorld YouTube", "Eurosport"],
+    "categories": ["GT", "Sprint"],
+    "status": "CONFIRMED",
+    "url": "https://www.gt-world-challenge-europe.com/",
+    "description": "Carreras Sprint bajo el sol italiano."
   },
   {
     "title": "🏁 GT Round 6: Magny-Cours",
-    "start": "2026-08-01",
-    "end": "2026-08-02",
-    "description": "Retransmisión: GTWorld YouTube / Eurosport"
+    "location": "Circuit de Nevers Magny-Cours, France",
+    "geo_lat": 46.8642,
+    "geo_lon": 3.1636,
+    "start": "2026-08-01T00:00:00Z",
+    "end": "2026-08-02T23:59:00Z",
+    "broadcasters": ["GTWorld YouTube", "Eurosport"],
+    "categories": ["GT", "Sprint"],
+    "status": "CONFIRMED",
+    "url": "https://www.gt-world-challenge-europe.com/",
+    "description": "Técnica y velocidad en suelo francés."
   },
   {
     "title": "🏁 GT Round 7: Nürburgring",
-    "start": "2026-08-29",
-    "end": "2026-08-30",
-    "description": "Retransmisión: GTWorld YouTube / Eurosport"
+    "location": "Nürburgring GP Strecke, Nürburg, Germany",
+    "geo_lat": 50.3356,
+    "geo_lon": 6.9475,
+    "start": "2026-08-29T00:00:00Z",
+    "end": "2026-08-30T23:59:00Z",
+    "broadcasters": ["GTWorld YouTube", "Eurosport"],
+    "categories": ["GT", "Endurance"],
+    "status": "CONFIRMED",
+    "url": "https://www.gt-world-challenge-europe.com/",
+    "description": "Resistencia en el corazón de Eifel."
   },
   {
     "title": "🏁 GT Round 8: Zandvoort",
-    "start": "2026-09-19",
-    "end": "2026-09-20",
-    "description": "Retransmisión: GTWorld YouTube / Eurosport"
+    "location": "Circuit Zandvoort, Zandvoort, Netherlands",
+    "geo_lat": 52.3888,
+    "geo_lon": 4.5409,
+    "start": "2026-09-19T00:00:00Z",
+    "end": "2026-09-20T23:59:00Z",
+    "broadcasters": ["GTWorld YouTube", "Eurosport"],
+    "categories": ["GT", "Sprint"],
+    "status": "CONFIRMED",
+    "url": "https://www.gt-world-challenge-europe.com/",
+    "description": "Sprint entre las dunas."
   },
   {
     "title": "🏁 GT Round 9: Barcelona",
-    "start": "2026-10-03",
-    "end": "2026-10-04",
-    "description": "Retransmisión: GTWorld YouTube / Eurosport"
+    "location": "Circuit de Barcelona-Catalunya, Montmeló, Spain",
+    "geo_lat": 41.5700,
+    "geo_lon": 2.2611,
+    "start": "2026-10-03T00:00:00Z",
+    "end": "2026-10-04T23:59:00Z",
+    "broadcasters": ["GTWorld YouTube", "Eurosport"],
+    "categories": ["GT", "Sprint", "Finale"],
+    "status": "CONFIRMED",
+    "url": "https://www.gt-world-challenge-europe.com/",
+    "description": "Final de la Copa Sprint."
   },
   {
     "title": "🏁 GT Round 10: Portimao",
-    "start": "2026-10-17",
-    "end": "2026-10-18",
-    "description": "Retransmisión: GTWorld YouTube / Eurosport"
+    "location": "Algarve International Circuit, Portimão, Portugal",
+    "geo_lat": 37.2312,
+    "geo_lon": -8.6283,
+    "start": "2026-10-17T00:00:00Z",
+    "end": "2026-10-18T23:59:00Z",
+    "broadcasters": ["GTWorld YouTube", "Eurosport"],
+    "categories": ["GT", "Endurance"],
+    "status": "CONFIRMED",
+    "url": "https://www.gt-world-challenge-europe.com/",
+    "description": "Montaña rusa para cerrar la temporada."
   }
 ]

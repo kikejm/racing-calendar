@@ -3,387 +3,709 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generador de Calendario de Carreras</title>
-    <meta name="description" content="Genera un enlace de suscripción iCal para calendarios de F1 y GT.">
-    
+    <title>Racing Calendar 2026 | F1 & GT World</title>
+    <meta name="description" content="Sincroniza automáticamente los horarios de F1 y GT World con tu calendario. Sin spam, tu horario local.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        racing: {
+                            bg: '#050505',
+                            card: 'rgba(255, 255, 255, 0.03)',
+                            cardHover: 'rgba(255, 255, 255, 0.06)',
+                            border: 'rgba(255, 255, 255, 0.08)',
+                            borderHover: 'rgba(255, 255, 255, 0.15)',
+                            red: '#e10600',
+                            orange: '#ff6b35',
+                            green: '#22c55e',
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Rajdhani', 'system-ui', 'sans-serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'glow-red': 'radial-gradient(ellipse at center, rgba(225, 6, 0, 0.15) 0%, transparent 70%)',
+                        'glow-orange': 'radial-gradient(ellipse at center, rgba(255, 107, 53, 0.1) 0%, transparent 70%)',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px rgba(225, 6, 0, 0.3)' },
+                            '100%': { boxShadow: '0 0 40px rgba(225, 6, 0, 0.5), 0 0 80px rgba(225, 6, 0, 0.2)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* --- Clean Code CSS: Variables y BEM-like naming --- */
-        :root { 
-            --color-bg: #0f0f13; 
-            --color-panel: #1e1e24; 
-            --color-accent: #e10600; 
-            --color-accent-hover: #ff1a1a;
-            --color-text: #ffffff; 
-            --color-text-muted: #888;
-            --color-border: #333;
-            --color-error: #ff4444;
-            --color-success: #4ade80;
-            --radius-md: 10px;
-            --radius-lg: 16px;
-            --space-md: 16px;
-            --space-lg: 24px;
+        body {
+            background: #050505;
         }
         
-        *, *::before, *::after { box-sizing: border-box; }
-
-        body { 
-            background: var(--color-bg); 
-            color: var(--color-text); 
-            font-family: system-ui, -apple-system, sans-serif; 
-            margin: 0; 
-            padding: 20px; 
-            display: flex; 
-            justify-content: center; 
-            min-height: 100vh;
-        }
-
-        .app-container { 
-            max-width: 500px; 
-            width: 100%; 
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .header__title { 
-            font-weight: 800; 
-            text-align: center; 
-            margin: 10px 0 20px;
-            text-transform: uppercase;
-            letter-spacing: -1px;
-        }
-
-        .card { 
-            background: var(--color-panel); 
-            padding: var(--space-lg); 
-            border-radius: var(--radius-lg); 
-            border: 1px solid var(--color-border);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-        }
-
-        .section-title { 
-            margin: 0 0 15px 0; 
-            color: var(--color-text-muted); 
-            font-size: 0.75rem; 
-            text-transform: uppercase; 
-            letter-spacing: 1.5px; 
-            font-weight: 700;
+        .bg-mesh {
+            background-image: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(225, 6, 0, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(255, 107, 53, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse 50% 30% at 20% 80%, rgba(225, 6, 0, 0.06) 0%, transparent 50%);
         }
         
-        .section-title--mt { margin-top: 25px; }
-
-        .grid-options { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 12px; 
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        /* Accesibilidad mejorada para checkboxes */
-        .checkbox-wrapper { position: relative; }
         
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.03) 100%);
         }
-
-        .checkbox-label {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 8px;
+        
+        .selectable-card {
             cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .selectable-card:hover {
+            transform: translateY(-2px) scale(1.02);
+        }
+        
+        .selectable-card:active {
+            transform: scale(0.98);
+        }
+        
+        .selectable-card.selected {
+            background: linear-gradient(135deg, rgba(225, 6, 0, 0.15) 0%, rgba(225, 6, 0, 0.05) 100%);
+            border-color: rgba(225, 6, 0, 0.6);
+            box-shadow: 
+                0 0 30px rgba(225, 6, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .selectable-card.selected .icon-container {
+            background: linear-gradient(135deg, rgba(225, 6, 0, 0.3) 0%, rgba(225, 6, 0, 0.1) 100%);
+            box-shadow: 0 0 20px rgba(225, 6, 0, 0.3);
+        }
+        
+        .countdown-digit {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .url-output {
+            background: rgba(34, 197, 94, 0.05);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+        
+        .url-output:focus {
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.15);
+            border-color: rgba(34, 197, 94, 0.4);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #e10600 0%, #ff3d33 100%);
             transition: all 0.2s ease;
-            font-size: 0.9rem;
-            border: 1px solid transparent;
-            user-select: none;
-            color: var(--color-text);
         }
-
-        /* Estados del Checkbox */
-        .checkbox-input:checked + .checkbox-label {
-            background: rgba(225, 6, 0, 0.15);
-            border-color: var(--color-accent);
-            font-weight: 600;
+        
+        .btn-primary:hover {
+            box-shadow: 0 10px 40px rgba(225, 6, 0, 0.4);
+            transform: translateY(-1px);
         }
-
-        .checkbox-input:focus-visible + .checkbox-label {
-            outline: 2px solid var(--color-accent);
-            outline-offset: 2px;
+        
+        .btn-primary:active {
+            transform: scale(0.98);
         }
-
-        .checkbox-wrapper:hover .checkbox-label { background: rgba(255,255,255,0.1); }
-
-        .btn { 
-            width: 100%; 
-            border: none; 
-            padding: var(--space-md); 
-            font-weight: 700; 
-            border-radius: var(--radius-md); 
-            font-size: 1rem; 
-            cursor: pointer; 
-            transition: background 0.2s;
-            text-transform: uppercase;
+        
+        .instruction-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
         }
-
-        .btn--primary { 
-            background: var(--color-accent); 
-            color: white; 
-            margin-top: 25px;
+        
+        .ticker {
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.03) 10%, rgba(255, 255, 255, 0.03) 90%, transparent 100%);
         }
-        .btn--primary:hover { background: var(--color-accent-hover); }
-
-        .btn--copy {
-            width: auto;
-            background: #333;
-            color: #fff;
-            padding: 8px 16px;
-            font-size: 0.85rem;
+        
+        .live-dot {
+            animation: pulse 2s infinite;
         }
-        .btn--copy:hover { background: #444; }
-
-        .feedback-msg {
-            color: var(--color-error);
-            font-size: 0.85rem;
-            text-align: center;
-            margin-top: 10px;
-            font-weight: 600;
-            min-height: 1.2em; /* Reserva espacio */
-            opacity: 0;
-            transition: opacity 0.2s;
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
-        .feedback-msg.is-visible { opacity: 1; }
-
-        #result-area { display: none; margin-top: 10px; animation: fadeIn 0.3s ease; }
-
-        .url-box {
-            display: flex;
-            gap: 10px;
-            background: #000;
-            padding: 8px;
-            border-radius: 8px;
-            border: 1px solid var(--color-border);
+        
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 6px;
         }
-
-        .url-input { 
-            flex-grow: 1;
-            background: transparent;
-            border: none;
-            color: var(--color-success);
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            outline: none;
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
         }
-
-        .hint { font-size: 0.8rem; color: #666; text-align: center; margin-top: 10px; display: block; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
         }
-        .shake { animation: shake 0.3s ease-in-out; }
     </style>
 </head>
-<body>
+<body class="font-sans text-white antialiased min-h-screen bg-mesh">
+    <div class="min-h-screen px-4 py-8 md:py-12 lg:py-16">
+        <div class="max-w-6xl mx-auto">
+            
+            <!-- Bento Grid Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                
+                <!-- Hero Section - Spans 2 cols on desktop -->
+                <div class="lg:col-span-2 glass-card rounded-3xl p-8 md:p-10 animate-fade-in">
+                    <div class="flex flex-col h-full justify-between">
+                        <div>
+                            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-racing-red/10 border border-racing-red/30 text-racing-red text-sm font-medium mb-6">
+                                <span class="live-dot w-2 h-2 rounded-full bg-racing-red"></span>
+                                Temporada 2026
+                            </div>
+                            <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-4 leading-[0.9]">
+                                MOTORSPORT<br>
+                                <span class="bg-gradient-to-r from-racing-red via-racing-orange to-racing-red bg-clip-text text-transparent">CALENDAR</span>
+                            </h1>
+                            <p class="text-gray-400 text-lg md:text-xl max-w-md leading-relaxed">
+                                Sincronización automática. Sin spam. Tu horario local.
+                            </p>
+                        </div>
+                        <div class="mt-8 flex items-center gap-4">
+                            <div class="flex -space-x-2">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-racing-bg flex items-center justify-center text-xs">🏎️</div>
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-racing-bg flex items-center justify-center text-xs">🏁</div>
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-racing-bg flex items-center justify-center text-xs">🚗</div>
+                            </div>
+                            <span class="text-gray-500 text-sm">+50 eventos incluidos</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Next Race Countdown -->
+                <div class="glass-card rounded-3xl p-6 md:p-8 animate-fade-in" style="animation-delay: 0.1s">
+                    <div class="flex flex-col h-full">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-gray-500 text-sm font-medium uppercase tracking-wider">Next Races</span>
+                            <span class="text-2xl animate-pulse">🏁</span>
+                        </div>
+                        
+                        <div id="loading-skeleton" class="flex-1 flex flex-col justify-center items-center opacity-50">
+                            <div class="w-8 h-8 border-4 border-racing-red border-t-transparent rounded-full animate-spin"></div>
+                        </div>
 
-    <main class="app-container">
-        <h1 class="header__title">🏎️ Racing Schedule</h1>
+                        <div id="races-content" class="hidden flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-display text-xl md:text-2xl font-bold text-white mb-1 leading-tight" id="r1-name">
+                                    Loading...
+                                </h3>
+                                <p class="text-gray-500 text-sm mb-4 flex items-center gap-2">
+                                    <span id="r1-circuit">Circuit</span>
+                                </p>
+                                
+                                <div class="grid grid-cols-4 gap-2">
+                                    <div class="countdown-digit rounded-lg p-2 text-center bg-white/5 border border-white/10">
+                                        <span class="font-display text-xl md:text-2xl font-bold text-white block leading-none" id="d-days">00</span>
+                                        <span class="text-[10px] text-gray-500 uppercase">Days</span>
+                                    </div>
+                                    <div class="countdown-digit rounded-lg p-2 text-center bg-white/5 border border-white/10">
+                                        <span class="font-display text-xl md:text-2xl font-bold text-white block leading-none" id="d-hours">00</span>
+                                        <span class="text-[10px] text-gray-500 uppercase">Hrs</span>
+                                    </div>
+                                    <div class="countdown-digit rounded-lg p-2 text-center bg-white/5 border border-white/10">
+                                        <span class="font-display text-xl md:text-2xl font-bold text-white block leading-none" id="d-mins">00</span>
+                                        <span class="text-[10px] text-gray-500 uppercase">Min</span>
+                                    </div>
+                                    <div class="countdown-digit rounded-lg p-2 text-center bg-white/5 border border-white/10">
+                                        <span class="font-display text-xl md:text-2xl font-bold text-white block leading-none" id="d-secs">00</span>
+                                        <span class="text-[10px] text-gray-500 uppercase">Sec</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 pt-4 border-t border-white/5 space-y-3">
+                                <div class="flex items-center justify-between text-sm group" id="row-race-2">
+                                    <div class="flex items-center gap-2 overflow-hidden">
+                                        <span id="r2-icon" class="text-base grayscale group-hover:grayscale-0 transition-all">🏎️</span>
+                                        <span id="r2-name" class="text-gray-300 font-medium truncate">GP Siguiente</span>
+                                    </div>
+                                    <span id="r2-date" class="text-gray-500 text-xs font-mono whitespace-nowrap">--/--</span>
+                                </div>
+                                <div class="flex items-center justify-between text-sm group" id="row-race-3">
+                                    <div class="flex items-center gap-2 overflow-hidden">
+                                        <span id="r3-icon" class="text-base grayscale group-hover:grayscale-0 transition-all">🚗</span>
+                                        <span id="r3-name" class="text-gray-300 font-medium truncate">GT Siguiente</span>
+                                    </div>
+                                    <span id="r3-date" class="text-gray-500 text-xs font-mono whitespace-nowrap">--/--</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Series Selector -->
+                <div class="glass-card rounded-3xl p-6 md:p-8 animate-fade-in" style="animation-delay: 0.2s">
+                    <h2 class="text-gray-500 text-sm font-medium uppercase tracking-wider mb-5 flex items-center gap-2">
+                        <svg class="w-4 h-4 text-racing-red" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        Championships
+                    </h2>
+                    <div class="grid grid-cols-1 gap-3">
+                        <button data-cat="f1" class="selectable-card selected glass-card rounded-2xl p-5 flex items-center gap-4">
+                            <div class="icon-container w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center text-3xl transition-all duration-300">
+                                🏎️
+                            </div>
+                            <div class="text-left">
+                                <span class="font-display text-lg font-bold text-white block">Formula 1</span>
+                                <span class="text-gray-500 text-sm">24 Grand Prix</span>
+                            </div>
+                        </button>
+                        <button data-cat="gt" class="selectable-card selected glass-card rounded-2xl p-5 flex items-center gap-4">
+                            <div class="icon-container w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center text-3xl transition-all duration-300">
+                                🚗
+                            </div>
+                            <div class="text-left">
+                                <span class="font-display text-lg font-bold text-white block">GT World</span>
+                                <span class="text-gray-500 text-sm">Endurance & Sprint</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Sessions Selector -->
+                <div class="lg:col-span-2 glass-card rounded-3xl p-6 md:p-8 animate-fade-in" style="animation-delay: 0.3s">
+                    <h2 class="text-gray-500 text-sm font-medium uppercase tracking-wider mb-5 flex items-center gap-2">
+                        <svg class="w-4 h-4 text-racing-red" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                        </svg>
+                        Sessions
+                    </h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <button data-session="practice" class="selectable-card glass-card rounded-2xl p-4 md:p-5 flex flex-col items-center gap-3 text-center">
+                            <div class="icon-container w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-2xl transition-all duration-300">
+                                🔧
+                            </div>
+                            <div>
+                                <span class="font-semibold text-white block text-sm md:text-base">Prácticas</span>
+                                <span class="text-gray-500 text-xs">FP1, FP2, FP3</span>
+                            </div>
+                        </button>
+                        <button data-session="qualifying" class="selectable-card selected glass-card rounded-2xl p-4 md:p-5 flex flex-col items-center gap-3 text-center">
+                            <div class="icon-container w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-2xl transition-all duration-300">
+                                ⏱️
+                            </div>
+                            <div>
+                                <span class="font-semibold text-white block text-sm md:text-base">Qualifying</span>
+                                <span class="text-gray-500 text-xs">Time-attack</span>
+                            </div>
+                        </button>
+                        <button data-session="sprint" class="selectable-card selected glass-card rounded-2xl p-4 md:p-5 flex flex-col items-center gap-3 text-center">
+                            <div class="icon-container w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-2xl transition-all duration-300">
+                                ⚡
+                            </div>
+                            <div>
+                                <span class="font-semibold text-white block text-sm md:text-base">Sprint</span>
+                                <span class="text-gray-500 text-xs">Short Race</span>
+                            </div>
+                        </button>
+                        <button data-session="race" class="selectable-card selected glass-card rounded-2xl p-4 md:p-5 flex flex-col items-center gap-3 text-center">
+                            <div class="icon-container w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-2xl transition-all duration-300">
+                                🏆
+                            </div>
+                            <div>
+                                <span class="font-semibold text-white block text-sm md:text-base">Race</span>
+                                <span class="text-gray-500 text-xs">Main Event</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- URL Output Section -->
+                <div class="lg:col-span-2 glass-card rounded-3xl p-6 md:p-8 animate-fade-in" style="animation-delay: 0.4s">
+                    <h2 class="text-gray-500 text-sm font-medium uppercase tracking-wider mb-4 flex items-center gap-2">
+                        <svg class="w-4 h-4 text-racing-green" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"/>
+                        </svg>
+                        Subscription URL
+                    </h2>
+                    
+                    <!-- Error Message -->
+                    <div id="errorMessage" class="hidden mb-4 p-4 rounded-xl bg-racing-red/10 border border-racing-red/30 text-red-400 text-sm flex items-center gap-2">
+                        <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                        </svg>
+                        Select at least one championship and one session to generate your subscription URL.
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <input 
+                            type="text" 
+                            id="urlOutput" 
+                            readonly 
+                            class="url-output flex-1 px-5 py-4 rounded-xl text-racing-green font-mono text-sm focus:outline-none truncate"
+                            value=""
+                        >
+                        <button 
+                            id="copyBtn"
+                            class="btn-primary px-8 py-4 text-white font-bold rounded-xl flex items-center justify-center gap-2 min-w-[140px]"
+                        >
+                            <svg id="copyIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                            </svg>
+                            <span id="copyText">Copy URL</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Instructions Cards -->
+                <div class="glass-card rounded-3xl p-6 md:p-8 animate-fade-in" style="animation-delay: 0.5s">
+                    <h2 class="text-gray-500 text-sm font-medium uppercase tracking-wider mb-5">How to Subscribe</h2>
+                    <div class="space-y-3">
+                        <div class="instruction-card rounded-xl p-4 border border-white/5">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                                    </svg>
+                                </div>
+                                <span class="font-semibold text-white text-sm">iOS / macOS</span>
+                            </div>
+                            <p class="text-gray-500 text-xs leading-relaxed">Copy the URL → Settings → Accounts → Add Account → Subscribed Calendars</p>
+                        </div>
+                        
+                        <div class="instruction-card rounded-xl p-4 border border-white/5">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                                    </svg>
+                                </div>
+                                <span class="font-semibold text-white text-sm">Google Calendar</span>
+                            </div>
+                            <p class="text-gray-500 text-xs leading-relaxed">Open Google Calendar → Other Calendars (+) → From URL</p>
+                        </div>
+                        
+                        <div class="instruction-card rounded-xl p-4 border border-white/5">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M7.88 12.04q0 .45-.11.87-.1.41-.33.74-.22.33-.58.52-.37.2-.87.2t-.85-.2q-.35-.21-.57-.55-.22-.33-.33-.75-.1-.42-.1-.86t.1-.87q.1-.43.34-.76.22-.34.59-.54.36-.2.87-.2t.86.2q.35.21.57.55.22.34.31.77.1.43.1.88zM24 12v9.38q0 .46-.33.8-.33.32-.8.32H7.13q-.46 0-.8-.33-.32-.33-.32-.8V12q0-.46.33-.8.33-.32.8-.32h15.74q.46 0 .8.33.32.33.32.8zm-5.33 0h-3.74v3.34h3.74V12zm4 0h-2.67v3.34h2.67V12zm-5.33 0H13.6v3.34h3.74V12zm-9.34 6h3.74v-1.34H8v1.34zm5.33 0h3.74v-1.34h-3.74v1.34zm4 0h3.74v-1.34h-3.74v1.34zm5.34 0h2.67v-1.34h-2.67v1.34zM4 18.28v-5.65l.09-.33q.08-.27.22-.47.14-.2.35-.33.21-.14.5-.14h.77V6.87H0V5.54h5.93v6.33h.64l.17.27q.14.28.27.52.14.24.24.48.11.23.17.44l.06.32v4.38H4z"/>
+                                    </svg>
+                                </div>
+                                <span class="font-semibold text-white text-sm">Outlook</span>
+                            </div>
+                            <p class="text-gray-500 text-xs leading-relaxed">Add calendar → Subscribe from web → Paste URL</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Live Events Ticker - Full width -->
+                <div class="md:col-span-2 lg:col-span-3 ticker rounded-2xl p-4 md:p-5 border border-white/5 animate-fade-in" style="animation-delay: 0.6s">
+                    <div class="flex items-center gap-4 overflow-hidden">
+                        <div class="flex items-center gap-2 flex-shrink-0">
+                            <span class="live-dot w-2 h-2 rounded-full bg-racing-red"></span>
+                            <span class="text-gray-500 text-sm font-medium uppercase tracking-wider">Includes</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-400 text-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Mónaco</span>
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">24h Spa</span>
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Las Vegas</span>
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Singapur</span>
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">1000km Nürburgring</span>
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Abu Dhabi</span>
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">+ 44 more</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- Footer -->
+            <footer class="text-center mt-12 animate-fade-in" style="animation-delay: 0.7s">
+                <p class="text-gray-600 text-sm">
+                    Made for motorsport fans
+                </p>
+            </footer>
+            
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const PORT = 8080;
         
-        <section class="card" id="generator-card">
-            <h2 class="section-title">Series</h2>
-            <div class="grid-options">
-                <div class="checkbox-wrapper">
-                    <input type="checkbox" id="cat-f1" name="cats" value="f1" checked class="checkbox-input sr-only">
-                    <label for="cat-f1" class="checkbox-label">Formula 1</label>
-                </div>
-                <div class="checkbox-wrapper">
-                    <input type="checkbox" id="cat-gt" name="cats" value="gt" checked class="checkbox-input sr-only">
-                    <label for="cat-gt" class="checkbox-label">GT World</label>
-                </div>
-            </div>
-
-            <h2 class="section-title section-title--mt">Sesiones</h2>
-            <div class="grid-options">
-                <div class="checkbox-wrapper">
-                    <input type="checkbox" id="sess-prac" name="sessions" value="practice" class="checkbox-input sr-only">
-                    <label for="sess-prac" class="checkbox-label">Prácticas</label>
-                </div>
-                <div class="checkbox-wrapper">
-                    <input type="checkbox" id="sess-qual" name="sessions" value="qualifying" checked class="checkbox-input sr-only">
-                    <label for="sess-qual" class="checkbox-label">Clasificación</label>
-                </div>
-                <div class="checkbox-wrapper">
-                    <input type="checkbox" id="sess-spri" name="sessions" value="sprint" checked class="checkbox-input sr-only">
-                    <label for="sess-spri" class="checkbox-label">Sprint</label>
-                </div>
-                <div class="checkbox-wrapper">
-                    <input type="checkbox" id="sess-race" name="sessions" value="race" checked class="checkbox-input sr-only">
-                    <label for="sess-race" class="checkbox-label">Carrera</label>
-                </div>
-            </div>
-
-            <button id="btn-generate" class="btn btn--primary">Generar Calendario</button>
-            <div id="error-msg" class="feedback-msg" aria-live="polite">⚠️ Selecciona al menos una categoría.</div>
-        </section>
-
-        <section id="result-area" class="card" aria-hidden="true">
-            <h2 class="section-title">Enlace de Suscripción (iCal)</h2>
-            <div class="url-box">
-                <input type="text" id="urlInput" class="url-input" readonly aria-label="URL generada">
-                <button id="btn-copy" class="btn btn--copy">Copiar</button>
-            </div>
-            <span class="hint">Compatible con Google Calendar, Apple Calendar & Outlook</span>
-        </section>
-    </main>
-
-    <script type="module">
-        const CONFIG = {
-            API_PORT: 8080, 
-            API_ENDPOINT: '/calendar.ics',
-            get BASE_URL() {
-                if (window.APP_BACKEND_URL) return window.APP_BACKEND_URL;
-                const { protocol, hostname } = window.location;
-                if (hostname === 'localhost' || hostname === '127.0.0.1') {
-                    return `${protocol}//${hostname}:${CONFIG.API_PORT}`;
-                }
-                return window.location.origin;
-            },
-            TEXT: {
-                COPY_DEFAULT: 'Copiar',
-                COPY_SUCCESS: '¡Copiado!',
-                COPY_ERROR: 'Error',
+        // --- MODIFICADO: Estado para datos dinámicos ---
+        let nextRaces = [];
+        let countdownInterval;
+        
+        // Get base URL
+        function getBaseUrl() {
+            const origin = window.location.origin;
+            if (origin.includes('localhost') || origin.includes('127.0.0.1')) {
+                return `http://localhost:${PORT}`;
             }
+            return origin;
+        }
+
+        // State
+        const state = {
+            categories: ['f1', 'gt'],
+            sessions: ['qualifying', 'sprint', 'race']
         };
 
-        class CalendarApp {
-            constructor() {
-                this.dom = {
-                    btnGenerate: document.getElementById('btn-generate'),
-                    btnCopy: document.getElementById('btn-copy'),
-                    card: document.getElementById('generator-card'),
-                    errorMsg: document.getElementById('error-msg'),
-                    resultArea: document.getElementById('result-area'),
-                    urlInput: document.getElementById('urlInput'),
-                    // Seleccionamos todos los checkboxes del DOM
-                    checkboxes: document.querySelectorAll('input[type="checkbox"]'), 
-                };
-                
-                this.init();
+        // DOM Elements
+        const catCards = document.querySelectorAll('[data-cat]');
+        const sessionCards = document.querySelectorAll('[data-session]');
+        const urlOutput = document.getElementById('urlOutput');
+        const copyBtn = document.getElementById('copyBtn');
+        const copyText = document.getElementById('copyText');
+        const copyIcon = document.getElementById('copyIcon');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Toggle card selection
+        function toggleCard(card, type) {
+            const value = card.dataset[type];
+            const array = type === 'cat' ? state.categories : state.sessions;
+            const index = array.indexOf(value);
+            
+            if (index > -1) {
+                array.splice(index, 1);
+                card.classList.remove('selected');
+            } else {
+                array.push(value);
+                card.classList.add('selected');
             }
+            
+            updateUrl();
+        }
 
-            init() {
-                // 1. Reactividad total: Actualizar al cambiar cualquier checkbox
-                this.dom.checkboxes.forEach(cb => {
-                    cb.addEventListener('change', () => this.updateUrl());
-                });
-
-                // 2. Botón Copiar
-                this.dom.btnCopy.addEventListener('click', () => this.handleCopy());
-
-                // 3. Botón Generar (opcional, ahora sirve como feedback visual)
-                this.dom.btnGenerate.addEventListener('click', () => {
-                    this.updateUrl();
-                    this.triggerShake(this.dom.resultArea);
-                });
-
-                // 4. Generación inicial automática al cargar
-                this.updateUrl();
+        // Generate URL
+        function updateUrl() {
+            if (state.categories.length === 0) {
+                errorMessage.classList.remove('hidden');
+                urlOutput.value = '';
+                copyBtn.disabled = true;
+                copyBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                return;
             }
+            
+            errorMessage.classList.add('hidden');
+            copyBtn.disabled = false;
+            copyBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            
+            const baseUrl = getBaseUrl();
+            const params = new URLSearchParams();
+            
+            state.categories.forEach(cat => params.append('cats', cat));
+            state.sessions.forEach(session => params.append('sessions', session));
+            
+            urlOutput.value = `${baseUrl}/calendar.ics?${params.toString()}`;
+        }
 
-            getCheckedValues(name) {
-                return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`))
-                    .map(cb => cb.value);
-            }
-
-            updateUrl() {
-                const cats = this.getCheckedValues('cats');
-                const sessions = this.getCheckedValues('sessions');
-                
-                // Validación: Debe haber al menos una categoría seleccionada
-                const isValid = cats.length > 0;
-
-                this.handleValidationState(isValid);
-
-                if (isValid) {
-                    const url = this.buildUrl(cats, sessions);
-                    this.displayResult(url);
-                } else {
-                    this.displayErrorState();
-                }
-            }
-
-            handleValidationState(isValid) {
-                this.dom.btnGenerate.disabled = !isValid;
-                this.dom.btnCopy.disabled = !isValid;
-                this.dom.errorMsg.classList.toggle('is-visible', !isValid);
-                
-                if (!isValid) {
-                    this.triggerShake(this.dom.card);
-                }
-            }
-
-            displayErrorState() {
-                this.dom.urlInput.value = "⚠️ Selecciona al menos una categoría";
-                this.dom.urlInput.style.color = "var(--color-error)";
-            }
-
-            buildUrl(cats, sessions) {
-                const params = new URLSearchParams();
-                cats.forEach(c => params.append("cats", c));
-                sessions.forEach(s => params.append("sessions", s));
-                return `${CONFIG.BASE_URL}${CONFIG.API_ENDPOINT}?${params.toString()}`;
-            }
-
-            displayResult(url) {
-                this.dom.urlInput.style.color = "var(--color-success)";
-                this.dom.urlInput.value = url;
-                this.dom.resultArea.style.display = "block";
-            }
-
-            async handleCopy() {
-                if (this.dom.btnCopy.disabled) return;
-
-                try {
-                    await navigator.clipboard.writeText(this.dom.urlInput.value);
-                    this.updateCopyButton(true);
-                } catch (err) {
-                    console.error('Copy failed:', err);
-                    this.dom.urlInput.select();
-                    this.updateCopyButton(false);
-                }
-            }
-
-            updateCopyButton(success) {
-                const btn = this.dom.btnCopy;
-                btn.textContent = success ? CONFIG.TEXT.COPY_SUCCESS : CONFIG.TEXT.COPY_ERROR;
-                btn.style.background = success ? 'var(--color-success)' : 'var(--color-error)';
-                btn.style.color = success ? '#000' : '#fff';
-
-                setTimeout(() => {
-                    btn.textContent = CONFIG.TEXT.COPY_DEFAULT;
-                    btn.style.background = '';
-                    btn.style.color = '';
-                }, 2000);
-            }
-
-            triggerShake(element) {
-                element.classList.remove('shake');
-                void element.offsetWidth; // Forzar reflow
-                element.classList.add('shake');
+        // Copy to clipboard
+        async function copyUrl() {
+            if (!urlOutput.value) return;
+            
+            try {
+                await navigator.clipboard.writeText(urlOutput.value);
+                showCopyFeedback(true);
+            } catch (err) {
+                urlOutput.select();
+                document.execCommand('copy');
+                showCopyFeedback(true);
             }
         }
 
-        document.addEventListener('DOMContentLoaded', () => new CalendarApp());
+        // Show copy feedback
+        function showCopyFeedback(success) {
+            if (success) {
+                copyText.textContent = '¡Copiado!';
+                copyBtn.classList.remove('btn-primary');
+                copyBtn.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
+                copyIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>';
+                
+                setTimeout(() => {
+                    copyText.textContent = 'Copiar URL';
+                    copyBtn.classList.add('btn-primary');
+                    copyBtn.style.background = '';
+                    copyIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>';
+                }, 2000);
+            }
+        }
+
+        // --- MODIFICADO: Lógica de Datos y Countdown para múltiples carreras ---
+        async function initRaceData() {
+            try {
+                // Ajusta la ruta si 'data' no es hermano de 'public' en tu servidor
+                const response = await fetch('/data/schedule.json');
+                if (!response.ok) throw new Error("No se pudo cargar el calendario");
+                
+                const data = await response.json();
+                const now = new Date();
+                const candidates = [];
+
+                data.forEach(event => {
+                    if (!event.sessions) return;
+                    
+                    const isF1 = event.title.includes('🏎️') || event.title.toLowerCase().includes('gp');
+                    const isGT = event.title.includes('🏁') || event.title.toLowerCase().includes('gt');
+                    const icon = isF1 ? '🏎️' : (isGT ? '🏁' : '🏆');
+                    
+                    const rawTitle = event.title.replace(/🏎️|🏁/g, '').trim();
+                    const parts = rawTitle.split(',');
+                    const eventName = parts[0].trim();
+                    const circuitName = parts[1] ? parts[1].trim() : '';
+
+                    event.sessions.forEach(session => {
+                        const sName = session.name;
+                        // Filtramos solo las sesiones principales de carrera
+                        const isMainSession = (isF1 && sName === 'Carrera') || 
+                                              (isGT && sName.includes('GT World - Race'));
+
+                        if (isMainSession) {
+                            const startDate = new Date(session.start);
+                            if (startDate > now) {
+                                candidates.push({
+                                    name: eventName,
+                                    circuit: circuitName,
+                                    session: sName,
+                                    date: startDate,
+                                    icon: icon
+                                });
+                            }
+                        }
+                    });
+                });
+
+                candidates.sort((a, b) => a.date - b.date);
+                nextRaces = candidates.slice(0, 3);
+
+                if (nextRaces.length > 0) {
+                    renderRaces();
+                    startCountdown();
+                } else {
+                    const elName = document.getElementById('r1-name');
+                    if (elName) elName.textContent = "Fin de Temporada";
+                }
+
+            } catch (e) {
+                console.error("Error cargando carreras:", e);
+            }
+        }
+
+        function renderRaces() {
+            const el = (id) => document.getElementById(id);
+            if (!el('r1-name')) return; // Seguridad
+
+            el('loading-skeleton').classList.add('hidden');
+            el('races-content').classList.remove('hidden');
+
+            // 1. Evento Principal
+            const r1 = nextRaces[0];
+            el('r1-name').innerHTML = `${r1.icon} ${r1.name}`;
+            el('r1-circuit').textContent = r1.circuit || r1.session;
+
+            // 2. Siguiente Evento
+            if (nextRaces[1]) {
+                const r2 = nextRaces[1];
+                el('r2-icon').textContent = r2.icon;
+                el('r2-name').textContent = r2.name;
+                el('r2-date').textContent = formatDateShort(r2.date);
+            } else {
+                el('row-race-2').classList.add('hidden');
+            }
+
+            // 3. Tercer Evento
+            if (nextRaces[2]) {
+                const r3 = nextRaces[2];
+                el('r3-icon').textContent = r3.icon;
+                el('r3-name').textContent = r3.name;
+                el('r3-date').textContent = formatDateShort(r3.date);
+            } else {
+                el('row-race-3').classList.add('hidden');
+            }
+        }
+
+        function formatDateShort(date) {
+            return date.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' }) + 
+                   ' ' + 
+                   date.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+        }
+
+        function startCountdown() {
+            if (countdownInterval) clearInterval(countdownInterval);
+            
+            const update = () => {
+                const now = new Date();
+                const diff = nextRaces[0].date - now;
+                
+                if (diff <= 0) {
+                    initRaceData(); // Refrescar si termina
+                    return;
+                }
+                
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                // IDs actualizados al nuevo HTML (d-days, etc)
+                const elDay = document.getElementById('d-days');
+                if (elDay) {
+                    elDay.textContent = String(days).padStart(2, '0');
+                    document.getElementById('d-hours').textContent = String(hours).padStart(2, '0');
+                    document.getElementById('d-mins').textContent = String(minutes).padStart(2, '0');
+                    document.getElementById('d-secs').textContent = String(seconds).padStart(2, '0');
+                }
+            };
+            
+            update();
+            countdownInterval = setInterval(update, 1000);
+        }
+
+        // Event Listeners
+        catCards.forEach(card => {
+            card.addEventListener('click', () => toggleCard(card, 'cat'));
+        });
+
+        sessionCards.forEach(card => {
+            card.addEventListener('click', () => toggleCard(card, 'session'));
+        });
+
+        copyBtn.addEventListener('click', copyUrl);
+
+        // Initialize
+        updateUrl();
+        initRaceData(); // Iniciar carga de datos
     </script>
 </body>
 </html>
