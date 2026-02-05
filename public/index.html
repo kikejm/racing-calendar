@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Racing Calendar 2026 | F1 & GT World</title>
-    <meta name="description" content="Sincroniza automáticamente los horarios de F1 y GT World con tu calendario. Sin spam, tu horario local.">
+    <title>ApexCal 2026 | Calendario F1, MotoGP y más Sincronizado</title>
+    <meta name="description" content="Todos los calendarios de carreras 2026 en un solo lugar: F1, MotoGP, WEC, GT World, IndyCar... Horarios automáticos en tu agenda sin instalar apps.">
+    <link rel="icon" type="image/png" href="/logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -189,7 +190,7 @@
                                 Temporada 2026
                             </div>
                             <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-4 leading-[0.9]">
-                                MOTORSPORT<br>
+                                APEX<br>
                                 <span class="bg-gradient-to-r from-racing-red via-racing-orange to-racing-red bg-clip-text text-transparent">CALENDAR</span>
                             </h1>
                             <p class="text-gray-400 text-lg md:text-xl max-w-md leading-relaxed">
@@ -211,7 +212,7 @@
                 <div class="glass-card rounded-3xl p-6 md:p-8 animate-fade-in" style="animation-delay: 0.1s">
                     <div class="flex flex-col h-full">
                         <div class="flex items-center justify-between mb-4">
-                            <span class="text-gray-500 text-sm font-medium uppercase tracking-wider">Next Races</span>
+                            <span class="text-gray-500 text-sm font-medium uppercase tracking-wider">Próximas carreras</span>
                             <span class="text-2xl animate-pulse">🏁</span>
                         </div>
                         
@@ -222,20 +223,20 @@
                         <div id="races-content" class="hidden flex-1 flex flex-col justify-between">
                             <div>
                                 <h3 class="font-display text-xl md:text-2xl font-bold text-white mb-1 leading-tight" id="r1-name">
-                                    Loading...
+                                    Cargando...
                                 </h3>
                                 <p class="text-gray-500 text-sm mb-4 flex items-center gap-2">
-                                    <span id="r1-circuit">Circuit</span>
+                                    <span id="r1-circuit">Circuito</span>
                                 </p>
                                 
                                 <div class="grid grid-cols-4 gap-2">
                                     <div class="countdown-digit rounded-lg p-2 text-center bg-white/5 border border-white/10">
                                         <span class="font-display text-xl md:text-2xl font-bold text-white block leading-none" id="d-days">00</span>
-                                        <span class="text-[10px] text-gray-500 uppercase">Days</span>
+                                        <span class="text-[10px] text-gray-500 uppercase">Días</span>
                                     </div>
                                     <div class="countdown-digit rounded-lg p-2 text-center bg-white/5 border border-white/10">
                                         <span class="font-display text-xl md:text-2xl font-bold text-white block leading-none" id="d-hours">00</span>
-                                        <span class="text-[10px] text-gray-500 uppercase">Hrs</span>
+                                        <span class="text-[10px] text-gray-500 uppercase">Horas</span>
                                     </div>
                                     <div class="countdown-digit rounded-lg p-2 text-center bg-white/5 border border-white/10">
                                         <span class="font-display text-xl md:text-2xl font-bold text-white block leading-none" id="d-mins">00</span>
@@ -243,7 +244,7 @@
                                     </div>
                                     <div class="countdown-digit rounded-lg p-2 text-center bg-white/5 border border-white/10">
                                         <span class="font-display text-xl md:text-2xl font-bold text-white block leading-none" id="d-secs">00</span>
-                                        <span class="text-[10px] text-gray-500 uppercase">Sec</span>
+                                        <span class="text-[10px] text-gray-500 uppercase">Seg</span>
                                     </div>
                                 </div>
                             </div>
@@ -274,7 +275,7 @@
                         <svg class="w-4 h-4 text-racing-red" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                         </svg>
-                        Championships
+                        Campeonatos
                     </h2>
                     <div class="grid grid-cols-1 gap-3">
                         <button data-cat="f1" class="selectable-card selected glass-card rounded-2xl p-5 flex items-center gap-4">
@@ -304,7 +305,7 @@
                         <svg class="w-4 h-4 text-racing-red" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
                         </svg>
-                        Sessions
+                        Sesiones
                     </h2>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                         <button data-session="practice" class="selectable-card glass-card rounded-2xl p-4 md:p-5 flex flex-col items-center gap-3 text-center">
@@ -321,8 +322,8 @@
                                 ⏱️
                             </div>
                             <div>
-                                <span class="font-semibold text-white block text-sm md:text-base">Qualifying</span>
-                                <span class="text-gray-500 text-xs">Time-attack</span>
+                                <span class="font-semibold text-white block text-sm md:text-base">Clasificación</span>
+                                <span class="text-gray-500 text-xs">Contrarreloj</span>
                             </div>
                         </button>
                         <button data-session="sprint" class="selectable-card selected glass-card rounded-2xl p-4 md:p-5 flex flex-col items-center gap-3 text-center">
@@ -331,7 +332,7 @@
                             </div>
                             <div>
                                 <span class="font-semibold text-white block text-sm md:text-base">Sprint</span>
-                                <span class="text-gray-500 text-xs">Short Race</span>
+                                <span class="text-gray-500 text-xs">Carrera corta</span>
                             </div>
                         </button>
                         <button data-session="race" class="selectable-card selected glass-card rounded-2xl p-4 md:p-5 flex flex-col items-center gap-3 text-center">
@@ -339,8 +340,8 @@
                                 🏆
                             </div>
                             <div>
-                                <span class="font-semibold text-white block text-sm md:text-base">Race</span>
-                                <span class="text-gray-500 text-xs">Main Event</span>
+                                <span class="font-semibold text-white block text-sm md:text-base">Carrera</span>
+                                <span class="text-gray-500 text-xs">Evento principal</span>
                             </div>
                         </button>
                     </div>
@@ -352,7 +353,7 @@
                         <svg class="w-4 h-4 text-racing-green" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"/>
                         </svg>
-                        Subscription URL
+                        URL de suscripción
                     </h2>
                     
                     <!-- Error Message -->
@@ -360,7 +361,7 @@
                         <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
                         </svg>
-                        Select at least one championship and one session to generate your subscription URL.
+                        Selecciona al menos un campeonato y una sesión para generar la URL de suscripción.
                     </div>
                     
                     <div class="flex flex-col sm:flex-row gap-3">
@@ -378,14 +379,14 @@
                             <svg id="copyIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
                             </svg>
-                            <span id="copyText">Copy URL</span>
+                            <span id="copyText">Copiar URL</span>
                         </button>
                     </div>
                 </div>
                 
                 <!-- Instructions Cards -->
                 <div class="glass-card rounded-3xl p-6 md:p-8 animate-fade-in" style="animation-delay: 0.5s">
-                    <h2 class="text-gray-500 text-sm font-medium uppercase tracking-wider mb-5">How to Subscribe</h2>
+                    <h2 class="text-gray-500 text-sm font-medium uppercase tracking-wider mb-5">Cómo suscribirte</h2>
                     <div class="space-y-3">
                         <div class="instruction-card rounded-xl p-4 border border-white/5">
                             <div class="flex items-center gap-3 mb-2">
@@ -396,7 +397,7 @@
                                 </div>
                                 <span class="font-semibold text-white text-sm">iOS / macOS</span>
                             </div>
-                            <p class="text-gray-500 text-xs leading-relaxed">Copy the URL → Settings → Accounts → Add Account → Subscribed Calendars</p>
+                            <p class="text-gray-500 text-xs leading-relaxed">Copiar la URL → Configuración → Cuentas → Añadir cuenta → Calendarios suscritos</p>
                         </div>
                         
                         <div class="instruction-card rounded-xl p-4 border border-white/5">
@@ -411,7 +412,7 @@
                                 </div>
                                 <span class="font-semibold text-white text-sm">Google Calendar</span>
                             </div>
-                            <p class="text-gray-500 text-xs leading-relaxed">Open Google Calendar → Other Calendars (+) → From URL</p>
+                            <p class="text-gray-500 text-xs leading-relaxed">Abrir Google Calendar → Otros calendarios (+) → Desde URL</p>
                         </div>
                         
                         <div class="instruction-card rounded-xl p-4 border border-white/5">
@@ -423,7 +424,7 @@
                                 </div>
                                 <span class="font-semibold text-white text-sm">Outlook</span>
                             </div>
-                            <p class="text-gray-500 text-xs leading-relaxed">Add calendar → Subscribe from web → Paste URL</p>
+                            <p class="text-gray-500 text-xs leading-relaxed">Añadir calendario → Suscribirse desde web → Pegar URL</p>
                         </div>
                     </div>
                 </div>
@@ -433,7 +434,7 @@
                     <div class="flex items-center gap-4 overflow-hidden">
                         <div class="flex items-center gap-2 flex-shrink-0">
                             <span class="live-dot w-2 h-2 rounded-full bg-racing-red"></span>
-                            <span class="text-gray-500 text-sm font-medium uppercase tracking-wider">Includes</span>
+                            <span class="text-gray-500 text-sm font-medium uppercase tracking-wider">Incluye</span>
                         </div>
                         <div class="flex items-center gap-3 text-gray-400 text-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
                             <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Mónaco</span>
@@ -442,7 +443,7 @@
                             <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Singapur</span>
                             <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">1000km Nürburgring</span>
                             <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Abu Dhabi</span>
-                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">+ 44 more</span>
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">+ 44 más</span>
                         </div>
                     </div>
                 </div>
@@ -452,7 +453,7 @@
             <!-- Footer -->
             <footer class="text-center mt-12 animate-fade-in" style="animation-delay: 0.7s">
                 <p class="text-gray-600 text-sm">
-                    Made for motorsport fans
+                    Hecho para fans del automovilismo por un fan del automovilismo. <br>
                 </p>
             </footer>
             
