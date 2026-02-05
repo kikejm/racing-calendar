@@ -2,9 +2,9 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "web" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "web" ]
 
 env:
   REGISTRY: ghcr.io
@@ -31,15 +31,15 @@ jobs:
         run: ruff check .
 
       - name: Run Tests
-        # Aseguramos que src sea detectable como módulo
+        # PYTHONPATH=. es vital para que pytest encuentre 'src' sin errores de importación
         run: PYTHONPATH=. pytest src/tests
 
   # 2. Despliegue Continuo: Construcción y Push a GHCR
   build-and-push:
     needs: test-and-lint
-    # Solo ejecutar en push a main, no en PRs
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    # Se ejecuta solo en push a main o web (no en PRs)
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/web')
     permissions:
       contents: read
       packages: write
@@ -59,9 +59,14 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          # AQUÍ ESTÁ LA CORRECCIÓN CLAVE:
           tags: |
-            type=raw,value=latest
-            type=sha,format=short
+            # Genera tag con el nombre de la rama (ej: :web o :main)
+            type=ref,event=branch
+            # Genera tag con el commit hash (ej: :sha-8231a...) para rollback específico
+            type=sha,format=long
+            # Genera :latest SOLO si es la rama main
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
