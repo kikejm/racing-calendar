@@ -249,7 +249,8 @@ class CalendarService:
                     cal.add_component(evt)
 
             elif entry.start and entry.end:
-                if filter_sessions: continue
+                if filter_sessions: 
+                    continue
                 summary = f"{icon} {clean_title}"
                 evt = self._create_ical_event(f"{entry.title}|main", summary, entry.start.date(), entry.end.date(), 
                                             entry, clean_title, is_all_day=True)
