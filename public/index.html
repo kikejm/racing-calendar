@@ -279,8 +279,8 @@
                     </h2>
                     <div class="grid grid-cols-1 gap-3">
                         <button data-cat="f1" class="selectable-card selected glass-card rounded-2xl p-5 flex items-center gap-4">
-                            <div class="icon-container w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center text-3xl transition-all duration-300">
-                                🏎️
+                            <div class="icon-container w-20 h-20 rounded-xl bg-white/5 flex items-center justify-center p-3 transition-all duration-300">
+                                <img src="/f1.svg" alt="F1" class="w-full h-full object-contain filter brightness-0 invert">
                             </div>
                             <div class="text-left">
                                 <span class="font-display text-lg font-bold text-white block">Formula 1</span>
@@ -288,8 +288,8 @@
                             </div>
                         </button>
                         <button data-cat="gt" class="selectable-card selected glass-card rounded-2xl p-5 flex items-center gap-4">
-                            <div class="icon-container w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center text-3xl transition-all duration-300">
-                                🚗
+                            <div class="icon-container w-20 h-20 rounded-xl bg-white/5 flex items-center justify-center p-3 transition-all duration-300">
+                                <img src="/gt.svg" alt="GT" class="w-full h-full object-contain filter brightness-0 invert">
                             </div>
                             <div class="text-left">
                                 <span class="font-display text-lg font-bold text-white block">GT World</span>
@@ -461,252 +461,299 @@
     </div>
 
     <script>
-        // Configuration
-        const PORT = 8080;
-        
-        // --- MODIFICADO: Estado para datos dinámicos ---
-        let nextRaces = [];
-        let countdownInterval;
-        
-        // Get base URL
-        function getBaseUrl() {
-            const origin = window.location.origin;
-            if (origin.includes('localhost') || origin.includes('127.0.0.1')) {
-                return `http://localhost:${PORT}`;
-            }
-            return origin;
+        /**
+         * ApexCal Core Logic - Refactored v2.0
+         * Principios aplicados: SOLID, Defensive Programming, Performance.
+         */
+        (() => {
+            'use strict';
+
+            // --- 1. CONFIGURATION & CONSTANTS ---
+            const APP_CONFIG = Object.freeze({
+                api: {
+                    endpoint: '/data/schedule.json',
+                    timeout: 5000 // Timeout para fetch
+                },
+                ui: {
+                    selectors: {
+                        loading: 'loading-skeleton',
+                        content: 'races-content',
+                        errorMsg: 'errorMessage',
+                        urlInput: 'urlOutput',
+                        copyBtn: 'copyBtn',
+                        copyText: 'copyText'
+                        // Resto de selectores mapeados aquí para evitar hardcoding disperso
+                    },
+                    classes: {
+                        hidden: 'hidden',
+                        selected: 'selected',
+                        disabled: ['opacity-50', 'cursor-not-allowed']
+                    }
+                },
+                series: {
+                    f1: { id: 'f1', keywords: ['gp', 'formula 1'], logo: '/f1.svg', priority: 1 },
+                    gt: { id: 'gt', keywords: ['gt', 'endurance'], logo: '/gt.svg', priority: 2 }
+                }
+            });
+
+            // --- 2. STATE MANAGEMENT (Reactive pattern simplified) ---
+            class StateManager {
+                constructor() {
+                    this.state = {
+                        categories: new Set(['f1', 'gt']),
+                        sessions: new Set(['qualifying', 'sprint', 'race']),
+                        races: [],
+                        loading: true,
+                        error: null
+                    };
+                    this.listeners = [];
+                }
+
+                subscribe(listener) {
+                    this.listeners.push(listener);
+                }
+
+                setState(changes) {
+                    this.state = { ...this.state, ...changes };
+                    this.notify();
+                }
+
+                toggleSetItem(key, value) {
+                    const newSet = new Set(this.state[key]);
+                    newSet.has(value) ? newSet.delete(value) : newSet.add(value);
+                    this.setState({ [key]: newSet });
+                }
+
+                notify() {
+                    this.listeners.forEach(listener => listener(this.state));
+                }
         }
 
-        // State
-        const state = {
-            categories: ['f1', 'gt'],
-            sessions: ['qualifying', 'sprint', 'race']
-        };
+            // --- 3. DOM SERVICE (Abstraction Layer) ---
+            const DOMService = {
+                elements: {},
 
-        // DOM Elements
-        const catCards = document.querySelectorAll('[data-cat]');
-        const sessionCards = document.querySelectorAll('[data-session]');
-        const urlOutput = document.getElementById('urlOutput');
-        const copyBtn = document.getElementById('copyBtn');
-        const copyText = document.getElementById('copyText');
-        const copyIcon = document.getElementById('copyIcon');
-        const errorMessage = document.getElementById('errorMessage');
-
-        // Toggle card selection
-        function toggleCard(card, type) {
-            const value = card.dataset[type];
-            const array = type === 'cat' ? state.categories : state.sessions;
-            const index = array.indexOf(value);
-            
-            if (index > -1) {
-                array.splice(index, 1);
-                card.classList.remove('selected');
-            } else {
-                array.push(value);
-                card.classList.add('selected');
-            }
-            
-            updateUrl();
-        }
-
-        // Generate URL
-        function updateUrl() {
-            if (state.categories.length === 0) {
-                errorMessage.classList.remove('hidden');
-                urlOutput.value = '';
-                copyBtn.disabled = true;
-                copyBtn.classList.add('opacity-50', 'cursor-not-allowed');
-                return;
-            }
-            
-            errorMessage.classList.add('hidden');
-            copyBtn.disabled = false;
-            copyBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-            
-            const baseUrl = getBaseUrl();
-            const params = new URLSearchParams();
-            
-            state.categories.forEach(cat => params.append('cats', cat));
-            state.sessions.forEach(session => params.append('sessions', session));
-            
-            urlOutput.value = `${baseUrl}/calendar.ics?${params.toString()}`;
-        }
-
-        // Copy to clipboard
-        async function copyUrl() {
-            if (!urlOutput.value) return;
-            
-            try {
-                await navigator.clipboard.writeText(urlOutput.value);
-                showCopyFeedback(true);
-            } catch (err) {
-                urlOutput.select();
-                document.execCommand('copy');
-                showCopyFeedback(true);
-            }
-        }
-
-        // Show copy feedback
-        function showCopyFeedback(success) {
-            if (success) {
-                copyText.textContent = '¡Copiado!';
-                copyBtn.classList.remove('btn-primary');
-                copyBtn.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
-                copyIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>';
-                
-                setTimeout(() => {
-                    copyText.textContent = 'Copiar URL';
-                    copyBtn.classList.add('btn-primary');
-                    copyBtn.style.background = '';
-                    copyIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>';
-                }, 2000);
-            }
-        }
-
-        // --- MODIFICADO: Lógica de Datos y Countdown para múltiples carreras ---
-        async function initRaceData() {
-            try {
-                // Ajusta la ruta si 'data' no es hermano de 'public' en tu servidor
-                const response = await fetch('/data/schedule.json');
-                if (!response.ok) throw new Error("No se pudo cargar el calendario");
-                
-                const data = await response.json();
-                const now = new Date();
-                const candidates = [];
-
-                data.forEach(event => {
-                    if (!event.sessions) return;
+                init() {
+                    // Lazy loading de elementos para asegurar que el DOM esté listo
+                    const ids = [
+                        'loading-skeleton', 'races-content', 'errorMessage', 
+                        'urlOutput', 'copyBtn', 'copyText', 
+                        'r1-name', 'r1-circuit', 
+                        'd-days', 'd-hours', 'd-mins', 'd-secs'
+                    ];
                     
-                    const isF1 = event.title.includes('🏎️') || event.title.toLowerCase().includes('gp');
-                    const isGT = event.title.includes('🏁') || event.title.toLowerCase().includes('gt');
-                    const icon = isF1 ? '🏎️' : (isGT ? '🏁' : '🏆');
-                    
-                    const rawTitle = event.title.replace(/🏎️|🏁/g, '').trim();
-                    const parts = rawTitle.split(',');
-                    const eventName = parts[0].trim();
-                    const circuitName = parts[1] ? parts[1].trim() : '';
-
-                    event.sessions.forEach(session => {
-                        const sName = session.name;
-                        // Filtramos solo las sesiones principales de carrera
-                        const isMainSession = (isF1 && sName === 'Carrera') || 
-                                              (isGT && sName.includes('GT World - Race'));
-
-                        if (isMainSession) {
-                            const startDate = new Date(session.start);
-                            if (startDate > now) {
-                                candidates.push({
-                                    name: eventName,
-                                    circuit: circuitName,
-                                    session: sName,
-                                    date: startDate,
-                                    icon: icon
-                                });
-                            }
-                        }
+                    ids.forEach(id => {
+                        const el = document.getElementById(id);
+                        if (el) this.elements[id] = el;
+                        else console.warn(`Elemento DOM faltante: #${id}`);
                     });
-                });
 
-                candidates.sort((a, b) => a.date - b.date);
-                nextRaces = candidates.slice(0, 3);
+                    this.elements.toggles = document.querySelectorAll('.selectable-card');
+                },
 
-                if (nextRaces.length > 0) {
-                    renderRaces();
-                    startCountdown();
-                } else {
-                    const elName = document.getElementById('r1-name');
-                    if (elName) elName.textContent = "Fin de Temporada";
-                }
+                // Helper para actualizaciones seguras de texto
+                setText(id, text) {
+                    if (this.elements[id]) this.elements[id].textContent = text;
+                },
 
-            } catch (e) {
-                console.error("Error cargando carreras:", e);
-            }
-        }
-
-        function renderRaces() {
-            const el = (id) => document.getElementById(id);
-            if (!el('r1-name')) return; // Seguridad
-
-            el('loading-skeleton').classList.add('hidden');
-            el('races-content').classList.remove('hidden');
-
-            // 1. Evento Principal
-            const r1 = nextRaces[0];
-            el('r1-name').innerHTML = `${r1.icon} ${r1.name}`;
-            el('r1-circuit').textContent = r1.circuit || r1.session;
-
-            // 2. Siguiente Evento
-            if (nextRaces[1]) {
-                const r2 = nextRaces[1];
-                el('r2-icon').textContent = r2.icon;
-                el('r2-name').textContent = r2.name;
-                el('r2-date').textContent = formatDateShort(r2.date);
-            } else {
-                el('row-race-2').classList.add('hidden');
-            }
-
-            // 3. Tercer Evento
-            if (nextRaces[2]) {
-                const r3 = nextRaces[2];
-                el('r3-icon').textContent = r3.icon;
-                el('r3-name').textContent = r3.name;
-                el('r3-date').textContent = formatDateShort(r3.date);
-            } else {
-                el('row-race-3').classList.add('hidden');
-            }
-        }
-
-        function formatDateShort(date) {
-            return date.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' }) + 
-                   ' ' + 
-                   date.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
-        }
-
-        function startCountdown() {
-            if (countdownInterval) clearInterval(countdownInterval);
-            
-            const update = () => {
-                const now = new Date();
-                const diff = nextRaces[0].date - now;
-                
-                if (diff <= 0) {
-                    initRaceData(); // Refrescar si termina
-                    return;
-                }
-                
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-                
-                // IDs actualizados al nuevo HTML (d-days, etc)
-                const elDay = document.getElementById('d-days');
-                if (elDay) {
-                    elDay.textContent = String(days).padStart(2, '0');
-                    document.getElementById('d-hours').textContent = String(hours).padStart(2, '0');
-                    document.getElementById('d-mins').textContent = String(minutes).padStart(2, '0');
-                    document.getElementById('d-secs').textContent = String(seconds).padStart(2, '0');
+                toggleVisibility(id, show) {
+                    if (this.elements[id]) {
+                        show 
+                            ? this.elements[id].classList.remove(APP_CONFIG.ui.classes.hidden)
+                            : this.elements[id].classList.add(APP_CONFIG.ui.classes.hidden);
+                    }
                 }
             };
-            
-            update();
-            countdownInterval = setInterval(update, 1000);
+
+            // --- 4. DATA SERVICE (Business Logic) ---
+            const RaceService = {
+                async fetchSchedule() {
+                    const controller = new AbortController();
+                    const id = setTimeout(() => controller.abort(), APP_CONFIG.api.timeout);
+
+                    try {
+                        const response = await fetch(APP_CONFIG.api.endpoint, { signal: controller.signal });
+                        clearTimeout(id);
+                        
+                        if (!response.ok) throw new Error(`Error API: ${response.status}`);
+                        
+                        const data = await response.json();
+                        return this.processData(data);
+                    } catch (error) {
+                        console.error("Fallo al obtener calendario:", error);
+                        throw error; // Propagar para manejo en UI
+                    }
+                },
+
+                processData(data) {
+                    const now = new Date();
+                    // Optimización: Filter + Map en un solo paso reduce iteraciones
+                    return data.flatMap(event => {
+                        if (!event.sessions) return [];
+                        
+                        // Lógica de detección optimizada
+                        const titleLower = event.title.toLowerCase();
+                        const seriesKey = Object.keys(APP_CONFIG.series).find(k => 
+                            APP_CONFIG.series[k].keywords.some(kw => titleLower.includes(kw))
+                        );
+                        const series = seriesKey ? APP_CONFIG.series[seriesKey] : null;
+
+                        // Limpieza de título
+                        const cleanTitle = event.title.replace(/[\u{1F300}-\u{1F9FF}]/gu, '').split(',')[0].trim();
+
+                        return event.sessions
+                            .map(s => ({...s, startDate: new Date(s.start)}))
+                            .filter(s => s.startDate > now && (s.name.toLowerCase().includes('race') || (series && series.id === 'f1' && s.name === 'Carrera')))
+                            .map(s => ({
+                                name: cleanTitle,
+                                circuit: event.circuit || s.name,
+                                date: s.startDate,
+                                logo: series ? series.logo : '/logo.svg',
+                                seriesId: series ? series.id : 'unknown'
+                            }));
+                    }).sort((a, b) => a.date - b.date).slice(0, 3);
+                }
+            };
+
+            // --- 5. APP CONTROLLER ---
+            const App = {
+                stateManager: new StateManager(),
+
+                init() {
+                    DOMService.init();
+                    this.bindEvents();
+                    this.stateManager.subscribe(this.render.bind(this));
+                    this.loadData();
+                },
+
+                bindEvents() {
+                    // Delegación de eventos (más performante que múltiples listeners)
+                    // Nota: Aquí mantenemos forEach porque los elementos son estáticos, pero delegation es mejor para listas dinámicas.
+                    DOMService.elements.toggles.forEach(card => {
+                        card.addEventListener('click', (e) => {
+                            const key = card.dataset.cat ? 'categories' : 'sessions';
+                            const val = card.dataset.cat || card.dataset.session;
+                            this.stateManager.toggleSetItem(key, val);
+                            
+                            // Feedback visual inmediato (UX)
+                            const isSelected = this.stateManager.state[key].has(val);
+                            card.classList.toggle('selected', isSelected);
+                            card.setAttribute('aria-pressed', isSelected); // A11y
+                        });
+                    });
+
+                    if (DOMService.elements.copyBtn) {
+                        DOMService.elements.copyBtn.addEventListener('click', () => this.handleCopy());
+                    }
+                },
+
+                async loadData() {
+                    try {
+                        const races = await RaceService.fetchSchedule();
+                        this.stateManager.setState({ races, loading: false });
+                        if (races.length > 0) this.startCountdown(races[0].date);
+                    } catch (error) {
+                        this.stateManager.setState({ loading: false, error: error.message });
+                    }
+                },
+
+                render(state) {
+                    // 1. Manejo de Loading/Error
+                    DOMService.toggleVisibility('loading-skeleton', state.loading);
+                    DOMService.toggleVisibility('races-content', !state.loading && !state.error);
+                    
+                    if (state.error) {
+                        // Mostrar UI de error (habría que crear un elemento en HTML para esto, usando errorMessage por ahora)
+                        DOMService.toggleVisibility('errorMessage', true);
+                        DOMService.setText('errorMessage', 'No se pudieron cargar los horarios. Intenta recargar.');
+                        return;
+                    }
+
+                    // 2. Render Main Race (Seguro contra XSS)
+                    if (state.races.length > 0) {
+                        const main = state.races[0];
+                        const nameContainer = DOMService.elements['r1-name'];
+                        if (nameContainer) {
+                            nameContainer.innerHTML = ''; // Limpiar
+                            const img = document.createElement('img');
+                            img.src = main.logo;
+                            img.className = 'w-12 h-12 mr-3 inline-block object-contain filter brightness-0 invert';
+                            img.alt = `Logo ${main.seriesId}`;
+                            nameContainer.append(img, document.createTextNode(main.name));
+                        }
+                        DOMService.setText('r1-circuit', main.circuit);
+                    }
+
+                    // 3. Generar URL
+                    this.updateUrlGen(state);
+                },
+
+                updateUrlGen(state) {
+                    const { categories, sessions } = state;
+                    const isValid = categories.size > 0 && sessions.size > 0;
+                    
+                    DOMService.toggleVisibility('errorMessage', !isValid);
+                    
+                    if (DOMService.elements.copyBtn) {
+                        DOMService.elements.copyBtn.disabled = !isValid;
+                        if (!isValid) DOMService.elements.copyBtn.classList.add(...APP_CONFIG.ui.classes.disabled);
+                        else DOMService.elements.copyBtn.classList.remove(...APP_CONFIG.ui.classes.disabled);
+            }
+
+                    if (isValid) {
+                        const params = new URLSearchParams();
+                        categories.forEach(c => params.append('cats', c));
+                        sessions.forEach(s => params.append('sessions', s));
+                        if (DOMService.elements.urlInput) {
+                            DOMService.elements.urlInput.value = `${window.location.origin}/calendar.ics?${params.toString()}`;
         }
+                    }
+                },
+                startCountdown(targetDate) {
+            const update = () => {
+                        const diff = targetDate - new Date();
+                        if (diff <= 0) return location.reload(); // Hard refresh para nuevos datos
+                
+                        const d = Math.floor(diff / 86400000);
+                        const h = Math.floor((diff % 86400000) / 3600000);
+                        const m = Math.floor((diff % 3600000) / 60000);
+                        const s = Math.floor((diff % 60000) / 1000);
 
-        // Event Listeners
-        catCards.forEach(card => {
-            card.addEventListener('click', () => toggleCard(card, 'cat'));
-        });
+                        DOMService.setText('d-days', d.toString().padStart(2, '0'));
+                        DOMService.setText('d-hours', h.toString().padStart(2, '0'));
+                        DOMService.setText('d-mins', m.toString().padStart(2, '0'));
+                        DOMService.setText('d-secs', s.toString().padStart(2, '0'));
+                        
+                        requestAnimationFrame(update); // Mejor performance que setInterval
+                    };
+                    requestAnimationFrame(update);
+                },
 
-        sessionCards.forEach(card => {
-            card.addEventListener('click', () => toggleCard(card, 'session'));
-        });
+                async handleCopy() {
+                    const input = DOMService.elements.urlInput;
+                    if (!input || !input.value) return;
 
-        copyBtn.addEventListener('click', copyUrl);
+                    try {
+                        await navigator.clipboard.writeText(input.value);
+                        const original = DOMService.elements.copyText.textContent;
+                        DOMService.setText('copyText', '¡Copiado!');
+                        setTimeout(() => DOMService.setText('copyText', original), 2000);
+                    } catch (err) {
+                        console.error('Clipboard failed', err);
+                        input.select();
+                        document.execCommand('copy');
+                    }
+                }
+            };
 
-        // Initialize
-        updateUrl();
-        initRaceData(); // Iniciar carga de datos
+            // Inicialización segura
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => App.init());
+            } else {
+                App.init();
+            }
+
+        })();
     </script>
 </body>
 </html>
