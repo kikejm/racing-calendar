@@ -817,11 +817,11 @@
                         else DOMService.elements.copyBtn.classList.remove(...APP_CONFIG.ui.classes.disabled);
                     }
 
-                    if (isValid && DOMService.elements.urlInput) {
+                    if (isValid && DOMService.elements.urlOutput) {
                         const params = new URLSearchParams();
                         categories.forEach(c => params.append('cats', c));
                         sessions.forEach(s => params.append('sessions', s));
-                        DOMService.elements.urlInput.value = `${window.location.origin}/calendar.ics?${params.toString()}`;
+                        DOMService.elements.urlOutput.value = `${window.location.origin}/calendar.ics?${params.toString()}`;
                     }
                 },
 
@@ -846,7 +846,7 @@
                 },
 
                 async handleCopy() {
-                    const input = DOMService.elements.urlInput;
+                    const input = DOMService.elements.urlOutput;
                     if (!input || !input.value) return;
 
                     try {
