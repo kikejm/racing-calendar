@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ApexCal 2026 | Calendario F1, MotoGP y más Sincronizado</title>
-    <meta name="description" content="Todos los calendarios de carreras 2026 en un solo lugar: F1, MotoGP, WEC, GT World, IndyCar... Horarios automáticos en tu agenda sin instalar apps.">
+    <title>ApexCal 2026 | Calendario F1, MotoGP, NASCAR, GT Sincronizado</title>
+    <meta name="description" content="Todos los calendarios de motos y coches 2026 en un solo lugar: F1, MotoGP, NASCAR, GT World... Horarios automáticos en tu agenda sin instalar apps.">
     <link rel="icon" type="image/svg+xml" href="/logo.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -172,6 +172,17 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 3px;
         }
+
+        /* NASCAR badge glow */
+        .nascar-selected .icon-container {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(0, 31, 91, 0.3) 100%) !important;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2) !important;
+        }
+        /* MotoGP badge glow */
+        .motogp-selected .icon-container {
+            background: linear-gradient(135deg, rgba(208, 2, 27, 0.25) 0%, rgba(0, 0, 0, 0.3) 100%) !important;
+            box-shadow: 0 0 20px rgba(208, 2, 27, 0.3) !important;
+        }
     </style>
 </head>
 <body class="font-sans text-white antialiased min-h-screen bg-mesh">
@@ -201,9 +212,9 @@
                             <div class="flex -space-x-2">
                                 <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-racing-bg flex items-center justify-center text-xs">🏎️</div>
                                 <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-racing-bg flex items-center justify-center text-xs">🏁</div>
-                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-racing-bg flex items-center justify-center text-xs">🚗</div>
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-racing-bg flex items-center justify-center text-xs">🏍️</div>
                             </div>
-                            <span class="text-gray-500 text-sm">+50 eventos incluidos</span>
+                            <span class="text-gray-500 text-sm">+150 eventos incluidos</span>
                         </div>
                     </div>
                 </div>
@@ -222,7 +233,7 @@
 
                         <div id="races-content" class="hidden flex-1 flex flex-col justify-between">
                             <div>
-                                <h3 class="font-display text-xl md:text-2xl font-bold text-white mb-1 leading-tight" id="r1-name">
+                                <h3 class="font-display text-xl md:text-2xl font-bold text-white mb-1 leading-tight flex items-center gap-2" id="r1-name">
                                     Cargando...
                                 </h3>
                                 <p class="text-gray-500 text-sm mb-4 flex items-center gap-2">
@@ -253,14 +264,14 @@
                                 <div class="flex items-center justify-between text-sm group" id="row-race-2">
                                     <div class="flex items-center gap-2 overflow-hidden">
                                         <span id="r2-icon" class="text-base grayscale group-hover:grayscale-0 transition-all">🏎️</span>
-                                        <span id="r2-name" class="text-gray-300 font-medium truncate">GP Siguiente</span>
+                                        <span id="r2-name" class="text-gray-300 font-medium truncate">—</span>
                                     </div>
                                     <span id="r2-date" class="text-gray-500 text-xs font-mono whitespace-nowrap">--/--</span>
                                 </div>
                                 <div class="flex items-center justify-between text-sm group" id="row-race-3">
                                     <div class="flex items-center gap-2 overflow-hidden">
                                         <span id="r3-icon" class="text-base grayscale group-hover:grayscale-0 transition-all">🚗</span>
-                                        <span id="r3-name" class="text-gray-300 font-medium truncate">GT Siguiente</span>
+                                        <span id="r3-name" class="text-gray-300 font-medium truncate">—</span>
                                     </div>
                                     <span id="r3-date" class="text-gray-500 text-xs font-mono whitespace-nowrap">--/--</span>
                                 </div>
@@ -279,7 +290,7 @@
                     </h2>
                     <div class="grid grid-cols-1 gap-3">
                         <button data-cat="f1" class="selectable-card selected glass-card rounded-2xl p-5 flex items-center gap-4">
-                            <div class="icon-container w-20 h-20 rounded-xl bg-white/5 flex items-center justify-center p-3 transition-all duration-300">
+                            <div class="icon-container w-20 h-12 rounded-xl bg-white/5 flex items-center justify-center p-2 transition-all duration-300">
                                 <img src="/f1.svg" alt="F1" class="w-full h-full object-contain filter brightness-0 invert">
                             </div>
                             <div class="text-left">
@@ -288,12 +299,30 @@
                             </div>
                         </button>
                         <button data-cat="gt" class="selectable-card selected glass-card rounded-2xl p-5 flex items-center gap-4">
-                            <div class="icon-container w-20 h-20 rounded-xl bg-white/5 flex items-center justify-center p-3 transition-all duration-300">
+                            <div class="icon-container w-20 h-12 rounded-xl bg-white/5 flex items-center justify-center p-2 transition-all duration-300">
                                 <img src="/gt.svg" alt="GT" class="w-full h-full object-contain filter brightness-0 invert">
                             </div>
                             <div class="text-left">
                                 <span class="font-display text-lg font-bold text-white block">GT World</span>
                                 <span class="text-gray-500 text-sm">Endurance & Sprint</span>
+                            </div>
+                        </button>
+                        <button data-cat="nascar" class="selectable-card selected glass-card rounded-2xl p-5 flex items-center gap-4">
+                            <div class="icon-container w-20 h-12 rounded-xl bg-white/5 flex items-center justify-center p-2 transition-all duration-300">
+                                <img src="/nascar.svg" alt="NASCAR" class="w-full h-full object-contain">
+                            </div>
+                            <div class="text-left">
+                                <span class="font-display text-lg font-bold text-white block">NASCAR</span>
+                                <span class="text-gray-500 text-sm">Cup Series 2026</span>
+                            </div>
+                        </button>
+                        <button data-cat="motogp" class="selectable-card selected motogp-selected glass-card rounded-2xl p-5 flex items-center gap-4">
+                            <div class="icon-container w-20 h-12 rounded-xl bg-white/5 flex items-center justify-center p-2 transition-all duration-300">
+                                <img src="/motogp.svg" alt="MotoGP" class="w-full h-full object-contain">
+                            </div>
+                            <div class="text-left">
+                                <span class="font-display text-lg font-bold text-white block">MotoGP</span>
+                                <span class="text-gray-500 text-sm">22 Grand Prix</span>
                             </div>
                         </button>
                     </div>
@@ -439,11 +468,16 @@
                         <div class="flex items-center gap-3 text-gray-400 text-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
                             <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Mónaco</span>
                             <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">24h Spa</span>
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Daytona 500</span>
                             <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Las Vegas</span>
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">NASCAR Playoffs</span>
                             <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Singapur</span>
-                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">1000km Nürburgring</span>
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Coke 600</span>
                             <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Abu Dhabi</span>
-                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">+ 44 más</span>
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Jerez</span>
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Mugello</span>
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Valencia</span>
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">+ 120 más</span>
                         </div>
                     </div>
                 </div>
@@ -453,7 +487,7 @@
             <!-- Footer -->
             <footer class="text-center mt-12 animate-fade-in" style="animation-delay: 0.7s">
                 <p class="text-gray-600 text-sm">
-                    Hecho para fans del automovilismo por un fan del automovilismo. <br>
+                    Hecho para fans del automovilismo por un fan del automovilismo.
                 </p>
             </footer>
             
@@ -462,8 +496,7 @@
 
     <script>
         /**
-         * ApexCal Core Logic - Refactored v2.0
-         * Principios aplicados: SOLID, Defensive Programming, Performance.
+         * ApexCal Core Logic - v2.1 with NASCAR support & fixed next races display
          */
         (() => {
             'use strict';
@@ -471,8 +504,8 @@
             // --- 1. CONFIGURATION & CONSTANTS ---
             const APP_CONFIG = Object.freeze({
                 api: {
-                    endpoint: '/data/schedule.json',
-                    timeout: 5000 // Timeout para fetch
+                    endpoints: ['/data/formula1.json', '/data/gtworld.json', '/data/nascar.json', '/data/motogp.json'],
+                    timeout: 5000
                 },
                 ui: {
                     selectors: {
@@ -482,7 +515,6 @@
                         urlInput: 'urlOutput',
                         copyBtn: 'copyBtn',
                         copyText: 'copyText'
-                        // Resto de selectores mapeados aquí para evitar hardcoding disperso
                     },
                     classes: {
                         hidden: 'hidden',
@@ -491,16 +523,18 @@
                     }
                 },
                 series: {
-                    f1: { id: 'f1', keywords: ['gp', 'formula 1'], logo: '/f1.svg', priority: 1 },
-                    gt: { id: 'gt', keywords: ['gt', 'endurance'], logo: '/gt.svg', priority: 2 }
+                    f1:     { id: 'f1',     keywords: ['gp', 'formula 1', 'grand prix'],  logo: '/f1.svg',     icon: '🏎️', priority: 1 },
+                    gt:     { id: 'gt',     keywords: ['gt', 'endurance', '🏁'],           logo: '/gt.svg',     icon: '🏁', priority: 2 },
+                    nascar: { id: 'nascar', keywords: ['nascar', 'cup:'],                  logo: '/nascar.svg', icon: '🏁', priority: 3 },
+                    motogp: { id: 'motogp', keywords: ['🏍️', 'motogp', 'moto gp'],        logo: '/motogp.svg', icon: '🏍️', priority: 4 }
                 }
             });
 
-            // --- 2. STATE MANAGEMENT (Reactive pattern simplified) ---
+            // --- 2. STATE MANAGEMENT ---
             class StateManager {
                 constructor() {
                     this.state = {
-                        categories: new Set(['f1', 'gt']),
+                        categories: new Set(['f1', 'gt', 'nascar', 'motogp']),
                         sessions: new Set(['qualifying', 'sprint', 'race']),
                         races: [],
                         loading: true,
@@ -509,9 +543,7 @@
                     this.listeners = [];
                 }
 
-                subscribe(listener) {
-                    this.listeners.push(listener);
-                }
+                subscribe(listener) { this.listeners.push(listener); }
 
                 setState(changes) {
                     this.state = { ...this.state, ...changes };
@@ -524,94 +556,167 @@
                     this.setState({ [key]: newSet });
                 }
 
-                notify() {
-                    this.listeners.forEach(listener => listener(this.state));
-                }
-        }
+                notify() { this.listeners.forEach(l => l(this.state)); }
+            }
 
-            // --- 3. DOM SERVICE (Abstraction Layer) ---
+            // --- 3. DOM SERVICE ---
             const DOMService = {
                 elements: {},
 
                 init() {
-                    // Lazy loading de elementos para asegurar que el DOM esté listo
                     const ids = [
-                        'loading-skeleton', 'races-content', 'errorMessage', 
-                        'urlOutput', 'copyBtn', 'copyText', 
-                        'r1-name', 'r1-circuit', 
+                        'loading-skeleton', 'races-content', 'errorMessage',
+                        'urlOutput', 'copyBtn', 'copyText',
+                        'r1-name', 'r1-circuit',
+                        'r2-icon', 'r2-name', 'r2-date',
+                        'r3-icon', 'r3-name', 'r3-date',
                         'd-days', 'd-hours', 'd-mins', 'd-secs'
                     ];
-                    
                     ids.forEach(id => {
                         const el = document.getElementById(id);
                         if (el) this.elements[id] = el;
-                        else console.warn(`Elemento DOM faltante: #${id}`);
                     });
-
                     this.elements.toggles = document.querySelectorAll('.selectable-card');
                 },
 
-                // Helper para actualizaciones seguras de texto
                 setText(id, text) {
                     if (this.elements[id]) this.elements[id].textContent = text;
                 },
 
                 toggleVisibility(id, show) {
                     if (this.elements[id]) {
-                        show 
+                        show
                             ? this.elements[id].classList.remove(APP_CONFIG.ui.classes.hidden)
                             : this.elements[id].classList.add(APP_CONFIG.ui.classes.hidden);
                     }
                 }
             };
 
-            // --- 4. DATA SERVICE (Business Logic) ---
+            // --- 4. DATA SERVICE ---
             const RaceService = {
-                async fetchSchedule() {
-                    const controller = new AbortController();
-                    const id = setTimeout(() => controller.abort(), APP_CONFIG.api.timeout);
+                /**
+                 * Detect which series an event belongs to, checking title keywords
+                 * and the event's categories array as fallback.
+                 */
+                _detectSeries(event) {
+                    const titleLower = event.title.toLowerCase();
 
-                    try {
-                        const response = await fetch(APP_CONFIG.api.endpoint, { signal: controller.signal });
-                        clearTimeout(id);
-                        
-                        if (!response.ok) throw new Error(`Error API: ${response.status}`);
-                        
-                        const data = await response.json();
-                        return this.processData(data);
-                    } catch (error) {
-                        console.error("Fallo al obtener calendario:", error);
-                        throw error; // Propagar para manejo en UI
+                    // 1. Check title keywords
+                    for (const [key, cfg] of Object.entries(APP_CONFIG.series)) {
+                        if (cfg.keywords.some(kw => titleLower.includes(kw))) {
+                            return { key, cfg };
+                        }
                     }
+
+                    // 2. Fallback: check categories array from JSON
+                    if (Array.isArray(event.categories)) {
+                        for (const cat of event.categories) {
+                            const catLower = cat.toLowerCase();
+                            if (APP_CONFIG.series[catLower]) {
+                                return { key: catLower, cfg: APP_CONFIG.series[catLower] };
+                            }
+                        }
+                    }
+
+                    return null;
                 },
 
+                _cleanTitle(title) {
+                    // Remove emojis and leading series prefixes
+                    return title
+                        .replace(/[\u{1F300}-\u{1F9FF}]/gu, '')
+                        .replace(/^(NASCAR Cup:|NASCAR Clash:|NASCAR All-Star Race:|NASCAR Playoffs [^:]+:)\s*/i, '')
+                        .split(',')[0]
+                        .trim();
+                },
+
+                /**
+                 * Process all events from all data sources into a unified, sorted list
+                 * of upcoming races, handling both session-based and date-based events.
+                 */
                 processData(data) {
                     const now = new Date();
-                    // Optimización: Filter + Map en un solo paso reduce iteraciones
+
                     return data.flatMap(event => {
-                        if (!event.sessions) return [];
-                        
-                        // Lógica de detección optimizada
-                        const titleLower = event.title.toLowerCase();
-                        const seriesKey = Object.keys(APP_CONFIG.series).find(k => 
-                            APP_CONFIG.series[k].keywords.some(kw => titleLower.includes(kw))
+                        const detected = this._detectSeries(event);
+                        const seriesKey = detected ? detected.key : null;
+                        const seriesCfg = detected ? detected.cfg : null;
+                        const cleanTitle = this._cleanTitle(event.title);
+                        const logo = seriesCfg ? seriesCfg.logo : '/logo.svg';
+                        const icon = seriesCfg ? seriesCfg.icon : '🏆';
+                        const seriesId = seriesKey || 'unknown';
+
+                        // Events WITH sessions (F1, GT) — find the main race session
+                        if (Array.isArray(event.sessions) && event.sessions.length > 0) {
+                            return event.sessions
+                                .map(s => ({ ...s, startDate: new Date(s.start) }))
+                                .filter(s => {
+                                    if (s.startDate <= now) return false;
+                                    const nameLower = s.name.toLowerCase();
+                                    return nameLower.includes('race') ||
+                                           nameLower.includes('carrera') ||
+                                           nameLower === 'sprint';
+                                })
+                                .map(s => ({
+                                    name: cleanTitle,
+                                    circuit: event.location ? event.location.split(',')[0].trim() : s.name,
+                                    date: s.startDate,
+                                    logo,
+                                    icon,
+                                    seriesId
+                                }));
+                        }
+
+                        // Events WITHOUT sessions (NASCAR, GT all-day events)
+                        if (event.start) {
+                            const startDate = new Date(event.start);
+                            if (startDate > now) {
+                                return [{
+                                    name: cleanTitle,
+                                    circuit: event.location ? event.location.split(',')[0].trim() : '',
+                                    date: startDate,
+                                    logo,
+                                    icon,
+                                    seriesId
+                                }];
+                            }
+                        }
+
+                        return [];
+                    })
+                    .sort((a, b) => a.date - b.date)
+                    .slice(0, 3);
+                },
+
+                async fetchAllSchedules() {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), APP_CONFIG.api.timeout);
+
+                    try {
+                        const results = await Promise.allSettled(
+                            APP_CONFIG.api.endpoints.map(url =>
+                                fetch(url, { signal: controller.signal }).then(r => {
+                                    if (!r.ok) throw new Error(`HTTP ${r.status}: ${url}`);
+                                    return r.json();
+                                })
+                            )
                         );
-                        const series = seriesKey ? APP_CONFIG.series[seriesKey] : null;
+                        clearTimeout(timeoutId);
 
-                        // Limpieza de título
-                        const cleanTitle = event.title.replace(/[\u{1F300}-\u{1F9FF}]/gu, '').split(',')[0].trim();
+                        const allEvents = results.flatMap(r => {
+                            if (r.status === 'fulfilled') return r.value;
+                            console.warn('Failed to load schedule:', r.reason);
+                            return [];
+                        });
 
-                        return event.sessions
-                            .map(s => ({...s, startDate: new Date(s.start)}))
-                            .filter(s => s.startDate > now && (s.name.toLowerCase().includes('race') || (series && series.id === 'f1' && s.name === 'Carrera')))
-                            .map(s => ({
-                                name: cleanTitle,
-                                circuit: event.circuit || s.name,
-                                date: s.startDate,
-                                logo: series ? series.logo : '/logo.svg',
-                                seriesId: series ? series.id : 'unknown'
-                            }));
-                    }).sort((a, b) => a.date - b.date).slice(0, 3);
+                        if (allEvents.length === 0) throw new Error('No events loaded');
+                        return this.processData(allEvents);
+
+                    } catch (error) {
+                        clearTimeout(timeoutId);
+                        console.error('Failed to fetch schedules:', error);
+                        throw error;
+                    }
                 }
             };
 
@@ -627,18 +732,14 @@
                 },
 
                 bindEvents() {
-                    // Delegación de eventos (más performante que múltiples listeners)
-                    // Nota: Aquí mantenemos forEach porque los elementos son estáticos, pero delegation es mejor para listas dinámicas.
                     DOMService.elements.toggles.forEach(card => {
-                        card.addEventListener('click', (e) => {
+                        card.addEventListener('click', () => {
                             const key = card.dataset.cat ? 'categories' : 'sessions';
                             const val = card.dataset.cat || card.dataset.session;
                             this.stateManager.toggleSetItem(key, val);
-                            
-                            // Feedback visual inmediato (UX)
                             const isSelected = this.stateManager.state[key].has(val);
                             card.classList.toggle('selected', isSelected);
-                            card.setAttribute('aria-pressed', isSelected); // A11y
+                            card.setAttribute('aria-pressed', isSelected);
                         });
                     });
 
@@ -649,7 +750,7 @@
 
                 async loadData() {
                     try {
-                        const races = await RaceService.fetchSchedule();
+                        const races = await RaceService.fetchAllSchedules();
                         this.stateManager.setState({ races, loading: false });
                         if (races.length > 0) this.startCountdown(races[0].date);
                     } catch (error) {
@@ -658,73 +759,88 @@
                 },
 
                 render(state) {
-                    // 1. Manejo de Loading/Error
+                    // Loading / Error states
                     DOMService.toggleVisibility('loading-skeleton', state.loading);
                     DOMService.toggleVisibility('races-content', !state.loading && !state.error);
-                    
+
                     if (state.error) {
-                        // Mostrar UI de error (habría que crear un elemento en HTML para esto, usando errorMessage por ahora)
                         DOMService.toggleVisibility('errorMessage', true);
-                        DOMService.setText('errorMessage', 'No se pudieron cargar los horarios. Intenta recargar.');
+                        if (DOMService.elements.errorMessage) {
+                            DOMService.elements.errorMessage.textContent = 'No se pudieron cargar los horarios. Intenta recargar.';
+                        }
                         return;
                     }
 
-                    // 2. Render Main Race (Seguro contra XSS)
+                    // --- Render main race (r1) ---
                     if (state.races.length > 0) {
                         const main = state.races[0];
-                        const nameContainer = DOMService.elements['r1-name'];
-                        if (nameContainer) {
-                            nameContainer.innerHTML = ''; // Limpiar
+                        const nameEl = DOMService.elements['r1-name'];
+                        if (nameEl) {
+                            nameEl.innerHTML = '';
                             const img = document.createElement('img');
                             img.src = main.logo;
-                            img.className = 'w-12 h-12 mr-3 inline-block object-contain filter brightness-0 invert';
-                            img.alt = `Logo ${main.seriesId}`;
-                            nameContainer.append(img, document.createTextNode(main.name));
+                            img.className = 'h-5 mr-2 inline-block object-contain filter brightness-0 invert';
+                            img.alt = main.seriesId;
+                            nameEl.append(img, document.createTextNode(main.name));
                         }
                         DOMService.setText('r1-circuit', main.circuit);
                     }
 
-                    // 3. Generar URL
+                    // --- Render next races (r2, r3) ---
+                    const nextRaceSlots = [
+                        { iconId: 'r2-icon', nameId: 'r2-name', dateId: 'r2-date' },
+                        { iconId: 'r3-icon', nameId: 'r3-name', dateId: 'r3-date' }
+                    ];
+
+                    state.races.slice(1, 3).forEach((race, idx) => {
+                        const slot = nextRaceSlots[idx];
+                        DOMService.setText(slot.iconId, race.icon);
+                        DOMService.setText(slot.nameId, race.name);
+                        DOMService.setText(slot.dateId,
+                            race.date.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit' })
+                        );
+                    });
+
+                    // Generate subscription URL
                     this.updateUrlGen(state);
                 },
 
                 updateUrlGen(state) {
                     const { categories, sessions } = state;
                     const isValid = categories.size > 0 && sessions.size > 0;
-                    
+
                     DOMService.toggleVisibility('errorMessage', !isValid);
-                    
+
                     if (DOMService.elements.copyBtn) {
                         DOMService.elements.copyBtn.disabled = !isValid;
                         if (!isValid) DOMService.elements.copyBtn.classList.add(...APP_CONFIG.ui.classes.disabled);
                         else DOMService.elements.copyBtn.classList.remove(...APP_CONFIG.ui.classes.disabled);
-            }
+                    }
 
-                    if (isValid) {
+                    if (isValid && DOMService.elements.urlInput) {
                         const params = new URLSearchParams();
                         categories.forEach(c => params.append('cats', c));
                         sessions.forEach(s => params.append('sessions', s));
-                        if (DOMService.elements.urlInput) {
-                            DOMService.elements.urlInput.value = `${window.location.origin}/calendar.ics?${params.toString()}`;
-        }
+                        DOMService.elements.urlInput.value = `${window.location.origin}/calendar.ics?${params.toString()}`;
                     }
                 },
+
                 startCountdown(targetDate) {
-            const update = () => {
+                    const update = () => {
                         const diff = targetDate - new Date();
-                        if (diff <= 0) return location.reload(); // Hard refresh para nuevos datos
-                
+                        if (diff <= 0) return location.reload();
+
                         const d = Math.floor(diff / 86400000);
                         const h = Math.floor((diff % 86400000) / 3600000);
                         const m = Math.floor((diff % 3600000) / 60000);
                         const s = Math.floor((diff % 60000) / 1000);
 
-                        DOMService.setText('d-days', d.toString().padStart(2, '0'));
+                        DOMService.setText('d-days',  d.toString().padStart(2, '0'));
                         DOMService.setText('d-hours', h.toString().padStart(2, '0'));
-                        DOMService.setText('d-mins', m.toString().padStart(2, '0'));
-                        DOMService.setText('d-secs', s.toString().padStart(2, '0'));
-                        
-                        requestAnimationFrame(update); // Mejor performance que setInterval
+                        DOMService.setText('d-mins',  m.toString().padStart(2, '0'));
+                        DOMService.setText('d-secs',  s.toString().padStart(2, '0'));
+
+                        requestAnimationFrame(update);
                     };
                     requestAnimationFrame(update);
                 },
@@ -735,18 +851,16 @@
 
                     try {
                         await navigator.clipboard.writeText(input.value);
-                        const original = DOMService.elements.copyText.textContent;
+                        const original = DOMService.elements.copyText?.textContent;
                         DOMService.setText('copyText', '¡Copiado!');
                         setTimeout(() => DOMService.setText('copyText', original), 2000);
-                    } catch (err) {
-                        console.error('Clipboard failed', err);
+                    } catch {
                         input.select();
                         document.execCommand('copy');
                     }
                 }
             };
 
-            // Inicialización segura
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', () => App.init());
             } else {
