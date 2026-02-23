@@ -59,14 +59,10 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          # AQUÍ ESTÁ LA CORRECCIÓN CLAVE:
           tags: |
-            # Genera tag con el nombre de la rama (ej: :web o :main)
             type=ref,event=branch
-            # Genera tag con el commit hash (ej: :sha-8231a...) para rollback específico
             type=sha,format=long
-            # Genera :latest SOLO si es la rama main
-            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/web' }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5

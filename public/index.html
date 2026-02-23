@@ -4,408 +4,1254 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ApexCal 2026 | Calendario F1, MotoGP, NASCAR, GT Sincronizado</title>
-    <meta name="description" content="Todos los calendarios de motos y coches 2026 en un solo lugar: F1, MotoGP, NASCAR, GT World... Horarios automáticos en tu agenda sin instalar apps.">
+    <meta name="description" content="Todos los calendarios de motos y coches 2026 en un solo lugar: F1, MotoGP, NASCAR, GT World. Horarios automáticos en tu agenda sin instalar apps.">
     <link rel="icon" type="image/svg+xml" href="/logo.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        racing: {
-                            bg: '#050505',
-                            card: 'rgba(255, 255, 255, 0.03)',
-                            cardHover: 'rgba(255, 255, 255, 0.06)',
-                            border: 'rgba(255, 255, 255, 0.08)',
-                            borderHover: 'rgba(255, 255, 255, 0.15)',
-                            red: '#e10600',
-                            orange: '#ff6b35',
-                            green: '#22c55e',
-                        }
-                    },
-                    fontFamily: {
-                        display: ['Rajdhani', 'system-ui', 'sans-serif'],
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.6s ease-out',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+
     <style>
-        body { background: #050505; }
+        /* ── Registered properties for smooth gradient transitions ── */
+        @property --col-bg-start { syntax: '<color>'; inherits: true; initial-value: #dbeafe; }
+        @property --col-bg-mid   { syntax: '<color>'; inherits: true; initial-value: #fff7ed; }
+        @property --col-bg-end   { syntax: '<color>'; inherits: true; initial-value: #fef3c7; }
 
-        .bg-mesh {
-            background-image:
-                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(225, 6, 0, 0.12) 0%, transparent 50%),
-                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(255, 107, 53, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse 50% 30% at 20% 80%, rgba(225, 6, 0, 0.06) 0%, transparent 50%);
+        /* ═══════════════════════════════════════════════════
+           CSS CUSTOM PROPERTIES — Single source of truth
+        ═══════════════════════════════════════════════════ */
+        :root {
+            /* Palette */
+            --col-bg-start:  #dbeafe;   /* sky-200 */
+            --col-bg-mid:    #fff7ed;   /* orange-50 */
+            --col-bg-end:    #fef3c7;   /* amber-100 */
+
+            --col-text-title:  #0f172a; /* slate-900  — ratio ~15:1 on glass */
+            --col-text-body:   #1e293b; /* slate-800  — ratio ~12:1 on glass */
+            --col-text-muted:  #475569; /* slate-600  — ratio ~7:1  on glass */
+            --col-text-label:  #64748b; /* slate-500  — for decorative/secondary */
+
+            --col-red:         #dc2626; /* racing red — badge only */
+            --col-red-soft:    rgba(220,38,38,0.09);
+            --col-red-border:  rgba(220,38,38,0.25);
+
+            --col-blue:        #2563eb; /* royal blue — toggles, active states */
+            --col-blue-soft:   rgba(37,99,235,0.12);
+            --col-blue-border: rgba(37,99,235,0.35);
+
+            --col-gold-a:  #f59e0b;  /* CTA gradient start */
+            --col-gold-b:  #ea580c;  /* CTA gradient end   */
+
+            /* Glass recipe */
+            --glass-bg:      rgba(255,255,255,0.42);
+            --glass-bg-deep: rgba(255,255,255,0.52);
+            --glass-blur:    blur(32px) saturate(200%) brightness(1.04);
+            --glass-border:  rgba(255,255,255,0.55);
+            --glass-inset:   rgba(255,255,255,0.85);
+
+            /* Spacing */
+            --radius-card: 1.75rem;
+            --radius-inner: 1rem;
         }
 
-        .glass-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-        }
-        .glass-card:hover {
-            border-color: rgba(255,255,255,0.13);
+        /* ═══════════════════════════════════════════════════
+           DARK MODE — "Night Racing"
+        ═══════════════════════════════════════════════════ */
+        [data-theme="dark"] {
+            --col-bg-start:  #020617;
+            --col-bg-mid:    #0a0f1e;
+            --col-bg-end:    #050d1a;
+
+            --col-text-title:  #f1f5f9;
+            --col-text-body:   #cbd5e1;
+            --col-text-muted:  #94a3b8;
+            --col-text-label:  #64748b;
+
+            --col-red:         #f87171;
+            --col-red-soft:    rgba(248,113,113,0.10);
+            --col-red-border:  rgba(248,113,113,0.28);
+
+            --col-blue:        #60a5fa;
+            --col-blue-soft:   rgba(96,165,250,0.14);
+            --col-blue-border: rgba(96,165,250,0.38);
+
+            --glass-bg:      rgba(15,23,42,0.52);
+            --glass-bg-deep: rgba(15,23,42,0.66);
+            --glass-blur:    blur(32px) saturate(160%) brightness(0.95);
+            --glass-border:  rgba(255,255,255,0.08);
+            --glass-inset:   rgba(255,255,255,0.06);
         }
 
-        /* ── Category cards ───────────────────────────────────────────── */
-        .cat-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.015) 100%);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 1rem;
-            transition: border-color 0.2s, opacity 0.2s;
+        /* Smooth theme transitions on key surfaces */
+        body,
+        .glass-card, .cat-card, .ticker,
+        .countdown-digit, .url-output,
+        .instruction-card, .btn-ghost {
+            transition:
+                background 0.5s cubic-bezier(0.4,0,0.2,1),
+                background-color 0.5s cubic-bezier(0.4,0,0.2,1),
+                --col-bg-start 0.7s ease,
+                --col-bg-mid   0.7s ease,
+                --col-bg-end   0.7s ease,
+                border-color 0.4s ease,
+                color 0.4s ease,
+                box-shadow 0.4s ease;
         }
-        .cat-card.cat-disabled { opacity: 0.45; }
-        .cat-card.cat-enabled  { border-color: rgba(255,255,255,0.12); }
 
-        /* ── Toggle switch ────────────────────────────────────────────── */
-        .toggle-track {
-            width: 40px; height: 22px;
-            border-radius: 11px;
-            display: inline-flex; align-items: center;
-            padding: 2px;
+        [data-theme="dark"] .cat-card {
+            background: rgba(15,23,42,0.60);
+            border-color: rgba(255,255,255,0.07);
+        }
+        [data-theme="dark"] .cat-card.cat-enabled {
+            border-color: rgba(96,165,250,0.18);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 4px 14px rgba(96,165,250,0.08);
+        }
+        [data-theme="dark"] .ticker {
+            background: rgba(15,23,42,0.48);
+            border-color: rgba(255,255,255,0.06);
+        }
+        [data-theme="dark"] .countdown-digit {
+            background: rgba(15,23,42,0.60);
+            border-color: rgba(255,255,255,0.08);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 2px 8px rgba(0,0,0,0.3);
+        }
+        [data-theme="dark"] .url-output {
+            background: rgba(15,23,42,0.65);
+            border-color: rgba(255,255,255,0.08);
+            color: #93c5fd;
+        }
+        [data-theme="dark"] .instruction-card {
+            background: rgba(15,23,42,0.45);
+            border-color: rgba(255,255,255,0.06);
+        }
+        [data-theme="dark"] .instruction-card:hover { background: rgba(15,23,42,0.65); }
+        [data-theme="dark"] .btn-ghost {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(255,255,255,0.09);
+            color: var(--col-text-muted);
+        }
+        [data-theme="dark"] .btn-ghost:hover {
+            background: rgba(255,255,255,0.11);
+            color: var(--col-text-body);
+        }
+        [data-theme="dark"] .glass-card::before {
+            background: linear-gradient(138deg, rgba(255,255,255,0.04) 0%, transparent 48%, rgba(96,165,250,0.03) 100%);
+        }
+        [data-theme="dark"] .glass-card:hover {
+            box-shadow:
+                inset 0 2px 0 rgba(255,255,255,0.07),
+                inset 0 -1px 0 rgba(0,0,0,0.2),
+                inset 1px 0 0 rgba(255,255,255,0.04),
+                0 28px 80px rgba(0,0,0,0.45),
+                0 6px 24px rgba(0,0,0,0.30);
+        }
+        [data-theme="dark"] ::-webkit-scrollbar-thumb { background: rgba(148,163,184,0.20); }
+        [data-theme="dark"] .ticker-label-divider { border-color: rgba(255,255,255,0.08) !important; }
+
+        /* Session pills — dark overrides */
+        [data-theme="dark"] .pill[data-alias="practice"]         { border-color:rgba(96,165,250,0.25); color:#93c5fd; background:rgba(96,165,250,0.07); }
+        [data-theme="dark"] .pill[data-alias="practice"].active  { border-color:#60a5fa; background:rgba(96,165,250,0.18); }
+        [data-theme="dark"] .pill[data-alias="qualifying"]        { border-color:rgba(251,191,36,0.25); color:#fcd34d; background:rgba(251,191,36,0.07); }
+        [data-theme="dark"] .pill[data-alias="qualifying"].active { border-color:#fbbf24; background:rgba(251,191,36,0.18); }
+        [data-theme="dark"] .pill[data-alias="sprint"]            { border-color:rgba(251,146,60,0.25); color:#fb923c; background:rgba(251,146,60,0.07); }
+        [data-theme="dark"] .pill[data-alias="sprint"].active     { border-color:#f97316; background:rgba(249,115,22,0.18); }
+        [data-theme="dark"] .pill[data-alias="race"]              { border-color:rgba(248,113,113,0.25); color:#fca5a5; background:rgba(248,113,113,0.07); }
+        [data-theme="dark"] .pill[data-alias="race"].active       { border-color:#f87171; background:rgba(248,113,113,0.18); }
+
+        /* ═══════════════════════════════════════════════════
+           THEME TOGGLE BUTTON
+        ═══════════════════════════════════════════════════ */
+        #theme-toggle {
+            position: fixed;
+            top: 2rem; right: 2rem;
+            z-index: 9999;
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.30);
+            background: rgba(255,255,255,0.22);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.55),
+                0 4px 20px rgba(0,0,0,0.10),
+                0 1px 4px rgba(0,0,0,0.07);
             cursor: pointer;
-            transition: background 0.2s;
+            display: flex; align-items: center; justify-content: center;
+            outline: none;
+            transition:
+                background 0.4s ease,
+                border-color 0.4s ease,
+                box-shadow 0.3s ease,
+                transform 0.18s ease;
+        }
+        #theme-toggle:hover {
+            transform: scale(1.09);
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.65),
+                0 8px 28px rgba(0,0,0,0.18);
+        }
+        #theme-toggle:active { transform: scale(0.93); }
+        [data-theme="dark"] #theme-toggle {
+            background: rgba(15,23,42,0.55);
+            border-color: rgba(255,255,255,0.10);
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.07),
+                0 4px 20px rgba(0,0,0,0.50),
+                0 0 0 1px rgba(96,165,250,0.10);
+        }
+        #theme-toggle-icon {
+            display: flex; align-items: center; justify-content: center;
+            transition: transform 0.55s cubic-bezier(0.34,1.56,0.64,1), opacity 0.22s ease;
+            will-change: transform;
+        }
+        #theme-toggle-icon.is-spinning { transform: rotate(360deg) scale(1.18); }
+
+        /* ═══════════════════════════════════════════════════
+           RESET & BASE
+        ═══════════════════════════════════════════════════ */
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            font-family: 'DM Sans', system-ui, sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--col-text-body);
+            min-height: 100vh;
+            background: linear-gradient(
+                155deg,
+                var(--col-bg-start)  0%,
+                var(--col-bg-mid)   45%,
+                var(--col-bg-end)  100%
+            );
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        /* Canvas sits fixed behind everything */
+        #bg-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Grain texture for depth — very subtle */
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+            background-size: 256px;
+            pointer-events: none; z-index: 1; mix-blend-mode: multiply;
+        }
+
+        /* Top vignette */
+        body::after {
+            content: '';
+            position: fixed; top: 0; left: 0; right: 0;
+            height: 35vh;
+            background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(147,197,253,0.18), transparent);
+            pointer-events: none; z-index: 1;
+        }
+
+        .page-content { position: relative; z-index: 2; }
+
+        /* ═══════════════════════════════════════════════════
+           LIQUID GLASS CARDS
+        ═══════════════════════════════════════════════════ */
+        .glass-card {
+            position: relative;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-card);
+            box-shadow:
+                inset 0 2px 0 var(--glass-inset),
+                inset 0 -1px 0 rgba(0,0,0,0.02),
+                inset 1px 0 0 rgba(255,255,255,0.45),
+                0 20px 64px rgba(30,41,59,0.07),
+                0 4px 16px rgba(30,41,59,0.04);
+            overflow: hidden;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Internal shimmer */
+        .glass-card::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(
+                138deg,
+                rgba(255,255,255,0.28) 0%,
+                transparent 48%,
+                rgba(219,234,254,0.07) 100%
+            );
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        .glass-card:hover {
+            box-shadow:
+                inset 0 2px 0 var(--glass-inset),
+                inset 0 -1px 0 rgba(0,0,0,0.03),
+                inset 1px 0 0 rgba(255,255,255,0.55),
+                0 28px 80px rgba(30,41,59,0.11),
+                0 6px 24px rgba(30,41,59,0.07);
+            transform: translateY(-1px);
+        }
+
+        /* ── Category sub-cards ───────────────────────────── */
+        .cat-card {
+            background: rgba(255,255,255,0.62);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: var(--radius-inner);
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.9),
+                0 2px 10px rgba(30,41,59,0.05);
+            transition: opacity 0.25s, border-color 0.25s, box-shadow 0.25s;
+        }
+        .cat-card.cat-disabled { opacity: 0.42; }
+        .cat-card.cat-enabled {
+            border-color: rgba(37,99,235,0.15);
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.95),
+                0 4px 14px rgba(37,99,235,0.08);
+        }
+
+        /* ═══════════════════════════════════════════════════
+           TOGGLE  — Royal Blue #2563eb
+        ═══════════════════════════════════════════════════ */
+        .toggle-track {
+            width: 44px; height: 26px;
+            border-radius: 13px;
+            display: inline-flex; align-items: center;
+            padding: 3px;
+            cursor: pointer;
+            transition: background 0.22s, box-shadow 0.22s;
             flex-shrink: 0;
         }
-        .toggle-track.on  { background: #e10600; }
-        .toggle-track.off { background: rgba(255,255,255,0.12); }
+        .toggle-track.on {
+            background: var(--col-blue);
+            box-shadow: 0 0 0 3px var(--col-blue-soft), inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        .toggle-track.off {
+            background: rgba(100,116,139,0.2);
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.08);
+        }
         .toggle-knob {
-            width: 18px; height: 18px;
+            width: 20px; height: 20px;
             border-radius: 50%;
-            background: white;
-            transition: transform 0.2s;
+            background: #fff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.22);
+            transition: transform 0.22s cubic-bezier(0.4,0,0.2,1);
         }
         .toggle-track.on  .toggle-knob { transform: translateX(18px); }
         .toggle-track.off .toggle-knob { transform: translateX(0); }
 
-        /* ── Session pills ────────────────────────────────────────────── */
+        /* ═══════════════════════════════════════════════════
+           SESSION PILLS — accessible contrast on light glass
+        ═══════════════════════════════════════════════════ */
         .pill {
             display: inline-flex; align-items: center;
-            padding: 3px 10px;
+            padding: 4px 11px;
             border-radius: 999px;
-            font-size: 11px; font-weight: 500;
+            font-size: 11.5px; font-weight: 500;
             cursor: pointer;
             transition: all 0.15s;
             white-space: nowrap;
             border: 1px solid transparent;
             user-select: none;
+            color: var(--col-text-muted);
         }
 
-        /* practice — blue */
-        .pill[data-alias="practice"]          { border-color: rgba(99,179,237,0.3);  color: rgba(147,210,255,0.55); background: transparent; }
-        .pill[data-alias="practice"]:hover    { border-color: rgba(99,179,237,0.7);  color: rgba(147,210,255,0.9); }
-        .pill[data-alias="practice"].active   { border-color: #63b3ed; color: #bee3f8; background: rgba(66,153,225,0.18); }
+        /* Practice — steel blue */
+        .pill[data-alias="practice"]        { border-color: rgba(71,130,218,0.3);  color: #2563eb; background: rgba(37,99,235,0.06); }
+        .pill[data-alias="practice"]:hover  { border-color: rgba(37,99,235,0.55);  background: rgba(37,99,235,0.12); }
+        .pill[data-alias="practice"].active { border-color: #2563eb; background: rgba(37,99,235,0.18); font-weight: 600; }
 
-        /* qualifying — yellow */
-        .pill[data-alias="qualifying"]        { border-color: rgba(236,201,75,0.3);  color: rgba(250,220,100,0.55); background: transparent; }
-        .pill[data-alias="qualifying"]:hover  { border-color: rgba(236,201,75,0.7);  color: rgba(250,220,100,0.9); }
-        .pill[data-alias="qualifying"].active { border-color: #ecc94b; color: #fefcbf; background: rgba(214,158,46,0.18); }
+        /* Qualifying — amber */
+        .pill[data-alias="qualifying"]        { border-color: rgba(180,130,20,0.3); color: #92400e; background: rgba(180,83,9,0.06); }
+        .pill[data-alias="qualifying"]:hover  { border-color: rgba(180,83,9,0.5);   background: rgba(180,83,9,0.12); }
+        .pill[data-alias="qualifying"].active { border-color: #b45309; background: rgba(180,83,9,0.18); font-weight: 600; }
 
-        /* sprint — orange */
-        .pill[data-alias="sprint"]            { border-color: rgba(237,137,54,0.3);  color: rgba(255,160,80,0.55); background: transparent; }
-        .pill[data-alias="sprint"]:hover      { border-color: rgba(237,137,54,0.7);  color: rgba(255,160,80,0.9); }
-        .pill[data-alias="sprint"].active     { border-color: #ed8936; color: #fbd38d; background: rgba(221,107,32,0.18); }
+        /* Sprint — tangerine */
+        .pill[data-alias="sprint"]        { border-color: rgba(220,100,0,0.3); color: #c2410c; background: rgba(220,100,0,0.06); }
+        .pill[data-alias="sprint"]:hover  { border-color: rgba(220,100,0,0.55); background: rgba(220,100,0,0.12); }
+        .pill[data-alias="sprint"].active { border-color: #c2410c; background: rgba(220,100,0,0.18); font-weight: 600; }
 
-        /* race — red */
-        .pill[data-alias="race"]              { border-color: rgba(225,6,0,0.35);    color: rgba(252,129,129,0.55); background: transparent; }
-        .pill[data-alias="race"]:hover        { border-color: rgba(225,6,0,0.75);    color: rgba(252,129,129,0.9); }
-        .pill[data-alias="race"].active       { border-color: #e10600; color: #fed7d7; background: rgba(225,6,0,0.18); }
+        /* Race — crimson */
+        .pill[data-alias="race"]        { border-color: rgba(185,28,28,0.28); color: #991b1b; background: rgba(185,28,28,0.06); }
+        .pill[data-alias="race"]:hover  { border-color: rgba(185,28,28,0.55);  background: rgba(185,28,28,0.12); }
+        .pill[data-alias="race"].active { border-color: #b91c1c; background: rgba(185,28,28,0.18); font-weight: 600; }
 
-        /* ── Other ────────────────────────────────────────────────────── */
-        .url-output {
-            background: rgba(34,197,94,0.05);
-            border: 1px solid rgba(34,197,94,0.2);
-        }
-        .url-output:focus { outline: none; box-shadow: 0 0 20px rgba(34,197,94,0.15); border-color: rgba(34,197,94,0.4); }
-
+        /* ═══════════════════════════════════════════════════
+           CTA BUTTON — Gold/Amber, TEXT must be #0f172a (AAA)
+        ═══════════════════════════════════════════════════ */
         .btn-primary {
-            background: linear-gradient(135deg, #e10600 0%, #ff3d33 100%);
-            transition: all 0.2s ease;
+            background: linear-gradient(135deg, var(--col-gold-a) 0%, var(--col-gold-b) 100%);
+            color: #0f172a;          /* AAA contrast on amber: ~11:1 */
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            border: none;
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.35),
+                0 4px 20px rgba(234,88,12,0.30);
+            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+            position: relative; overflow: hidden;
         }
-        .btn-primary:hover { box-shadow: 0 10px 40px rgba(225,6,0,0.4); transform: translateY(-1px); }
-        .btn-primary:active { transform: scale(0.98); }
-        .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+        .btn-primary::after {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 50%;
+            background: linear-gradient(rgba(255,255,255,0.18), transparent);
+            pointer-events: none;
+        }
+        .btn-primary:hover:not(:disabled) {
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 8px 32px rgba(234,88,12,0.45);
+            transform: translateY(-2px) scale(1.01);
+        }
+        .btn-primary:active:not(:disabled) { transform: scale(0.98); }
+        .btn-primary:disabled {
+            opacity: 0.35; cursor: not-allowed; transform: none; box-shadow: none;
+        }
 
+        /* Ghost buttons */
+        .btn-ghost {
+            background: rgba(255,255,255,0.5);
+            border: 1px solid rgba(0,0,0,0.08);
+            color: var(--col-text-muted);
+            transition: all 0.15s;
+        }
+        .btn-ghost:hover {
+            background: rgba(255,255,255,0.8);
+            color: var(--col-text-body);
+            border-color: rgba(0,0,0,0.12);
+        }
+
+        /* ═══════════════════════════════════════════════════
+           COUNTDOWN DIGITS
+        ═══════════════════════════════════════════════════ */
         .countdown-digit {
-            background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.03) 100%);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.55);
+            border: 1px solid rgba(0,0,0,0.07);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 2px 8px rgba(30,41,59,0.06);
         }
 
-        .live-dot { animation: blink 2s infinite; }
-        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.4} }
+        /* ═══════════════════════════════════════════════════
+           URL FIELD
+        ═══════════════════════════════════════════════════ */
+        .url-output {
+            background: rgba(255,255,255,0.65);
+            border: 1px solid rgba(0,0,0,0.08);
+            color: #1d4ed8;
+            font-family: 'DM Mono', 'Fira Code', ui-monospace, monospace;
+            font-size: 13px;
+        }
+        .url-output::placeholder { color: var(--col-text-label); }
+        .url-output:focus {
+            outline: none;
+            border-color: var(--col-blue);
+            box-shadow: 0 0 0 3px var(--col-blue-soft);
+        }
 
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); }
-        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
-
+        /* ═══════════════════════════════════════════════════
+           INSTRUCTION CARDS
+        ═══════════════════════════════════════════════════ */
         .instruction-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+            background: rgba(255,255,255,0.4);
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: background 0.2s;
         }
+        .instruction-card:hover { background: rgba(255,255,255,0.62); }
+
+        /* ═══════════════════════════════════════════════════
+           TICKER BAR
+        ═══════════════════════════════════════════════════ */
         .ticker {
-            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.03) 10%, rgba(255,255,255,0.03) 90%, transparent 100%);
+            background: rgba(255,255,255,0.38);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0,0,0,0.06);
         }
+
+        /* ═══════════════════════════════════════════════════
+           TICKER CAROUSEL — GPU-only, no layout shifts
+        ═══════════════════════════════════════════════════ */
+        .ticker-viewport {
+            overflow: hidden;
+            /* Soft edge fade — pure CSS, no extra elements */
+            mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+        }
+        .ticker-track {
+            display: flex;
+            width: max-content;
+            gap: 0.625rem;           /* 10px between pills */
+            animation: ticker-scroll 28s linear infinite;
+            will-change: transform;  /* promotes to own compositor layer */
+        }
+        /* pause-on-hover — UX: lets users read without cognitive strain */
+        .ticker-viewport:hover .ticker-track { animation-play-state: paused; }
+
+        @keyframes ticker-scroll {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }  /* exactly half = seamless loop */
+        }
+        /* Accessibility: respect user motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            .ticker-track { animation: none; }
+            .ticker-viewport { overflow-x: auto; }
+        }
+
+        .ticker-pill {
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.55);
+            border: 1px solid rgba(0,0,0,0.06);
+            color: var(--col-text-muted);
+            font-size: 0.8125rem;    /* 13px */
+            padding: 4px 12px;
+            border-radius: 999px;
+            white-space: nowrap;
+            transition: background 0.15s, color 0.15s;
+        }
+        .ticker-pill:hover { background: rgba(255,255,255,0.88); color: var(--col-text-body); }
+        .ticker-pill.ticker-pill--highlight {
+            font-weight: 600;
+            color: var(--col-text-body);
+        }
+
+        /* Dark overrides */
+        [data-theme="dark"] .ticker-pill {
+            background: rgba(30,41,59,0.55);
+            border-color: rgba(255,255,255,0.07);
+        }
+        [data-theme="dark"] .ticker-pill:hover {
+            background: rgba(51,65,85,0.72);
+        }
+
+        /* ═══════════════════════════════════════════════════
+           CATEGORY LOGO — consistent across all brands
+        ═══════════════════════════════════════════════════ */
+        .cat-logo {
+            display: block;
+            height: 22px;           /* unified baseline */
+            max-height: 22px;
+            width: auto;
+            max-width: 90px;
+            object-fit: contain;
+            object-position: left center;
+            flex-shrink: 0;
+        }
+
+        /* Cat logo — dark mode: invert black logos to white */
+        [data-theme="dark"] .cat-logo[style*="brightness(0)"] {
+            filter: brightness(0) invert(1) opacity(0.80) !important;
+        }
+
+        /* ═══════════════════════════════════════════════════
+           ANIMATIONS
+        ═══════════════════════════════════════════════════ */
+        .live-dot { animation: blink 2.2s ease-in-out infinite; }
+        @keyframes blink { 0%,100%{ opacity:1 } 55%{ opacity:.3 } }
+
+        .animate-fade-up {
+            animation: fadeUp 0.72s cubic-bezier(0.16,1,0.3,1) both;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-spin { animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ═══════════════════════════════════════════════════
+           TYPOGRAPHY UTILITIES
+        ═══════════════════════════════════════════════════ */
+        .font-display { font-family: 'Barlow Condensed', system-ui, sans-serif; }
+        .text-title    { color: var(--col-text-title); }
+        .text-body     { color: var(--col-text-body); }
+        .text-muted    { color: var(--col-text-muted); }
+        .text-label    { color: var(--col-text-label); }
+        .text-accent   { color: var(--col-red); }
+
+        /* ═══════════════════════════════════════════════════
+           SCROLLBAR
+        ═══════════════════════════════════════════════════ */
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(30,41,59,0.18); border-radius: 99px; }
     </style>
 </head>
-<body class="font-sans text-white antialiased min-h-screen bg-mesh">
-<div class="min-h-screen px-4 py-8 md:py-12 lg:py-16">
+
+<body>
+
+<!-- ════════════════════════════════════════════════════
+     BACKGROUND CANVAS — 12 racing vehicles, top-down
+════════════════════════════════════════════════════ -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- ════════════════════════════════════════════════════
+     THEME TOGGLE
+════════════════════════════════════════════════════ -->
+<button id="theme-toggle" aria-label="Cambiar tema claro/oscuro">
+    <span id="theme-toggle-icon">
+        <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+    </span>
+</button>
+
+<!-- ════════════════════════════════════════════════════
+     PAGE CONTENT
+════════════════════════════════════════════════════ -->
+<div class="page-content min-h-screen px-4 py-8 md:py-12 lg:py-16">
 <div class="max-w-6xl mx-auto">
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
 
-    <!-- ── Hero ─────────────────────────────────────────────────────── -->
-    <div class="lg:col-span-2 glass-card rounded-3xl p-8 md:p-10 animate-fade-in">
+    <!-- ── HERO ─────────────────────────────────────────── -->
+    <div class="lg:col-span-2 glass-card p-8 md:p-10 animate-fade-up">
         <div class="flex flex-col h-full justify-between">
             <div>
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-racing-red/10 border border-racing-red/30 text-racing-red text-sm font-medium mb-6">
-                    <span class="live-dot w-2 h-2 rounded-full bg-racing-red"></span>
-                    Temporada 2026
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6"
+                     style="background:var(--col-red-soft); border:1px solid var(--col-red-border);">
+                    <span class="live-dot w-2 h-2 rounded-full flex-shrink-0" style="background:var(--col-red);"></span>
+                    <span class="font-display text-sm font-bold tracking-wide" style="color:var(--col-red);">Temporada 2026</span>
                 </div>
-                <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-4 leading-[0.9]">
+
+                <!-- Logotype -->
+                <h1 class="font-display font-extrabold tracking-tight text-title mb-4 leading-none"
+                    style="font-size: clamp(3.5rem, 10vw, 6rem); letter-spacing: -0.025em;">
                     APEX<br>
-                    <span class="bg-gradient-to-r from-racing-red via-racing-orange to-racing-red bg-clip-text text-transparent">CALENDAR</span>
+                    <span style="background: linear-gradient(100deg, #dc2626 0%, #ea580c 55%, #f59e0b 100%);
+                                 -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+                                 background-clip: text;">CALENDAR</span>
                 </h1>
-                <p class="text-gray-400 text-lg md:text-xl max-w-md leading-relaxed">
-                    Sincronización automática. Sin spam. Tu horario local.
+
+                <p class="text-body max-w-sm leading-relaxed" style="font-weight:400; font-size:1.0625rem;">
+                    Sincronización automática a tu agenda. Sin spam. Siempre en tu huso horario.
                 </p>
             </div>
-            <div class="mt-8 flex items-center gap-4">
+
+            <!-- Bottom row -->
+            <div class="mt-8 flex items-center gap-4 flex-wrap">
                 <div class="flex -space-x-2">
-                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-racing-bg flex items-center justify-center text-xs">🏎️</div>
-                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-racing-bg flex items-center justify-center text-xs">🏁</div>
-                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-racing-bg flex items-center justify-center text-xs">🏍️</div>
+                    <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm"
+                         style="background:rgba(255,255,255,0.72); border:2px solid rgba(255,255,255,0.95); box-shadow:0 1px 4px rgba(0,0,0,0.1);">🏎️</div>
+                    <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm"
+                         style="background:rgba(255,255,255,0.72); border:2px solid rgba(255,255,255,0.95); box-shadow:0 1px 4px rgba(0,0,0,0.1);">🏁</div>
+                    <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm"
+                         style="background:rgba(255,255,255,0.72); border:2px solid rgba(255,255,255,0.95); box-shadow:0 1px 4px rgba(0,0,0,0.1);">🏍️</div>
                 </div>
-                <span class="text-gray-500 text-sm">+150 eventos incluidos</span>
+                <span class="text-muted text-sm font-medium">+150 eventos incluidos</span>
+
+                <!-- Decorative lap indicator -->
+                <div class="ml-auto hidden sm:flex items-center gap-1.5"
+                     style="background:rgba(255,255,255,0.06); border:1px solid rgba(0,0,0,0.07); border-radius:999px; padding:5px 12px;">
+                    <svg class="w-3.5 h-3.5 text-muted" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="text-muted text-xs font-medium">Actualización cada hora</span>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- ── Next Race Countdown ────────────────────────────────────── -->
-    <div class="glass-card rounded-3xl p-6 md:p-8 animate-fade-in" style="animation-delay:.1s">
+    <!-- ── NEXT RACE COUNTDOWN ──────────────────────────── -->
+    <div class="glass-card p-6 md:p-8 animate-fade-up" style="animation-delay:.08s">
         <div class="flex flex-col h-full">
-            <div class="flex items-center justify-between mb-4">
-                <span class="text-gray-500 text-sm font-medium uppercase tracking-wider">Próximas carreras</span>
-                <span class="text-2xl live-dot">🏁</span>
+            <div class="flex items-center justify-between mb-5">
+                <span class="text-label text-xs font-semibold uppercase tracking-widest">Próximas carreras</span>
+                <span class="text-xl live-dot">🏁</span>
             </div>
-            <div id="loading-skeleton" class="flex-1 flex flex-col justify-center items-center opacity-50">
-                <div class="w-8 h-8 border-4 border-racing-red border-t-transparent rounded-full animate-spin"></div>
+
+            <!-- Loading -->
+            <div id="loading-skeleton" class="flex-1 flex flex-col justify-center items-center" style="opacity:.4;">
+                <div class="w-7 h-7 rounded-full border-4 animate-spin"
+                     style="border-color:rgba(37,99,235,0.25); border-top-color:var(--col-blue);"></div>
             </div>
+
+            <!-- Content -->
             <div id="races-content" class="hidden flex-1 flex flex-col justify-between">
                 <div>
-                    <h3 class="font-display text-xl md:text-2xl font-bold text-white mb-1 leading-tight flex items-center gap-2" id="r1-name">Cargando...</h3>
-                    <p class="text-gray-500 text-sm mb-4"><span id="r1-circuit">Circuito</span></p>
+                    <h3 class="font-display text-2xl font-bold text-title mb-0.5 leading-tight flex items-center gap-2 flex-wrap" id="r1-name">Cargando…</h3>
+                    <p class="text-label text-sm mb-4"><span id="r1-circuit">Circuito</span></p>
                     <div class="grid grid-cols-4 gap-2">
-                        <div class="countdown-digit rounded-lg p-2 text-center">
-                            <span class="font-display text-xl md:text-2xl font-bold text-white block leading-none" id="d-days">00</span>
-                            <span class="text-[10px] text-gray-500 uppercase">Días</span>
+                        <div class="countdown-digit rounded-xl p-2.5 text-center">
+                            <span class="font-display text-2xl font-bold text-title block leading-none" id="d-days">00</span>
+                            <span class="text-[10px] text-label font-medium uppercase tracking-wide">Días</span>
                         </div>
-                        <div class="countdown-digit rounded-lg p-2 text-center">
-                            <span class="font-display text-xl md:text-2xl font-bold text-white block leading-none" id="d-hours">00</span>
-                            <span class="text-[10px] text-gray-500 uppercase">Horas</span>
+                        <div class="countdown-digit rounded-xl p-2.5 text-center">
+                            <span class="font-display text-2xl font-bold text-title block leading-none" id="d-hours">00</span>
+                            <span class="text-[10px] text-label font-medium uppercase tracking-wide">Horas</span>
                         </div>
-                        <div class="countdown-digit rounded-lg p-2 text-center">
-                            <span class="font-display text-xl md:text-2xl font-bold text-white block leading-none" id="d-mins">00</span>
-                            <span class="text-[10px] text-gray-500 uppercase">Min</span>
+                        <div class="countdown-digit rounded-xl p-2.5 text-center">
+                            <span class="font-display text-2xl font-bold text-title block leading-none" id="d-mins">00</span>
+                            <span class="text-[10px] text-label font-medium uppercase tracking-wide">Min</span>
                         </div>
-                        <div class="countdown-digit rounded-lg p-2 text-center">
-                            <span class="font-display text-xl md:text-2xl font-bold text-white block leading-none" id="d-secs">00</span>
-                            <span class="text-[10px] text-gray-500 uppercase">Seg</span>
+                        <div class="countdown-digit rounded-xl p-2.5 text-center">
+                            <span class="font-display text-2xl font-bold text-title block leading-none" id="d-secs">00</span>
+                            <span class="text-[10px] text-label font-medium uppercase tracking-wide">Seg</span>
                         </div>
                     </div>
                 </div>
-                <div class="mt-4 pt-4 border-t border-white/5 space-y-3">
+
+                <div class="mt-5 pt-4 space-y-3" style="border-top:1px solid rgba(0,0,0,0.07);">
                     <div class="flex items-center justify-between text-sm">
                         <div class="flex items-center gap-2 overflow-hidden">
-                            <span id="r2-icon" class="text-base">🏎️</span>
-                            <span id="r2-name" class="text-gray-300 font-medium truncate">—</span>
+                            <span id="r2-icon" class="text-base flex-shrink-0">🏎️</span>
+                            <span id="r2-name" class="text-body font-medium truncate">—</span>
                         </div>
-                        <span id="r2-date" class="text-gray-500 text-xs font-mono whitespace-nowrap">--/--</span>
+                        <span id="r2-date" class="text-muted text-xs font-mono ml-2 flex-shrink-0">--/--</span>
                     </div>
                     <div class="flex items-center justify-between text-sm">
                         <div class="flex items-center gap-2 overflow-hidden">
-                            <span id="r3-icon" class="text-base">🏎️</span>
-                            <span id="r3-name" class="text-gray-300 font-medium truncate">—</span>
+                            <span id="r3-icon" class="text-base flex-shrink-0">🏎️</span>
+                            <span id="r3-name" class="text-body font-medium truncate">—</span>
                         </div>
-                        <span id="r3-date" class="text-gray-500 text-xs font-mono whitespace-nowrap">--/--</span>
+                        <span id="r3-date" class="text-muted text-xs font-mono ml-2 flex-shrink-0">--/--</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ── Category + Session Cards (full width) ─────────────────── -->
-    <div class="lg:col-span-3 glass-card rounded-3xl p-6 md:p-8 animate-fade-in" style="animation-delay:.2s">
-        <div class="flex items-center justify-between mb-6">
-            <h2 class="text-gray-500 text-sm font-medium uppercase tracking-wider flex items-center gap-2">
-                <svg class="w-4 h-4 text-racing-red" fill="currentColor" viewBox="0 0 20 20">
+    <!-- ── CATEGORY + SESSION CARDS ─────────────────────── -->
+    <div class="lg:col-span-3 glass-card p-6 md:p-8 animate-fade-up" style="animation-delay:.16s">
+        <div class="flex items-center justify-between mb-5">
+            <h2 class="text-label text-xs font-semibold uppercase tracking-widest flex items-center gap-2">
+                <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                 </svg>
                 Personaliza tu calendario
             </h2>
             <div class="flex gap-2">
-                <button id="globalSelectAll"
-                    class="text-xs px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/25 transition-all">
-                    Seleccionar todo
-                </button>
-                <button id="globalClear"
-                    class="text-xs px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/25 transition-all">
-                    Borrar todo
-                </button>
+                <button id="globalSelectAll" class="btn-ghost text-xs px-3 py-1.5 rounded-lg font-medium">Seleccionar todo</button>
+                <button id="globalClear"     class="btn-ghost text-xs px-3 py-1.5 rounded-lg font-medium">Borrar todo</button>
             </div>
         </div>
 
-        <!-- Legend row -->
-        <div class="flex flex-wrap gap-3 mb-5 pb-4 border-b border-white/5">
-            <span class="flex items-center gap-1.5 text-xs text-gray-500">
-                <span class="w-2.5 h-2.5 rounded-full bg-blue-400/60"></span>Prácticas
+        <!-- Legend -->
+        <div class="flex flex-wrap gap-x-5 gap-y-2 mb-5 pb-4" style="border-bottom:1px solid rgba(0,0,0,0.07);">
+            <span class="flex items-center gap-1.5 text-xs text-muted font-medium">
+                <span class="w-2 h-2 rounded-full" style="background:#2563eb;"></span>Prácticas
             </span>
-            <span class="flex items-center gap-1.5 text-xs text-gray-500">
-                <span class="w-2.5 h-2.5 rounded-full bg-yellow-400/60"></span>Clasificación
+            <span class="flex items-center gap-1.5 text-xs text-muted font-medium">
+                <span class="w-2 h-2 rounded-full" style="background:#b45309;"></span>Clasificación
             </span>
-            <span class="flex items-center gap-1.5 text-xs text-gray-500">
-                <span class="w-2.5 h-2.5 rounded-full bg-orange-400/60"></span>Sprint
+            <span class="flex items-center gap-1.5 text-xs text-muted font-medium">
+                <span class="w-2 h-2 rounded-full" style="background:#c2410c;"></span>Sprint
             </span>
-            <span class="flex items-center gap-1.5 text-xs text-gray-500">
-                <span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span>Carrera
+            <span class="flex items-center gap-1.5 text-xs text-muted font-medium">
+                <span class="w-2 h-2 rounded-full" style="background:#991b1b;"></span>Carrera
             </span>
         </div>
 
-        <!-- Category cards grid -->
+        <!-- Cards grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="categories-grid"></div>
     </div>
 
-    <!-- ── URL Output ─────────────────────────────────────────────── -->
-    <div class="lg:col-span-2 glass-card rounded-3xl p-6 md:p-8 animate-fade-in" style="animation-delay:.3s">
-        <h2 class="text-gray-500 text-sm font-medium uppercase tracking-wider mb-4 flex items-center gap-2">
-            <svg class="w-4 h-4 text-racing-green" fill="currentColor" viewBox="0 0 20 20">
+    <!-- ── URL OUTPUT ────────────────────────────────────── -->
+    <div class="lg:col-span-2 glass-card p-6 md:p-8 animate-fade-up" style="animation-delay:.24s">
+        <h2 class="text-label text-xs font-semibold uppercase tracking-widest mb-4 flex items-center gap-2">
+            <svg class="w-4 h-4" style="color:var(--col-blue);" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"/>
             </svg>
             URL de suscripción
         </h2>
-        <div id="errorMessage" class="hidden mb-4 p-4 rounded-xl bg-racing-red/10 border border-racing-red/30 text-red-400 text-sm flex items-center gap-2">
-            <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+
+        <!-- Error message -->
+        <div id="errorMessage" class="hidden mb-4 p-3.5 rounded-xl text-sm flex items-start gap-2"
+             style="background:var(--col-red-soft); border:1px solid var(--col-red-border); color:#7f1d1d;">
+            <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
             </svg>
-            Selecciona al menos un campeonato y una sesión para generar la URL.
+            <span>Selecciona al menos un campeonato y una sesión para generar la URL.</span>
         </div>
+
         <div class="flex flex-col sm:flex-row gap-3">
             <input type="text" id="urlOutput" readonly
-                class="url-output flex-1 px-5 py-4 rounded-xl text-racing-green font-mono text-sm focus:outline-none truncate"
+                class="url-output flex-1 px-4 py-3.5 rounded-xl focus:outline-none truncate"
                 value="" placeholder="Configura tus preferencias arriba…">
+
+            <!-- CTA — gold gradient, DARK text for AAA contrast -->
             <button id="copyBtn" disabled
-                class="btn-primary px-8 py-4 text-white font-bold rounded-xl flex items-center justify-center gap-2 min-w-[140px]">
+                class="btn-primary px-8 py-3.5 rounded-xl flex items-center justify-center gap-2.5 min-w-[148px]">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                          d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
                 </svg>
                 <span id="copyText">Copiar URL</span>
             </button>
         </div>
     </div>
 
-    <!-- ── Instructions ───────────────────────────────────────────── -->
-    <div class="glass-card rounded-3xl p-6 md:p-8 animate-fade-in" style="animation-delay:.4s">
-        <h2 class="text-gray-500 text-sm font-medium uppercase tracking-wider mb-5">Cómo suscribirte</h2>
-        <div class="space-y-3">
-            <div class="instruction-card rounded-xl p-4 border border-white/5">
-                <div class="flex items-center gap-3 mb-2">
-                    <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
-                        <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
+    <!-- ── INSTRUCTIONS ──────────────────────────────────── -->
+    <div class="glass-card p-6 md:p-8 animate-fade-up" style="animation-delay:.32s">
+        <h2 class="text-label text-xs font-semibold uppercase tracking-widest mb-5">Cómo suscribirte</h2>
+        <div class="space-y-2.5">
+            <!-- iOS -->
+            <div class="instruction-card rounded-xl p-4">
+                <div class="flex items-center gap-3 mb-1">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                         style="background:rgba(255,255,255,0.65); border:1px solid rgba(0,0,0,0.08);">
+                        <svg class="w-5 h-5 text-body" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                         </svg>
                     </div>
-                    <span class="font-semibold text-white text-sm">iOS / macOS</span>
+                    <span class="font-semibold text-title text-sm">iOS / macOS</span>
                 </div>
-                <p class="text-gray-500 text-xs leading-relaxed">Copiar la URL → Configuración → Cuentas → Añadir cuenta → Calendarios suscritos</p>
+                <p class="text-muted text-xs leading-relaxed pl-11">Configuración → Cuentas → Añadir cuenta → Calendarios suscritos</p>
             </div>
-            <div class="instruction-card rounded-xl p-4 border border-white/5">
-                <div class="flex items-center gap-3 mb-2">
-                    <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
-                        <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+
+            <!-- Google Calendar -->
+            <div class="instruction-card rounded-xl p-4">
+                <div class="flex items-center gap-3 mb-1">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                         style="background:rgba(255,255,255,0.65); border:1px solid rgba(0,0,0,0.08);">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path style="fill:#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                            <path style="fill:#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                            <path style="fill:#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                            <path style="fill:#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
                         </svg>
                     </div>
-                    <span class="font-semibold text-white text-sm">Google Calendar</span>
+                    <span class="font-semibold text-title text-sm">Google Calendar</span>
                 </div>
-                <p class="text-gray-500 text-xs leading-relaxed">Abrir Google Calendar → Otros calendarios (+) → Desde URL</p>
+                <p class="text-muted text-xs leading-relaxed pl-11">Otros calendarios (+) → Desde URL → Pegar y añadir</p>
             </div>
-            <div class="instruction-card rounded-xl p-4 border border-white/5">
-                <div class="flex items-center gap-3 mb-2">
-                    <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-gray-400 text-xs font-bold">OL</div>
-                    <span class="font-semibold text-white text-sm">Outlook</span>
+
+            <!-- Outlook -->
+            <div class="instruction-card rounded-xl p-4">
+                <div class="flex items-center gap-3 mb-1">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                         style="background:rgba(255,255,255,0.65); border:1px solid rgba(0,0,0,0.08);">
+                        <!--
+                            Outlook 365 logomark — monochromatised to currentColor so it
+                            inherits the system palette in both light and dark modes.
+                            The envelope+O shape is the canonical M365 Outlook glyph.
+                        -->
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" aria-label="Microsoft Outlook" xmlns="http://www.w3.org/2000/svg">
+                            <!-- envelope body -->
+                            <rect x="2" y="5" width="20" height="14" rx="2" ry="2"
+                                  fill="none" stroke="var(--col-text-muted)" stroke-width="1.6"/>
+                            <!-- letter O -->
+                            <ellipse cx="9.2" cy="12" rx="3" ry="3.6"
+                                     fill="none" stroke="var(--col-text-muted)" stroke-width="1.5"/>
+                            <!-- right panel vertical rule -->
+                            <line x1="14.5" y1="8" x2="14.5" y2="16"
+                                  stroke="var(--col-text-muted)" stroke-width="1.3" stroke-linecap="round" opacity="0.45"/>
+                            <!-- stacked horizontal lines (inbox lines) -->
+                            <line x1="16" y1="9.5" x2="20.5" y2="9.5"
+                                  stroke="var(--col-text-muted)" stroke-width="1.2" stroke-linecap="round" opacity="0.55"/>
+                            <line x1="16" y1="12" x2="20.5" y2="12"
+                                  stroke="var(--col-text-muted)" stroke-width="1.2" stroke-linecap="round" opacity="0.55"/>
+                            <line x1="16" y1="14.5" x2="19" y2="14.5"
+                                  stroke="var(--col-text-muted)" stroke-width="1.2" stroke-linecap="round" opacity="0.55"/>
+                        </svg>
+                    </div>
+                    <span class="font-semibold text-title text-sm">Outlook 365</span>
                 </div>
-                <p class="text-gray-500 text-xs leading-relaxed">Añadir calendario → Suscribirse desde web → Pegar URL</p>
+                <p class="text-muted text-xs leading-relaxed pl-11">Añadir calendario → Suscribirse desde web → Pegar URL</p>
             </div>
         </div>
     </div>
 
-    <!-- ── Ticker ──────────────────────────────────────────────────── -->
-    <div class="md:col-span-2 lg:col-span-3 ticker rounded-2xl p-4 md:p-5 border border-white/5 animate-fade-in" style="animation-delay:.5s">
-        <div class="flex items-center gap-4 overflow-hidden">
-            <div class="flex items-center gap-2 flex-shrink-0">
-                <span class="live-dot w-2 h-2 rounded-full bg-racing-red"></span>
-                <span class="text-gray-500 text-sm font-medium uppercase tracking-wider">Incluye</span>
+    <!-- ── TICKER CAROUSEL ───────────────────────────────── -->
+    <div class="md:col-span-2 lg:col-span-3 ticker rounded-2xl p-4 animate-fade-up" style="animation-delay:.4s;">
+        <div class="flex items-center gap-4">
+            <!-- Fixed label — always visible, not scrolling -->
+            <div class="flex items-center gap-2 flex-shrink-0 pr-3 ticker-label-divider"
+                 style="border-right:1px solid rgba(0,0,0,0.07);"
+                 data-divider="true">
+                <span class="live-dot w-2 h-2 rounded-full flex-shrink-0" style="background:var(--col-red);"></span>
+                <span class="text-label text-xs font-semibold uppercase tracking-widest whitespace-nowrap">Incluye</span>
             </div>
-            <div class="flex items-center gap-3 text-gray-400 text-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
-                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Mónaco</span>
-                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">24h Spa</span>
-                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Daytona 500</span>
-                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Las Vegas</span>
-                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">NASCAR Playoffs</span>
-                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Singapur</span>
-                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Coke 600</span>
-                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Abu Dhabi</span>
-                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Jerez</span>
-                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Mugello</span>
-                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Valencia</span>
-                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">+ 120 más</span>
+
+            <!--
+                Viewport: clips overflow + applies fade-edge mask.
+                Track: doubled content (set A + set B) so translateX(-50%)
+                       lands precisely back at the start — seamless infinite loop.
+                Hover pauses via CSS animation-play-state: paused.
+            -->
+            <div class="ticker-viewport flex-1 min-w-0" title="Pasa el cursor para pausar">
+                <div class="ticker-track">
+                    <!-- ── Set A ── -->
+                    <span class="ticker-pill">🇲🇨 GP Mónaco</span>
+                    <span class="ticker-pill">🇧🇪 24h Spa</span>
+                    <span class="ticker-pill">🇺🇸 Daytona 500</span>
+                    <span class="ticker-pill">🇺🇸 GP Las Vegas</span>
+                    <span class="ticker-pill">🏆 NASCAR Playoffs</span>
+                    <span class="ticker-pill">🇸🇬 GP Singapur</span>
+                    <span class="ticker-pill">🇺🇸 Coca-Cola 600</span>
+                    <span class="ticker-pill">🇦🇪 GP Abu Dhabi</span>
+                    <span class="ticker-pill">🇮🇹 GP Mugello</span>
+                    <span class="ticker-pill">🇯🇵 GP Japón</span>
+                    <span class="ticker-pill">🇦🇺 GP Australia</span>
+                    <span class="ticker-pill">🇧🇷 GP São Paulo</span>
+                    <span class="ticker-pill">🇦🇹 Red Bull Ring</span>
+                    <span class="ticker-pill">🇬🇧 GP Silverstone</span>
+                    <span class="ticker-pill ticker-pill--highlight">+ 120 eventos más</span>
+                    <!-- ── Set B (exact copy — enables seamless -50% loop) ── -->
+                    <span class="ticker-pill">🇲🇨 GP Mónaco</span>
+                    <span class="ticker-pill">🇧🇪 24h Spa</span>
+                    <span class="ticker-pill">🇺🇸 Daytona 500</span>
+                    <span class="ticker-pill">🇺🇸 GP Las Vegas</span>
+                    <span class="ticker-pill">🏆 NASCAR Playoffs</span>
+                    <span class="ticker-pill">🇸🇬 GP Singapur</span>
+                    <span class="ticker-pill">🇺🇸 Coca-Cola 600</span>
+                    <span class="ticker-pill">🇦🇪 GP Abu Dhabi</span>
+                    <span class="ticker-pill">🇮🇹 GP Mugello</span>
+                    <span class="ticker-pill">🇯🇵 GP Japón</span>
+                    <span class="ticker-pill">🇦🇺 GP Australia</span>
+                    <span class="ticker-pill">🇧🇷 GP São Paulo</span>
+                    <span class="ticker-pill">🇦🇹 Red Bull Ring</span>
+                    <span class="ticker-pill">🇬🇧 GP Silverstone</span>
+                    <span class="ticker-pill ticker-pill--highlight">+ 120 eventos más</span>
+                </div>
             </div>
         </div>
     </div>
 
 </div><!-- /grid -->
 
-<footer class="text-center mt-12 animate-fade-in" style="animation-delay:.6s">
-    <p class="text-gray-600 text-sm">Hecho para fans del automovilismo por un fan del automovilismo.</p>
+<footer class="text-center mt-12 animate-fade-up" style="animation-delay:.48s;">
+    <p class="text-label text-sm">Hecho para fans del automovilismo por un fan del automovilismo.</p>
 </footer>
 
 </div><!-- /max-w -->
-</div><!-- /min-h-screen -->
+</div><!-- /page-content -->
 
+
+<!-- ════════════════════════════════════════════════════
+     BACKGROUND CANVAS SCRIPT
+     12 vehicles: 4 F1 + 4 MotoGP + 4 Stock cars
+     Top-down view with ghost trail
+════════════════════════════════════════════════════ -->
+<script>
+(function initCanvas() {
+    const canvas = document.getElementById('bg-canvas');
+    const ctx    = canvas.getContext('2d');
+    let W, H, vehicles = [];
+
+    // Sunrise-harmonious palettes — warm/cool balance
+    const PALETTES = [
+        ['#dc2626','#ef4444','#b91c1c'],   // crimson
+        ['#ea580c','#f97316','#c2410c'],   // orange
+        ['#2563eb','#3b82f6','#1d4ed8'],   // royal blue
+        ['#059669','#10b981','#047857'],   // emerald
+        ['#7c3aed','#8b5cf6','#6d28d9'],   // violet
+        ['#d97706','#f59e0b','#b45309'],   // amber
+        ['#0e7490','#0891b2','#0c4a6e'],   // cyan-dark
+        ['#be185d','#ec4899','#9d174d'],   // pink
+    ];
+
+    function rndPalette() { return PALETTES[Math.floor(Math.random() * PALETTES.length)]; }
+
+    const VEHICLE_TYPES = ['f1','moto','stock'];
+
+    class Vehicle {
+        constructor(init) { this._init(init ? Math.random() * 1000 : 0, true); }
+
+        _init(seed, fullW) {
+            this.palette    = rndPalette();
+            this.type       = VEHICLE_TYPES[Math.floor(Math.random() * 3)];
+            this.scale      = 0.48 + Math.random() * 0.68;
+            // Alpha scaled with depth — smaller = farther = more transparent
+            this.alpha      = 0.07 + (this.scale - 0.48) * 0.18;
+            const baseSpeed = 2.8 + Math.random() * 8.5;
+            this.speed      = (Math.random() > 0.5 ? 1 : -1) * baseSpeed;
+            this.y          = 55 + Math.random() * (H - 110);
+            this.x          = fullW
+                ? Math.random() * W
+                : (this.speed > 0 ? -180 : W + 180);
+            this.trail      = [];
+            this.trailLen   = Math.floor(6 + Math.abs(this.speed) * 1.4);
+        }
+
+        reset() { this._init(0, false); }
+
+        update() {
+            this.trail.push({ x: this.x, y: this.y });
+            if (this.trail.length > this.trailLen) this.trail.shift();
+            this.x += this.speed;
+            if ((this.speed > 0 && this.x > W + 200) || (this.speed < 0 && this.x < -200)) this.reset();
+        }
+
+        draw(isDark = false) {
+            const mirror = this.speed < 0;
+            // Dark mode: vehicles slightly more visible
+            const baseAlpha = isDark ? Math.min(this.alpha * 1.55, 0.55) : this.alpha;
+            // Trail ghosts
+            for (let i = 0; i < this.trail.length; i++) {
+                const t = i / this.trail.length;
+                ctx.save();
+                ctx.globalAlpha = baseAlpha * t * 0.45;
+                this._drawShape(this.trail[i].x, this.trail[i].y, mirror);
+                ctx.restore();
+            }
+            // Main vehicle
+            ctx.save();
+            ctx.globalAlpha = baseAlpha;
+            this._drawShape(this.x, this.y, mirror);
+            ctx.restore();
+        }
+
+        _drawShape(x, y, mirror) {
+            ctx.save();
+            ctx.translate(x, y);
+            if (mirror) ctx.scale(-1, 1);
+            ctx.scale(this.scale, this.scale);
+            const [c1, c2, c3] = this.palette;
+
+            if (this.type === 'f1') {
+                // F1 — top-down bird's eye
+                // Nose cone
+                ctx.fillStyle = c1;
+                ctx.beginPath();
+                ctx.moveTo(56, 0);
+                ctx.bezierCurveTo(56,-5, 34,-10, 0,-9);
+                ctx.bezierCurveTo(-30,-9, -46,-6, -46, 0);
+                ctx.bezierCurveTo(-46,6, -30,9, 0,9);
+                ctx.bezierCurveTo(34,10, 56,5, 56,0);
+                ctx.fill();
+                // Cockpit canopy
+                ctx.fillStyle = c3;
+                ctx.beginPath();
+                ctx.ellipse(5, 0, 13, 5, 0, 0, Math.PI*2);
+                ctx.fill();
+                // Front wing
+                ctx.fillStyle = c2;
+                ctx.beginPath();
+                ctx.roundRect(46,-17, 8, 34, 2);
+                ctx.fill();
+                // Rear wing
+                ctx.beginPath();
+                ctx.roundRect(-54,-20, 9, 40, 2);
+                ctx.fill();
+                // Wheels x4
+                ctx.fillStyle = '#1e293b';
+                [[22,15],[22,-15],[-28,14],[-28,-14]].forEach(([wx,wy]) => {
+                    ctx.beginPath(); ctx.ellipse(wx,wy,7,5,0,0,Math.PI*2); ctx.fill();
+                    ctx.strokeStyle = 'rgba(255,255,255,0.2)'; ctx.lineWidth = 1;
+                    ctx.beginPath(); ctx.ellipse(wx,wy,4,2.5,0,0,Math.PI*2); ctx.stroke();
+                });
+                // Halo
+                ctx.strokeStyle = c2; ctx.lineWidth = 1.5;
+                ctx.beginPath(); ctx.arc(5, 0, 8, -Math.PI*0.6, -Math.PI*0.4, true); ctx.stroke();
+
+            } else if (this.type === 'moto') {
+                // MotoGP — side view, leaned
+                ctx.fillStyle = c1;
+                ctx.beginPath();
+                ctx.ellipse(0, -2, 30, 8, -0.12, 0, Math.PI*2);
+                ctx.fill();
+                // Front fairing
+                ctx.beginPath();
+                ctx.moveTo(24,-3); ctx.lineTo(36,-1); ctx.lineTo(35,3); ctx.lineTo(24,4);
+                ctx.fill();
+                // Rider
+                ctx.fillStyle = c2;
+                ctx.beginPath(); ctx.ellipse(-2,-14,8,5,0.35,0,Math.PI*2); ctx.fill();
+                ctx.fillStyle = c3;
+                ctx.beginPath(); ctx.arc(-3,-22,5,0,Math.PI*2); ctx.fill();
+                // Visor
+                ctx.fillStyle = 'rgba(255,255,255,0.4)';
+                ctx.beginPath(); ctx.ellipse(0,-21,3,2,0.4,0,Math.PI); ctx.fill();
+                // Wheels
+                ctx.fillStyle = '#1e293b';
+                [[-20,8],[23,8]].forEach(([wx,wy]) => {
+                    ctx.beginPath(); ctx.arc(wx,wy,8,0,Math.PI*2); ctx.fill();
+                    ctx.strokeStyle='rgba(255,255,255,0.15)'; ctx.lineWidth=1.5;
+                    ctx.stroke();
+                });
+
+            } else {
+                // Stock car / NASCAR — top-down
+                ctx.fillStyle = c1;
+                ctx.beginPath();
+                ctx.roundRect(-40,-12,80,24,[5,5,5,5]); ctx.fill();
+                // Roof
+                ctx.fillStyle = c2;
+                ctx.beginPath(); ctx.roundRect(-19,-10,38,20,4); ctx.fill();
+                // Windshield
+                ctx.fillStyle = 'rgba(219,234,254,0.5)';
+                ctx.beginPath(); ctx.roundRect(8,-7,10,14,2); ctx.fill();
+                // Number
+                ctx.fillStyle = 'rgba(15,23,42,0.75)';
+                ctx.font = `bold 8px 'Barlow Condensed', sans-serif`;
+                ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+                ctx.fillText('48', 0, 0);
+                // Sponsor stripe
+                ctx.fillStyle = c3;
+                ctx.fillRect(-18, -3, 36, 6);
+                // Wheels x4
+                ctx.fillStyle = '#1e293b';
+                [[-26,14],[-26,-14],[22,14],[22,-14]].forEach(([wx,wy]) => {
+                    ctx.beginPath(); ctx.ellipse(wx,wy,8,5.5,0,0,Math.PI*2); ctx.fill();
+                });
+            }
+            ctx.restore();
+        }
+    }
+
+    function resize() {
+        W = canvas.width  = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+        // Recreate offscreen canvas on resize so dimensions stay in sync
+        initOffscreen();
+    }
+
+    // ── OffscreenCanvas for headlight beams ─────────────────
+    let offscreen, offCtx;
+    function initOffscreen() {
+        try {
+            offscreen = new OffscreenCanvas(W, H);
+        } catch(e) {
+            offscreen = document.createElement('canvas');
+            offscreen.width = W; offscreen.height = H;
+        }
+        offCtx = offscreen.getContext('2d');
+    }
+
+    function drawHeadlights() {
+        offCtx.clearRect(0, 0, W, H);
+
+        vehicles.forEach(v => {
+            const dir     = v.speed > 0 ? 1 : -1;
+            const mirror  = dir < 0;
+
+            // Front tip offset per vehicle type (in local-space units × scale)
+            const frontOffsets = { f1: 58, moto: 34, stock: 42 };
+            const frontOff = (frontOffsets[v.type] || 42) * v.scale;
+
+            const fx = v.x + dir * frontOff;
+            const fy = v.y;
+
+            const beamLen    = (220 + v.scale * 180) * v.scale;
+            const coneHalf   = Math.PI / 7.5;   // ~24° half-angle
+            const coneAngle  = dir > 0 ? 0 : Math.PI;
+
+            // Two headlights — slight vertical offset
+            const offsets = [-5 * v.scale, 5 * v.scale];
+
+            offsets.forEach(yo => {
+                const hx = fx;
+                const hy = fy + yo;
+
+                // Cone clipping path
+                offCtx.save();
+                offCtx.beginPath();
+                offCtx.moveTo(hx, hy);
+                offCtx.arc(hx, hy, beamLen, coneAngle - coneHalf, coneAngle + coneHalf);
+                offCtx.closePath();
+                offCtx.clip();
+
+                // Radial gradient — warm xenon white fading to transparent
+                const grad = offCtx.createRadialGradient(hx, hy, 0, hx, hy, beamLen);
+                grad.addColorStop(0,    `rgba(255,255,230, 0.55)`);
+                grad.addColorStop(0.18, `rgba(230,240,255, 0.28)`);
+                grad.addColorStop(0.55, `rgba(180,210,255, 0.10)`);
+                grad.addColorStop(1,    `rgba(100,160,255, 0)`);
+
+                offCtx.fillStyle = grad;
+                offCtx.fillRect(
+                    Math.min(hx, hx + dir * beamLen),
+                    hy - beamLen,
+                    beamLen + 4, beamLen * 2
+                );
+                offCtx.restore();
+            });
+
+            // Rear brake glow (dim red ellipse behind vehicle)
+            const rearX = v.x - dir * frontOff;
+            const rg = offCtx.createRadialGradient(rearX, fy, 0, rearX, fy, 28 * v.scale);
+            rg.addColorStop(0,   `rgba(220, 40, 40, 0.45)`);
+            rg.addColorStop(0.5, `rgba(200, 20, 20, 0.14)`);
+            rg.addColorStop(1,   `rgba(180,  0,  0, 0)`);
+            offCtx.save();
+            offCtx.fillStyle = rg;
+            offCtx.beginPath();
+            offCtx.ellipse(rearX, fy, 28 * v.scale, 10 * v.scale, 0, 0, Math.PI * 2);
+            offCtx.fill();
+            offCtx.restore();
+        });
+
+        // Composite headlight layer onto main canvas
+        ctx.save();
+        ctx.globalCompositeOperation = 'screen';
+        ctx.globalAlpha = 0.38;           // atmospheric, non-disruptive
+        ctx.drawImage(offscreen, 0, 0);
+        ctx.restore();
+    }
+
+    function init() {
+        resize(); // also calls initOffscreen()
+        vehicles = Array.from({length: 12}, () => new Vehicle(true));
+    }
+
+    function frame() {
+        ctx.clearRect(0, 0, W, H);
+
+        const isDark = document.documentElement.dataset.theme === 'dark';
+
+        // Speed-lines — adapt color to theme
+        ctx.save();
+        ctx.globalAlpha = isDark ? 0.025 : 0.015;
+        for (let i = 0; i < H; i += 32) {
+            const hue = isDark ? (200 + (i % 30)) : (210 + (i % 40));
+            ctx.strokeStyle = isDark ? `hsl(${hue},40%,35%)` : `hsl(${hue},30%,60%)`;
+            ctx.lineWidth = 0.4;
+            ctx.beginPath(); ctx.moveTo(0,i); ctx.lineTo(W,i); ctx.stroke();
+        }
+        ctx.restore();
+
+        // Sort + draw vehicles
+        vehicles.sort((a,b) => a.scale - b.scale);
+        vehicles.forEach(v => { v.update(); v.draw(isDark); });
+
+        // Night headlights pass
+        if (isDark) drawHeadlights();
+
+        requestAnimationFrame(frame);
+    }
+
+    window.addEventListener('resize', resize);
+    init();
+    frame();
+})();
+</script>
+
+
+<!-- ════════════════════════════════════════════════════
+     APP LOGIC
+════════════════════════════════════════════════════ -->
 <script>
 (() => {
     'use strict';
 
-    // ═══════════════════════════════════════════════════════════════════
-    //  CONFIGURATION
-    // ═══════════════════════════════════════════════════════════════════
-    /**
-     * Each session has:
-     *   id     – unique within the category (used for state)
-     *   label  – display name
-     *   alias  – backend filter key (practice | qualifying | sprint | race)
-     *            also drives the pill colour via CSS [data-alias]
-     */
+    // ─────────────────────────────────────────────────
+    //  CONFIG
+    // ─────────────────────────────────────────────────
     const CATEGORIES = {
         f1: {
-            name: 'Formula 1',
-            subtitle: '24 Grand Prix · 2026',
-            logo: '/f1.svg',
-            logoInvert: true,
+            name: 'Formula 1', subtitle: '24 Grand Prix · 2026',
+            logo: '/f1.svg', logoInvert: true,
             sessions: [
                 { id: 'p1',           label: 'P1',            alias: 'practice',   backendKey: 'p1'           },
                 { id: 'p2',           label: 'P2',            alias: 'practice',   backendKey: 'p2'           },
@@ -417,47 +1263,40 @@
             ],
         },
         gt: {
-            name: 'GT World Challenge',
-            subtitle: 'Europe · Endurance & Sprint',
-            logo: '/gt.svg',
-            logoInvert: true,
+            name: 'GT World Challenge', subtitle: 'Europe · Endurance & Sprint',
+            logo: '/gt.svg', logoInvert: true,
             sessions: [
-                { id: 'fp1',        label: 'Free Practice 1',     alias: 'practice',   backendKey: 'fp1'        },
-                { id: 'fp2',        label: 'Free Practice 2',     alias: 'practice',   backendKey: 'fp2'        },
-                { id: 'qualifying', label: 'Qualifying',           alias: 'qualifying', backendKey: 'qualifying' },
-                { id: 'race',       label: 'Carrera / Endurance',  alias: 'race',       backendKey: 'race'       },
-                { id: 'race1',      label: 'Race 1',               alias: 'race',       backendKey: 'race'       },
-                { id: 'race2',      label: 'Race 2',               alias: 'race',       backendKey: 'race'       },
+                { id: 'fp1',        label: 'Free Practice 1',    alias: 'practice',   backendKey: 'fp1'        },
+                { id: 'fp2',        label: 'Free Practice 2',    alias: 'practice',   backendKey: 'fp2'        },
+                { id: 'qualifying', label: 'Qualifying',          alias: 'qualifying', backendKey: 'qualifying' },
+                { id: 'race',       label: 'Carrera / Endurance', alias: 'race',       backendKey: 'race'       },
+                { id: 'race1',      label: 'Race 1',              alias: 'race',       backendKey: 'race'       },
+                { id: 'race2',      label: 'Race 2',              alias: 'race',       backendKey: 'race'       },
             ],
         },
         nascar: {
-            name: 'NASCAR Cup Series',
-            subtitle: '38 Carreras · 2026',
-            logo: '/nascar.svg',
-            logoInvert: false,
+            name: 'NASCAR Cup Series', subtitle: '38 Carreras · 2026',
+            logo: '/nascar.svg', logoInvert: true,
             sessions: [
                 { id: 'race', label: 'Carrera', alias: 'race', backendKey: 'race' },
             ],
         },
         motogp: {
-            name: 'MotoGP',
-            subtitle: '22 Grand Prix · 2026',
-            logo: '/motogp.svg',
-            logoInvert: false,
+            name: 'MotoGP', subtitle: '22 Grand Prix · 2026',
+            logo: '/motogp.svg', logoInvert: true,
             sessions: [
-                { id: 'fp1',      label: 'FP1',              alias: 'practice',   backendKey: 'fp1'       },
-                { id: 'fp2',      label: 'FP2',              alias: 'practice',   backendKey: 'fp2'       },
-                { id: 'practica', label: 'Práctica',          alias: 'practice',   backendKey: 'practica'  },
-                { id: 'warmup',   label: 'Warm Up',           alias: 'practice',   backendKey: 'warmup'    },
-                { id: 'q1',       label: 'Q1 Clasificación',  alias: 'qualifying', backendKey: 'q1'        },
-                { id: 'q2',       label: 'Q2 Clasificación',  alias: 'qualifying', backendKey: 'q2'        },
-                { id: 'sprint',   label: 'Sprint',            alias: 'sprint',     backendKey: 'sprint'    },
-                { id: 'race',     label: 'Carrera',           alias: 'race',       backendKey: 'race'      },
+                { id: 'fp1',      label: 'FP1',             alias: 'practice',   backendKey: 'fp1'      },
+                { id: 'fp2',      label: 'FP2',             alias: 'practice',   backendKey: 'fp2'      },
+                { id: 'practica', label: 'Práctica',         alias: 'practice',   backendKey: 'practica' },
+                { id: 'warmup',   label: 'Warm Up',          alias: 'practice',   backendKey: 'warmup'   },
+                { id: 'q1',       label: 'Q1 Clasificación', alias: 'qualifying', backendKey: 'q1'       },
+                { id: 'q2',       label: 'Q2 Clasificación', alias: 'qualifying', backendKey: 'q2'       },
+                { id: 'sprint',   label: 'Sprint',           alias: 'sprint',     backendKey: 'sprint'   },
+                { id: 'race',     label: 'Carrera',          alias: 'race',       backendKey: 'race'     },
             ],
         },
     };
 
-    // Default selection: qualifying + sprint + race (no practice)
     function defaultSessions(catKey) {
         return new Set(
             CATEGORIES[catKey].sessions
@@ -466,16 +1305,12 @@
         );
     }
 
-    // ═══════════════════════════════════════════════════════════════════
+    // ─────────────────────────────────────────────────
     //  STATE
-    // ═══════════════════════════════════════════════════════════════════
+    // ─────────────────────────────────────────────────
     const state = {
-        races:     [],
-        loading:   true,
-        error:     null,
-        // per-category enabled flag
-        catEnabled: { f1: true, gt: true, nascar: true, motogp: true },
-        // per-category selected session ids
+        races: [], loading: true, error: null,
+        catEnabled:  { f1: true, gt: true, nascar: true, motogp: true },
         catSessions: {
             f1:     defaultSessions('f1'),
             gt:     defaultSessions('gt'),
@@ -484,45 +1319,34 @@
         },
     };
 
-    // ═══════════════════════════════════════════════════════════════════
-    //  URL GENERATION (pure function from state → string)
-    // ═══════════════════════════════════════════════════════════════════
+    // ─────────────────────────────────────────────────
+    //  URL BUILDER
+    // ─────────────────────────────────────────────────
     function buildUrl() {
         const enabledCats = Object.keys(state.catEnabled).filter(k => state.catEnabled[k]);
         if (!enabledCats.length) return '';
-
         const p = new URLSearchParams();
         let hasAnySessions = false;
-
         for (const cat of enabledCats) {
             p.append('cats', cat);
-            const cfg      = CATEGORIES[cat];
-            const selected = state.catSessions[cat];
-
-            // Collect unique backendKeys for the sessions checked in this category.
-            // Using a Set removes duplicates (e.g. race1 + race2 both map to "race").
             const backendKeys = new Set();
-            for (const sess of cfg.sessions) {
-                if (selected.has(sess.id)) backendKeys.add(sess.backendKey);
+            for (const sess of CATEGORIES[cat].sessions) {
+                if (state.catSessions[cat].has(sess.id)) backendKeys.add(sess.backendKey);
             }
-
             if (backendKeys.size) {
                 hasAnySessions = true;
-                // Per-category param: f1_sessions=qualy&f1_sessions=race  etc.
                 backendKeys.forEach(k => p.append(`${cat}_sessions`, k));
             }
         }
-
         if (!hasAnySessions) return '';
         return `${window.location.origin}/calendar.ics?${p.toString()}`;
     }
 
     function syncUrl() {
-        const url = buildUrl();
-        const input  = document.getElementById('urlOutput');
+        const url     = buildUrl();
+        const input   = document.getElementById('urlOutput');
         const copyBtn = document.getElementById('copyBtn');
         const errMsg  = document.getElementById('errorMessage');
-
         if (url) {
             input.value = url;
             errMsg.classList.add('hidden');
@@ -534,9 +1358,9 @@
         }
     }
 
-    // ═══════════════════════════════════════════════════════════════════
+    // ─────────────────────────────────────────────────
     //  RENDER — category cards
-    // ═══════════════════════════════════════════════════════════════════
+    // ─────────────────────────────────────────────────
     function renderCategories() {
         const grid = document.getElementById('categories-grid');
         grid.innerHTML = '';
@@ -546,76 +1370,68 @@
     }
 
     function buildCard(catKey, catCfg) {
-        const enabled = state.catEnabled[catKey];
+        const enabled  = state.catEnabled[catKey];
         const selected = state.catSessions[catKey];
 
         const card = document.createElement('div');
-        card.className = `cat-card p-5 ${enabled ? 'cat-enabled' : 'cat-disabled'}`;
+        card.className = `cat-card p-4 ${enabled ? 'cat-enabled' : 'cat-disabled'}`;
         card.dataset.catKey = catKey;
 
-        // ── header ──
+        // Header
         const header = document.createElement('div');
-        header.className = 'flex items-center justify-between mb-4';
+        header.className = 'flex items-center justify-between mb-3';
 
         const logoArea = document.createElement('div');
-        logoArea.className = 'flex items-center gap-3';
+        logoArea.className = 'flex items-center gap-2.5';
 
         const img = document.createElement('img');
-        img.src = catCfg.logo;
-        img.alt = catCfg.name;
-        img.className = `h-7 w-auto object-contain ${catCfg.logoInvert ? 'brightness-0 invert' : ''}`;
-        img.style.cssText = catCfg.logoInvert ? 'filter: brightness(0) invert(1);' : '';
+        img.src = catCfg.logo; img.alt = catCfg.name;
+        img.className = 'cat-logo';
+        img.style.cssText = catCfg.logoInvert
+            ? 'filter: brightness(0) opacity(0.72);'
+            : 'filter: opacity(0.88);';
 
         const info = document.createElement('div');
         info.innerHTML = `
-            <p class="font-display text-sm font-bold text-white leading-none mb-0.5">${catCfg.name}</p>
-            <p class="text-gray-500 text-xs">${catCfg.subtitle}</p>
+            <p class="text-sm font-semibold text-title leading-none mb-0.5">${catCfg.name}</p>
+            <p class="text-label" style="font-size:11px;">${catCfg.subtitle}</p>
         `;
-
         logoArea.append(img, info);
 
-        // toggle
+        // Toggle — royal blue
         const toggle = document.createElement('div');
         toggle.className = `toggle-track ${enabled ? 'on' : 'off'}`;
         toggle.dataset.action = 'toggle-cat';
         toggle.dataset.cat = catKey;
         toggle.setAttribute('role', 'switch');
-        toggle.setAttribute('aria-checked', enabled);
+        toggle.setAttribute('aria-checked', String(enabled));
+        toggle.setAttribute('aria-label', `Activar ${catCfg.name}`);
         toggle.innerHTML = '<div class="toggle-knob"></div>';
-
         header.append(logoArea, toggle);
 
-        // ── content (dimmed when disabled) ──
+        // Content (dims when off)
         const content = document.createElement('div');
         content.className = `transition-opacity duration-200 ${enabled ? 'opacity-100' : 'opacity-40 pointer-events-none'}`;
         content.dataset.catContent = catKey;
 
-        // controls row
         const controls = document.createElement('div');
         controls.className = 'flex items-center gap-2 mb-3';
-
-        const selectAll = document.createElement('button');
-        selectAll.textContent = 'Seleccionar todo';
-        selectAll.className = 'text-xs px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/25 transition-all';
-        selectAll.dataset.action = 'select-all';
-        selectAll.dataset.cat = catKey;
-
+        const selAll = document.createElement('button');
+        selAll.textContent = 'Seleccionar todo';
+        selAll.className = 'text-[11px] px-2.5 py-1 rounded-lg btn-ghost font-medium';
+        selAll.dataset.action = 'select-all'; selAll.dataset.cat = catKey;
         const clearBtn = document.createElement('button');
         clearBtn.textContent = 'Borrar selección';
-        clearBtn.className = 'text-xs px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/25 transition-all';
-        clearBtn.dataset.action = 'clear';
-        clearBtn.dataset.cat = catKey;
+        clearBtn.className = 'text-[11px] px-2.5 py-1 rounded-lg btn-ghost font-medium';
+        clearBtn.dataset.action = 'clear'; clearBtn.dataset.cat = catKey;
+        controls.append(selAll, clearBtn);
 
-        controls.append(selectAll, clearBtn);
-
-        // pills row
         const pillsRow = document.createElement('div');
         pillsRow.className = 'flex flex-wrap gap-1.5';
         pillsRow.dataset.pillsContainer = catKey;
-
-        for (const sess of catCfg.sessions) {
-            pillsRow.appendChild(buildPill(catKey, sess, selected.has(sess.id)));
-        }
+        catCfg.sessions.forEach(sess =>
+            pillsRow.appendChild(buildPill(catKey, sess, selected.has(sess.id)))
+        );
 
         content.append(controls, pillsRow);
         card.append(header, content);
@@ -633,146 +1449,111 @@
         return btn;
     }
 
-    // partial re-renders (avoid full redraw to preserve layout)
     function rerenderCard(catKey) {
-        const grid = document.getElementById('categories-grid');
-        const old = grid.querySelector(`[data-cat-key="${catKey}"]`);
+        const old = document.querySelector(`[data-cat-key="${catKey}"]`);
         if (old) old.replaceWith(buildCard(catKey, CATEGORIES[catKey]));
     }
 
     function rerenderPills(catKey) {
-        const container = document.querySelector(`[data-pills-container="${catKey}"]`);
-        if (!container) return;
-        container.innerHTML = '';
-        const selected = state.catSessions[catKey];
-        CATEGORIES[catKey].sessions.forEach(sess =>
-            container.appendChild(buildPill(catKey, sess, selected.has(sess.id)))
-        );
+        const c = document.querySelector(`[data-pills-container="${catKey}"]`);
+        if (!c) return;
+        c.innerHTML = '';
+        const sel = state.catSessions[catKey];
+        CATEGORIES[catKey].sessions.forEach(sess => c.appendChild(buildPill(catKey, sess, sel.has(sess.id))));
     }
 
-    // ═══════════════════════════════════════════════════════════════════
+    // ─────────────────────────────────────────────────
     //  EVENT DELEGATION
-    // ═══════════════════════════════════════════════════════════════════
+    // ─────────────────────────────────────────────────
     function onGridClick(e) {
-        const target = e.target.closest('[data-action]');
-        if (!target) return;
-
-        const { action, cat, session: sessId, alias } = target.dataset;
-
+        const t = e.target.closest('[data-action]');
+        if (!t) return;
+        const { action, cat, session: sessId } = t.dataset;
         switch (action) {
-            case 'toggle-cat': {
+            case 'toggle-cat':
                 state.catEnabled[cat] = !state.catEnabled[cat];
-                rerenderCard(cat);
-                syncUrl();
-                break;
-            }
+                rerenderCard(cat); syncUrl(); break;
             case 'toggle-session': {
-                const set = state.catSessions[cat];
-                set.has(sessId) ? set.delete(sessId) : set.add(sessId);
-                // update pill class directly (no full redraw)
-                target.classList.toggle('active', set.has(sessId));
-                syncUrl();
-                break;
+                const s = state.catSessions[cat];
+                s.has(sessId) ? s.delete(sessId) : s.add(sessId);
+                t.classList.toggle('active', s.has(sessId));
+                syncUrl(); break;
             }
-            case 'select-all': {
+            case 'select-all':
                 CATEGORIES[cat].sessions.forEach(s => state.catSessions[cat].add(s.id));
-                rerenderPills(cat);
-                syncUrl();
-                break;
-            }
-            case 'clear': {
+                rerenderPills(cat); syncUrl(); break;
+            case 'clear':
                 state.catSessions[cat].clear();
-                rerenderPills(cat);
-                syncUrl();
-                break;
-            }
+                rerenderPills(cat); syncUrl(); break;
         }
     }
 
     function onGlobalSelectAll() {
-        for (const catKey of Object.keys(CATEGORIES)) {
-            state.catEnabled[catKey] = true;
-            CATEGORIES[catKey].sessions.forEach(s => state.catSessions[catKey].add(s.id));
+        for (const k of Object.keys(CATEGORIES)) {
+            state.catEnabled[k] = true;
+            CATEGORIES[k].sessions.forEach(s => state.catSessions[k].add(s.id));
         }
-        renderCategories();
-        syncUrl();
+        renderCategories(); syncUrl();
     }
-
     function onGlobalClear() {
-        for (const catKey of Object.keys(CATEGORIES)) {
-            state.catSessions[catKey].clear();
-        }
-        renderCategories();
-        syncUrl();
+        for (const k of Object.keys(CATEGORIES)) state.catSessions[k].clear();
+        renderCategories(); syncUrl();
     }
 
-    // ═══════════════════════════════════════════════════════════════════
+    // ─────────────────────────────────────────────────
     //  COPY URL
-    // ═══════════════════════════════════════════════════════════════════
+    // ─────────────────────────────────────────────────
     async function handleCopy() {
-        const input = document.getElementById('urlOutput');
-        if (!input?.value) return;
-        try {
-            await navigator.clipboard.writeText(input.value);
-        } catch {
-            input.select();
-            document.execCommand('copy');
-        }
+        const val = document.getElementById('urlOutput')?.value;
+        if (!val) return;
+        try { await navigator.clipboard.writeText(val); }
+        catch { const i = document.getElementById('urlOutput'); i.select(); document.execCommand('copy'); }
         const span = document.getElementById('copyText');
         const orig = span.textContent;
-        span.textContent = '¡Copiado!';
-        setTimeout(() => { span.textContent = orig; }, 2000);
+        span.textContent = '¡Copiado! ✓';
+        setTimeout(() => { span.textContent = orig; }, 2200);
     }
 
-    // ═══════════════════════════════════════════════════════════════════
-    //  RACE DATA + COUNTDOWN  (unchanged from original)
-    // ═══════════════════════════════════════════════════════════════════
+    // ─────────────────────────────────────────────────
+    //  RACE DATA + COUNTDOWN
+    // ─────────────────────────────────────────────────
     const SERIES_MAP = {
-        f1:     { keywords: ['gp', 'formula 1', 'grand prix', '🏎️'], icon: '🏎️', logo: '/f1.svg' },
-        gt:     { keywords: ['gt', 'endurance', '🏁'],                icon: '🏁', logo: '/gt.svg' },
-        nascar: { keywords: ['nascar', 'cup:'],                        icon: '🏁', logo: '/nascar.svg' },
-        motogp: { keywords: ['🏍️', 'motogp'],                         icon: '🏍️', logo: '/motogp.svg' },
+        f1:     { keywords: ['🏎️','formula 1','f1','grand prix'], icon: '🏎️', logo: '/f1.svg' },
+        gt:     { keywords: ['🏁','gt','grand touring','endurance'], icon: '🏁', logo: '/gt.svg' },
+        nascar: { keywords: ['nascar','cup series'],                  icon: '🏁', logo: '/nascar.svg' },
+        motogp: { keywords: ['🏍️','motogp'],                          icon: '🏍️', logo: '/motogp.svg' },
     };
 
-    function detectSeries(event) {
-        const title  = event.title;          // original (preserve emojis)
-        const tl     = title.toLowerCase();
-        // ⚠️  Priority order matters: check specific emojis/keywords BEFORE
-        //     the generic 'gp' keyword which would steal MotoGP events for F1.
-        if (title.includes('🏍️') || tl.includes('motogp')) return SERIES_MAP.motogp;
-        if (tl.includes('nascar'))                           return SERIES_MAP.nascar;
-        if (title.includes('🏁') || tl.includes('gt round') || tl.includes('gt prologue')) return SERIES_MAP.gt;
-        if (title.includes('🏎️') || tl.includes('formula') || tl.includes('grand prix')) return SERIES_MAP.f1;
-        // Generic fallback loop
-        for (const [, cfg] of Object.entries(SERIES_MAP)) {
+    function detectSeries(ev) {
+        const tl = ev.title.toLowerCase();
+        if (ev.title.includes('🏍️') || tl.includes('motogp')) return SERIES_MAP.motogp;
+        if (tl.includes('nascar'))                              return SERIES_MAP.nascar;
+        if (ev.title.includes('🏁') || tl.includes('gt round') || tl.includes('gt prologue')) return SERIES_MAP.gt;
+        if (ev.title.includes('🏎️') || tl.includes('formula') || tl.includes('grand prix'))  return SERIES_MAP.f1;
+        for (const [,cfg] of Object.entries(SERIES_MAP))
             if (cfg.keywords.some(k => tl.includes(k))) return cfg;
-        }
         return null;
     }
 
-    function cleanTitle(title) {
-        return title.replace(/[\u{1F300}-\u{1F9FF}]/gu, '').replace(/^(NASCAR[^:]*:)\s*/i,'').split(',')[0].trim();
+    function cleanTitle(t) {
+        return t.replace(/[\u{1F300}-\u{1F9FF}]/gu,'').replace(/^(NASCAR[^:]*:)\s*/i,'').split(',')[0].trim();
     }
 
     function processRaceData(data) {
         const now = new Date();
         return data.flatMap(ev => {
-            const series = detectSeries(ev);
-            const logo   = series?.logo || '/logo.svg';
-            const icon   = series?.icon || '🏆';
-            const name   = cleanTitle(ev.title);
+            const series  = detectSeries(ev);
+            const logo    = series?.logo || '/logo.svg';
+            const icon    = series?.icon || '🏆';
+            const name    = cleanTitle(ev.title);
             const circuit = ev.location ? ev.location.split(',')[0].trim() : '';
-
             if (Array.isArray(ev.sessions) && ev.sessions.length) {
                 return ev.sessions
-                    .map(s => ({ ...s, d: new Date(s.start) }))
+                    .map(s => ({...s, d: new Date(s.start)}))
                     .filter(s => s.d > now && /carrera|race/i.test(s.name))
                     .map(s => ({ name, circuit, date: s.d, logo, icon }));
             }
-            if (ev.start) {
-                const d = new Date(ev.start);
-                return d > now ? [{ name, circuit, date: d, logo, icon }] : [];
-            }
+            if (ev.start) { const d = new Date(ev.start); return d > now ? [{name, circuit, date: d, logo, icon}] : []; }
             return [];
         }).sort((a,b) => a.date - b.date).slice(0,3);
     }
@@ -783,38 +1564,33 @@
             const results = await Promise.allSettled(
                 endpoints.map(u => fetch(u).then(r => r.ok ? r.json() : []))
             );
-            const all = results.flatMap(r => r.status === 'fulfilled' ? r.value : []);
+            const all   = results.flatMap(r => r.status === 'fulfilled' ? r.value : []);
             const races = processRaceData(all);
-            state.races   = races;
-            state.loading = false;
+            state.races = races; state.loading = false;
             renderCountdown(races);
-        } catch {
-            state.loading = false;
-            document.getElementById('loading-skeleton')?.classList.add('hidden');
-        }
+        } catch { state.loading = false; document.getElementById('loading-skeleton')?.classList.add('hidden'); }
     }
 
     function renderCountdown(races) {
         const loadEl    = document.getElementById('loading-skeleton');
         const contentEl = document.getElementById('races-content');
         if (!races.length) { loadEl?.classList.add('hidden'); return; }
-
         loadEl?.classList.add('hidden');
         contentEl?.classList.remove('hidden');
 
-        // Main race
         const main = races[0];
         const nameEl = document.getElementById('r1-name');
         if (nameEl) {
             nameEl.innerHTML = '';
             const img = document.createElement('img');
-            img.src = main.logo; img.className = 'h-5 mr-1 inline-block object-contain'; img.style.filter='brightness(0) invert(1)';
+            img.src = main.logo; img.className = 'cat-logo mr-1.5 inline-block align-middle flex-shrink-0';
+            img.style.height = '18px'; img.style.maxHeight = '18px';
+            img.style.filter = 'brightness(0) opacity(0.75)';
             nameEl.append(img, document.createTextNode(main.name));
         }
         const circEl = document.getElementById('r1-circuit');
         if (circEl) circEl.textContent = main.circuit;
 
-        // Next 2
         [[races[1],'r2'],[races[2],'r3']].forEach(([r,id]) => {
             if (!r) return;
             const icon = document.getElementById(`${id}-icon`);
@@ -824,7 +1600,6 @@
             if (name) name.textContent = r.name;
             if (date) date.textContent = r.date.toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit'});
         });
-
         startCountdown(main.date);
     }
 
@@ -842,28 +1617,82 @@
         requestAnimationFrame(tick);
     }
 
-    // ═══════════════════════════════════════════════════════════════════
+    // ─────────────────────────────────────────────────
     //  BOOT
-    // ═══════════════════════════════════════════════════════════════════
+    // ─────────────────────────────────────────────────
     function init() {
-        // Render category cards
         renderCategories();
         syncUrl();
-
-        // Event delegation
         document.getElementById('categories-grid')?.addEventListener('click', onGridClick);
         document.getElementById('globalSelectAll')?.addEventListener('click', onGlobalSelectAll);
         document.getElementById('globalClear')?.addEventListener('click', onGlobalClear);
         document.getElementById('copyBtn')?.addEventListener('click', handleCopy);
-
-        // Load race data for countdown
         loadRaceData();
     }
 
     document.readyState === 'loading'
         ? document.addEventListener('DOMContentLoaded', init)
         : init();
+})();
+</script>
 
+<!-- ════════════════════════════════════════════════════
+     THEME TOGGLE LOGIC
+════════════════════════════════════════════════════ -->
+<script>
+(() => {
+    'use strict';
+
+    const STORAGE_KEY = 'apex-theme';
+    const root   = document.documentElement;
+    const btn    = document.getElementById('theme-toggle');
+    const icon   = document.getElementById('theme-toggle-icon');
+    const iconSun  = document.getElementById('icon-sun');
+    const iconMoon = document.getElementById('icon-moon');
+
+    // ── Apply theme ──────────────────────────────────────
+    function applyTheme(theme, animate) {
+        root.dataset.theme = theme;
+        const isDark = theme === 'dark';
+
+        // Swap icons
+        iconSun.style.display  = isDark ? 'none'   : 'block';
+        iconMoon.style.display = isDark ? 'block'  : 'none';
+
+        // Animate button icon
+        if (animate) {
+            icon.classList.add('is-spinning');
+            icon.addEventListener('transitionend', () => {
+                icon.classList.remove('is-spinning');
+            }, { once: true });
+        }
+
+        // Persist
+        try { localStorage.setItem(STORAGE_KEY, theme); } catch(e) {}
+    }
+
+    // ── Toggle ───────────────────────────────────────────
+    btn.addEventListener('click', () => {
+        const current = root.dataset.theme === 'dark' ? 'dark' : 'light';
+        const next = current === 'dark' ? 'light' : 'dark';
+        applyTheme(next, true);
+    });
+
+    // ── Init: read preference ────────────────────────────
+    let saved = null;
+    try { saved = localStorage.getItem(STORAGE_KEY); } catch(e) {}
+
+    // Fall back to OS preference
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initial = saved || (prefersDark ? 'dark' : 'light');
+    applyTheme(initial, false);
+
+    // Listen for OS theme changes (if user hasn't overridden)
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        let stored = null;
+        try { stored = localStorage.getItem(STORAGE_KEY); } catch(ex) {}
+        if (!stored) applyTheme(e.matches ? 'dark' : 'light', false);
+    });
 })();
 </script>
 </body>
