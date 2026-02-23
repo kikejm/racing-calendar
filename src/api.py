@@ -33,20 +33,24 @@ class AppSettings(BaseSettings):
     
     # Mapeo de categorías e iconos
     ICONS: Dict[str, str] = {
-        "F1": "🏎️", 
-        "GT": "🏁", 
+        "F1": "🏎️",
+        "GT": "🏁",
+        "NASCAR": "🏁",
+        "MOTOGP": "🏍️",
         "DEFAULT": "🏆"
     }
     
     # Palabras clave para detectar categorías automáticamente
     CATEGORY_KEYWORDS: Dict[str, List[str]] = {
         "f1": ["🏎️", "formula 1", "f1", "grand prix"],
-        "gt": ["🏁", "gt", "grand touring", "endurance"]
+        "gt": ["🏁", "gt", "grand touring", "endurance"],
+        "nascar": ["nascar", "cup series", "daytona 500", "brickyard", "southern 500"],
+        "motogp": ["🏍️", "motogp", "moto gp"]
     }
 
     SESSION_ALIASES: Dict[str, List[str]] = {
-        "practice": ["p1", "p2", "p3", "practice", "libres", "entrenamientos", "shakedown"],
-        "qualifying": ["qualy", "qualifying", "clasificación", "pole", "pre-qualifying"],
+        "practice": ["p1", "p2", "p3", "fp1", "fp2", "fp3", "práctica", "practica", "warm up", "warmup", "practice", "libres", "entrenamientos", "shakedown"],
+        "qualifying": ["qualy", "qualifying", "clasificación", "clasificacion", "pole", "pre-qualifying", "q1", "q2"],
         "sprint": ["sprint"],
         "race": ["carrera", "race", "grand prix"]
     }
@@ -78,10 +82,6 @@ class SessionModel(TimeAwareModel):
 
     @model_validator(mode='after')
     def validate_session(self) -> 'SessionModel':
-        # Normalización forzada a UTC
-        # Nota: En Pydantic v2, modificamos los campos directamente si el modelo no fuera frozen,
-        # pero al ser frozen, Pydantic maneja la validación durante la instanciación.
-        # Aquí validamos la lógica.
         if self.start >= self.end:
             raise ValueError(f"La sesión '{self.name}' tiene duración inválida (Start >= End).")
         return self
@@ -104,7 +104,6 @@ class EventModel(TimeAwareModel):
 
     @model_validator(mode='after')
     def validate_event(self) -> 'EventModel':
-        # Validación de consistencia
         if not self.sessions and (not self.start or not self.end):
             raise ValueError("El evento requiere sesiones definidas o fechas start/end globales.")
 
@@ -122,11 +121,17 @@ class CalendarService:
     def __init__(self, settings: AppSettings):
         self.settings = settings
 
-    def _determine_category(self, title: str) -> str:
-        title_lower = title.lower()
+    def _determine_category(self, event: EventModel) -> str:
+        title_lower = event.title.lower()
+        # Check title keywords first
         for cat, keywords in self.settings.CATEGORY_KEYWORDS.items():
             if any(k in title_lower for k in keywords):
                 return cat
+        # Fallback: check categories array from the event
+        for cat_tag in event.categories:
+            cat_lower = cat_tag.lower()
+            if cat_lower in self.settings.CATEGORY_KEYWORDS:
+                return cat_lower
         return "other"
 
     def _clean_title(self, title: str) -> str:
@@ -134,21 +139,11 @@ class CalendarService:
         return self.settings.icon_regex.sub("", title).strip()
 
     def _is_session_match(self, session_name: str, requested_filters: Set[str]) -> bool:
-        """
-        Comprueba si el nombre de la sesión (ej: 'Carrera') coincide con 
-        alguno de los filtros solicitados (ej: 'race').
-        """
         name_lower = session_name.lower()
-        
         for filter_key in requested_filters:
-            # Obtener alias válidos para este filtro (ej: para 'race' -> ['carrera', 'race', ...])
-            # Si el filtro no está en el mapa, usamos la propia palabra clave
             valid_aliases = self.settings.SESSION_ALIASES.get(filter_key, [filter_key])
-            
-            # Si ALGUNO de los alias está en el nombre de la sesión, es match
             if any(alias in name_lower for alias in valid_aliases):
                 return True
-                
         return False
 
     def _format_description(self, event: EventModel, session_name: str, is_html: bool = False) -> str:
@@ -187,13 +182,11 @@ class CalendarService:
         else:
             evt.add('dtend', end)
 
-        # Descripciones (Texto plano + HTML)
         desc_text = self._format_description(event_data, session_name, is_html=False)
         desc_html = self._format_description(event_data, session_name, is_html=True)
         evt.add('description', desc_text)
         evt.add('X-ALT-DESC', desc_html, parameters={'FMTTYPE': 'text/html'})
 
-        # Metadatos extendidos
         if event_data.location:
             evt.add('location', event_data.location)
         if event_data.geo_lat is not None and event_data.geo_lon is not None:
@@ -212,7 +205,6 @@ class CalendarService:
         uid = f"{uuid5(NAMESPACE_DNS, uid_seed)}@racing-manager.com"
         evt.add('uid', uid)
 
-        # Alarma (Notificación 15 min antes)
         alarm = Alarm()
         alarm.add("action", "DISPLAY")
         alarm.add("description", f"Arranca: {summary}")
@@ -229,7 +221,7 @@ class CalendarService:
         cal.add('x-published-ttl', 'PT1H')
 
         for entry in events:
-            category = self._determine_category(entry.title)
+            category = self._determine_category(entry)
             if filter_cats and category not in filter_cats:
                 continue
 
@@ -249,7 +241,9 @@ class CalendarService:
                     cal.add_component(evt)
 
             elif entry.start and entry.end:
-                if filter_sessions: 
+                # For events without sessions (e.g. NASCAR races), include when 'race' filter
+                # is active or no session filter is applied
+                if filter_sessions and 'race' not in filter_sessions:
                     continue
                 summary = f"{icon} {clean_title}"
                 evt = self._create_ical_event(f"{entry.title}|main", summary, entry.start.date(), entry.end.date(), 
@@ -260,21 +254,34 @@ class CalendarService:
 
 # --- 4. Capa de Infraestructura (Carga de Datos) ---
 class DataLoader:
-    """Maneja la lectura del archivo JSON."""
+    """Maneja la lectura de todos los archivos JSON del directorio de datos."""
     def __init__(self, settings: AppSettings):
-        self.path = settings.DATA_PATH
+        self.data_dir = settings.DATA_PATH.parent
 
     def load_events(self) -> List[EventModel]:
-        if not self.path.exists():
-            return []
+        events = []
+        json_files = sorted(self.data_dir.glob("*.json"))
         
-        try:
-            with open(self.path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-            return [EventModel(**item) for item in data]
-        except (json.JSONDecodeError, ValueError) as e:
-            logger.error(f"Error cargando datos: {e}")
+        if not json_files:
+            logger.warning(f"No se encontraron archivos JSON en: {self.data_dir}")
             return []
+
+        for json_file in json_files:
+            try:
+                with open(json_file, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                file_events = 0
+                for item in data:
+                    try:
+                        events.append(EventModel(**item))
+                        file_events += 1
+                    except (ValueError, KeyError) as e:
+                        logger.warning(f"Evento inválido en {json_file.name}: {e}")
+                logger.info(f"Cargados {file_events} eventos desde {json_file.name}")
+            except (json.JSONDecodeError, IOError) as e:
+                logger.error(f"Error cargando {json_file}: {e}")
+        
+        return events
 
 # --- 5. Inyección de Dependencias ---
 @lru_cache
@@ -290,18 +297,16 @@ def get_calendar_service(settings: AppSettings = Depends(get_settings)) -> Calen
 # --- 6. Aplicación Web (FastAPI) ---
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Inicio
     settings = get_settings()
     logger.info(f"API Iniciada. Entorno: {settings.LOG_LEVEL}")
-    if not settings.DATA_PATH.exists():
-        logger.warning(f"⚠️ Archivo de datos no encontrado: {settings.DATA_PATH}")
+    if not settings.DATA_PATH.parent.exists():
+        logger.warning(f"⚠️ Directorio de datos no encontrado: {settings.DATA_PATH.parent}")
     yield
-    # Cierre
     logger.info("API Detenida.")
 
 app = FastAPI(
     title="Racing Calendar API",
-    version="2.0.0",
+    version="2.1.0",
     lifespan=lifespan
 )
 
@@ -314,8 +319,8 @@ app.add_middleware(
 
 @app.get("/calendar.ics", tags=["Calendar"])
 async def get_calendar_ics(
-    cats: Optional[List[str]] = Query(None, description="Filtro categorías: f1, gt"),
-    sessions: Optional[List[str]] = Query(None, description="Filtro sesiones: race, qualy"),
+    cats: Optional[List[str]] = Query(None, description="Filtro categorías: f1, gt, nascar"),
+    sessions: Optional[List[str]] = Query(None, description="Filtro sesiones: race, qualy, practice, sprint"),
     loader: DataLoader = Depends(get_data_loader),
     service: CalendarService = Depends(get_calendar_service)
 ):
@@ -325,7 +330,6 @@ async def get_calendar_ics(
     try:
         events = loader.load_events()
         
-        # Normalizar filtros a Sets para búsqueda O(1)
         cat_set = set(c.lower() for c in cats) if cats else None
         session_set = set(s.lower() for s in sessions) if sessions else None
 
@@ -348,5 +352,4 @@ app.mount("/data", StaticFiles(directory="data"), name="data")
 app.mount("/", StaticFiles(directory="public", html=True), name="static")
 
 if __name__ == "__main__":
-    # Ejecución directa para desarrollo
     uvicorn.run(app, host="0.0.0.0", port=8080)
