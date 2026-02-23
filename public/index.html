@@ -30,31 +30,10 @@
                         display: ['Rajdhani', 'system-ui', 'sans-serif'],
                         sans: ['Inter', 'system-ui', 'sans-serif'],
                     },
-                    backgroundImage: {
-                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                        'glow-red': 'radial-gradient(ellipse at center, rgba(225, 6, 0, 0.15) 0%, transparent 70%)',
-                        'glow-orange': 'radial-gradient(ellipse at center, rgba(255, 107, 53, 0.1) 0%, transparent 70%)',
-                    },
                     animation: {
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                        'glow': 'glow 2s ease-in-out infinite alternate',
-                        'slide-up': 'slideUp 0.5s ease-out',
                         'fade-in': 'fadeIn 0.6s ease-out',
                     },
                     keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        },
-                        glow: {
-                            '0%': { boxShadow: '0 0 20px rgba(225, 6, 0, 0.3)' },
-                            '100%': { boxShadow: '0 0 40px rgba(225, 6, 0, 0.5), 0 0 80px rgba(225, 6, 0, 0.2)' },
-                        },
-                        slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
                         fadeIn: {
                             '0%': { opacity: '0' },
                             '100%': { opacity: '1' },
@@ -65,809 +44,827 @@
         }
     </script>
     <style>
-        body {
-            background: #050505;
-        }
-        
+        body { background: #050505; }
+
         .bg-mesh {
-            background-image: 
+            background-image:
                 radial-gradient(ellipse 80% 50% at 50% -20%, rgba(225, 6, 0, 0.12) 0%, transparent 50%),
                 radial-gradient(ellipse 60% 40% at 80% 60%, rgba(255, 107, 53, 0.08) 0%, transparent 50%),
                 radial-gradient(ellipse 50% 30% at 20% 80%, rgba(225, 6, 0, 0.06) 0%, transparent 50%);
         }
-        
+
         .glass-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
         }
-        
         .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.15);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.03) 100%);
+            border-color: rgba(255,255,255,0.13);
         }
-        
-        .selectable-card {
+
+        /* ── Category cards ───────────────────────────────────────────── */
+        .cat-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.015) 100%);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 1rem;
+            transition: border-color 0.2s, opacity 0.2s;
+        }
+        .cat-card.cat-disabled { opacity: 0.45; }
+        .cat-card.cat-enabled  { border-color: rgba(255,255,255,0.12); }
+
+        /* ── Toggle switch ────────────────────────────────────────────── */
+        .toggle-track {
+            width: 40px; height: 22px;
+            border-radius: 11px;
+            display: inline-flex; align-items: center;
+            padding: 2px;
             cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: background 0.2s;
+            flex-shrink: 0;
         }
-        
-        .selectable-card:hover {
-            transform: translateY(-2px) scale(1.02);
+        .toggle-track.on  { background: #e10600; }
+        .toggle-track.off { background: rgba(255,255,255,0.12); }
+        .toggle-knob {
+            width: 18px; height: 18px;
+            border-radius: 50%;
+            background: white;
+            transition: transform 0.2s;
         }
-        
-        .selectable-card:active {
-            transform: scale(0.98);
+        .toggle-track.on  .toggle-knob { transform: translateX(18px); }
+        .toggle-track.off .toggle-knob { transform: translateX(0); }
+
+        /* ── Session pills ────────────────────────────────────────────── */
+        .pill {
+            display: inline-flex; align-items: center;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-size: 11px; font-weight: 500;
+            cursor: pointer;
+            transition: all 0.15s;
+            white-space: nowrap;
+            border: 1px solid transparent;
+            user-select: none;
         }
-        
-        .selectable-card.selected {
-            background: linear-gradient(135deg, rgba(225, 6, 0, 0.15) 0%, rgba(225, 6, 0, 0.05) 100%);
-            border-color: rgba(225, 6, 0, 0.6);
-            box-shadow: 
-                0 0 30px rgba(225, 6, 0, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-        
-        .selectable-card.selected .icon-container {
-            background: linear-gradient(135deg, rgba(225, 6, 0, 0.3) 0%, rgba(225, 6, 0, 0.1) 100%);
-            box-shadow: 0 0 20px rgba(225, 6, 0, 0.3);
-        }
-        
-        .countdown-digit {
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
+
+        /* practice — blue */
+        .pill[data-alias="practice"]          { border-color: rgba(99,179,237,0.3);  color: rgba(147,210,255,0.55); background: transparent; }
+        .pill[data-alias="practice"]:hover    { border-color: rgba(99,179,237,0.7);  color: rgba(147,210,255,0.9); }
+        .pill[data-alias="practice"].active   { border-color: #63b3ed; color: #bee3f8; background: rgba(66,153,225,0.18); }
+
+        /* qualifying — yellow */
+        .pill[data-alias="qualifying"]        { border-color: rgba(236,201,75,0.3);  color: rgba(250,220,100,0.55); background: transparent; }
+        .pill[data-alias="qualifying"]:hover  { border-color: rgba(236,201,75,0.7);  color: rgba(250,220,100,0.9); }
+        .pill[data-alias="qualifying"].active { border-color: #ecc94b; color: #fefcbf; background: rgba(214,158,46,0.18); }
+
+        /* sprint — orange */
+        .pill[data-alias="sprint"]            { border-color: rgba(237,137,54,0.3);  color: rgba(255,160,80,0.55); background: transparent; }
+        .pill[data-alias="sprint"]:hover      { border-color: rgba(237,137,54,0.7);  color: rgba(255,160,80,0.9); }
+        .pill[data-alias="sprint"].active     { border-color: #ed8936; color: #fbd38d; background: rgba(221,107,32,0.18); }
+
+        /* race — red */
+        .pill[data-alias="race"]              { border-color: rgba(225,6,0,0.35);    color: rgba(252,129,129,0.55); background: transparent; }
+        .pill[data-alias="race"]:hover        { border-color: rgba(225,6,0,0.75);    color: rgba(252,129,129,0.9); }
+        .pill[data-alias="race"].active       { border-color: #e10600; color: #fed7d7; background: rgba(225,6,0,0.18); }
+
+        /* ── Other ────────────────────────────────────────────────────── */
         .url-output {
-            background: rgba(34, 197, 94, 0.05);
-            border: 1px solid rgba(34, 197, 94, 0.2);
+            background: rgba(34,197,94,0.05);
+            border: 1px solid rgba(34,197,94,0.2);
         }
-        
-        .url-output:focus {
-            box-shadow: 0 0 20px rgba(34, 197, 94, 0.15);
-            border-color: rgba(34, 197, 94, 0.4);
-        }
-        
+        .url-output:focus { outline: none; box-shadow: 0 0 20px rgba(34,197,94,0.15); border-color: rgba(34,197,94,0.4); }
+
         .btn-primary {
             background: linear-gradient(135deg, #e10600 0%, #ff3d33 100%);
             transition: all 0.2s ease;
         }
-        
-        .btn-primary:hover {
-            box-shadow: 0 10px 40px rgba(225, 6, 0, 0.4);
-            transform: translateY(-1px);
-        }
-        
-        .btn-primary:active {
-            transform: scale(0.98);
-        }
-        
-        .instruction-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
-        }
-        
-        .ticker {
-            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.03) 10%, rgba(255, 255, 255, 0.03) 90%, transparent 100%);
-        }
-        
-        .live-dot {
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
-        /* Scrollbar styling */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.02);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
+        .btn-primary:hover { box-shadow: 0 10px 40px rgba(225,6,0,0.4); transform: translateY(-1px); }
+        .btn-primary:active { transform: scale(0.98); }
+        .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+
+        .countdown-digit {
+            background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.03) 100%);
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* NASCAR badge glow */
-        .nascar-selected .icon-container {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(0, 31, 91, 0.3) 100%) !important;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2) !important;
+        .live-dot { animation: blink 2s infinite; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+
+        .instruction-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
         }
-        /* MotoGP badge glow */
-        .motogp-selected .icon-container {
-            background: linear-gradient(135deg, rgba(208, 2, 27, 0.25) 0%, rgba(0, 0, 0, 0.3) 100%) !important;
-            box-shadow: 0 0 20px rgba(208, 2, 27, 0.3) !important;
+        .ticker {
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.03) 10%, rgba(255,255,255,0.03) 90%, transparent 100%);
         }
     </style>
 </head>
 <body class="font-sans text-white antialiased min-h-screen bg-mesh">
-    <div class="min-h-screen px-4 py-8 md:py-12 lg:py-16">
-        <div class="max-w-6xl mx-auto">
-            
-            <!-- Bento Grid Layout -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-                
-                <!-- Hero Section - Spans 2 cols on desktop -->
-                <div class="lg:col-span-2 glass-card rounded-3xl p-8 md:p-10 animate-fade-in">
-                    <div class="flex flex-col h-full justify-between">
-                        <div>
-                            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-racing-red/10 border border-racing-red/30 text-racing-red text-sm font-medium mb-6">
-                                <span class="live-dot w-2 h-2 rounded-full bg-racing-red"></span>
-                                Temporada 2026
-                            </div>
-                            <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-4 leading-[0.9]">
-                                APEX<br>
-                                <span class="bg-gradient-to-r from-racing-red via-racing-orange to-racing-red bg-clip-text text-transparent">CALENDAR</span>
-                            </h1>
-                            <p class="text-gray-400 text-lg md:text-xl max-w-md leading-relaxed">
-                                Sincronización automática. Sin spam. Tu horario local.
-                            </p>
-                        </div>
-                        <div class="mt-8 flex items-center gap-4">
-                            <div class="flex -space-x-2">
-                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-racing-bg flex items-center justify-center text-xs">🏎️</div>
-                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-racing-bg flex items-center justify-center text-xs">🏁</div>
-                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-racing-bg flex items-center justify-center text-xs">🏍️</div>
-                            </div>
-                            <span class="text-gray-500 text-sm">+150 eventos incluidos</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Next Race Countdown -->
-                <div class="glass-card rounded-3xl p-6 md:p-8 animate-fade-in" style="animation-delay: 0.1s">
-                    <div class="flex flex-col h-full">
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-gray-500 text-sm font-medium uppercase tracking-wider">Próximas carreras</span>
-                            <span class="text-2xl animate-pulse">🏁</span>
-                        </div>
-                        
-                        <div id="loading-skeleton" class="flex-1 flex flex-col justify-center items-center opacity-50">
-                            <div class="w-8 h-8 border-4 border-racing-red border-t-transparent rounded-full animate-spin"></div>
-                        </div>
+<div class="min-h-screen px-4 py-8 md:py-12 lg:py-16">
+<div class="max-w-6xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
 
-                        <div id="races-content" class="hidden flex-1 flex flex-col justify-between">
-                            <div>
-                                <h3 class="font-display text-xl md:text-2xl font-bold text-white mb-1 leading-tight flex items-center gap-2" id="r1-name">
-                                    Cargando...
-                                </h3>
-                                <p class="text-gray-500 text-sm mb-4 flex items-center gap-2">
-                                    <span id="r1-circuit">Circuito</span>
-                                </p>
-                                
-                                <div class="grid grid-cols-4 gap-2">
-                                    <div class="countdown-digit rounded-lg p-2 text-center bg-white/5 border border-white/10">
-                                        <span class="font-display text-xl md:text-2xl font-bold text-white block leading-none" id="d-days">00</span>
-                                        <span class="text-[10px] text-gray-500 uppercase">Días</span>
-                                    </div>
-                                    <div class="countdown-digit rounded-lg p-2 text-center bg-white/5 border border-white/10">
-                                        <span class="font-display text-xl md:text-2xl font-bold text-white block leading-none" id="d-hours">00</span>
-                                        <span class="text-[10px] text-gray-500 uppercase">Horas</span>
-                                    </div>
-                                    <div class="countdown-digit rounded-lg p-2 text-center bg-white/5 border border-white/10">
-                                        <span class="font-display text-xl md:text-2xl font-bold text-white block leading-none" id="d-mins">00</span>
-                                        <span class="text-[10px] text-gray-500 uppercase">Min</span>
-                                    </div>
-                                    <div class="countdown-digit rounded-lg p-2 text-center bg-white/5 border border-white/10">
-                                        <span class="font-display text-xl md:text-2xl font-bold text-white block leading-none" id="d-secs">00</span>
-                                        <span class="text-[10px] text-gray-500 uppercase">Seg</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="mt-4 pt-4 border-t border-white/5 space-y-3">
-                                <div class="flex items-center justify-between text-sm group" id="row-race-2">
-                                    <div class="flex items-center gap-2 overflow-hidden">
-                                        <span id="r2-icon" class="text-base grayscale group-hover:grayscale-0 transition-all">🏎️</span>
-                                        <span id="r2-name" class="text-gray-300 font-medium truncate">—</span>
-                                    </div>
-                                    <span id="r2-date" class="text-gray-500 text-xs font-mono whitespace-nowrap">--/--</span>
-                                </div>
-                                <div class="flex items-center justify-between text-sm group" id="row-race-3">
-                                    <div class="flex items-center gap-2 overflow-hidden">
-                                        <span id="r3-icon" class="text-base grayscale group-hover:grayscale-0 transition-all">🚗</span>
-                                        <span id="r3-name" class="text-gray-300 font-medium truncate">—</span>
-                                    </div>
-                                    <span id="r3-date" class="text-gray-500 text-xs font-mono whitespace-nowrap">--/--</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <!-- ── Hero ─────────────────────────────────────────────────────── -->
+    <div class="lg:col-span-2 glass-card rounded-3xl p-8 md:p-10 animate-fade-in">
+        <div class="flex flex-col h-full justify-between">
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-racing-red/10 border border-racing-red/30 text-racing-red text-sm font-medium mb-6">
+                    <span class="live-dot w-2 h-2 rounded-full bg-racing-red"></span>
+                    Temporada 2026
                 </div>
-                
-                <!-- Series Selector -->
-                <div class="glass-card rounded-3xl p-6 md:p-8 animate-fade-in" style="animation-delay: 0.2s">
-                    <h2 class="text-gray-500 text-sm font-medium uppercase tracking-wider mb-5 flex items-center gap-2">
-                        <svg class="w-4 h-4 text-racing-red" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                        </svg>
-                        Campeonatos
-                    </h2>
-                    <div class="grid grid-cols-1 gap-3">
-                        <button data-cat="f1" class="selectable-card selected glass-card rounded-2xl p-5 flex items-center gap-4">
-                            <div class="icon-container w-20 h-12 rounded-xl bg-white/5 flex items-center justify-center p-2 transition-all duration-300">
-                                <img src="/f1.svg" alt="F1" class="w-full h-full object-contain filter brightness-0 invert">
-                            </div>
-                            <div class="text-left">
-                                <span class="font-display text-lg font-bold text-white block">Formula 1</span>
-                                <span class="text-gray-500 text-sm">24 Grand Prix</span>
-                            </div>
-                        </button>
-                        <button data-cat="gt" class="selectable-card selected glass-card rounded-2xl p-5 flex items-center gap-4">
-                            <div class="icon-container w-20 h-12 rounded-xl bg-white/5 flex items-center justify-center p-2 transition-all duration-300">
-                                <img src="/gt.svg" alt="GT" class="w-full h-full object-contain filter brightness-0 invert">
-                            </div>
-                            <div class="text-left">
-                                <span class="font-display text-lg font-bold text-white block">GT World</span>
-                                <span class="text-gray-500 text-sm">Endurance & Sprint</span>
-                            </div>
-                        </button>
-                        <button data-cat="nascar" class="selectable-card selected glass-card rounded-2xl p-5 flex items-center gap-4">
-                            <div class="icon-container w-20 h-12 rounded-xl bg-white/5 flex items-center justify-center p-2 transition-all duration-300">
-                                <img src="/nascar.svg" alt="NASCAR" class="w-full h-full object-contain">
-                            </div>
-                            <div class="text-left">
-                                <span class="font-display text-lg font-bold text-white block">NASCAR</span>
-                                <span class="text-gray-500 text-sm">Cup Series 2026</span>
-                            </div>
-                        </button>
-                        <button data-cat="motogp" class="selectable-card selected motogp-selected glass-card rounded-2xl p-5 flex items-center gap-4">
-                            <div class="icon-container w-20 h-12 rounded-xl bg-white/5 flex items-center justify-center p-2 transition-all duration-300">
-                                <img src="/motogp.svg" alt="MotoGP" class="w-full h-full object-contain">
-                            </div>
-                            <div class="text-left">
-                                <span class="font-display text-lg font-bold text-white block">MotoGP</span>
-                                <span class="text-gray-500 text-sm">22 Grand Prix</span>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Sessions Selector -->
-                <div class="lg:col-span-2 glass-card rounded-3xl p-6 md:p-8 animate-fade-in" style="animation-delay: 0.3s">
-                    <h2 class="text-gray-500 text-sm font-medium uppercase tracking-wider mb-5 flex items-center gap-2">
-                        <svg class="w-4 h-4 text-racing-red" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-                        </svg>
-                        Sesiones
-                    </h2>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                        <button data-session="practice" class="selectable-card glass-card rounded-2xl p-4 md:p-5 flex flex-col items-center gap-3 text-center">
-                            <div class="icon-container w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-2xl transition-all duration-300">
-                                🔧
-                            </div>
-                            <div>
-                                <span class="font-semibold text-white block text-sm md:text-base">Prácticas</span>
-                                <span class="text-gray-500 text-xs">FP1, FP2, FP3</span>
-                            </div>
-                        </button>
-                        <button data-session="qualifying" class="selectable-card selected glass-card rounded-2xl p-4 md:p-5 flex flex-col items-center gap-3 text-center">
-                            <div class="icon-container w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-2xl transition-all duration-300">
-                                ⏱️
-                            </div>
-                            <div>
-                                <span class="font-semibold text-white block text-sm md:text-base">Clasificación</span>
-                                <span class="text-gray-500 text-xs">Contrarreloj</span>
-                            </div>
-                        </button>
-                        <button data-session="sprint" class="selectable-card selected glass-card rounded-2xl p-4 md:p-5 flex flex-col items-center gap-3 text-center">
-                            <div class="icon-container w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-2xl transition-all duration-300">
-                                ⚡
-                            </div>
-                            <div>
-                                <span class="font-semibold text-white block text-sm md:text-base">Sprint</span>
-                                <span class="text-gray-500 text-xs">Carrera corta</span>
-                            </div>
-                        </button>
-                        <button data-session="race" class="selectable-card selected glass-card rounded-2xl p-4 md:p-5 flex flex-col items-center gap-3 text-center">
-                            <div class="icon-container w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-2xl transition-all duration-300">
-                                🏆
-                            </div>
-                            <div>
-                                <span class="font-semibold text-white block text-sm md:text-base">Carrera</span>
-                                <span class="text-gray-500 text-xs">Evento principal</span>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- URL Output Section -->
-                <div class="lg:col-span-2 glass-card rounded-3xl p-6 md:p-8 animate-fade-in" style="animation-delay: 0.4s">
-                    <h2 class="text-gray-500 text-sm font-medium uppercase tracking-wider mb-4 flex items-center gap-2">
-                        <svg class="w-4 h-4 text-racing-green" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"/>
-                        </svg>
-                        URL de suscripción
-                    </h2>
-                    
-                    <!-- Error Message -->
-                    <div id="errorMessage" class="hidden mb-4 p-4 rounded-xl bg-racing-red/10 border border-racing-red/30 text-red-400 text-sm flex items-center gap-2">
-                        <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
-                        </svg>
-                        Selecciona al menos un campeonato y una sesión para generar la URL de suscripción.
-                    </div>
-                    
-                    <div class="flex flex-col sm:flex-row gap-3">
-                        <input 
-                            type="text" 
-                            id="urlOutput" 
-                            readonly 
-                            class="url-output flex-1 px-5 py-4 rounded-xl text-racing-green font-mono text-sm focus:outline-none truncate"
-                            value=""
-                        >
-                        <button 
-                            id="copyBtn"
-                            class="btn-primary px-8 py-4 text-white font-bold rounded-xl flex items-center justify-center gap-2 min-w-[140px]"
-                        >
-                            <svg id="copyIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                            </svg>
-                            <span id="copyText">Copiar URL</span>
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Instructions Cards -->
-                <div class="glass-card rounded-3xl p-6 md:p-8 animate-fade-in" style="animation-delay: 0.5s">
-                    <h2 class="text-gray-500 text-sm font-medium uppercase tracking-wider mb-5">Cómo suscribirte</h2>
-                    <div class="space-y-3">
-                        <div class="instruction-card rounded-xl p-4 border border-white/5">
-                            <div class="flex items-center gap-3 mb-2">
-                                <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                                    </svg>
-                                </div>
-                                <span class="font-semibold text-white text-sm">iOS / macOS</span>
-                            </div>
-                            <p class="text-gray-500 text-xs leading-relaxed">Copiar la URL → Configuración → Cuentas → Añadir cuenta → Calendarios suscritos</p>
-                        </div>
-                        
-                        <div class="instruction-card rounded-xl p-4 border border-white/5">
-                            <div class="flex items-center gap-3 mb-2">
-                                <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                                    </svg>
-                                </div>
-                                <span class="font-semibold text-white text-sm">Google Calendar</span>
-                            </div>
-                            <p class="text-gray-500 text-xs leading-relaxed">Abrir Google Calendar → Otros calendarios (+) → Desde URL</p>
-                        </div>
-                        
-                        <div class="instruction-card rounded-xl p-4 border border-white/5">
-                            <div class="flex items-center gap-3 mb-2">
-                                <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M7.88 12.04q0 .45-.11.87-.1.41-.33.74-.22.33-.58.52-.37.2-.87.2t-.85-.2q-.35-.21-.57-.55-.22-.33-.33-.75-.1-.42-.1-.86t.1-.87q.1-.43.34-.76.22-.34.59-.54.36-.2.87-.2t.86.2q.35.21.57.55.22.34.31.77.1.43.1.88zM24 12v9.38q0 .46-.33.8-.33.32-.8.32H7.13q-.46 0-.8-.33-.32-.33-.32-.8V12q0-.46.33-.8.33-.32.8-.32h15.74q.46 0 .8.33.32.33.32.8zm-5.33 0h-3.74v3.34h3.74V12zm4 0h-2.67v3.34h2.67V12zm-5.33 0H13.6v3.34h3.74V12zm-9.34 6h3.74v-1.34H8v1.34zm5.33 0h3.74v-1.34h-3.74v1.34zm4 0h3.74v-1.34h-3.74v1.34zm5.34 0h2.67v-1.34h-2.67v1.34zM4 18.28v-5.65l.09-.33q.08-.27.22-.47.14-.2.35-.33.21-.14.5-.14h.77V6.87H0V5.54h5.93v6.33h.64l.17.27q.14.28.27.52.14.24.24.48.11.23.17.44l.06.32v4.38H4z"/>
-                                    </svg>
-                                </div>
-                                <span class="font-semibold text-white text-sm">Outlook</span>
-                            </div>
-                            <p class="text-gray-500 text-xs leading-relaxed">Añadir calendario → Suscribirse desde web → Pegar URL</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Live Events Ticker - Full width -->
-                <div class="md:col-span-2 lg:col-span-3 ticker rounded-2xl p-4 md:p-5 border border-white/5 animate-fade-in" style="animation-delay: 0.6s">
-                    <div class="flex items-center gap-4 overflow-hidden">
-                        <div class="flex items-center gap-2 flex-shrink-0">
-                            <span class="live-dot w-2 h-2 rounded-full bg-racing-red"></span>
-                            <span class="text-gray-500 text-sm font-medium uppercase tracking-wider">Incluye</span>
-                        </div>
-                        <div class="flex items-center gap-3 text-gray-400 text-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
-                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Mónaco</span>
-                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">24h Spa</span>
-                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Daytona 500</span>
-                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Las Vegas</span>
-                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">NASCAR Playoffs</span>
-                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Singapur</span>
-                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Coke 600</span>
-                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Abu Dhabi</span>
-                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Jerez</span>
-                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Mugello</span>
-                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Valencia</span>
-                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">+ 120 más</span>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <!-- Footer -->
-            <footer class="text-center mt-12 animate-fade-in" style="animation-delay: 0.7s">
-                <p class="text-gray-600 text-sm">
-                    Hecho para fans del automovilismo por un fan del automovilismo.
+                <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-4 leading-[0.9]">
+                    APEX<br>
+                    <span class="bg-gradient-to-r from-racing-red via-racing-orange to-racing-red bg-clip-text text-transparent">CALENDAR</span>
+                </h1>
+                <p class="text-gray-400 text-lg md:text-xl max-w-md leading-relaxed">
+                    Sincronización automática. Sin spam. Tu horario local.
                 </p>
-            </footer>
-            
+            </div>
+            <div class="mt-8 flex items-center gap-4">
+                <div class="flex -space-x-2">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-racing-bg flex items-center justify-center text-xs">🏎️</div>
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-racing-bg flex items-center justify-center text-xs">🏁</div>
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-racing-bg flex items-center justify-center text-xs">🏍️</div>
+                </div>
+                <span class="text-gray-500 text-sm">+150 eventos incluidos</span>
+            </div>
         </div>
     </div>
 
-    <script>
-        /**
-         * ApexCal Core Logic - v2.1 with NASCAR support & fixed next races display
-         */
-        (() => {
-            'use strict';
+    <!-- ── Next Race Countdown ────────────────────────────────────── -->
+    <div class="glass-card rounded-3xl p-6 md:p-8 animate-fade-in" style="animation-delay:.1s">
+        <div class="flex flex-col h-full">
+            <div class="flex items-center justify-between mb-4">
+                <span class="text-gray-500 text-sm font-medium uppercase tracking-wider">Próximas carreras</span>
+                <span class="text-2xl live-dot">🏁</span>
+            </div>
+            <div id="loading-skeleton" class="flex-1 flex flex-col justify-center items-center opacity-50">
+                <div class="w-8 h-8 border-4 border-racing-red border-t-transparent rounded-full animate-spin"></div>
+            </div>
+            <div id="races-content" class="hidden flex-1 flex flex-col justify-between">
+                <div>
+                    <h3 class="font-display text-xl md:text-2xl font-bold text-white mb-1 leading-tight flex items-center gap-2" id="r1-name">Cargando...</h3>
+                    <p class="text-gray-500 text-sm mb-4"><span id="r1-circuit">Circuito</span></p>
+                    <div class="grid grid-cols-4 gap-2">
+                        <div class="countdown-digit rounded-lg p-2 text-center">
+                            <span class="font-display text-xl md:text-2xl font-bold text-white block leading-none" id="d-days">00</span>
+                            <span class="text-[10px] text-gray-500 uppercase">Días</span>
+                        </div>
+                        <div class="countdown-digit rounded-lg p-2 text-center">
+                            <span class="font-display text-xl md:text-2xl font-bold text-white block leading-none" id="d-hours">00</span>
+                            <span class="text-[10px] text-gray-500 uppercase">Horas</span>
+                        </div>
+                        <div class="countdown-digit rounded-lg p-2 text-center">
+                            <span class="font-display text-xl md:text-2xl font-bold text-white block leading-none" id="d-mins">00</span>
+                            <span class="text-[10px] text-gray-500 uppercase">Min</span>
+                        </div>
+                        <div class="countdown-digit rounded-lg p-2 text-center">
+                            <span class="font-display text-xl md:text-2xl font-bold text-white block leading-none" id="d-secs">00</span>
+                            <span class="text-[10px] text-gray-500 uppercase">Seg</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 pt-4 border-t border-white/5 space-y-3">
+                    <div class="flex items-center justify-between text-sm">
+                        <div class="flex items-center gap-2 overflow-hidden">
+                            <span id="r2-icon" class="text-base">🏎️</span>
+                            <span id="r2-name" class="text-gray-300 font-medium truncate">—</span>
+                        </div>
+                        <span id="r2-date" class="text-gray-500 text-xs font-mono whitespace-nowrap">--/--</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                        <div class="flex items-center gap-2 overflow-hidden">
+                            <span id="r3-icon" class="text-base">🏎️</span>
+                            <span id="r3-name" class="text-gray-300 font-medium truncate">—</span>
+                        </div>
+                        <span id="r3-date" class="text-gray-500 text-xs font-mono whitespace-nowrap">--/--</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            // --- 1. CONFIGURATION & CONSTANTS ---
-            const APP_CONFIG = Object.freeze({
-                api: {
-                    endpoints: ['/data/formula1.json', '/data/gtworld.json', '/data/nascar.json', '/data/motogp.json'],
-                    timeout: 5000
-                },
-                ui: {
-                    selectors: {
-                        loading: 'loading-skeleton',
-                        content: 'races-content',
-                        errorMsg: 'errorMessage',
-                        urlInput: 'urlOutput',
-                        copyBtn: 'copyBtn',
-                        copyText: 'copyText'
-                    },
-                    classes: {
-                        hidden: 'hidden',
-                        selected: 'selected',
-                        disabled: ['opacity-50', 'cursor-not-allowed']
-                    }
-                },
-                series: {
-                    f1:     { id: 'f1',     keywords: ['gp', 'formula 1', 'grand prix'],  logo: '/f1.svg',     icon: '🏎️', priority: 1 },
-                    gt:     { id: 'gt',     keywords: ['gt', 'endurance', '🏁'],           logo: '/gt.svg',     icon: '🏁', priority: 2 },
-                    nascar: { id: 'nascar', keywords: ['nascar', 'cup:'],                  logo: '/nascar.svg', icon: '🏁', priority: 3 },
-                    motogp: { id: 'motogp', keywords: ['🏍️', 'motogp', 'moto gp'],        logo: '/motogp.svg', icon: '🏍️', priority: 4 }
-                }
-            });
+    <!-- ── Category + Session Cards (full width) ─────────────────── -->
+    <div class="lg:col-span-3 glass-card rounded-3xl p-6 md:p-8 animate-fade-in" style="animation-delay:.2s">
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-gray-500 text-sm font-medium uppercase tracking-wider flex items-center gap-2">
+                <svg class="w-4 h-4 text-racing-red" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+                Personaliza tu calendario
+            </h2>
+            <div class="flex gap-2">
+                <button id="globalSelectAll"
+                    class="text-xs px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/25 transition-all">
+                    Seleccionar todo
+                </button>
+                <button id="globalClear"
+                    class="text-xs px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/25 transition-all">
+                    Borrar todo
+                </button>
+            </div>
+        </div>
 
-            // --- 2. STATE MANAGEMENT ---
-            class StateManager {
-                constructor() {
-                    this.state = {
-                        categories: new Set(['f1', 'gt', 'nascar', 'motogp']),
-                        sessions: new Set(['qualifying', 'sprint', 'race']),
-                        races: [],
-                        loading: true,
-                        error: null
-                    };
-                    this.listeners = [];
-                }
+        <!-- Legend row -->
+        <div class="flex flex-wrap gap-3 mb-5 pb-4 border-b border-white/5">
+            <span class="flex items-center gap-1.5 text-xs text-gray-500">
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-400/60"></span>Prácticas
+            </span>
+            <span class="flex items-center gap-1.5 text-xs text-gray-500">
+                <span class="w-2.5 h-2.5 rounded-full bg-yellow-400/60"></span>Clasificación
+            </span>
+            <span class="flex items-center gap-1.5 text-xs text-gray-500">
+                <span class="w-2.5 h-2.5 rounded-full bg-orange-400/60"></span>Sprint
+            </span>
+            <span class="flex items-center gap-1.5 text-xs text-gray-500">
+                <span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span>Carrera
+            </span>
+        </div>
 
-                subscribe(listener) { this.listeners.push(listener); }
+        <!-- Category cards grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="categories-grid"></div>
+    </div>
 
-                setState(changes) {
-                    this.state = { ...this.state, ...changes };
-                    this.notify();
-                }
+    <!-- ── URL Output ─────────────────────────────────────────────── -->
+    <div class="lg:col-span-2 glass-card rounded-3xl p-6 md:p-8 animate-fade-in" style="animation-delay:.3s">
+        <h2 class="text-gray-500 text-sm font-medium uppercase tracking-wider mb-4 flex items-center gap-2">
+            <svg class="w-4 h-4 text-racing-green" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"/>
+            </svg>
+            URL de suscripción
+        </h2>
+        <div id="errorMessage" class="hidden mb-4 p-4 rounded-xl bg-racing-red/10 border border-racing-red/30 text-red-400 text-sm flex items-center gap-2">
+            <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+            </svg>
+            Selecciona al menos un campeonato y una sesión para generar la URL.
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3">
+            <input type="text" id="urlOutput" readonly
+                class="url-output flex-1 px-5 py-4 rounded-xl text-racing-green font-mono text-sm focus:outline-none truncate"
+                value="" placeholder="Configura tus preferencias arriba…">
+            <button id="copyBtn" disabled
+                class="btn-primary px-8 py-4 text-white font-bold rounded-xl flex items-center justify-center gap-2 min-w-[140px]">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                </svg>
+                <span id="copyText">Copiar URL</span>
+            </button>
+        </div>
+    </div>
 
-                toggleSetItem(key, value) {
-                    const newSet = new Set(this.state[key]);
-                    newSet.has(value) ? newSet.delete(value) : newSet.add(value);
-                    this.setState({ [key]: newSet });
-                }
+    <!-- ── Instructions ───────────────────────────────────────────── -->
+    <div class="glass-card rounded-3xl p-6 md:p-8 animate-fade-in" style="animation-delay:.4s">
+        <h2 class="text-gray-500 text-sm font-medium uppercase tracking-wider mb-5">Cómo suscribirte</h2>
+        <div class="space-y-3">
+            <div class="instruction-card rounded-xl p-4 border border-white/5">
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                    </div>
+                    <span class="font-semibold text-white text-sm">iOS / macOS</span>
+                </div>
+                <p class="text-gray-500 text-xs leading-relaxed">Copiar la URL → Configuración → Cuentas → Añadir cuenta → Calendarios suscritos</p>
+            </div>
+            <div class="instruction-card rounded-xl p-4 border border-white/5">
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                        </svg>
+                    </div>
+                    <span class="font-semibold text-white text-sm">Google Calendar</span>
+                </div>
+                <p class="text-gray-500 text-xs leading-relaxed">Abrir Google Calendar → Otros calendarios (+) → Desde URL</p>
+            </div>
+            <div class="instruction-card rounded-xl p-4 border border-white/5">
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-gray-400 text-xs font-bold">OL</div>
+                    <span class="font-semibold text-white text-sm">Outlook</span>
+                </div>
+                <p class="text-gray-500 text-xs leading-relaxed">Añadir calendario → Suscribirse desde web → Pegar URL</p>
+            </div>
+        </div>
+    </div>
 
-                notify() { this.listeners.forEach(l => l(this.state)); }
+    <!-- ── Ticker ──────────────────────────────────────────────────── -->
+    <div class="md:col-span-2 lg:col-span-3 ticker rounded-2xl p-4 md:p-5 border border-white/5 animate-fade-in" style="animation-delay:.5s">
+        <div class="flex items-center gap-4 overflow-hidden">
+            <div class="flex items-center gap-2 flex-shrink-0">
+                <span class="live-dot w-2 h-2 rounded-full bg-racing-red"></span>
+                <span class="text-gray-500 text-sm font-medium uppercase tracking-wider">Incluye</span>
+            </div>
+            <div class="flex items-center gap-3 text-gray-400 text-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
+                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Mónaco</span>
+                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">24h Spa</span>
+                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Daytona 500</span>
+                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Las Vegas</span>
+                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">NASCAR Playoffs</span>
+                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Singapur</span>
+                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Coke 600</span>
+                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Abu Dhabi</span>
+                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Jerez</span>
+                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Mugello</span>
+                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">GP Valencia</span>
+                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">+ 120 más</span>
+            </div>
+        </div>
+    </div>
+
+</div><!-- /grid -->
+
+<footer class="text-center mt-12 animate-fade-in" style="animation-delay:.6s">
+    <p class="text-gray-600 text-sm">Hecho para fans del automovilismo por un fan del automovilismo.</p>
+</footer>
+
+</div><!-- /max-w -->
+</div><!-- /min-h-screen -->
+
+<script>
+(() => {
+    'use strict';
+
+    // ═══════════════════════════════════════════════════════════════════
+    //  CONFIGURATION
+    // ═══════════════════════════════════════════════════════════════════
+    /**
+     * Each session has:
+     *   id     – unique within the category (used for state)
+     *   label  – display name
+     *   alias  – backend filter key (practice | qualifying | sprint | race)
+     *            also drives the pill colour via CSS [data-alias]
+     */
+    const CATEGORIES = {
+        f1: {
+            name: 'Formula 1',
+            subtitle: '24 Grand Prix · 2026',
+            logo: '/f1.svg',
+            logoInvert: true,
+            sessions: [
+                { id: 'p1',           label: 'P1',            alias: 'practice',   backendKey: 'p1'           },
+                { id: 'p2',           label: 'P2',            alias: 'practice',   backendKey: 'p2'           },
+                { id: 'p3',           label: 'P3',            alias: 'practice',   backendKey: 'p3'           },
+                { id: 'sprint_qualy', label: 'Sprint Qualy',  alias: 'qualifying', backendKey: 'sprint_qualy' },
+                { id: 'qualy',        label: 'Clasificación', alias: 'qualifying', backendKey: 'qualifying'   },
+                { id: 'sprint',       label: 'Sprint',        alias: 'sprint',     backendKey: 'sprint'       },
+                { id: 'race',         label: 'Carrera',       alias: 'race',       backendKey: 'race'         },
+            ],
+        },
+        gt: {
+            name: 'GT World Challenge',
+            subtitle: 'Europe · Endurance & Sprint',
+            logo: '/gt.svg',
+            logoInvert: true,
+            sessions: [
+                { id: 'fp1',        label: 'Free Practice 1',     alias: 'practice',   backendKey: 'fp1'        },
+                { id: 'fp2',        label: 'Free Practice 2',     alias: 'practice',   backendKey: 'fp2'        },
+                { id: 'qualifying', label: 'Qualifying',           alias: 'qualifying', backendKey: 'qualifying' },
+                { id: 'race',       label: 'Carrera / Endurance',  alias: 'race',       backendKey: 'race'       },
+                { id: 'race1',      label: 'Race 1',               alias: 'race',       backendKey: 'race'       },
+                { id: 'race2',      label: 'Race 2',               alias: 'race',       backendKey: 'race'       },
+            ],
+        },
+        nascar: {
+            name: 'NASCAR Cup Series',
+            subtitle: '38 Carreras · 2026',
+            logo: '/nascar.svg',
+            logoInvert: false,
+            sessions: [
+                { id: 'race', label: 'Carrera', alias: 'race', backendKey: 'race' },
+            ],
+        },
+        motogp: {
+            name: 'MotoGP',
+            subtitle: '22 Grand Prix · 2026',
+            logo: '/motogp.svg',
+            logoInvert: false,
+            sessions: [
+                { id: 'fp1',      label: 'FP1',              alias: 'practice',   backendKey: 'fp1'       },
+                { id: 'fp2',      label: 'FP2',              alias: 'practice',   backendKey: 'fp2'       },
+                { id: 'practica', label: 'Práctica',          alias: 'practice',   backendKey: 'practica'  },
+                { id: 'warmup',   label: 'Warm Up',           alias: 'practice',   backendKey: 'warmup'    },
+                { id: 'q1',       label: 'Q1 Clasificación',  alias: 'qualifying', backendKey: 'q1'        },
+                { id: 'q2',       label: 'Q2 Clasificación',  alias: 'qualifying', backendKey: 'q2'        },
+                { id: 'sprint',   label: 'Sprint',            alias: 'sprint',     backendKey: 'sprint'    },
+                { id: 'race',     label: 'Carrera',           alias: 'race',       backendKey: 'race'      },
+            ],
+        },
+    };
+
+    // Default selection: qualifying + sprint + race (no practice)
+    function defaultSessions(catKey) {
+        return new Set(
+            CATEGORIES[catKey].sessions
+                .filter(s => s.alias !== 'practice')
+                .map(s => s.id)
+        );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════
+    //  STATE
+    // ═══════════════════════════════════════════════════════════════════
+    const state = {
+        races:     [],
+        loading:   true,
+        error:     null,
+        // per-category enabled flag
+        catEnabled: { f1: true, gt: true, nascar: true, motogp: true },
+        // per-category selected session ids
+        catSessions: {
+            f1:     defaultSessions('f1'),
+            gt:     defaultSessions('gt'),
+            nascar: defaultSessions('nascar'),
+            motogp: defaultSessions('motogp'),
+        },
+    };
+
+    // ═══════════════════════════════════════════════════════════════════
+    //  URL GENERATION (pure function from state → string)
+    // ═══════════════════════════════════════════════════════════════════
+    function buildUrl() {
+        const enabledCats = Object.keys(state.catEnabled).filter(k => state.catEnabled[k]);
+        if (!enabledCats.length) return '';
+
+        const p = new URLSearchParams();
+        let hasAnySessions = false;
+
+        for (const cat of enabledCats) {
+            p.append('cats', cat);
+            const cfg      = CATEGORIES[cat];
+            const selected = state.catSessions[cat];
+
+            // Collect unique backendKeys for the sessions checked in this category.
+            // Using a Set removes duplicates (e.g. race1 + race2 both map to "race").
+            const backendKeys = new Set();
+            for (const sess of cfg.sessions) {
+                if (selected.has(sess.id)) backendKeys.add(sess.backendKey);
             }
 
-            // --- 3. DOM SERVICE ---
-            const DOMService = {
-                elements: {},
-
-                init() {
-                    const ids = [
-                        'loading-skeleton', 'races-content', 'errorMessage',
-                        'urlOutput', 'copyBtn', 'copyText',
-                        'r1-name', 'r1-circuit',
-                        'r2-icon', 'r2-name', 'r2-date',
-                        'r3-icon', 'r3-name', 'r3-date',
-                        'd-days', 'd-hours', 'd-mins', 'd-secs'
-                    ];
-                    ids.forEach(id => {
-                        const el = document.getElementById(id);
-                        if (el) this.elements[id] = el;
-                    });
-                    this.elements.toggles = document.querySelectorAll('.selectable-card');
-                },
-
-                setText(id, text) {
-                    if (this.elements[id]) this.elements[id].textContent = text;
-                },
-
-                toggleVisibility(id, show) {
-                    if (this.elements[id]) {
-                        show
-                            ? this.elements[id].classList.remove(APP_CONFIG.ui.classes.hidden)
-                            : this.elements[id].classList.add(APP_CONFIG.ui.classes.hidden);
-                    }
-                }
-            };
-
-            // --- 4. DATA SERVICE ---
-            const RaceService = {
-                /**
-                 * Detect which series an event belongs to, checking title keywords
-                 * and the event's categories array as fallback.
-                 */
-                _detectSeries(event) {
-                    const titleLower = event.title.toLowerCase();
-
-                    // 1. Check title keywords
-                    for (const [key, cfg] of Object.entries(APP_CONFIG.series)) {
-                        if (cfg.keywords.some(kw => titleLower.includes(kw))) {
-                            return { key, cfg };
-                        }
-                    }
-
-                    // 2. Fallback: check categories array from JSON
-                    if (Array.isArray(event.categories)) {
-                        for (const cat of event.categories) {
-                            const catLower = cat.toLowerCase();
-                            if (APP_CONFIG.series[catLower]) {
-                                return { key: catLower, cfg: APP_CONFIG.series[catLower] };
-                            }
-                        }
-                    }
-
-                    return null;
-                },
-
-                _cleanTitle(title) {
-                    // Remove emojis and leading series prefixes
-                    return title
-                        .replace(/[\u{1F300}-\u{1F9FF}]/gu, '')
-                        .replace(/^(NASCAR Cup:|NASCAR Clash:|NASCAR All-Star Race:|NASCAR Playoffs [^:]+:)\s*/i, '')
-                        .split(',')[0]
-                        .trim();
-                },
-
-                /**
-                 * Process all events from all data sources into a unified, sorted list
-                 * of upcoming races, handling both session-based and date-based events.
-                 */
-                processData(data) {
-                    const now = new Date();
-
-                    return data.flatMap(event => {
-                        const detected = this._detectSeries(event);
-                        const seriesKey = detected ? detected.key : null;
-                        const seriesCfg = detected ? detected.cfg : null;
-                        const cleanTitle = this._cleanTitle(event.title);
-                        const logo = seriesCfg ? seriesCfg.logo : '/logo.svg';
-                        const icon = seriesCfg ? seriesCfg.icon : '🏆';
-                        const seriesId = seriesKey || 'unknown';
-
-                        // Events WITH sessions (F1, GT) — find the main race session
-                        if (Array.isArray(event.sessions) && event.sessions.length > 0) {
-                            return event.sessions
-                                .map(s => ({ ...s, startDate: new Date(s.start) }))
-                                .filter(s => {
-                                    if (s.startDate <= now) return false;
-                                    const nameLower = s.name.toLowerCase();
-                                    return nameLower.includes('race') ||
-                                           nameLower.includes('carrera') ||
-                                           nameLower === 'sprint';
-                                })
-                                .map(s => ({
-                                    name: cleanTitle,
-                                    circuit: event.location ? event.location.split(',')[0].trim() : s.name,
-                                    date: s.startDate,
-                                    logo,
-                                    icon,
-                                    seriesId
-                                }));
-                        }
-
-                        // Events WITHOUT sessions (NASCAR, GT all-day events)
-                        if (event.start) {
-                            const startDate = new Date(event.start);
-                            if (startDate > now) {
-                                return [{
-                                    name: cleanTitle,
-                                    circuit: event.location ? event.location.split(',')[0].trim() : '',
-                                    date: startDate,
-                                    logo,
-                                    icon,
-                                    seriesId
-                                }];
-                            }
-                        }
-
-                        return [];
-                    })
-                    .sort((a, b) => a.date - b.date)
-                    .slice(0, 3);
-                },
-
-                async fetchAllSchedules() {
-                    const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), APP_CONFIG.api.timeout);
-
-                    try {
-                        const results = await Promise.allSettled(
-                            APP_CONFIG.api.endpoints.map(url =>
-                                fetch(url, { signal: controller.signal }).then(r => {
-                                    if (!r.ok) throw new Error(`HTTP ${r.status}: ${url}`);
-                                    return r.json();
-                                })
-                            )
-                        );
-                        clearTimeout(timeoutId);
-
-                        const allEvents = results.flatMap(r => {
-                            if (r.status === 'fulfilled') return r.value;
-                            console.warn('Failed to load schedule:', r.reason);
-                            return [];
-                        });
-
-                        if (allEvents.length === 0) throw new Error('No events loaded');
-                        return this.processData(allEvents);
-
-                    } catch (error) {
-                        clearTimeout(timeoutId);
-                        console.error('Failed to fetch schedules:', error);
-                        throw error;
-                    }
-                }
-            };
-
-            // --- 5. APP CONTROLLER ---
-            const App = {
-                stateManager: new StateManager(),
-
-                init() {
-                    DOMService.init();
-                    this.bindEvents();
-                    this.stateManager.subscribe(this.render.bind(this));
-                    this.loadData();
-                },
-
-                bindEvents() {
-                    DOMService.elements.toggles.forEach(card => {
-                        card.addEventListener('click', () => {
-                            const key = card.dataset.cat ? 'categories' : 'sessions';
-                            const val = card.dataset.cat || card.dataset.session;
-                            this.stateManager.toggleSetItem(key, val);
-                            const isSelected = this.stateManager.state[key].has(val);
-                            card.classList.toggle('selected', isSelected);
-                            card.setAttribute('aria-pressed', isSelected);
-                        });
-                    });
-
-                    if (DOMService.elements.copyBtn) {
-                        DOMService.elements.copyBtn.addEventListener('click', () => this.handleCopy());
-                    }
-                },
-
-                async loadData() {
-                    try {
-                        const races = await RaceService.fetchAllSchedules();
-                        this.stateManager.setState({ races, loading: false });
-                        if (races.length > 0) this.startCountdown(races[0].date);
-                    } catch (error) {
-                        this.stateManager.setState({ loading: false, error: error.message });
-                    }
-                },
-
-                render(state) {
-                    // Loading / Error states
-                    DOMService.toggleVisibility('loading-skeleton', state.loading);
-                    DOMService.toggleVisibility('races-content', !state.loading && !state.error);
-
-                    if (state.error) {
-                        DOMService.toggleVisibility('errorMessage', true);
-                        if (DOMService.elements.errorMessage) {
-                            DOMService.elements.errorMessage.textContent = 'No se pudieron cargar los horarios. Intenta recargar.';
-                        }
-                        return;
-                    }
-
-                    // --- Render main race (r1) ---
-                    if (state.races.length > 0) {
-                        const main = state.races[0];
-                        const nameEl = DOMService.elements['r1-name'];
-                        if (nameEl) {
-                            nameEl.innerHTML = '';
-                            const img = document.createElement('img');
-                            img.src = main.logo;
-                            img.className = 'h-5 mr-2 inline-block object-contain filter brightness-0 invert';
-                            img.alt = main.seriesId;
-                            nameEl.append(img, document.createTextNode(main.name));
-                        }
-                        DOMService.setText('r1-circuit', main.circuit);
-                    }
-
-                    // --- Render next races (r2, r3) ---
-                    const nextRaceSlots = [
-                        { iconId: 'r2-icon', nameId: 'r2-name', dateId: 'r2-date' },
-                        { iconId: 'r3-icon', nameId: 'r3-name', dateId: 'r3-date' }
-                    ];
-
-                    state.races.slice(1, 3).forEach((race, idx) => {
-                        const slot = nextRaceSlots[idx];
-                        DOMService.setText(slot.iconId, race.icon);
-                        DOMService.setText(slot.nameId, race.name);
-                        DOMService.setText(slot.dateId,
-                            race.date.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit' })
-                        );
-                    });
-
-                    // Generate subscription URL
-                    this.updateUrlGen(state);
-                },
-
-                updateUrlGen(state) {
-                    const { categories, sessions } = state;
-                    const isValid = categories.size > 0 && sessions.size > 0;
-
-                    DOMService.toggleVisibility('errorMessage', !isValid);
-
-                    if (DOMService.elements.copyBtn) {
-                        DOMService.elements.copyBtn.disabled = !isValid;
-                        if (!isValid) DOMService.elements.copyBtn.classList.add(...APP_CONFIG.ui.classes.disabled);
-                        else DOMService.elements.copyBtn.classList.remove(...APP_CONFIG.ui.classes.disabled);
-                    }
-
-                    if (isValid && DOMService.elements.urlOutput) {
-                        const params = new URLSearchParams();
-                        categories.forEach(c => params.append('cats', c));
-                        sessions.forEach(s => params.append('sessions', s));
-                        DOMService.elements.urlOutput.value = `${window.location.origin}/calendar.ics?${params.toString()}`;
-                    }
-                },
-
-                startCountdown(targetDate) {
-                    const update = () => {
-                        const diff = targetDate - new Date();
-                        if (diff <= 0) return location.reload();
-
-                        const d = Math.floor(diff / 86400000);
-                        const h = Math.floor((diff % 86400000) / 3600000);
-                        const m = Math.floor((diff % 3600000) / 60000);
-                        const s = Math.floor((diff % 60000) / 1000);
-
-                        DOMService.setText('d-days',  d.toString().padStart(2, '0'));
-                        DOMService.setText('d-hours', h.toString().padStart(2, '0'));
-                        DOMService.setText('d-mins',  m.toString().padStart(2, '0'));
-                        DOMService.setText('d-secs',  s.toString().padStart(2, '0'));
-
-                        requestAnimationFrame(update);
-                    };
-                    requestAnimationFrame(update);
-                },
-
-                async handleCopy() {
-                    const input = DOMService.elements.urlOutput;
-                    if (!input || !input.value) return;
-
-                    try {
-                        await navigator.clipboard.writeText(input.value);
-                        const original = DOMService.elements.copyText?.textContent;
-                        DOMService.setText('copyText', '¡Copiado!');
-                        setTimeout(() => DOMService.setText('copyText', original), 2000);
-                    } catch {
-                        input.select();
-                        document.execCommand('copy');
-                    }
-                }
-            };
-
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', () => App.init());
-            } else {
-                App.init();
+            if (backendKeys.size) {
+                hasAnySessions = true;
+                // Per-category param: f1_sessions=qualy&f1_sessions=race  etc.
+                backendKeys.forEach(k => p.append(`${cat}_sessions`, k));
             }
+        }
 
-        })();
-    </script>
+        if (!hasAnySessions) return '';
+        return `${window.location.origin}/calendar.ics?${p.toString()}`;
+    }
+
+    function syncUrl() {
+        const url = buildUrl();
+        const input  = document.getElementById('urlOutput');
+        const copyBtn = document.getElementById('copyBtn');
+        const errMsg  = document.getElementById('errorMessage');
+
+        if (url) {
+            input.value = url;
+            errMsg.classList.add('hidden');
+            copyBtn.disabled = false;
+        } else {
+            input.value = '';
+            errMsg.classList.remove('hidden');
+            copyBtn.disabled = true;
+        }
+    }
+
+    // ═══════════════════════════════════════════════════════════════════
+    //  RENDER — category cards
+    // ═══════════════════════════════════════════════════════════════════
+    function renderCategories() {
+        const grid = document.getElementById('categories-grid');
+        grid.innerHTML = '';
+        for (const [catKey, catCfg] of Object.entries(CATEGORIES)) {
+            grid.appendChild(buildCard(catKey, catCfg));
+        }
+    }
+
+    function buildCard(catKey, catCfg) {
+        const enabled = state.catEnabled[catKey];
+        const selected = state.catSessions[catKey];
+
+        const card = document.createElement('div');
+        card.className = `cat-card p-5 ${enabled ? 'cat-enabled' : 'cat-disabled'}`;
+        card.dataset.catKey = catKey;
+
+        // ── header ──
+        const header = document.createElement('div');
+        header.className = 'flex items-center justify-between mb-4';
+
+        const logoArea = document.createElement('div');
+        logoArea.className = 'flex items-center gap-3';
+
+        const img = document.createElement('img');
+        img.src = catCfg.logo;
+        img.alt = catCfg.name;
+        img.className = `h-7 w-auto object-contain ${catCfg.logoInvert ? 'brightness-0 invert' : ''}`;
+        img.style.cssText = catCfg.logoInvert ? 'filter: brightness(0) invert(1);' : '';
+
+        const info = document.createElement('div');
+        info.innerHTML = `
+            <p class="font-display text-sm font-bold text-white leading-none mb-0.5">${catCfg.name}</p>
+            <p class="text-gray-500 text-xs">${catCfg.subtitle}</p>
+        `;
+
+        logoArea.append(img, info);
+
+        // toggle
+        const toggle = document.createElement('div');
+        toggle.className = `toggle-track ${enabled ? 'on' : 'off'}`;
+        toggle.dataset.action = 'toggle-cat';
+        toggle.dataset.cat = catKey;
+        toggle.setAttribute('role', 'switch');
+        toggle.setAttribute('aria-checked', enabled);
+        toggle.innerHTML = '<div class="toggle-knob"></div>';
+
+        header.append(logoArea, toggle);
+
+        // ── content (dimmed when disabled) ──
+        const content = document.createElement('div');
+        content.className = `transition-opacity duration-200 ${enabled ? 'opacity-100' : 'opacity-40 pointer-events-none'}`;
+        content.dataset.catContent = catKey;
+
+        // controls row
+        const controls = document.createElement('div');
+        controls.className = 'flex items-center gap-2 mb-3';
+
+        const selectAll = document.createElement('button');
+        selectAll.textContent = 'Seleccionar todo';
+        selectAll.className = 'text-xs px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/25 transition-all';
+        selectAll.dataset.action = 'select-all';
+        selectAll.dataset.cat = catKey;
+
+        const clearBtn = document.createElement('button');
+        clearBtn.textContent = 'Borrar selección';
+        clearBtn.className = 'text-xs px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/25 transition-all';
+        clearBtn.dataset.action = 'clear';
+        clearBtn.dataset.cat = catKey;
+
+        controls.append(selectAll, clearBtn);
+
+        // pills row
+        const pillsRow = document.createElement('div');
+        pillsRow.className = 'flex flex-wrap gap-1.5';
+        pillsRow.dataset.pillsContainer = catKey;
+
+        for (const sess of catCfg.sessions) {
+            pillsRow.appendChild(buildPill(catKey, sess, selected.has(sess.id)));
+        }
+
+        content.append(controls, pillsRow);
+        card.append(header, content);
+        return card;
+    }
+
+    function buildPill(catKey, sess, active) {
+        const btn = document.createElement('button');
+        btn.className = `pill${active ? ' active' : ''}`;
+        btn.dataset.action  = 'toggle-session';
+        btn.dataset.cat     = catKey;
+        btn.dataset.session = sess.id;
+        btn.dataset.alias   = sess.alias;
+        btn.textContent = sess.label;
+        return btn;
+    }
+
+    // partial re-renders (avoid full redraw to preserve layout)
+    function rerenderCard(catKey) {
+        const grid = document.getElementById('categories-grid');
+        const old = grid.querySelector(`[data-cat-key="${catKey}"]`);
+        if (old) old.replaceWith(buildCard(catKey, CATEGORIES[catKey]));
+    }
+
+    function rerenderPills(catKey) {
+        const container = document.querySelector(`[data-pills-container="${catKey}"]`);
+        if (!container) return;
+        container.innerHTML = '';
+        const selected = state.catSessions[catKey];
+        CATEGORIES[catKey].sessions.forEach(sess =>
+            container.appendChild(buildPill(catKey, sess, selected.has(sess.id)))
+        );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════
+    //  EVENT DELEGATION
+    // ═══════════════════════════════════════════════════════════════════
+    function onGridClick(e) {
+        const target = e.target.closest('[data-action]');
+        if (!target) return;
+
+        const { action, cat, session: sessId, alias } = target.dataset;
+
+        switch (action) {
+            case 'toggle-cat': {
+                state.catEnabled[cat] = !state.catEnabled[cat];
+                rerenderCard(cat);
+                syncUrl();
+                break;
+            }
+            case 'toggle-session': {
+                const set = state.catSessions[cat];
+                set.has(sessId) ? set.delete(sessId) : set.add(sessId);
+                // update pill class directly (no full redraw)
+                target.classList.toggle('active', set.has(sessId));
+                syncUrl();
+                break;
+            }
+            case 'select-all': {
+                CATEGORIES[cat].sessions.forEach(s => state.catSessions[cat].add(s.id));
+                rerenderPills(cat);
+                syncUrl();
+                break;
+            }
+            case 'clear': {
+                state.catSessions[cat].clear();
+                rerenderPills(cat);
+                syncUrl();
+                break;
+            }
+        }
+    }
+
+    function onGlobalSelectAll() {
+        for (const catKey of Object.keys(CATEGORIES)) {
+            state.catEnabled[catKey] = true;
+            CATEGORIES[catKey].sessions.forEach(s => state.catSessions[catKey].add(s.id));
+        }
+        renderCategories();
+        syncUrl();
+    }
+
+    function onGlobalClear() {
+        for (const catKey of Object.keys(CATEGORIES)) {
+            state.catSessions[catKey].clear();
+        }
+        renderCategories();
+        syncUrl();
+    }
+
+    // ═══════════════════════════════════════════════════════════════════
+    //  COPY URL
+    // ═══════════════════════════════════════════════════════════════════
+    async function handleCopy() {
+        const input = document.getElementById('urlOutput');
+        if (!input?.value) return;
+        try {
+            await navigator.clipboard.writeText(input.value);
+        } catch {
+            input.select();
+            document.execCommand('copy');
+        }
+        const span = document.getElementById('copyText');
+        const orig = span.textContent;
+        span.textContent = '¡Copiado!';
+        setTimeout(() => { span.textContent = orig; }, 2000);
+    }
+
+    // ═══════════════════════════════════════════════════════════════════
+    //  RACE DATA + COUNTDOWN  (unchanged from original)
+    // ═══════════════════════════════════════════════════════════════════
+    const SERIES_MAP = {
+        f1:     { keywords: ['gp', 'formula 1', 'grand prix', '🏎️'], icon: '🏎️', logo: '/f1.svg' },
+        gt:     { keywords: ['gt', 'endurance', '🏁'],                icon: '🏁', logo: '/gt.svg' },
+        nascar: { keywords: ['nascar', 'cup:'],                        icon: '🏁', logo: '/nascar.svg' },
+        motogp: { keywords: ['🏍️', 'motogp'],                         icon: '🏍️', logo: '/motogp.svg' },
+    };
+
+    function detectSeries(event) {
+        const title  = event.title;          // original (preserve emojis)
+        const tl     = title.toLowerCase();
+        // ⚠️  Priority order matters: check specific emojis/keywords BEFORE
+        //     the generic 'gp' keyword which would steal MotoGP events for F1.
+        if (title.includes('🏍️') || tl.includes('motogp')) return SERIES_MAP.motogp;
+        if (tl.includes('nascar'))                           return SERIES_MAP.nascar;
+        if (title.includes('🏁') || tl.includes('gt round') || tl.includes('gt prologue')) return SERIES_MAP.gt;
+        if (title.includes('🏎️') || tl.includes('formula') || tl.includes('grand prix')) return SERIES_MAP.f1;
+        // Generic fallback loop
+        for (const [, cfg] of Object.entries(SERIES_MAP)) {
+            if (cfg.keywords.some(k => tl.includes(k))) return cfg;
+        }
+        return null;
+    }
+
+    function cleanTitle(title) {
+        return title.replace(/[\u{1F300}-\u{1F9FF}]/gu, '').replace(/^(NASCAR[^:]*:)\s*/i,'').split(',')[0].trim();
+    }
+
+    function processRaceData(data) {
+        const now = new Date();
+        return data.flatMap(ev => {
+            const series = detectSeries(ev);
+            const logo   = series?.logo || '/logo.svg';
+            const icon   = series?.icon || '🏆';
+            const name   = cleanTitle(ev.title);
+            const circuit = ev.location ? ev.location.split(',')[0].trim() : '';
+
+            if (Array.isArray(ev.sessions) && ev.sessions.length) {
+                return ev.sessions
+                    .map(s => ({ ...s, d: new Date(s.start) }))
+                    .filter(s => s.d > now && /carrera|race/i.test(s.name))
+                    .map(s => ({ name, circuit, date: s.d, logo, icon }));
+            }
+            if (ev.start) {
+                const d = new Date(ev.start);
+                return d > now ? [{ name, circuit, date: d, logo, icon }] : [];
+            }
+            return [];
+        }).sort((a,b) => a.date - b.date).slice(0,3);
+    }
+
+    async function loadRaceData() {
+        const endpoints = ['/data/formula1.json','/data/gtworld.json','/data/nascar.json','/data/motogp.json'];
+        try {
+            const results = await Promise.allSettled(
+                endpoints.map(u => fetch(u).then(r => r.ok ? r.json() : []))
+            );
+            const all = results.flatMap(r => r.status === 'fulfilled' ? r.value : []);
+            const races = processRaceData(all);
+            state.races   = races;
+            state.loading = false;
+            renderCountdown(races);
+        } catch {
+            state.loading = false;
+            document.getElementById('loading-skeleton')?.classList.add('hidden');
+        }
+    }
+
+    function renderCountdown(races) {
+        const loadEl    = document.getElementById('loading-skeleton');
+        const contentEl = document.getElementById('races-content');
+        if (!races.length) { loadEl?.classList.add('hidden'); return; }
+
+        loadEl?.classList.add('hidden');
+        contentEl?.classList.remove('hidden');
+
+        // Main race
+        const main = races[0];
+        const nameEl = document.getElementById('r1-name');
+        if (nameEl) {
+            nameEl.innerHTML = '';
+            const img = document.createElement('img');
+            img.src = main.logo; img.className = 'h-5 mr-1 inline-block object-contain'; img.style.filter='brightness(0) invert(1)';
+            nameEl.append(img, document.createTextNode(main.name));
+        }
+        const circEl = document.getElementById('r1-circuit');
+        if (circEl) circEl.textContent = main.circuit;
+
+        // Next 2
+        [[races[1],'r2'],[races[2],'r3']].forEach(([r,id]) => {
+            if (!r) return;
+            const icon = document.getElementById(`${id}-icon`);
+            const name = document.getElementById(`${id}-name`);
+            const date = document.getElementById(`${id}-date`);
+            if (icon) icon.textContent = r.icon;
+            if (name) name.textContent = r.name;
+            if (date) date.textContent = r.date.toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit'});
+        });
+
+        startCountdown(main.date);
+    }
+
+    function startCountdown(target) {
+        const tick = () => {
+            const diff = target - new Date();
+            if (diff <= 0) { location.reload(); return; }
+            const pad = n => String(Math.floor(n)).padStart(2,'0');
+            document.getElementById('d-days').textContent  = pad(diff/86400000);
+            document.getElementById('d-hours').textContent = pad((diff%86400000)/3600000);
+            document.getElementById('d-mins').textContent  = pad((diff%3600000)/60000);
+            document.getElementById('d-secs').textContent  = pad((diff%60000)/1000);
+            requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+    }
+
+    // ═══════════════════════════════════════════════════════════════════
+    //  BOOT
+    // ═══════════════════════════════════════════════════════════════════
+    function init() {
+        // Render category cards
+        renderCategories();
+        syncUrl();
+
+        // Event delegation
+        document.getElementById('categories-grid')?.addEventListener('click', onGridClick);
+        document.getElementById('globalSelectAll')?.addEventListener('click', onGlobalSelectAll);
+        document.getElementById('globalClear')?.addEventListener('click', onGlobalClear);
+        document.getElementById('copyBtn')?.addEventListener('click', handleCopy);
+
+        // Load race data for countdown
+        loadRaceData();
+    }
+
+    document.readyState === 'loading'
+        ? document.addEventListener('DOMContentLoaded', init)
+        : init();
+
+})();
+</script>
 </body>
 </html>
