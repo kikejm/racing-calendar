@@ -55,6 +55,50 @@
         }
 
         /* ═══════════════════════════════════════════════════
+           TIMEZONE SELECTOR
+        ═══════════════════════════════════════════════════ */
+        .tz-select {
+            appearance: none; -webkit-appearance: none;
+            background: rgba(255,255,255,0.55);
+            border: 1px solid rgba(0,0,0,0.10);
+            border-radius: 0.75rem;
+            padding: 0.55rem 2.2rem 0.55rem 0.9rem;
+            font-size: 0.8rem; font-weight: 500;
+            color: var(--col-text-body); cursor: pointer;
+            width: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23475569'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 0.5rem center; background-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .tz-select:focus { border-color: var(--col-blue); box-shadow: 0 0 0 3px var(--col-blue-soft); outline: none; }
+        [data-theme="dark"] .tz-select {
+            background-color: rgba(15,23,42,0.55); border-color: rgba(255,255,255,0.10);
+            color: var(--col-text-body);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%2394a3b8'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        .tz-badge {
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            font-size: 0.7rem; font-weight: 600; padding: 0.22rem 0.6rem;
+            border-radius: 999px; border: 1px solid rgba(37,99,235,0.25);
+            background: rgba(37,99,235,0.08); color: var(--col-blue);
+            transition: all 0.3s;
+        }
+        .tz-badge.detected { border-color: rgba(16,185,129,0.3); background: rgba(16,185,129,0.08); color: #059669; }
+        [data-theme="dark"] .tz-badge.detected { color: #34d399; border-color: rgba(52,211,153,0.3); background: rgba(52,211,153,0.08); }
+        .btn-gcal {
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+            padding: 0.8rem 1.25rem; border-radius: 0.75rem;
+            font-weight: 600; font-size: 0.82rem; cursor: pointer;
+            border: 1px solid rgba(66,133,244,0.28); background: rgba(66,133,244,0.08); color: #1a56c4;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s; white-space: nowrap; width: 100%;
+        }
+        .btn-gcal:hover:not(:disabled) { background: rgba(66,133,244,0.16); box-shadow: 0 4px 16px rgba(66,133,244,0.18); transform: translateY(-1px); }
+        .btn-gcal:active { transform: scale(0.97); }
+        .btn-gcal:disabled { opacity: 0.38; cursor: not-allowed; }
+        [data-theme="dark"] .btn-gcal { border-color: rgba(96,165,250,0.22); background: rgba(96,165,250,0.09); color: #93c5fd; }
+        [data-theme="dark"] .btn-gcal:hover:not(:disabled) { background: rgba(96,165,250,0.17); }
+
+        /* ═══════════════════════════════════════════════════
            DARK MODE — "Night Racing"
         ═══════════════════════════════════════════════════ */
         [data-theme="dark"] {
@@ -709,6 +753,8 @@
                             <span class="text-[10px] text-label font-medium uppercase tracking-wide">Seg</span>
                         </div>
                     </div>
+                    <!-- Race start time in selected timezone -->
+                    <p class="text-xs text-label mt-2.5 text-center" id="r1-start-time" style="min-height:1.2em;">—</p>
                 </div>
 
                 <div class="mt-5 pt-4 space-y-3" style="border-top:1px solid rgba(0,0,0,0.07);">
@@ -766,6 +812,27 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="categories-grid"></div>
     </div>
 
+    <!-- ── TIMEZONE SELECTOR ────────────────────────────── -->
+    <div class="glass-card p-6 md:p-8 animate-fade-up" style="animation-delay:.22s">
+        <div class="flex items-center justify-between mb-3 flex-wrap gap-2">
+            <h2 class="text-label text-xs font-semibold uppercase tracking-widest flex items-center gap-2">
+                <svg class="w-4 h-4" style="color:var(--col-blue);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                </svg>
+                Zona horaria
+            </h2>
+            <span id="tzBadge" class="tz-badge">
+                <svg class="w-3 h-3 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                Detectando…
+            </span>
+        </div>
+        <select id="tzSelect" class="tz-select mb-3"><!-- JS --></select>
+        <div class="flex items-center gap-1.5 pt-3" style="border-top:1px solid rgba(0,0,0,0.07);">
+            <svg class="w-3.5 h-3.5 flex-shrink-0 text-label" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+            <span class="text-label text-xs" id="tzLocalTime">Hora local: —</span>
+        </div>
+    </div>
+
     <!-- ── URL OUTPUT ────────────────────────────────────── -->
     <div class="lg:col-span-2 glass-card p-6 md:p-8 animate-fade-up" style="animation-delay:.24s">
         <h2 class="text-label text-xs font-semibold uppercase tracking-widest mb-4 flex items-center gap-2">
@@ -784,12 +851,10 @@
             <span>Selecciona al menos un campeonato y una sesión para generar la URL.</span>
         </div>
 
-        <div class="flex flex-col sm:flex-row gap-3">
+        <div class="flex flex-col sm:flex-row gap-3 mb-3">
             <input type="text" id="urlOutput" readonly
                 class="url-output flex-1 px-4 py-3.5 rounded-xl focus:outline-none truncate"
                 value="" placeholder="Configura tus preferencias arriba…">
-
-            <!-- CTA — gold gradient, DARK text for AAA contrast -->
             <button id="copyBtn" disabled
                 class="btn-primary px-8 py-3.5 rounded-xl flex items-center justify-center gap-2.5 min-w-[148px]">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -799,6 +864,17 @@
                 <span id="copyText">Copiar URL</span>
             </button>
         </div>
+
+        <!-- Google Calendar button -->
+        <button id="gcalBtn" disabled class="btn-gcal">
+            <svg style="width:18px;height:18px;flex-shrink:0;" viewBox="0 0 24 24" fill="currentColor">
+                <path style="fill:#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path style="fill:#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path style="fill:#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path style="fill:#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
+            <span>Añadir a Google Calendar</span>
+        </button>
     </div>
 
     <!-- ── INSTRUCTIONS ──────────────────────────────────── -->
@@ -1339,6 +1415,9 @@
             }
         }
         if (!hasAnySessions) return '';
+        // Include selected timezone (backend uses it for VTIMEZONE headers; calendar apps handle UTC→local automatically)
+        const tz = window.apexTz || 'Europe/Madrid';
+        if (tz && tz !== 'UTC') p.set('tz', tz);
         return `${window.location.origin}/calendar.ics?${p.toString()}`;
     }
 
@@ -1346,15 +1425,18 @@
         const url     = buildUrl();
         const input   = document.getElementById('urlOutput');
         const copyBtn = document.getElementById('copyBtn');
+        const gcalBtn = document.getElementById('gcalBtn');
         const errMsg  = document.getElementById('errorMessage');
         if (url) {
             input.value = url;
             errMsg.classList.add('hidden');
             copyBtn.disabled = false;
+            if (gcalBtn) gcalBtn.disabled = false;
         } else {
             input.value = '';
             errMsg.classList.remove('hidden');
             copyBtn.disabled = true;
+            if (gcalBtn) gcalBtn.disabled = true;
         }
     }
 
@@ -1578,6 +1660,33 @@
         loadEl?.classList.add('hidden');
         contentEl?.classList.remove('hidden');
 
+        const tz = window.apexTz || Intl.DateTimeFormat().resolvedOptions().timeZone || 'Europe/Madrid';
+
+        const fmtDate = d => {
+            try {
+                return new Intl.DateTimeFormat('es-ES', { timeZone: tz, day:'2-digit', month:'2-digit' }).format(d);
+            } catch { return d.toLocaleDateString('es-ES', { day:'2-digit', month:'2-digit' }); }
+        };
+        const fmtTime = d => {
+            try {
+                return new Intl.DateTimeFormat('es-ES', { timeZone: tz, hour:'2-digit', minute:'2-digit', hour12:false }).format(d);
+            } catch { return '--:--'; }
+        };
+        const fmtFull = d => {
+            try {
+                return new Intl.DateTimeFormat('es-ES', {
+                    timeZone: tz, weekday:'short', day:'numeric', month:'short',
+                    hour:'2-digit', minute:'2-digit', hour12:false
+                }).format(d);
+            } catch { return d.toLocaleString('es-ES'); }
+        };
+        const tzAbbr = d => {
+            try {
+                return new Intl.DateTimeFormat('es-ES', { timeZone: tz, timeZoneName:'short' })
+                    .formatToParts(d).find(p => p.type === 'timeZoneName')?.value || '';
+            } catch { return ''; }
+        };
+
         const main = races[0];
         const nameEl = document.getElementById('r1-name');
         if (nameEl) {
@@ -1591,6 +1700,14 @@
         const circEl = document.getElementById('r1-circuit');
         if (circEl) circEl.textContent = main.circuit;
 
+        // Show race start time converted to selected timezone
+        const startEl = document.getElementById('r1-start-time');
+        if (startEl) {
+            const abbr = tzAbbr(main.date);
+            startEl.textContent = `Inicio: ${fmtFull(main.date)}${abbr ? ' · ' + abbr : ''}`;
+        }
+
+        // Next two races — date + time in selected timezone
         [[races[1],'r2'],[races[2],'r3']].forEach(([r,id]) => {
             if (!r) return;
             const icon = document.getElementById(`${id}-icon`);
@@ -1598,7 +1715,7 @@
             const date = document.getElementById(`${id}-date`);
             if (icon) icon.textContent = r.icon;
             if (name) name.textContent = r.name;
-            if (date) date.textContent = r.date.toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit'});
+            if (date) date.textContent = `${fmtDate(r.date)} · ${fmtTime(r.date)}`;
         });
         startCountdown(main.date);
     }
@@ -1618,6 +1735,151 @@
     }
 
     // ─────────────────────────────────────────────────
+    //  TIMEZONE MODULE
+    // ─────────────────────────────────────────────────
+    const TZ_OPTIONS = [
+        { tz: 'Pacific/Honolulu',    label: 'UTC−10  · Hawaii'              },
+        { tz: 'America/Anchorage',   label: 'UTC−9   · Alaska'              },
+        { tz: 'America/Los_Angeles', label: 'UTC−8   · Los Ángeles (PST)'   },
+        { tz: 'America/Denver',      label: 'UTC−7   · Denver (MST)'        },
+        { tz: 'America/Chicago',     label: 'UTC−6   · Chicago (CST)'       },
+        { tz: 'America/New_York',    label: 'UTC−5   · Nueva York (EST)'    },
+        { tz: 'America/Sao_Paulo',   label: 'UTC−3   · São Paulo'           },
+        { tz: 'America/Buenos_Aires',label: 'UTC−3   · Buenos Aires'        },
+        { tz: 'UTC',                 label: 'UTC+0   · Universal (UTC)'     },
+        { tz: 'Europe/London',       label: 'UTC+0/1 · Londres (GMT/BST)'   },
+        { tz: 'Europe/Madrid',       label: 'UTC+1/2 · Madrid (CET/CEST)'   },
+        { tz: 'Europe/Paris',        label: 'UTC+1/2 · París'               },
+        { tz: 'Europe/Berlin',       label: 'UTC+1/2 · Berlín'              },
+        { tz: 'Europe/Rome',         label: 'UTC+1/2 · Roma'                },
+        { tz: 'Europe/Amsterdam',    label: 'UTC+1/2 · Ámsterdam'           },
+        { tz: 'Europe/Helsinki',     label: 'UTC+2/3 · Helsinki'            },
+        { tz: 'Europe/Moscow',       label: 'UTC+3   · Moscú'               },
+        { tz: 'Asia/Dubai',          label: 'UTC+4   · Dubái'               },
+        { tz: 'Asia/Karachi',        label: 'UTC+5   · Karachi'             },
+        { tz: 'Asia/Kolkata',        label: 'UTC+5:30· Mumbai/Delhi'        },
+        { tz: 'Asia/Bangkok',        label: 'UTC+7   · Bangkok'             },
+        { tz: 'Asia/Singapore',      label: 'UTC+8   · Singapur'            },
+        { tz: 'Asia/Tokyo',          label: 'UTC+9   · Tokio'               },
+        { tz: 'Australia/Sydney',    label: 'UTC+10/11· Sydney'             },
+        { tz: 'Pacific/Auckland',    label: 'UTC+12  · Auckland'            },
+    ];
+
+    let currentTz = 'Europe/Madrid';
+    window.apexTz = currentTz;
+
+    function buildTzSelect() {
+        const sel = document.getElementById('tzSelect');
+        if (!sel) return;
+        sel.innerHTML = '';
+        TZ_OPTIONS.forEach(({ tz, label }) => {
+            const opt = document.createElement('option');
+            opt.value = tz; opt.textContent = label;
+            if (tz === currentTz) opt.selected = true;
+            sel.appendChild(opt);
+        });
+    }
+
+    function applyTimezone(tz, source = 'manual') {
+        // Validate — fallback to Madrid if unknown
+        if (!TZ_OPTIONS.some(o => o.tz === tz)) tz = 'Europe/Madrid';
+        currentTz = tz;
+        window.apexTz = tz;
+
+        // Sync dropdown value
+        const sel = document.getElementById('tzSelect');
+        if (sel && sel.value !== tz) sel.value = tz;
+
+        // Update badge
+        const badge = document.getElementById('tzBadge');
+        if (badge) {
+            const cfg = {
+                ip:      { icon: '📡', text: 'Detectado por IP',          cls: 'tz-badge detected' },
+                browser: { icon: '🌐', text: 'Detectado (navegador)',      cls: 'tz-badge detected' },
+                manual:  { icon: '✎',  text: 'Manual',                     cls: 'tz-badge'          },
+            };
+            const { icon, text, cls } = cfg[source] || cfg.manual;
+            badge.innerHTML = `${icon} ${text}`;
+            badge.className = cls;
+        }
+
+        // Re-render race times if data is already loaded
+        if (state.races.length) renderCountdown(state.races);
+
+        // Rebuild URL with new tz
+        syncUrl();
+    }
+
+    function updateLocalClock() {
+        const el = document.getElementById('tzLocalTime');
+        if (!el) return;
+        try {
+            const now = new Date();
+            const timeStr = new Intl.DateTimeFormat('es-ES', {
+                timeZone: currentTz,
+                weekday: 'short', month: 'short', day: 'numeric',
+                hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+            }).format(now);
+            // Compute UTC offset for display
+            const tzOffset = new Intl.DateTimeFormat('en', {
+                timeZone: currentTz, timeZoneName: 'shortOffset'
+            }).formatToParts(now).find(p => p.type === 'timeZoneName')?.value || '';
+            el.textContent = `${timeStr}${tzOffset ? '  (' + tzOffset + ')' : ''}`;
+        } catch {
+            el.textContent = new Date().toLocaleTimeString('es-ES');
+        }
+    }
+
+    async function detectTimezone() {
+        // 1. Try IP geolocation
+        try {
+            const ctrl = new AbortController();
+            const tid  = setTimeout(() => ctrl.abort(), 4000);
+            const res  = await fetch('https://ipapi.co/json/', { signal: ctrl.signal });
+            clearTimeout(tid);
+            if (res.ok) {
+                const data = await res.json();
+                if (data.timezone && TZ_OPTIONS.some(o => o.tz === data.timezone)) {
+                    applyTimezone(data.timezone, 'ip');
+                    buildTzSelect(); // rebuild to select the new value
+                    return;
+                }
+            }
+        } catch { /* network error or abort — fall through */ }
+
+        // 2. Browser Intl API
+        try {
+            const detected = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            if (detected && TZ_OPTIONS.some(o => o.tz === detected)) {
+                applyTimezone(detected, 'browser');
+                buildTzSelect();
+                return;
+            }
+        } catch { /* ignore */ }
+
+        // 3. Default: Madrid
+        applyTimezone('Europe/Madrid', 'manual');
+    }
+
+    function handleGcal() {
+        const url = document.getElementById('urlOutput')?.value;
+        if (!url) return;
+        const webcal = url.replace(/^https?:\/\//, 'webcal://');
+        window.open(`https://calendar.google.com/calendar/r?cid=${encodeURIComponent(webcal)}`, '_blank');
+    }
+
+    function initTimezone() {
+        buildTzSelect();
+        document.getElementById('tzSelect')
+            ?.addEventListener('change', e => applyTimezone(e.target.value, 'manual'));
+        // Clock: update every second
+        updateLocalClock();
+        setInterval(updateLocalClock, 1000);
+        // Auto-detect asynchronously (doesn't block render)
+        detectTimezone();
+    }
+
+    // ─────────────────────────────────────────────────
     //  BOOT
     // ─────────────────────────────────────────────────
     function init() {
@@ -1627,6 +1889,8 @@
         document.getElementById('globalSelectAll')?.addEventListener('click', onGlobalSelectAll);
         document.getElementById('globalClear')?.addEventListener('click', onGlobalClear);
         document.getElementById('copyBtn')?.addEventListener('click', handleCopy);
+        document.getElementById('gcalBtn')?.addEventListener('click', handleGcal);
+        initTimezone();
         loadRaceData();
     }
 
