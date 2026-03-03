@@ -7,6 +7,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Dict, List, Optional, Set
 from uuid import NAMESPACE_DNS, uuid5
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 import uvicorn
 from fastapi import Depends, FastAPI, HTTPException, Query, Response
@@ -218,9 +219,15 @@ class CalendarService:
             return "\n".join(lines)
 
     def _create_ical_event(self, uid_seed: str, summary: str, start: datetime | date, end: datetime | date, 
-                           event_data: EventModel, session_name: str, is_all_day: bool = False) -> Event:
+                           event_data: EventModel, session_name: str, is_all_day: bool = False, zone: Optional[ZoneInfo] = None,) -> Event:
         evt = Event()
         evt.add('summary', summary)
+
+        if zone and isinstance(start, datetime):
+            start = start.astimezone(zone)
+        if zone and isinstance(end, datetime):
+            end = end.astimezone(zone)
+
         evt.add('dtstart', start)
         
         if is_all_day and isinstance(end, date) and not isinstance(end, datetime):
@@ -265,12 +272,22 @@ class CalendarService:
         filter_cats: Optional[Set[str]] = None,
         filter_sessions: Optional[Set[str]] = None,        # generic fallback
         cat_session_filters: Optional[Dict[str, Set[str]]] = None,  # per-category
+        target_tz: Optional[str] = None,
     ) -> Calendar:
         cal = Calendar()
         cal.add('prodid', '-//RacingManager//Dynamic//ES')
         cal.add('version', '2.0')
         cal.add('x-wr-calname', 'Racing Schedule')
         cal.add('x-published-ttl', 'PT1H')
+        
+        zone: Optional[ZoneInfo] = None
+        if target_tz:
+            try:
+                zone = ZoneInfo(target_tz)
+                cal.add('x-wr-timezone', target_tz)   # Google Calendar lo lee
+                logger.info(f"Calendario generado en zona: {target_tz}")
+            except (ZoneInfoNotFoundError, KeyError):
+                logger.warning(f"Zona horaria desconocida '{target_tz}', usando UTC")
 
         for entry in events:
             category = self._determine_category(entry)
@@ -296,7 +313,7 @@ class CalendarService:
                     summary = f"{icon} {session.name} | {clean_title}"
                     seed = f"{entry.title}|{session.name}|{session.start.isoformat()}"
                     
-                    evt = self._create_ical_event(seed, summary, session.start, session.end, entry, session.name)
+                    evt = self._create_ical_event(seed, summary, session.start, session.end, entry, session.name, zone=zone)
                     cal.add_component(evt)
 
             elif entry.start and entry.end:
@@ -308,7 +325,7 @@ class CalendarService:
                 evt = self._create_ical_event(
                     f"{entry.title}|main", summary,
                     entry.start.date(), entry.end.date(),
-                    entry, clean_title, is_all_day=True
+                    entry, clean_title, is_all_day=True, zone=zone
                 )
                 cal.add_component(evt)
 
@@ -388,6 +405,7 @@ async def get_calendar_ics(
     gt_sessions:    Optional[List[str]] = Query(None, description="Sesiones GT: fp1, fp2, qualifying, race"),
     nascar_sessions:Optional[List[str]] = Query(None, description="Sesiones NASCAR: race"),
     motogp_sessions:Optional[List[str]] = Query(None, description="Sesiones MotoGP: fp1, fp2, practica, warmup, q1, q2, sprint, race"),
+    tz:              Optional[str]       = Query(None, description="IANA timezone, e.g. Europe/Madrid"),
     loader:  DataLoader      = Depends(get_data_loader),
     service: CalendarService = Depends(get_calendar_service),
 ):
@@ -421,6 +439,7 @@ async def get_calendar_ics(
             filter_cats=cat_set,
             filter_sessions=session_set,
             cat_session_filters=cat_session_filters,
+            target_tz=tz,
         )
 
         return Response(

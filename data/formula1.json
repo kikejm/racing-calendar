@@ -3,54 +3,132 @@
     "title": "🏎️ GP Australia, Melbourne",
     "location": "Albert Park Circuit, Melbourne, Australia",
     "geo_lat": -37.8497,
-    "geo_lon": 144.9680,
+    "geo_lon": 144.968,
     "url": "https://www.formula1.com/en/racing/2026/Australia.html",
-    "broadcasters": ["DAZN F1"],
-    "categories": ["F1", "Motorsport"],
+    "broadcasters": [
+      "DAZN F1"
+    ],
+    "categories": [
+      "F1",
+      "Motorsport"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 1. El inicio de la temporada 2026 en el parque Albert Park.",
     "sessions": [
-      {"name": "P1", "start": "2026-03-06T02:30:00Z", "end": "2026-03-06T03:30:00Z"},
-      {"name": "P2", "start": "2026-03-06T06:00:00Z", "end": "2026-03-06T07:00:00Z"},
-      {"name": "P3", "start": "2026-03-07T02:30:00Z", "end": "2026-03-07T03:30:00Z"},
-      {"name": "Qualy", "start": "2026-03-07T06:00:00Z", "end": "2026-03-07T07:00:00Z"},
-      {"name": "Carrera", "start": "2026-03-08T05:00:00Z", "end": "2026-03-08T07:00:00Z"}
+      {
+        "name": "P1",
+        "start": "2026-03-06T01:30:00Z",
+        "end": "2026-03-06T02:30:00Z"
+      },
+      {
+        "name": "P2",
+        "start": "2026-03-06T05:00:00Z",
+        "end": "2026-03-06T06:00:00Z"
+      },
+      {
+        "name": "P3",
+        "start": "2026-03-07T01:30:00Z",
+        "end": "2026-03-07T02:30:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-03-07T05:00:00Z",
+        "end": "2026-03-07T06:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-03-08T04:00:00Z",
+        "end": "2026-03-08T06:00:00Z"
+      }
     ]
   },
   {
     "title": "🏎️ GP de China, Shanghai - Sprint",
     "location": "Shanghai International Circuit, Shanghai, China",
     "geo_lat": 31.3389,
-    "geo_lon": 121.2210,
+    "geo_lon": 121.221,
     "url": "https://www.formula1.com/en/racing/2026/China.html",
-    "broadcasters": ["DAZN F1", "Movistar+"],
-    "categories": ["F1", "Sprint", "Motorsport"],
+    "broadcasters": [
+      "DAZN F1",
+      "Movistar+"
+    ],
+    "categories": [
+      "F1",
+      "Sprint",
+      "Motorsport"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 2. Formato Sprint en el inmenso circuito de Shanghai.",
     "sessions": [
-      {"name": "P1", "start": "2026-03-13T04:30:00Z", "end": "2026-03-13T05:30:00Z"},
-      {"name": "Sprint Qualy", "start": "2026-03-13T08:30:00Z", "end": "2026-03-13T09:14:00Z"},
-      {"name": "Sprint", "start": "2026-03-14T04:00:00Z", "end": "2026-03-14T05:00:00Z"},
-      {"name": "Qualy", "start": "2026-03-14T08:00:00Z", "end": "2026-03-14T09:00:00Z"},
-      {"name": "Carrera", "start": "2026-03-15T08:00:00Z", "end": "2026-03-15T10:00:00Z"}
+      {
+        "name": "P1",
+        "start": "2026-03-13T03:30:00Z",
+        "end": "2026-03-13T04:30:00Z"
+      },
+      {
+        "name": "Sprint Qualy",
+        "start": "2026-03-13T07:30:00Z",
+        "end": "2026-03-13T08:14:00Z"
+      },
+      {
+        "name": "Sprint",
+        "start": "2026-03-14T03:00:00Z",
+        "end": "2026-03-14T04:00:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-03-14T07:00:00Z",
+        "end": "2026-03-14T08:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-03-15T07:00:00Z",
+        "end": "2026-03-15T09:00:00Z"
+      }
     ]
   },
   {
     "title": "🏎️ GP de Japón, Suzuka",
     "location": "Suzuka Circuit, Suzuka, Japan",
     "geo_lat": 34.8431,
-    "geo_lon": 136.5410,
+    "geo_lon": 136.541,
     "url": "https://www.formula1.com/en/racing/2026/Japan.html",
-    "broadcasters": ["DAZN F1", "Movistar+"],
-    "categories": ["F1", "Motorsport"],
+    "broadcasters": [
+      "DAZN F1",
+      "Movistar+"
+    ],
+    "categories": [
+      "F1",
+      "Motorsport"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 3. Las curvas en S y la 130R esperan en uno de los circuitos más técnicos.",
     "sessions": [
-      {"name": "P1", "start": "2026-03-27T03:30:00Z", "end": "2026-03-27T04:30:00Z"},
-      {"name": "P2", "start": "2026-03-27T07:00:00Z", "end": "2026-03-27T08:00:00Z"},
-      {"name": "P3", "start": "2026-03-28T03:30:00Z", "end": "2026-03-28T04:30:00Z"},
-      {"name": "Qualy", "start": "2026-03-28T07:00:00Z", "end": "2026-03-28T08:00:00Z"},
-      {"name": "Carrera", "start": "2026-03-29T07:00:00Z", "end": "2026-03-29T09:00:00Z"}
+      {
+        "name": "P1",
+        "start": "2026-03-27T02:30:00Z",
+        "end": "2026-03-27T03:30:00Z"
+      },
+      {
+        "name": "P2",
+        "start": "2026-03-27T06:00:00Z",
+        "end": "2026-03-27T07:00:00Z"
+      },
+      {
+        "name": "P3",
+        "start": "2026-03-28T02:30:00Z",
+        "end": "2026-03-28T03:30:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-03-28T06:00:00Z",
+        "end": "2026-03-28T07:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-03-29T05:00:00Z",
+        "end": "2026-03-29T07:00:00Z"
+      }
     ]
   },
   {
@@ -59,16 +137,42 @@
     "geo_lat": 26.0325,
     "geo_lon": 50.5106,
     "url": "https://www.formula1.com/en/racing/2026/Bahrain.html",
-    "broadcasters": ["DAZN F1", "Movistar+"],
-    "categories": ["F1", "Motorsport"],
+    "broadcasters": [
+      "DAZN F1",
+      "Movistar+"
+    ],
+    "categories": [
+      "F1",
+      "Motorsport"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 4. Carrera nocturna bajo los focos del desierto.",
     "sessions": [
-      {"name": "P1", "start": "2026-04-10T13:30:00Z", "end": "2026-04-10T14:30:00Z"},
-      {"name": "P2", "start": "2026-04-10T17:00:00Z", "end": "2026-04-10T18:00:00Z"},
-      {"name": "P3", "start": "2026-04-11T14:30:00Z", "end": "2026-04-11T15:30:00Z"},
-      {"name": "Qualy", "start": "2026-04-11T18:00:00Z", "end": "2026-04-11T19:00:00Z"},
-      {"name": "Carrera", "start": "2026-04-12T17:00:00Z", "end": "2026-04-12T19:00:00Z"}
+      {
+        "name": "P1",
+        "start": "2026-04-10T11:30:00Z",
+        "end": "2026-04-10T12:30:00Z"
+      },
+      {
+        "name": "P2",
+        "start": "2026-04-10T15:00:00Z",
+        "end": "2026-04-10T16:00:00Z"
+      },
+      {
+        "name": "P3",
+        "start": "2026-04-11T12:30:00Z",
+        "end": "2026-04-11T13:30:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-04-11T16:00:00Z",
+        "end": "2026-04-11T17:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-04-12T15:00:00Z",
+        "end": "2026-04-12T17:00:00Z"
+      }
     ]
   },
   {
@@ -77,16 +181,42 @@
     "geo_lat": 21.6319,
     "geo_lon": 39.1044,
     "url": "https://www.formula1.com/en/racing/2026/Saudi_Arabia.html",
-    "broadcasters": ["DAZN F1", "Movistar+"],
-    "categories": ["F1", "Motorsport"],
+    "broadcasters": [
+      "DAZN F1",
+      "Movistar+"
+    ],
+    "categories": [
+      "F1",
+      "Motorsport"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 5. El circuito callejero más rápido del mundo.",
     "sessions": [
-      {"name": "P1", "start": "2026-04-17T15:30:00Z", "end": "2026-04-17T16:30:00Z"},
-      {"name": "P2", "start": "2026-04-17T19:00:00Z", "end": "2026-04-17T20:00:00Z"},
-      {"name": "P3", "start": "2026-04-18T15:30:00Z", "end": "2026-04-18T16:30:00Z"},
-      {"name": "Qualy", "start": "2026-04-18T19:00:00Z", "end": "2026-04-18T20:00:00Z"},
-      {"name": "Carrera", "start": "2026-04-19T19:00:00Z", "end": "2026-04-19T21:00:00Z"}
+      {
+        "name": "P1",
+        "start": "2026-04-17T13:30:00Z",
+        "end": "2026-04-17T14:30:00Z"
+      },
+      {
+        "name": "P2",
+        "start": "2026-04-17T17:00:00Z",
+        "end": "2026-04-17T18:00:00Z"
+      },
+      {
+        "name": "P3",
+        "start": "2026-04-18T13:30:00Z",
+        "end": "2026-04-18T14:30:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-04-18T17:00:00Z",
+        "end": "2026-04-18T18:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-04-19T17:00:00Z",
+        "end": "2026-04-19T19:00:00Z"
+      }
     ]
   },
   {
@@ -95,16 +225,43 @@
     "geo_lat": 25.9581,
     "geo_lon": -80.2389,
     "url": "https://www.formula1.com/en/racing/2026/Miami.html",
-    "broadcasters": ["DAZN F1", "Movistar+"],
-    "categories": ["F1", "Sprint", "Motorsport"],
+    "broadcasters": [
+      "DAZN F1",
+      "Movistar+"
+    ],
+    "categories": [
+      "F1",
+      "Sprint",
+      "Motorsport"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 6. Glamour y velocidad alrededor del Hard Rock Stadium.",
     "sessions": [
-      {"name": "P1", "start": "2026-05-01T18:30:00Z", "end": "2026-05-01T19:30:00Z"},
-      {"name": "Sprint Qualy", "start": "2026-05-01T22:30:00Z", "end": "2026-05-01T23:14:00Z"},
-      {"name": "Sprint", "start": "2026-05-02T18:00:00Z", "end": "2026-05-02T19:00:00Z"},
-      {"name": "Qualy", "start": "2026-05-02T22:00:00Z", "end": "2026-05-02T23:00:00Z"},
-      {"name": "Carrera", "start": "2026-05-03T22:00:00Z", "end": "2026-05-04T00:00:00Z"}
+      {
+        "name": "P1",
+        "start": "2026-05-01T16:30:00Z",
+        "end": "2026-05-01T17:30:00Z"
+      },
+      {
+        "name": "Sprint Qualy",
+        "start": "2026-05-01T20:30:00Z",
+        "end": "2026-05-01T21:14:00Z"
+      },
+      {
+        "name": "Sprint",
+        "start": "2026-05-02T16:00:00Z",
+        "end": "2026-05-02T17:00:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-05-02T20:00:00Z",
+        "end": "2026-05-02T21:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-05-03T20:00:00Z",
+        "end": "2026-05-03T22:00:00Z"
+      }
     ]
   },
   {
@@ -113,16 +270,43 @@
     "geo_lat": 45.5006,
     "geo_lon": -73.5228,
     "url": "https://www.formula1.com/en/racing/2026/Canada.html",
-    "broadcasters": ["DAZN F1", "Movistar+"],
-    "categories": ["F1", "Sprint", "Motorsport"],
+    "broadcasters": [
+      "DAZN F1",
+      "Movistar+"
+    ],
+    "categories": [
+      "F1",
+      "Sprint",
+      "Motorsport"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 7. El Muro de los Campeones espera en la Île Notre-Dame.",
     "sessions": [
-      {"name": "P1", "start": "2026-05-22T18:30:00Z", "end": "2026-05-22T19:30:00Z"},
-      {"name": "Sprint Qualy", "start": "2026-05-22T22:30:00Z", "end": "2026-05-22T23:14:00Z"},
-      {"name": "Sprint", "start": "2026-05-23T18:00:00Z", "end": "2026-05-23T19:00:00Z"},
-      {"name": "Qualy", "start": "2026-05-23T22:00:00Z", "end": "2026-05-23T23:00:00Z"},
-      {"name": "Carrera", "start": "2026-05-24T22:00:00Z", "end": "2026-05-25T00:00:00Z"}
+      {
+        "name": "P1",
+        "start": "2026-05-22T16:30:00Z",
+        "end": "2026-05-22T17:30:00Z"
+      },
+      {
+        "name": "Sprint Qualy",
+        "start": "2026-05-22T20:30:00Z",
+        "end": "2026-05-22T21:14:00Z"
+      },
+      {
+        "name": "Sprint",
+        "start": "2026-05-23T16:00:00Z",
+        "end": "2026-05-23T17:00:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-05-23T20:00:00Z",
+        "end": "2026-05-23T21:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-05-24T20:00:00Z",
+        "end": "2026-05-24T22:00:00Z"
+      }
     ]
   },
   {
@@ -131,34 +315,87 @@
     "geo_lat": 43.7347,
     "geo_lon": 7.4206,
     "url": "https://www.formula1.com/en/racing/2026/Monaco.html",
-    "broadcasters": ["DAZN F1", "Movistar+"],
-    "categories": ["F1", "Motorsport", "Classic"],
+    "broadcasters": [
+      "DAZN F1",
+      "Movistar+"
+    ],
+    "categories": [
+      "F1",
+      "Motorsport",
+      "Classic"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 8. La joya de la corona, donde la clasificación es todo.",
     "sessions": [
-      {"name": "P1", "start": "2026-06-05T13:30:00Z", "end": "2026-06-05T14:30:00Z"},
-      {"name": "P2", "start": "2026-06-05T17:00:00Z", "end": "2026-06-05T18:00:00Z"},
-      {"name": "P3", "start": "2026-06-06T12:30:00Z", "end": "2026-06-06T13:30:00Z"},
-      {"name": "Qualy", "start": "2026-06-06T16:00:00Z", "end": "2026-06-06T17:00:00Z"},
-      {"name": "Carrera", "start": "2026-06-07T15:00:00Z", "end": "2026-06-07T17:00:00Z"}
+      {
+        "name": "P1",
+        "start": "2026-06-05T11:30:00Z",
+        "end": "2026-06-05T12:30:00Z"
+      },
+      {
+        "name": "P2",
+        "start": "2026-06-05T15:00:00Z",
+        "end": "2026-06-05T16:00:00Z"
+      },
+      {
+        "name": "P3",
+        "start": "2026-06-06T10:30:00Z",
+        "end": "2026-06-06T11:30:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-06-06T14:00:00Z",
+        "end": "2026-06-06T15:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-06-07T13:00:00Z",
+        "end": "2026-06-07T15:00:00Z"
+      }
     ]
   },
   {
     "title": "🏎️ GP de España, Barcelona",
     "location": "Circuit de Barcelona-Catalunya, Montmeló, Spain",
-    "geo_lat": 41.5700,
+    "geo_lat": 41.57,
     "geo_lon": 2.2611,
     "url": "https://www.formula1.com/es/racing/2026/barcelona-catalunya.html",
-    "broadcasters": ["DAZN F1", "Movistar+"],
-    "categories": ["F1", "Motorsport"],
+    "broadcasters": [
+      "DAZN F1",
+      "Movistar+"
+    ],
+    "categories": [
+      "F1",
+      "Motorsport"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 9. El clásico europeo y prueba definitiva para la aerodinámica.",
     "sessions": [
-      { "name": "P1", "start": "2026-06-12T13:30:00Z", "end": "2026-06-12T14:30:00Z" },
-      { "name": "P2", "start": "2026-06-12T17:00:00Z", "end": "2026-06-12T18:00:00Z" },
-      { "name": "P3", "start": "2026-06-13T12:30:00Z", "end": "2026-06-13T13:30:00Z" },
-      { "name": "Qualy", "start": "2026-06-13T16:00:00Z", "end": "2026-06-13T17:00:00Z" },
-      { "name": "Carrera", "start": "2026-06-14T15:00:00Z", "end": "2026-06-14T17:00:00Z" }
+      {
+        "name": "P1",
+        "start": "2026-06-12T11:30:00Z",
+        "end": "2026-06-12T12:30:00Z"
+      },
+      {
+        "name": "P2",
+        "start": "2026-06-12T15:00:00Z",
+        "end": "2026-06-12T16:00:00Z"
+      },
+      {
+        "name": "P3",
+        "start": "2026-06-13T10:30:00Z",
+        "end": "2026-06-13T11:30:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-06-13T14:00:00Z",
+        "end": "2026-06-13T15:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-06-14T13:00:00Z",
+        "end": "2026-06-14T15:00:00Z"
+      }
     ]
   },
   {
@@ -167,16 +404,43 @@
     "geo_lat": 47.2197,
     "geo_lon": 14.7647,
     "url": "https://www.formula1.com/en/racing/2026/Austria.html",
-    "broadcasters": ["DAZN F1", "Movistar+"],
-    "categories": ["F1", "Sprint", "Motorsport"],
+    "broadcasters": [
+      "DAZN F1",
+      "Movistar+"
+    ],
+    "categories": [
+      "F1",
+      "Sprint",
+      "Motorsport"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 10. Velocidad pura entre las montañas de Estiria.",
     "sessions": [
-        { "name": "P1", "start": "2026-06-26T13:30:00Z", "end": "2026-06-26T14:30:00Z" },
-        { "name": "P2", "start": "2026-06-26T17:00:00Z", "end": "2026-06-26T18:00:00Z" },
-        { "name": "P3", "start": "2026-06-27T12:30:00Z", "end": "2026-06-27T13:30:00Z" },
-        { "name": "Qualy", "start": "2026-06-27T16:00:00Z", "end": "2026-06-27T17:00:00Z" },
-        { "name": "Carrera", "start": "2026-06-28T15:00:00Z", "end": "2026-06-28T17:00:00Z" }
+      {
+        "name": "P1",
+        "start": "2026-06-26T11:30:00Z",
+        "end": "2026-06-26T12:30:00Z"
+      },
+      {
+        "name": "P2",
+        "start": "2026-06-26T15:00:00Z",
+        "end": "2026-06-26T16:00:00Z"
+      },
+      {
+        "name": "P3",
+        "start": "2026-06-27T10:30:00Z",
+        "end": "2026-06-27T11:30:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-06-27T14:00:00Z",
+        "end": "2026-06-27T15:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-06-28T13:00:00Z",
+        "end": "2026-06-28T15:00:00Z"
+      }
     ]
   },
   {
@@ -185,16 +449,44 @@
     "geo_lat": 52.0786,
     "geo_lon": -1.0169,
     "url": "https://www.formula1.com/en/racing/2026/Great_Britain.html",
-    "broadcasters": ["DAZN F1", "Movistar+"],
-    "categories": ["F1", "Sprint", "Motorsport", "Classic"],
+    "broadcasters": [
+      "DAZN F1",
+      "Movistar+"
+    ],
+    "categories": [
+      "F1",
+      "Sprint",
+      "Motorsport",
+      "Classic"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 11. La cuna de la F1 con formato Sprint.",
     "sessions": [
-      { "name": "P1", "start": "2026-07-03T13:30:00Z", "end": "2026-07-03T14:30:00Z" },
-      { "name": "Sprint Qualy", "start": "2026-07-03T17:30:00Z", "end": "2026-07-03T18:14:00Z" },
-      { "name": "Sprint", "start": "2026-07-04T13:00:00Z", "end": "2026-07-04T14:00:00Z" },
-      { "name": "Qualy", "start": "2026-07-04T17:00:00Z", "end": "2026-07-04T18:00:00Z" },
-      { "name": "Carrera", "start": "2026-07-05T16:00:00Z", "end": "2026-07-05T18:00:00Z" }
+      {
+        "name": "P1",
+        "start": "2026-07-03T11:30:00Z",
+        "end": "2026-07-03T12:30:00Z"
+      },
+      {
+        "name": "Sprint Qualy",
+        "start": "2026-07-03T15:30:00Z",
+        "end": "2026-07-03T16:14:00Z"
+      },
+      {
+        "name": "Sprint",
+        "start": "2026-07-04T11:00:00Z",
+        "end": "2026-07-04T12:00:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-07-04T15:00:00Z",
+        "end": "2026-07-04T16:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-07-05T14:00:00Z",
+        "end": "2026-07-05T16:00:00Z"
+      }
     ]
   },
   {
@@ -203,34 +495,87 @@
     "geo_lat": 50.4372,
     "geo_lon": 5.9714,
     "url": "https://www.formula1.com/en/racing/2026/Belgium.html",
-    "broadcasters": ["DAZN F1", "Movistar+"],
-    "categories": ["F1", "Motorsport", "Classic"],
+    "broadcasters": [
+      "DAZN F1",
+      "Movistar+"
+    ],
+    "categories": [
+      "F1",
+      "Motorsport",
+      "Classic"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 12. Eau Rouge y Raidillon en el circuito más largo del calendario.",
     "sessions": [
-      { "name": "P1", "start": "2026-07-17T13:30:00Z", "end": "2026-07-17T14:30:00Z" },
-      { "name": "P2", "start": "2026-07-17T17:00:00Z", "end": "2026-07-17T18:00:00Z" },
-      { "name": "P3", "start": "2026-07-18T12:30:00Z", "end": "2026-07-18T13:30:00Z" },
-      { "name": "Qualy", "start": "2026-07-18T16:00:00Z", "end": "2026-07-18T17:00:00Z" },
-      { "name": "Carrera", "start": "2026-07-19T15:00:00Z", "end": "2026-07-19T17:00:00Z" }
+      {
+        "name": "P1",
+        "start": "2026-07-17T11:30:00Z",
+        "end": "2026-07-17T12:30:00Z"
+      },
+      {
+        "name": "P2",
+        "start": "2026-07-17T15:00:00Z",
+        "end": "2026-07-17T16:00:00Z"
+      },
+      {
+        "name": "P3",
+        "start": "2026-07-18T10:30:00Z",
+        "end": "2026-07-18T11:30:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-07-18T14:00:00Z",
+        "end": "2026-07-18T15:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-07-19T13:00:00Z",
+        "end": "2026-07-19T15:00:00Z"
+      }
     ]
   },
   {
     "title": "🏎️ GP de Hungría, Budapest",
     "location": "Hungaroring, Mogyoród, Hungary",
-    "geo_lat": 47.5830,
+    "geo_lat": 47.583,
     "geo_lon": 19.2486,
     "url": "https://www.formula1.com/en/racing/2026/Hungary.html",
-    "broadcasters": ["DAZN F1", "Movistar+"],
-    "categories": ["F1", "Motorsport"],
+    "broadcasters": [
+      "DAZN F1",
+      "Movistar+"
+    ],
+    "categories": [
+      "F1",
+      "Motorsport"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 13. El 'Mónaco sin muros', técnico y exigente.",
     "sessions": [
-        { "name": "P1", "start": "2026-07-24T13:30:00Z", "end": "2026-07-24T14:30:00Z" },
-        { "name": "P2", "start": "2026-07-24T17:00:00Z", "end": "2026-07-24T18:00:00Z" },
-        { "name": "P3", "start": "2026-07-25T12:30:00Z", "end": "2026-07-25T13:30:00Z" },
-        { "name": "Qualy", "start": "2026-07-25T16:00:00Z", "end": "2026-07-25T17:00:00Z" },
-        { "name": "Carrera", "start": "2026-07-26T15:00:00Z", "end": "2026-07-26T17:00:00Z" }
+      {
+        "name": "P1",
+        "start": "2026-07-24T11:30:00Z",
+        "end": "2026-07-24T12:30:00Z"
+      },
+      {
+        "name": "P2",
+        "start": "2026-07-24T15:00:00Z",
+        "end": "2026-07-24T16:00:00Z"
+      },
+      {
+        "name": "P3",
+        "start": "2026-07-25T10:30:00Z",
+        "end": "2026-07-25T11:30:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-07-25T14:00:00Z",
+        "end": "2026-07-25T15:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-07-26T13:00:00Z",
+        "end": "2026-07-26T15:00:00Z"
+      }
     ]
   },
   {
@@ -239,16 +584,43 @@
     "geo_lat": 52.3888,
     "geo_lon": 4.5409,
     "url": "https://www.formula1.com/en/racing/2026/Netherlands.html",
-    "broadcasters": ["DAZN F1", "Movistar+"],
-    "categories": ["F1", "Sprint", "Motorsport"],
+    "broadcasters": [
+      "DAZN F1",
+      "Movistar+"
+    ],
+    "categories": [
+      "F1",
+      "Sprint",
+      "Motorsport"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 14. Curvas peraltadas y ambiente naranja junto a la playa.",
     "sessions": [
-      { "name": "P1", "start": "2026-08-21T12:30:00Z", "end": "2026-08-21T13:30:00Z" },
-      { "name": "Sprint Qualifying", "start": "2026-08-21T16:30:00Z", "end": "2026-08-21T17:14:00Z" },
-      { "name": "Sprint", "start": "2026-08-22T12:00:00Z", "end": "2026-08-22T13:00:00Z" },
-      { "name": "Qualy", "start": "2026-08-22T16:00:00Z", "end": "2026-08-22T17:00:00Z" },
-      { "name": "Carrera", "start": "2026-08-23T15:00:00Z", "end": "2026-08-23T17:00:00Z" }
+      {
+        "name": "P1",
+        "start": "2026-08-21T10:30:00Z",
+        "end": "2026-08-21T11:30:00Z"
+      },
+      {
+        "name": "Sprint Qualifying",
+        "start": "2026-08-21T14:30:00Z",
+        "end": "2026-08-21T15:14:00Z"
+      },
+      {
+        "name": "Sprint",
+        "start": "2026-08-22T10:00:00Z",
+        "end": "2026-08-22T11:00:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-08-22T14:00:00Z",
+        "end": "2026-08-22T15:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-08-23T13:00:00Z",
+        "end": "2026-08-23T15:00:00Z"
+      }
     ]
   },
   {
@@ -257,16 +629,43 @@
     "geo_lat": 45.6156,
     "geo_lon": 9.2811,
     "url": "https://www.formula1.com/en/racing/2026/Italy.html",
-    "broadcasters": ["DAZN F1", "Movistar+"],
-    "categories": ["F1", "Motorsport", "Classic"],
+    "broadcasters": [
+      "DAZN F1",
+      "Movistar+"
+    ],
+    "categories": [
+      "F1",
+      "Motorsport",
+      "Classic"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 15. El Templo de la Velocidad.",
     "sessions": [
-      { "name": "P1", "start": "2026-09-04T12:30:00Z", "end": "2026-09-04T13:30:00Z" },
-      { "name": "P2", "start": "2026-09-04T16:00:00Z", "end": "2026-09-04T17:00:00Z" },
-      { "name": "P3", "start": "2026-09-05T12:30:00Z", "end": "2026-09-05T13:30:00Z" },
-      { "name": "Qualy", "start": "2026-09-05T16:00:00Z", "end": "2026-09-05T17:00:00Z" },
-      { "name": "Carrera", "start": "2026-09-06T15:00:00Z", "end": "2026-09-06T17:00:00Z" }
+      {
+        "name": "P1",
+        "start": "2026-09-04T10:30:00Z",
+        "end": "2026-09-04T11:30:00Z"
+      },
+      {
+        "name": "P2",
+        "start": "2026-09-04T14:00:00Z",
+        "end": "2026-09-04T15:00:00Z"
+      },
+      {
+        "name": "P3",
+        "start": "2026-09-05T10:30:00Z",
+        "end": "2026-09-05T11:30:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-09-05T14:00:00Z",
+        "end": "2026-09-05T15:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-09-06T13:00:00Z",
+        "end": "2026-09-06T15:00:00Z"
+      }
     ]
   },
   {
@@ -275,16 +674,43 @@
     "geo_lat": 40.4717,
     "geo_lon": -3.6152,
     "url": "https://www.formula1.com/en/racing/2026/Spain.html",
-    "broadcasters": ["DAZN F1", "Movistar+"],
-    "categories": ["F1", "Motorsport", "New"],
+    "broadcasters": [
+      "DAZN F1",
+      "Movistar+"
+    ],
+    "categories": [
+      "F1",
+      "Motorsport",
+      "New"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 16. ¡Estreno! Nuevo circuito semi-urbano en IFEMA.",
     "sessions": [
-      { "name": "P1", "start": "2026-09-11T13:30:00Z", "end": "2026-09-11T14:30:00Z" },
-      { "name": "P2", "start": "2026-09-11T17:00:00Z", "end": "2026-09-11T18:00:00Z" },
-      { "name": "P3", "start": "2026-09-12T12:30:00Z", "end": "2026-09-12T13:30:00Z" },
-      { "name": "Qualy", "start": "2026-09-12T16:00:00Z", "end": "2026-09-12T17:00:00Z" },
-      { "name": "Carrera", "start": "2026-09-13T15:00:00Z", "end": "2026-09-13T17:00:00Z" }
+      {
+        "name": "P1",
+        "start": "2026-09-11T11:30:00Z",
+        "end": "2026-09-11T12:30:00Z"
+      },
+      {
+        "name": "P2",
+        "start": "2026-09-11T15:00:00Z",
+        "end": "2026-09-11T16:00:00Z"
+      },
+      {
+        "name": "P3",
+        "start": "2026-09-12T10:30:00Z",
+        "end": "2026-09-12T11:30:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-09-12T14:00:00Z",
+        "end": "2026-09-12T15:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-09-13T13:00:00Z",
+        "end": "2026-09-13T15:00:00Z"
+      }
     ]
   },
   {
@@ -293,34 +719,87 @@
     "geo_lat": 40.3725,
     "geo_lon": 49.8533,
     "url": "https://www.formula1.com/en/racing/2026/Azerbaijan.html",
-    "broadcasters": ["DAZN F1", "Movistar+"],
-    "categories": ["F1", "Motorsport"],
+    "broadcasters": [
+      "DAZN F1",
+      "Movistar+"
+    ],
+    "categories": [
+      "F1",
+      "Motorsport"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 17. Rectas interminables y la sección del castillo.",
     "sessions": [
-      { "name": "P1", "start": "2026-09-25T10:30:00Z", "end": "2026-09-25T11:30:00Z" },
-      { "name": "P2", "start": "2026-09-25T14:00:00Z", "end": "2026-09-25T15:00:00Z" },
-      { "name": "P3", "start": "2026-09-26T10:30:00Z", "end": "2026-09-26T11:30:00Z" },
-      { "name": "Qualy", "start": "2026-09-26T14:00:00Z", "end": "2026-09-26T15:00:00Z" },
-      { "name": "Carrera", "start": "2026-09-27T13:00:00Z", "end": "2026-09-27T15:00:00Z" }
+      {
+        "name": "P1",
+        "start": "2026-09-25T08:30:00Z",
+        "end": "2026-09-25T09:30:00Z"
+      },
+      {
+        "name": "P2",
+        "start": "2026-09-25T12:00:00Z",
+        "end": "2026-09-25T13:00:00Z"
+      },
+      {
+        "name": "P3",
+        "start": "2026-09-26T08:30:00Z",
+        "end": "2026-09-26T09:30:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-09-26T12:00:00Z",
+        "end": "2026-09-26T13:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-09-27T11:00:00Z",
+        "end": "2026-09-27T13:00:00Z"
+      }
     ]
   },
   {
     "title": "🏎️ GP de Singapur, Singapur - Sprint",
     "location": "Marina Bay Street Circuit, Singapore",
     "geo_lat": 1.2914,
-    "geo_lon": 103.8640,
+    "geo_lon": 103.864,
     "url": "https://www.formula1.com/en/racing/2026/Singapore.html",
-    "broadcasters": ["DAZN F1", "Movistar+"],
-    "categories": ["F1", "Sprint", "Motorsport"],
+    "broadcasters": [
+      "DAZN F1",
+      "Movistar+"
+    ],
+    "categories": [
+      "F1",
+      "Sprint",
+      "Motorsport"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 18. La carrera original nocturna, prueba física extrema.",
     "sessions": [
-      { "name": "P1", "start": "2026-10-09T10:30:00Z", "end": "2026-10-09T11:30:00Z" },
-      { "name": "Sprint Qualy", "start": "2026-10-09T14:30:00Z", "end": "2026-10-09T15:14:00Z" },
-      { "name": "Sprint", "start": "2026-10-10T11:00:00Z", "end": "2026-10-10T12:00:00Z" },
-      { "name": "Qualy", "start": "2026-10-10T15:00:00Z", "end": "2026-10-10T16:00:00Z" },
-      { "name": "Carrera", "start": "2026-10-11T14:00:00Z", "end": "2026-10-11T16:00:00Z" }
+      {
+        "name": "P1",
+        "start": "2026-10-09T08:30:00Z",
+        "end": "2026-10-09T09:30:00Z"
+      },
+      {
+        "name": "Sprint Qualy",
+        "start": "2026-10-09T12:30:00Z",
+        "end": "2026-10-09T13:14:00Z"
+      },
+      {
+        "name": "Sprint",
+        "start": "2026-10-10T09:00:00Z",
+        "end": "2026-10-10T10:00:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-10-10T13:00:00Z",
+        "end": "2026-10-10T14:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-10-11T12:00:00Z",
+        "end": "2026-10-11T14:00:00Z"
+      }
     ]
   },
   {
@@ -329,16 +808,42 @@
     "geo_lat": 30.1328,
     "geo_lon": -97.6411,
     "url": "https://www.formula1.com/en/racing/2026/United-States.html",
-    "broadcasters": ["DAZN F1", "Movistar+"],
-    "categories": ["F1", "Motorsport"],
+    "broadcasters": [
+      "DAZN F1",
+      "Movistar+"
+    ],
+    "categories": [
+      "F1",
+      "Motorsport"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 19. Desniveles y la icónica subida a la curva 1.",
     "sessions": [
-      { "name": "P1", "start": "2026-10-23T19:30:00Z", "end": "2026-10-23T20:30:00Z" },
-      { "name": "P2", "start": "2026-10-23T23:00:00Z", "end": "2026-10-24T00:00:00Z" },
-      { "name": "P3", "start": "2026-10-24T19:30:00Z", "end": "2026-10-24T20:30:00Z" },
-      { "name": "Qualy", "start": "2026-10-24T23:00:00Z", "end": "2026-10-25T00:00:00Z" },
-      { "name": "Carrera", "start": "2026-10-25T21:00:00Z", "end": "2026-10-25T23:00:00Z" }
+      {
+        "name": "P1",
+        "start": "2026-10-23T17:30:00Z",
+        "end": "2026-10-23T18:30:00Z"
+      },
+      {
+        "name": "P2",
+        "start": "2026-10-23T21:00:00Z",
+        "end": "2026-10-23T22:00:00Z"
+      },
+      {
+        "name": "P3",
+        "start": "2026-10-24T17:30:00Z",
+        "end": "2026-10-24T18:30:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-10-24T21:00:00Z",
+        "end": "2026-10-24T22:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-10-25T20:00:00Z",
+        "end": "2026-10-25T22:00:00Z"
+      }
     ]
   },
   {
@@ -347,16 +852,42 @@
     "geo_lat": 19.4042,
     "geo_lon": -99.0907,
     "url": "https://www.formula1.com/en/racing/2026/Mexico.html",
-    "broadcasters": ["DAZN F1", "Movistar+"],
-    "categories": ["F1", "Motorsport"],
+    "broadcasters": [
+      "DAZN F1",
+      "Movistar+"
+    ],
+    "categories": [
+      "F1",
+      "Motorsport"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 20. La fiesta en el Foro Sol a más de 2000m de altura.",
     "sessions": [
-      { "name": "P1", "start": "2026-10-30T19:30:00Z", "end": "2026-10-30T20:30:00Z" },
-      { "name": "P2", "start": "2026-10-30T23:00:00Z", "end": "2026-10-31T00:00:00Z" },
-      { "name": "P3", "start": "2026-10-31T18:30:00Z", "end": "2026-10-31T19:30:00Z" },
-      { "name": "Qualy", "start": "2026-10-31T22:00:00Z", "end": "2026-10-31T23:00:00Z" },
-      { "name": "Carrera", "start": "2026-11-01T21:00:00Z", "end": "2026-11-01T23:00:00Z" }
+      {
+        "name": "P1",
+        "start": "2026-10-30T18:30:00Z",
+        "end": "2026-10-30T19:30:00Z"
+      },
+      {
+        "name": "P2",
+        "start": "2026-10-30T22:00:00Z",
+        "end": "2026-10-30T23:00:00Z"
+      },
+      {
+        "name": "P3",
+        "start": "2026-10-31T17:30:00Z",
+        "end": "2026-10-31T18:30:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-10-31T21:00:00Z",
+        "end": "2026-10-31T22:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-11-01T20:00:00Z",
+        "end": "2026-11-01T22:00:00Z"
+      }
     ]
   },
   {
@@ -365,16 +896,43 @@
     "geo_lat": -23.7036,
     "geo_lon": -46.6997,
     "url": "https://www.formula1.com/en/racing/2026/Brazil.html",
-    "broadcasters": ["DAZN F1", "Movistar+"],
-    "categories": ["F1", "Motorsport", "Classic"],
+    "broadcasters": [
+      "DAZN F1",
+      "Movistar+"
+    ],
+    "categories": [
+      "F1",
+      "Motorsport",
+      "Classic"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 21. Clima impredecible y la 'S' de Senna.",
     "sessions": [
-      { "name": "P1", "start": "2026-11-06T16:30:00Z", "end": "2026-11-06T17:30:00Z" },
-      { "name": "P2", "start": "2026-11-06T20:00:00Z", "end": "2026-11-06T21:00:00Z" },
-      { "name": "P3", "start": "2026-11-07T15:30:00Z", "end": "2026-11-07T16:30:00Z" },
-      { "name": "Qualy", "start": "2026-11-07T19:00:00Z", "end": "2026-11-07T20:00:00Z" },
-      { "name": "Carrera", "start": "2026-11-08T18:00:00Z", "end": "2026-11-08T20:00:00Z" }
+      {
+        "name": "P1",
+        "start": "2026-11-06T15:30:00Z",
+        "end": "2026-11-06T16:30:00Z"
+      },
+      {
+        "name": "P2",
+        "start": "2026-11-06T19:00:00Z",
+        "end": "2026-11-06T20:00:00Z"
+      },
+      {
+        "name": "P3",
+        "start": "2026-11-07T14:30:00Z",
+        "end": "2026-11-07T15:30:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-11-07T18:00:00Z",
+        "end": "2026-11-07T19:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-11-08T17:00:00Z",
+        "end": "2026-11-08T19:00:00Z"
+      }
     ]
   },
   {
@@ -383,16 +941,42 @@
     "geo_lat": 36.1147,
     "geo_lon": -115.1728,
     "url": "https://www.formula1.com/en/racing/2026/Las-Vegas.html",
-    "broadcasters": ["DAZN F1", "Movistar+"],
-    "categories": ["F1", "Motorsport"],
+    "broadcasters": [
+      "DAZN F1",
+      "Movistar+"
+    ],
+    "categories": [
+      "F1",
+      "Motorsport"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 22. A fondo por el Strip de Las Vegas.",
     "sessions": [
-      { "name": "P1", "start": "2026-11-20T01:30:00Z", "end": "2026-11-20T02:30:00Z" },
-      { "name": "P2", "start": "2026-11-20T05:00:00Z", "end": "2026-11-20T06:00:00Z" },
-      { "name": "P3", "start": "2026-11-21T01:30:00Z", "end": "2026-11-21T02:30:00Z" },
-      { "name": "Qualy", "start": "2026-11-21T05:00:00Z", "end": "2026-11-21T06:00:00Z" },
-      { "name": "Carrera", "start": "2026-11-22T05:00:00Z", "end": "2026-11-22T07:00:00Z" }
+      {
+        "name": "P1",
+        "start": "2026-11-20T00:30:00Z",
+        "end": "2026-11-20T01:30:00Z"
+      },
+      {
+        "name": "P2",
+        "start": "2026-11-20T04:00:00Z",
+        "end": "2026-11-20T05:00:00Z"
+      },
+      {
+        "name": "P3",
+        "start": "2026-11-21T00:30:00Z",
+        "end": "2026-11-21T01:30:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-11-21T04:00:00Z",
+        "end": "2026-11-21T05:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-11-22T04:00:00Z",
+        "end": "2026-11-22T06:00:00Z"
+      }
     ]
   },
   {
@@ -401,16 +985,42 @@
     "geo_lat": 25.4888,
     "geo_lon": 51.4542,
     "url": "https://www.formula1.com/en/racing/2026/Qatar.html",
-    "broadcasters": ["DAZN F1", "Movistar+"],
-    "categories": ["F1", "Motorsport"],
+    "broadcasters": [
+      "DAZN F1",
+      "Movistar+"
+    ],
+    "categories": [
+      "F1",
+      "Motorsport"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 23. Penúltima cita en el desierto catarí.",
     "sessions": [
-      { "name": "P1", "start": "2026-11-27T14:30:00Z", "end": "2026-11-27T15:30:00Z" },
-      { "name": "P2", "start": "2026-11-27T18:00:00Z", "end": "2026-11-27T19:00:00Z" },
-      { "name": "P3", "start": "2026-11-28T15:30:00Z", "end": "2026-11-28T16:30:00Z" },
-      { "name": "Qualy", "start": "2026-11-28T19:00:00Z", "end": "2026-11-28T20:00:00Z" },
-      { "name": "Carrera", "start": "2026-11-29T17:00:00Z", "end": "2026-11-29T19:00:00Z" }
+      {
+        "name": "P1",
+        "start": "2026-11-27T13:30:00Z",
+        "end": "2026-11-27T14:30:00Z"
+      },
+      {
+        "name": "P2",
+        "start": "2026-11-27T17:00:00Z",
+        "end": "2026-11-27T18:00:00Z"
+      },
+      {
+        "name": "P3",
+        "start": "2026-11-28T14:30:00Z",
+        "end": "2026-11-28T15:30:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-11-28T18:00:00Z",
+        "end": "2026-11-28T19:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-11-29T16:00:00Z",
+        "end": "2026-11-29T18:00:00Z"
+      }
     ]
   },
   {
@@ -419,16 +1029,43 @@
     "geo_lat": 24.4672,
     "geo_lon": 54.6031,
     "url": "https://www.formula1.com/en/racing/2026/united-arab-emirates.html",
-    "broadcasters": ["DAZN F1", "Movistar+"],
-    "categories": ["F1", "Motorsport", "Finale"],
+    "broadcasters": [
+      "DAZN F1",
+      "Movistar+"
+    ],
+    "categories": [
+      "F1",
+      "Motorsport",
+      "Finale"
+    ],
     "status": "CONFIRMED",
     "description": "Ronda 24. La gran final de la temporada.",
     "sessions": [
-      { "name": "P1", "start": "2026-12-04T10:30:00Z", "end": "2026-12-04T11:30:00Z" },
-      { "name": "P2", "start": "2026-12-04T14:00:00Z", "end": "2026-12-04T15:00:00Z" },
-      { "name": "P3", "start": "2026-12-05T11:30:00Z", "end": "2026-12-05T12:30:00Z" },
-      { "name": "Qualy", "start": "2026-12-05T15:00:00Z", "end": "2026-12-05T16:00:00Z" },
-      { "name": "Carrera", "start": "2026-12-06T14:00:00Z", "end": "2026-12-06T16:00:00Z" }
+      {
+        "name": "P1",
+        "start": "2026-12-04T09:30:00Z",
+        "end": "2026-12-04T10:30:00Z"
+      },
+      {
+        "name": "P2",
+        "start": "2026-12-04T13:00:00Z",
+        "end": "2026-12-04T14:00:00Z"
+      },
+      {
+        "name": "P3",
+        "start": "2026-12-05T10:30:00Z",
+        "end": "2026-12-05T11:30:00Z"
+      },
+      {
+        "name": "Qualy",
+        "start": "2026-12-05T14:00:00Z",
+        "end": "2026-12-05T15:00:00Z"
+      },
+      {
+        "name": "Carrera",
+        "start": "2026-12-06T13:00:00Z",
+        "end": "2026-12-06T15:00:00Z"
+      }
     ]
   }
 ]
