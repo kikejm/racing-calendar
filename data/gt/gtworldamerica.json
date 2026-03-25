@@ -1,0 +1,61 @@
+[
+  {
+    "title": "🏁 GT America Round 1: Sonoma",
+    "location": "Sonoma Raceway (Sonoma, California)",
+    "categories": ["GT", "Endurance", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Formato de única carrera de 3 horas.",
+    "sessions": [{"name": "Carrera", "start": "2026-03-29T12:00:00Z", "end": "2026-03-29T15:00:00Z"}]
+  },
+  {
+    "title": "🏁 GT America Round 2: COTA",
+    "location": "Circuit of the Americas (Austin, Texas)",
+    "categories": ["GT", "Endurance", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Formato de única carrera de 3 horas.",
+    "sessions": [
+      {"name": "Clasificación", "start": "2026-04-25T13:35:00Z", "end": "2026-04-25T14:35:00Z"},
+      {"name": "Carrera", "start": "2026-04-26T12:00:00Z", "end": "2026-04-26T15:00:00Z"}
+    ]
+  },
+  {
+    "title": "🏁 GT America Round 3: Sebring",
+    "location": "Sebring International Raceway (Sebring, FL)",
+    "categories": ["GT", "Endurance", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Formato de única carrera de 3 horas.",
+    "sessions": [{"name": "Carrera", "start": "2026-05-10T12:00:00Z", "end": "2026-05-10T15:00:00Z"}]
+  },
+  {
+    "title": "🏁 GT America Round 4: Atlanta",
+    "location": "Michelin Raceway Road Atlanta (Braselton, GA)",
+    "categories": ["GT", "Endurance", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Retorno de Road Atlanta al campeonato. 3 horas.",
+    "sessions": [{"name": "Carrera", "start": "2026-06-14T12:00:00Z", "end": "2026-06-14T15:00:00Z"}]
+  },
+  {
+    "title": "🏁 GT America Round 5: Road America",
+    "location": "Road America (Elkhart Lake, Wisconsin)",
+    "categories": ["GT", "Endurance", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Formato de única carrera de 3 horas.",
+    "sessions": [{"name": "Carrera", "start": "2026-08-30T12:00:00Z", "end": "2026-08-30T15:00:00Z"}]
+  },
+  {
+    "title": "🏁 GT America Round 6: Barber",
+    "location": "Barber Motorsports Park (Birmingham, Alabama)",
+    "categories": ["GT", "Endurance", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Formato de única carrera de 3 horas.",
+    "sessions": [{"name": "Carrera", "start": "2026-09-27T12:00:00Z", "end": "2026-09-27T15:00:00Z"}]
+  },
+  {
+    "title": "🏁 GT America Round 7: Indianapolis 8 Hour",
+    "location": "Indianapolis Motor Speedway (Speedway, IN)",
+    "categories": ["GT", "Endurance", "Motorsport", "Finale"],
+    "status": "CONFIRMED",
+    "description": "Evento final de resistencia extendida.",
+    "sessions": [{"name": "Carrera", "start": "2026-10-11T12:00:00Z", "end": "2026-10-11T20:00:00Z"}]
+  }
+]

@@ -1,0 +1,123 @@
+[
+  {
+    "title": "🚗 WRC Round 1: Rallye Monte-Carlo",
+    "location": "Mónaco / Alpes Franceses",
+    "categories": ["WRC", "Rally", "Motorsport", "Classic"],
+    "status": "CONFIRMED",
+    "description": "Asfalto y nieve en la mítica prueba inaugural.",
+    "sessions": [{"name": "Rally", "start": "2026-01-25T12:00:00Z", "end": "2026-01-25T14:00:00Z"}]
+  },
+  {
+    "title": "🚗 WRC Round 2: Rally Sweden",
+    "location": "Umeå, Condado de Västerbotten, Suecia",
+    "categories": ["WRC", "Rally", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Nieve y hielo compactado en las llanuras escandinavas.",
+    "sessions": [{"name": "Rally", "start": "2026-02-15T12:00:00Z", "end": "2026-02-15T14:00:00Z"}]
+  },
+  {
+    "title": "🚗 WRC Round 3: Safari Rally Kenya",
+    "location": "Naivasha, Nakuru County, Kenia",
+    "categories": ["WRC", "Rally", "Motorsport", "Classic"],
+    "status": "CONFIRMED",
+    "description": "Tierra áspera, arena fesh-fesh y peligro para las tomas de aire.",
+    "sessions": [{"name": "SS13 Sleeping Warrior", "start": "2026-03-15T07:33:00Z", "end": "2026-03-15T08:33:00Z"}]
+  },
+  {
+    "title": "🚗 WRC Round 4: Croatia Rally",
+    "location": "Croacia (Varias regiones)",
+    "categories": ["WRC", "Rally", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Desafío de asfalto mixto.",
+    "sessions": [{"name": "Rally", "start": "2026-04-12T12:00:00Z", "end": "2026-04-12T14:00:00Z"}]
+  },
+  {
+    "title": "🚗 WRC Round 5: Rally Islas Canarias",
+    "location": "Las Palmas de Gran Canaria, España",
+    "categories": ["WRC", "Rally", "Motorsport", "New"],
+    "status": "CONFIRMED",
+    "description": "Asfalto abrasivo volcánico, exige carcasas ultrarígidas.",
+    "sessions": [
+      {"name": "Shakedown Santa Brígida", "start": "2026-04-23T16:30:00Z", "end": "2026-04-23T17:30:00Z"},
+      {"name": "SS1 BP Ultimate", "start": "2026-04-23T16:35:00Z", "end": "2026-04-23T17:35:00Z"}
+    ]
+  },
+  {
+    "title": "🚗 WRC Round 6: Vodafone Rally de Portugal",
+    "location": "Matosinhos, Norte y Centro, Portugal",
+    "categories": ["WRC", "Rally", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Tierra y grava suelta en rutas tradicionales.",
+    "sessions": [{"name": "Rally", "start": "2026-05-10T12:00:00Z", "end": "2026-05-10T14:00:00Z"}]
+  },
+  {
+    "title": "🚗 WRC Round 7: FORUM8 Rally Japan",
+    "location": "Regiones de Aichi y Gifu, Japón",
+    "categories": ["WRC", "Rally", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Adelantado a mayo. Asfalto forestal de alta adherencia.",
+    "sessions": [{"name": "Rally", "start": "2026-05-31T12:00:00Z", "end": "2026-05-31T14:00:00Z"}]
+  },
+  {
+    "title": "🚗 WRC Round 8: EKO Acropolis Rally Greece",
+    "location": "Loutraki, Golfo de Corinto, Grecia",
+    "categories": ["WRC", "Rally", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Grava rocosa y tierra extrema. Innovador 'Parque Cerrado Flotante'.",
+    "sessions": [
+      {"name": "SS2 Bauxites", "start": "2026-06-26T05:48:00Z", "end": "2026-06-26T06:48:00Z"},
+      {"name": "SS8 Ghymno", "start": "2026-06-27T04:54:00Z", "end": "2026-06-27T05:54:00Z"}
+    ]
+  },
+  {
+    "title": "🚗 WRC Round 9: Delfi Rally Estonia",
+    "location": "Tartu, Estonia",
+    "categories": ["WRC", "Rally", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Tierra ultra-rápida y saltos fluidos.",
+    "sessions": [{"name": "Rally", "start": "2026-07-19T12:00:00Z", "end": "2026-07-19T14:00:00Z"}]
+  },
+  {
+    "title": "🚗 WRC Round 10: Secto Rally Finland",
+    "location": "Jyväskylä, Región de los Lagos, Finlandia",
+    "categories": ["WRC", "Rally", "Motorsport", "Classic"],
+    "status": "CONFIRMED",
+    "description": "El Gran Premio sobre tierra, máxima velocidad a través de los bosques.",
+    "sessions": [{"name": "Rally", "start": "2026-08-02T12:00:00Z", "end": "2026-08-02T14:00:00Z"}]
+  },
+  {
+    "title": "🚗 WRC Round 11: ueno Rally del Paraguay",
+    "location": "Encarnación, Departamento de Itapúa, Paraguay",
+    "categories": ["WRC", "Rally", "Motorsport", "New"],
+    "status": "CONFIRMED",
+    "description": "Tierra rojiza fluida con degradación masiva y surcos profundos.",
+    "sessions": [{"name": "Rally", "start": "2026-08-30T12:00:00Z", "end": "2026-08-30T14:00:00Z"}]
+  },
+  {
+    "title": "🚗 WRC Round 12: Rally Chile Bio Bío",
+    "location": "Concepción, Región del Biobío, Chile",
+    "categories": ["WRC", "Rally", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Tierra técnica forestal opacada por niebla y bruma del Pacífico.",
+    "sessions": [{"name": "Rally", "start": "2026-09-13T12:00:00Z", "end": "2026-09-13T14:00:00Z"}]
+  },
+  {
+    "title": "🚗 WRC Round 13: Rally Italia Sardegna",
+    "location": "Alghero, Cerdeña, Italia",
+    "categories": ["WRC", "Rally", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Trasladado a octubre. Tierra abrasiva amenazada por frentes de lluvia mediterráneos.",
+    "sessions": [{"name": "Rally", "start": "2026-10-04T12:00:00Z", "end": "2026-10-04T14:00:00Z"}]
+  },
+  {
+    "title": "🚗 WRC Round 14: Rally Saudi Arabia",
+    "location": "Jeddah, Provincia de La Meca, Arabia Saudí",
+    "categories": ["WRC", "Rally", "Motorsport", "Finale", "New"],
+    "status": "CONFIRMED",
+    "description": "Resolución del título entre dunas de roca y desierto abierto.",
+    "sessions": [
+      {"name": "SS2 Al Faisaliyah", "start": "2026-11-12T05:08:00Z", "end": "2026-11-12T06:08:00Z"},
+      {"name": "SS9 Alghullah", "start": "2026-11-13T05:26:00Z", "end": "2026-11-13T06:26:00Z"}
+    ]
+  }
+]

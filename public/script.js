@@ -319,16 +319,21 @@
                 { id: 'race', label: 'Carrera', alias: 'race', backendKey: 'race' },
             ],
         },
-        gt: {
-            name: 'GT World Challenge', subtitle: 'Europe · Endurance & Sprint',
+        gt_world: {
+            name: 'GT World Challenge', subtitle: 'Europa, América, Asia y Australia · 2026',
             logo: '/gt.svg', logoInvert: true,
+            isGroup: true,
+            regions: [
+                { id: 'gt_europe', label: 'Europe' },
+                { id: 'gt_america', label: 'America' },
+                { id: 'gt_asia', label: 'Asia' },
+                { id: 'gt_australia', label: 'Australia' },
+            ],
             sessions: [
                 { id: 'fp1', label: 'Free Practice 1', alias: 'practice', backendKey: 'fp1' },
                 { id: 'fp2', label: 'Free Practice 2', alias: 'practice', backendKey: 'fp2' },
-                { id: 'qualifying', label: 'Qualifying', alias: 'qualifying', backendKey: 'qualifying' },
-                { id: 'race', label: 'Carrera / Endurance', alias: 'race', backendKey: 'race' },
-                { id: 'race1', label: 'Race 1', alias: 'race', backendKey: 'race' },
-                { id: 'race2', label: 'Race 2', alias: 'race', backendKey: 'race' },
+                { id: 'qualifying', label: 'Clasificación', alias: 'qualifying', backendKey: 'qualifying' },
+                { id: 'race', label: 'Carrera', alias: 'race', backendKey: 'race' },
             ],
         },
         nascar: {
@@ -352,6 +357,28 @@
                 { id: 'race', label: 'Carrera', alias: 'race', backendKey: 'race' },
             ],
         },
+        wrc: {
+            name: 'WRC', subtitle: '14 Rallies · 2026',
+            logo: '/wrc.svg', logoInvert: true,
+            sessions: [
+                { id: 'rally', label: 'Rally / Stages', alias: 'race', backendKey: 'rally' },
+            ],
+        },
+        wec: {
+            name: 'WEC', subtitle: '8 Rounds · 2026',
+            logo: '/wec.svg', logoInvert: true,
+            sessions: [
+                { id: 'qualifying', label: 'Clasificación', alias: 'qualifying', backendKey: 'qualifying' },
+                { id: 'race', label: 'Carrera', alias: 'race', backendKey: 'race' },
+            ],
+        },
+        indycar: {
+            name: 'IndyCar Series', subtitle: '18 Rounds · 2026',
+            logo: '/indycar.svg', logoInvert: true,
+            sessions: [
+                { id: 'race', label: 'Carrera', alias: 'race', backendKey: 'race' },
+            ],
+        },
     };
 
     function defaultSessions(catKey) {
@@ -367,13 +394,9 @@
     // ─────────────────────────────────────────────────
     const state = {
         races: [], loading: true, error: null,
-        catEnabled: { f1: true, gt: true, nascar: true, motogp: true },
-        catSessions: {
-            f1: defaultSessions('f1'),
-            gt: defaultSessions('gt'),
-            nascar: defaultSessions('nascar'),
-            motogp: defaultSessions('motogp'),
-        },
+        catEnabled: Object.fromEntries(Object.keys(CATEGORIES).map(k => [k, true])),
+        catSessions: Object.fromEntries(Object.keys(CATEGORIES).map(k => [k, defaultSessions(k)])),
+        catRegions: Object.fromEntries(Object.keys(CATEGORIES).filter(k => CATEGORIES[k].regions).map(k => [k, new Set(CATEGORIES[k].regions.map(r => r.id))])),
     };
 
     // ─────────────────────────────────────────────────
@@ -385,14 +408,31 @@
         const p = new URLSearchParams();
         let hasAnySessions = false;
         for (const cat of enabledCats) {
-            p.append('cats', cat);
-            const backendKeys = new Set();
-            for (const sess of CATEGORIES[cat].sessions) {
-                if (state.catSessions[cat].has(sess.id)) backendKeys.add(sess.backendKey);
-            }
-            if (backendKeys.size) {
-                hasAnySessions = true;
-                backendKeys.forEach(k => p.append(`${cat}_sessions`, k));
+            const catCfg = CATEGORIES[cat];
+            if (catCfg.isGroup && catCfg.regions) {
+                const backendKeys = new Set();
+                for (const sess of catCfg.sessions) {
+                    if (state.catSessions[cat].has(sess.id)) backendKeys.add(sess.backendKey);
+                }
+                if (backendKeys.size) {
+                    for (const reg of catCfg.regions) {
+                        if (state.catRegions[cat].has(reg.id)) {
+                            hasAnySessions = true;
+                            p.append('cats', reg.id);
+                            backendKeys.forEach(k => p.append(`${reg.id}_sessions`, k));
+                        }
+                    }
+                }
+            } else {
+                p.append('cats', cat);
+                const backendKeys = new Set();
+                for (const sess of catCfg.sessions) {
+                    if (state.catSessions[cat].has(sess.id)) backendKeys.add(sess.backendKey);
+                }
+                if (backendKeys.size) {
+                    hasAnySessions = true;
+                    backendKeys.forEach(k => p.append(`${cat}_sessions`, k));
+                }
             }
         }
         if (!hasAnySessions) return '';
@@ -488,6 +528,35 @@
         clearBtn.className = 'text-[11px] px-2.5 py-1 rounded-lg btn-ghost font-medium';
         clearBtn.dataset.action = 'clear'; clearBtn.dataset.cat = catKey;
         controls.append(selAll, clearBtn);
+        content.append(controls);
+
+        if (catCfg.regions) {
+            const regionsLabel = document.createElement('div');
+            regionsLabel.className = 'text-[11px] font-semibold text-label mb-1.5 uppercase tracking-wider block w-full';
+            regionsLabel.textContent = 'Regiones';
+
+            const regionsRow = document.createElement('div');
+            regionsRow.className = 'flex flex-wrap gap-1.5 mb-3';
+            regionsRow.dataset.regionsContainer = catKey;
+
+            const selectedRegions = state.catRegions[catKey];
+            catCfg.regions.forEach(reg => {
+                const btn = document.createElement('button');
+                btn.className = `pill${selectedRegions.has(reg.id) ? ' active' : ''}`;
+                btn.dataset.action = 'toggle-region';
+                btn.dataset.cat = catKey;
+                btn.dataset.region = reg.id;
+                btn.dataset.alias = 'region';
+                btn.textContent = reg.label;
+                regionsRow.appendChild(btn);
+            });
+            content.append(regionsLabel, regionsRow);
+
+            const sessionsLabel = document.createElement('div');
+            sessionsLabel.className = 'text-[11px] font-semibold text-label mb-1.5 uppercase tracking-wider block w-full';
+            sessionsLabel.textContent = 'Sesiones';
+            content.append(sessionsLabel);
+        }
 
         const pillsRow = document.createElement('div');
         pillsRow.className = 'flex flex-wrap gap-1.5';
@@ -496,7 +565,7 @@
             pillsRow.appendChild(buildPill(catKey, sess, selected.has(sess.id)))
         );
 
-        content.append(controls, pillsRow);
+        content.append(pillsRow);
         card.append(header, content);
         return card;
     }
@@ -542,12 +611,25 @@
                 t.classList.toggle('active', s.has(sessId));
                 syncUrl(); break;
             }
+            case 'toggle-region': {
+                const r = state.catRegions[cat];
+                const regId = t.dataset.region;
+                if (r.has(regId)) {
+                    r.delete(regId);
+                } else {
+                    r.add(regId);
+                }
+                t.classList.toggle('active', r.has(regId));
+                syncUrl(); break;
+            }
             case 'select-all':
                 CATEGORIES[cat].sessions.forEach(s => state.catSessions[cat].add(s.id));
-                rerenderPills(cat); syncUrl(); break;
+                if (state.catRegions[cat]) CATEGORIES[cat].regions.forEach(r => state.catRegions[cat].add(r.id));
+                rerenderCard(cat); syncUrl(); break;
             case 'clear':
                 state.catSessions[cat].clear();
-                rerenderPills(cat); syncUrl(); break;
+                if (state.catRegions[cat]) state.catRegions[cat].clear();
+                rerenderCard(cat); syncUrl(); break;
         }
     }
 
@@ -555,11 +637,15 @@
         for (const k of Object.keys(CATEGORIES)) {
             state.catEnabled[k] = true;
             CATEGORIES[k].sessions.forEach(s => state.catSessions[k].add(s.id));
+            if (state.catRegions[k]) CATEGORIES[k].regions.forEach(r => state.catRegions[k].add(r.id));
         }
         renderCategories(); syncUrl();
     }
     function onGlobalClear() {
-        for (const k of Object.keys(CATEGORIES)) state.catSessions[k].clear();
+        for (const k of Object.keys(CATEGORIES)) {
+            state.catSessions[k].clear();
+            if (state.catRegions[k]) state.catRegions[k].clear();
+        }
         renderCategories(); syncUrl();
     }
 
@@ -581,17 +667,30 @@
     //  RACE DATA + COUNTDOWN
     // ─────────────────────────────────────────────────
     const SERIES_MAP = {
-        f1: { keywords: ['🏎️', 'formula 1', 'f1', 'grand prix'], icon: '🏎️', logo: '/f1.svg' },
-        gt: { keywords: ['🏁', 'gt', 'grand touring', 'endurance'], icon: '🏁', logo: '/gt.svg' },
+        f1: { keywords: ['formula 1', 'f1', 'grand prix'], icon: '🏎️', logo: '/f1.svg' },
+        gt_europe: { keywords: ['gt round', 'gt prologue'], icon: '🏁', logo: '/gt.svg' },
+        gt_america: { keywords: ['gt america'], icon: '🏁', logo: '/gt.svg' },
+        gt_asia: { keywords: ['gt asia'], icon: '🏁', logo: '/gt.svg' },
+        gt_australia: { keywords: ['gt australia'], icon: '🏁', logo: '/gt.svg' },
         nascar: { keywords: ['nascar', 'cup series'], icon: '🏁', logo: '/nascar.svg' },
         motogp: { keywords: ['🏍️', 'motogp'], icon: '🏍️', logo: '/motogp.svg' },
+        wrc: { keywords: ['🚗', 'wrc', 'rally'], icon: '🚗', logo: '/wrc.svg' },
+        wec: { keywords: ['⏱️', 'wec', 'le mans'], icon: '⏱️', logo: '/wec.svg' },
+        indycar: { keywords: ['indycar', 'indy 500'], icon: '🏎️', logo: '/indycar.svg' },
     };
 
     function detectSeries(ev) {
         const tl = ev.title.toLowerCase();
+        // Order matters: most specific first
         if (ev.title.includes('🏍️') || tl.includes('motogp')) return SERIES_MAP.motogp;
         if (tl.includes('nascar')) return SERIES_MAP.nascar;
-        if (ev.title.includes('🏁') || tl.includes('gt round') || tl.includes('gt prologue')) return SERIES_MAP.gt;
+        if (tl.includes('indycar')) return SERIES_MAP.indycar;
+        if (ev.title.includes('🚗') || tl.includes('wrc')) return SERIES_MAP.wrc;
+        if (ev.title.includes('⏱️') || tl.includes('wec')) return SERIES_MAP.wec;
+        if (tl.includes('gt america')) return SERIES_MAP.gt_america;
+        if (tl.includes('gt asia')) return SERIES_MAP.gt_asia;
+        if (tl.includes('gt australia')) return SERIES_MAP.gt_australia;
+        if (ev.title.includes('🏁') || tl.includes('gt round') || tl.includes('gt prologue')) return SERIES_MAP.gt_europe;
         if (ev.title.includes('🏎️') || tl.includes('formula') || tl.includes('grand prix')) return SERIES_MAP.f1;
         for (const [, cfg] of Object.entries(SERIES_MAP))
             if (cfg.keywords.some(k => tl.includes(k))) return cfg;
@@ -613,7 +712,7 @@
             if (Array.isArray(ev.sessions) && ev.sessions.length) {
                 return ev.sessions
                     .map(s => ({ ...s, d: new Date(s.start) }))
-                    .filter(s => s.d > now && /carrera|race/i.test(s.name))
+                    .filter(s => s.d > now && /carrera|race|rally/i.test(s.name))
                     .map(s => ({ name, circuit, date: s.d, logo, icon }));
             }
             if (ev.start) { const d = new Date(ev.start); return d > now ? [{ name, circuit, date: d, logo, icon }] : []; }
@@ -622,7 +721,18 @@
     }
 
     async function loadRaceData() {
-        const endpoints = ['/data/formula1.json', '/data/gtworld.json', '/data/nascar.json', '/data/motogp.json'];
+        const endpoints = [
+            '/data/formula1/formula1.json',
+            '/data/gt/gtworld.json',
+            '/data/gt/gtworldamerica.json',
+            '/data/gt/gtworldasia.json',
+            '/data/gt/gtworldaustralia.json',
+            '/data/nascar/nascar.json',
+            '/data/motogp/motogp.json',
+            '/data/indy/indycar.json',
+            '/data/wec/wec.json',
+            '/data/wrc/wrc.json',
+        ];
         try {
             const results = await Promise.allSettled(
                 endpoints.map(u => fetch(u).then(r => r.ok ? r.json() : []))
