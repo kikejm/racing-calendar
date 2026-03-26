@@ -490,9 +490,7 @@
         const img = document.createElement('img');
         img.src = catCfg.logo; img.alt = catCfg.name;
         img.className = 'cat-logo';
-        img.style.cssText = catCfg.logoInvert
-            ? 'filter: brightness(0) opacity(0.72);'
-            : 'filter: opacity(0.88);';
+        if (catCfg.logoInvert) img.dataset.invert = 'true';
 
         const info = document.createElement('div');
         info.innerHTML = `
@@ -785,7 +783,7 @@
             const img = document.createElement('img');
             img.src = main.logo; img.className = 'cat-logo mr-1.5 inline-block align-middle flex-shrink-0';
             img.style.height = '18px'; img.style.maxHeight = '18px';
-            img.style.filter = 'brightness(0) opacity(0.75)';
+            img.dataset.invert = 'true';
             nameEl.append(img, document.createTextNode(main.name));
         }
         const circEl = document.getElementById('r1-circuit');

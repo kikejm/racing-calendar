@@ -902,9 +902,22 @@ body::after {
     flex-shrink: 0;
 }
 
-/* Cat logo — dark mode: invert black logos to white */
-[data-theme="dark"] .cat-logo[style*="brightness(0)"] {
-    filter: brightness(0) invert(1) opacity(0.80) !important;
+.cat-logo[src="/gt.svg"] {
+    transform: scale(1.1);
+    transform-origin: left center;
+}
+
+
+.cat-logo[src="/motogp.svg"] {
+    transform: scale(1.3);
+    transform-origin: left center;
+}
+
+/* Cat logo — light mode: no filter, preserve original SVG colors */
+
+/* Cat logo — dark mode: invert to white for contrast */
+[data-theme="dark"] .cat-logo[data-invert="true"] {
+    filter: brightness(0) invert(1) opacity(0.80);
 }
 
 /* ═══════════════════════════════════════════════════
