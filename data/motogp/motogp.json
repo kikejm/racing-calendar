@@ -1,0 +1,1248 @@
+[
+  {
+    "title": "🏍️ GP de Tailandia",
+    "location": "Chang International Circuit, Buriram, Thailand",
+    "geo_lat": 14.966,
+    "geo_lon": 103.094,
+    "url": "https://www.motogp.com",
+    "broadcasters": [
+      "DAZN"
+    ],
+    "categories": [
+      "MotoGP",
+      "Motorsport"
+    ],
+    "status": "CONFIRMED",
+    "description": "Ronda 1.",
+    "sessions": [
+      {
+        "name": "FP1",
+        "start": "2026-02-27T03:45:00Z",
+        "end": "2026-02-27T04:45:00Z"
+      },
+      {
+        "name": "PRÁCTICA",
+        "start": "2026-02-27T08:00:00Z",
+        "end": "2026-02-27T09:00:00Z"
+      },
+      {
+        "name": "FP2",
+        "start": "2026-02-28T03:10:00Z",
+        "end": "2026-02-28T04:10:00Z"
+      },
+      {
+        "name": "Q1 CLASIFICACIÓN",
+        "start": "2026-02-28T03:50:00Z",
+        "end": "2026-02-28T04:50:00Z"
+      },
+      {
+        "name": "Q2 CLASIFICACIÓN",
+        "start": "2026-02-28T04:15:00Z",
+        "end": "2026-02-28T05:15:00Z"
+      },
+      {
+        "name": "WARM UP",
+        "start": "2026-03-01T03:40:00Z",
+        "end": "2026-03-01T04:40:00Z"
+      },
+      {
+        "name": "CARRERA",
+        "start": "2026-03-01T08:00:00Z",
+        "end": "2026-03-01T09:00:00Z"
+      }
+    ]
+  },
+  {
+    "title": "🏍️ GP de Brasil",
+    "location": "Brasil",
+    "geo_lat": -23.701,
+    "geo_lon": -46.697,
+    "url": "https://www.motogp.com",
+    "broadcasters": [
+      "DAZN"
+    ],
+    "categories": [
+      "MotoGP",
+      "Motorsport"
+    ],
+    "status": "CONFIRMED",
+    "description": "Ronda 2.",
+    "sessions": [
+      {
+        "name": "FP1",
+        "start": "2026-03-20T14:05:00Z",
+        "end": "2026-03-20T15:05:00Z"
+      },
+      {
+        "name": "FP2",
+        "start": "2026-03-21T13:10:00Z",
+        "end": "2026-03-21T14:10:00Z"
+      },
+      {
+        "name": "Q1",
+        "start": "2026-03-21T13:50:00Z",
+        "end": "2026-03-21T14:50:00Z"
+      },
+      {
+        "name": "Q2",
+        "start": "2026-03-21T14:15:00Z",
+        "end": "2026-03-21T15:15:00Z"
+      },
+      {
+        "name": "SPRINT",
+        "start": "2026-03-21T18:00:00Z",
+        "end": "2026-03-21T19:00:00Z"
+      },
+      {
+        "name": "WARM UP",
+        "start": "2026-03-22T13:40:00Z",
+        "end": "2026-03-22T14:40:00Z"
+      },
+      {
+        "name": "CARRERA",
+        "start": "2026-03-22T18:00:00Z",
+        "end": "2026-03-22T19:00:00Z"
+      }
+    ]
+  },
+  {
+    "title": "🏍️ GP de las Américas",
+    "location": "Circuit of the Americas, Austin, USA",
+    "geo_lat": 30.132,
+    "geo_lon": -97.635,
+    "url": "https://www.motogp.com",
+    "broadcasters": [
+      "DAZN"
+    ],
+    "categories": [
+      "MotoGP",
+      "Motorsport"
+    ],
+    "status": "CONFIRMED",
+    "description": "Ronda 3.",
+    "sessions": [
+      {
+        "name": "FP1",
+        "start": "2026-03-27T15:45:00Z",
+        "end": "2026-03-27T16:45:00Z"
+      },
+      {
+        "name": "FP2",
+        "start": "2026-03-28T15:10:00Z",
+        "end": "2026-03-28T16:10:00Z"
+      },
+      {
+        "name": "Q1",
+        "start": "2026-03-28T15:50:00Z",
+        "end": "2026-03-28T16:50:00Z"
+      },
+      {
+        "name": "Q2",
+        "start": "2026-03-28T16:15:00Z",
+        "end": "2026-03-28T17:15:00Z"
+      },
+      {
+        "name": "SPRINT",
+        "start": "2026-03-28T20:00:00Z",
+        "end": "2026-03-28T21:00:00Z"
+      },
+      {
+        "name": "WARM UP",
+        "start": "2026-03-29T15:40:00Z",
+        "end": "2026-03-29T16:40:00Z"
+      },
+      {
+        "name": "CARRERA",
+        "start": "2026-03-29T20:00:00Z",
+        "end": "2026-03-29T21:00:00Z"
+      }
+    ]
+  },
+  {
+    "title": "🏍️ GP de Qatar",
+    "location": "Lusail International Circuit, Lusail, Qatar",
+    "geo_lat": 25.4888,
+    "geo_lon": 51.4542,
+    "url": "https://www.motogp.com",
+    "broadcasters": [
+      "DAZN"
+    ],
+    "categories": [
+      "MotoGP",
+      "Motorsport"
+    ],
+    "status": "CONFIRMED",
+    "description": "Ronda 4.",
+    "sessions": [
+      {
+        "name": "FP1",
+        "start": "2026-04-10T12:45:00Z",
+        "end": "2026-04-10T13:45:00Z"
+      },
+      {
+        "name": "FP2",
+        "start": "2026-04-11T12:00:00Z",
+        "end": "2026-04-11T13:00:00Z"
+      },
+      {
+        "name": "Q1",
+        "start": "2026-04-11T12:40:00Z",
+        "end": "2026-04-11T13:40:00Z"
+      },
+      {
+        "name": "Q2",
+        "start": "2026-04-11T13:05:00Z",
+        "end": "2026-04-11T14:05:00Z"
+      },
+      {
+        "name": "SPRINT",
+        "start": "2026-04-11T17:00:00Z",
+        "end": "2026-04-11T18:00:00Z"
+      },
+      {
+        "name": "WARM UP",
+        "start": "2026-04-12T12:40:00Z",
+        "end": "2026-04-12T13:40:00Z"
+      },
+      {
+        "name": "CARRERA",
+        "start": "2026-04-12T17:00:00Z",
+        "end": "2026-04-12T18:00:00Z"
+      }
+    ]
+  },
+  {
+    "title": "🏍️ GP de España",
+    "location": "Circuito de Jerez, Jerez de la Frontera, Spain",
+    "geo_lat": 36.708,
+    "geo_lon": -6.034,
+    "url": "https://www.motogp.com",
+    "broadcasters": [
+      "DAZN"
+    ],
+    "categories": [
+      "MotoGP",
+      "Motorsport"
+    ],
+    "status": "CONFIRMED",
+    "description": "Ronda 5.",
+    "sessions": [
+      {
+        "name": "FP1",
+        "start": "2026-04-24T08:45:00Z",
+        "end": "2026-04-24T09:45:00Z"
+      },
+      {
+        "name": "FP2",
+        "start": "2026-04-25T08:10:00Z",
+        "end": "2026-04-25T09:10:00Z"
+      },
+      {
+        "name": "Q1",
+        "start": "2026-04-25T08:50:00Z",
+        "end": "2026-04-25T09:50:00Z"
+      },
+      {
+        "name": "Q2",
+        "start": "2026-04-25T09:15:00Z",
+        "end": "2026-04-25T10:15:00Z"
+      },
+      {
+        "name": "SPRINT",
+        "start": "2026-04-25T13:00:00Z",
+        "end": "2026-04-25T14:00:00Z"
+      },
+      {
+        "name": "WARM UP",
+        "start": "2026-04-26T07:40:00Z",
+        "end": "2026-04-26T08:40:00Z"
+      },
+      {
+        "name": "CARRERA",
+        "start": "2026-04-26T12:00:00Z",
+        "end": "2026-04-26T13:00:00Z"
+      }
+    ]
+  },
+  {
+    "title": "🏍️ GP de Francia",
+    "location": "Le Mans, Le Mans, France",
+    "geo_lat": 47.955,
+    "geo_lon": 0.208,
+    "url": "https://www.motogp.com",
+    "broadcasters": [
+      "DAZN"
+    ],
+    "categories": [
+      "MotoGP",
+      "Motorsport"
+    ],
+    "status": "CONFIRMED",
+    "description": "Ronda 6.",
+    "sessions": [
+      {
+        "name": "FP1",
+        "start": "2026-05-08T08:45:00Z",
+        "end": "2026-05-08T09:45:00Z"
+      },
+      {
+        "name": "FP2",
+        "start": "2026-05-09T08:10:00Z",
+        "end": "2026-05-09T09:10:00Z"
+      },
+      {
+        "name": "Q1",
+        "start": "2026-05-09T08:50:00Z",
+        "end": "2026-05-09T09:50:00Z"
+      },
+      {
+        "name": "Q2",
+        "start": "2026-05-09T09:15:00Z",
+        "end": "2026-05-09T10:15:00Z"
+      },
+      {
+        "name": "SPRINT",
+        "start": "2026-05-09T13:00:00Z",
+        "end": "2026-05-09T14:00:00Z"
+      },
+      {
+        "name": "WARM UP",
+        "start": "2026-05-10T07:40:00Z",
+        "end": "2026-05-10T08:40:00Z"
+      },
+      {
+        "name": "CARRERA",
+        "start": "2026-05-10T12:00:00Z",
+        "end": "2026-05-10T13:00:00Z"
+      }
+    ]
+  },
+  {
+    "title": "🏍️ GP de Catalunya",
+    "location": "Circuit de Barcelona-Catalunya, Montmeló, Spain",
+    "geo_lat": 41.57,
+    "geo_lon": 2.261,
+    "url": "https://www.motogp.com",
+    "broadcasters": [
+      "DAZN"
+    ],
+    "categories": [
+      "MotoGP",
+      "Motorsport"
+    ],
+    "status": "CONFIRMED",
+    "description": "Ronda 7.",
+    "sessions": [
+      {
+        "name": "FP1",
+        "start": "2026-05-15T08:45:00Z",
+        "end": "2026-05-15T09:45:00Z"
+      },
+      {
+        "name": "PRÁCTICA",
+        "start": "2026-05-15T13:00:00Z",
+        "end": "2026-05-15T14:00:00Z"
+      },
+      {
+        "name": "FP2",
+        "start": "2026-05-16T08:10:00Z",
+        "end": "2026-05-16T09:10:00Z"
+      },
+      {
+        "name": "Q1",
+        "start": "2026-05-16T08:50:00Z",
+        "end": "2026-05-16T09:50:00Z"
+      },
+      {
+        "name": "Q2",
+        "start": "2026-05-16T09:15:00Z",
+        "end": "2026-05-16T10:15:00Z"
+      },
+      {
+        "name": "SPRINT",
+        "start": "2026-05-16T13:00:00Z",
+        "end": "2026-05-16T14:00:00Z"
+      },
+      {
+        "name": "WARM UP",
+        "start": "2026-05-17T07:40:00Z",
+        "end": "2026-05-17T08:40:00Z"
+      },
+      {
+        "name": "CARRERA",
+        "start": "2026-05-17T12:00:00Z",
+        "end": "2026-05-17T13:00:00Z"
+      }
+    ]
+  },
+  {
+    "title": "🏍️ GP de Italia",
+    "location": "Autodromo Internazionale del Mugello, Scarperia, Italy",
+    "geo_lat": 43.997,
+    "geo_lon": 11.371,
+    "url": "https://www.motogp.com",
+    "broadcasters": [
+      "DAZN"
+    ],
+    "categories": [
+      "MotoGP",
+      "Motorsport"
+    ],
+    "status": "CONFIRMED",
+    "description": "Ronda 8.",
+    "sessions": [
+      {
+        "name": "FP1",
+        "start": "2026-05-29T08:45:00Z",
+        "end": "2026-05-29T09:45:00Z"
+      },
+      {
+        "name": "PRÁCTICA",
+        "start": "2026-05-29T13:00:00Z",
+        "end": "2026-05-29T14:00:00Z"
+      },
+      {
+        "name": "FP2",
+        "start": "2026-05-30T08:10:00Z",
+        "end": "2026-05-30T09:10:00Z"
+      },
+      {
+        "name": "Q1",
+        "start": "2026-05-30T08:50:00Z",
+        "end": "2026-05-30T09:50:00Z"
+      },
+      {
+        "name": "Q2",
+        "start": "2026-05-30T09:15:00Z",
+        "end": "2026-05-30T10:15:00Z"
+      },
+      {
+        "name": "SPRINT",
+        "start": "2026-05-30T13:00:00Z",
+        "end": "2026-05-30T14:00:00Z"
+      },
+      {
+        "name": "WARM UP",
+        "start": "2026-05-31T07:40:00Z",
+        "end": "2026-05-31T08:40:00Z"
+      },
+      {
+        "name": "CARRERA",
+        "start": "2026-05-31T12:00:00Z",
+        "end": "2026-05-31T13:00:00Z"
+      }
+    ]
+  },
+  {
+    "title": "🏍️ GP de Hungría",
+    "location": "Balaton Park Circuit, Balatonfőkajár, Hungary",
+    "geo_lat": 47.0,
+    "geo_lon": 18.16,
+    "url": "https://www.motogp.com",
+    "broadcasters": [
+      "DAZN"
+    ],
+    "categories": [
+      "MotoGP",
+      "Motorsport"
+    ],
+    "status": "CONFIRMED",
+    "description": "Ronda 9.",
+    "sessions": [
+      {
+        "name": "FP1",
+        "start": "2026-06-05T08:45:00Z",
+        "end": "2026-06-05T09:45:00Z"
+      },
+      {
+        "name": "PRÁCTICA",
+        "start": "2026-06-05T13:00:00Z",
+        "end": "2026-06-05T14:00:00Z"
+      },
+      {
+        "name": "FP2",
+        "start": "2026-06-06T08:10:00Z",
+        "end": "2026-06-06T09:10:00Z"
+      },
+      {
+        "name": "Q1",
+        "start": "2026-06-06T08:50:00Z",
+        "end": "2026-06-06T09:50:00Z"
+      },
+      {
+        "name": "Q2",
+        "start": "2026-06-06T09:15:00Z",
+        "end": "2026-06-06T10:15:00Z"
+      },
+      {
+        "name": "SPRINT",
+        "start": "2026-06-06T13:00:00Z",
+        "end": "2026-06-06T14:00:00Z"
+      },
+      {
+        "name": "WARM UP",
+        "start": "2026-06-07T07:40:00Z",
+        "end": "2026-06-07T08:40:00Z"
+      },
+      {
+        "name": "CARRERA",
+        "start": "2026-06-07T12:00:00Z",
+        "end": "2026-06-07T13:00:00Z"
+      }
+    ]
+  },
+  {
+    "title": "🏍️ GP de República Checa",
+    "location": "Automotodrom Brno, Brno, Czech Republic",
+    "geo_lat": 49.203,
+    "geo_lon": 16.44,
+    "url": "https://www.motogp.com",
+    "broadcasters": [
+      "DAZN"
+    ],
+    "categories": [
+      "MotoGP",
+      "Motorsport"
+    ],
+    "status": "CONFIRMED",
+    "description": "Ronda 10.",
+    "sessions": [
+      {
+        "name": "FP1",
+        "start": "2026-06-19T08:45:00Z",
+        "end": "2026-06-19T09:45:00Z"
+      },
+      {
+        "name": "PRÁCTICA",
+        "start": "2026-06-19T13:00:00Z",
+        "end": "2026-06-19T14:00:00Z"
+      },
+      {
+        "name": "FP2",
+        "start": "2026-06-20T08:10:00Z",
+        "end": "2026-06-20T09:10:00Z"
+      },
+      {
+        "name": "Q1",
+        "start": "2026-06-20T08:50:00Z",
+        "end": "2026-06-20T09:50:00Z"
+      },
+      {
+        "name": "Q2",
+        "start": "2026-06-20T09:15:00Z",
+        "end": "2026-06-20T10:15:00Z"
+      },
+      {
+        "name": "SPRINT",
+        "start": "2026-06-20T13:00:00Z",
+        "end": "2026-06-20T14:00:00Z"
+      },
+      {
+        "name": "WARM UP",
+        "start": "2026-06-21T07:40:00Z",
+        "end": "2026-06-21T08:40:00Z"
+      },
+      {
+        "name": "CARRERA",
+        "start": "2026-06-21T12:00:00Z",
+        "end": "2026-06-21T13:00:00Z"
+      }
+    ]
+  },
+  {
+    "title": "🏍️ GP de Países Bajos",
+    "location": "TT Circuit Assen, Assen, Netherlands",
+    "geo_lat": 52.962,
+    "geo_lon": 6.523,
+    "url": "https://www.motogp.com",
+    "broadcasters": [
+      "DAZN"
+    ],
+    "categories": [
+      "MotoGP",
+      "Motorsport"
+    ],
+    "status": "CONFIRMED",
+    "description": "Ronda 11.",
+    "sessions": [
+      {
+        "name": "FP1",
+        "start": "2026-06-26T08:45:00Z",
+        "end": "2026-06-26T09:45:00Z"
+      },
+      {
+        "name": "PRÁCTICA",
+        "start": "2026-06-26T13:00:00Z",
+        "end": "2026-06-26T14:00:00Z"
+      },
+      {
+        "name": "FP2",
+        "start": "2026-06-27T08:10:00Z",
+        "end": "2026-06-27T09:10:00Z"
+      },
+      {
+        "name": "Q1",
+        "start": "2026-06-27T08:50:00Z",
+        "end": "2026-06-27T09:50:00Z"
+      },
+      {
+        "name": "Q2",
+        "start": "2026-06-27T09:15:00Z",
+        "end": "2026-06-27T10:15:00Z"
+      },
+      {
+        "name": "SPRINT",
+        "start": "2026-06-27T13:00:00Z",
+        "end": "2026-06-27T14:00:00Z"
+      },
+      {
+        "name": "WARM UP",
+        "start": "2026-06-28T07:40:00Z",
+        "end": "2026-06-28T08:40:00Z"
+      },
+      {
+        "name": "CARRERA",
+        "start": "2026-06-28T12:00:00Z",
+        "end": "2026-06-28T13:00:00Z"
+      }
+    ]
+  },
+  {
+    "title": "🏍️ GP de Alemania",
+    "location": "Sachsenring, Hohenstein-Ernstthal, Germany",
+    "geo_lat": 50.791,
+    "geo_lon": 12.633,
+    "url": "https://www.motogp.com",
+    "broadcasters": [
+      "DAZN"
+    ],
+    "categories": [
+      "MotoGP",
+      "Motorsport"
+    ],
+    "status": "CONFIRMED",
+    "description": "Ronda 12.",
+    "sessions": [
+      {
+        "name": "FP1",
+        "start": "2026-07-10T08:45:00Z",
+        "end": "2026-07-10T09:45:00Z"
+      },
+      {
+        "name": "PRÁCTICA",
+        "start": "2026-07-10T13:00:00Z",
+        "end": "2026-07-10T14:00:00Z"
+      },
+      {
+        "name": "FP2",
+        "start": "2026-07-11T08:10:00Z",
+        "end": "2026-07-11T09:10:00Z"
+      },
+      {
+        "name": "Q1",
+        "start": "2026-07-11T08:50:00Z",
+        "end": "2026-07-11T09:50:00Z"
+      },
+      {
+        "name": "Q2",
+        "start": "2026-07-11T09:15:00Z",
+        "end": "2026-07-11T10:15:00Z"
+      },
+      {
+        "name": "SPRINT",
+        "start": "2026-07-11T13:00:00Z",
+        "end": "2026-07-11T14:00:00Z"
+      },
+      {
+        "name": "WARM UP",
+        "start": "2026-07-12T07:40:00Z",
+        "end": "2026-07-12T08:40:00Z"
+      },
+      {
+        "name": "CARRERA",
+        "start": "2026-07-12T12:00:00Z",
+        "end": "2026-07-12T13:00:00Z"
+      }
+    ]
+  },
+  {
+    "title": "🏍️ GP de Gran Bretaña",
+    "location": "Silverstone Circuit, Silverstone, UK",
+    "geo_lat": 52.078,
+    "geo_lon": -1.016,
+    "url": "https://www.motogp.com",
+    "broadcasters": [
+      "DAZN"
+    ],
+    "categories": [
+      "MotoGP",
+      "Motorsport"
+    ],
+    "status": "CONFIRMED",
+    "description": "Ronda 13.",
+    "sessions": [
+      {
+        "name": "FP1",
+        "start": "2026-08-07T10:45:00Z",
+        "end": "2026-08-07T11:45:00Z"
+      },
+      {
+        "name": "PRÁCTICA",
+        "start": "2026-08-07T15:00:00Z",
+        "end": "2026-08-07T16:00:00Z"
+      },
+      {
+        "name": "FP2",
+        "start": "2026-08-08T10:10:00Z",
+        "end": "2026-08-08T11:10:00Z"
+      },
+      {
+        "name": "Q1",
+        "start": "2026-08-08T10:50:00Z",
+        "end": "2026-08-08T11:50:00Z"
+      },
+      {
+        "name": "Q2",
+        "start": "2026-08-08T11:15:00Z",
+        "end": "2026-08-08T12:15:00Z"
+      },
+      {
+        "name": "SPRINT",
+        "start": "2026-08-08T15:00:00Z",
+        "end": "2026-08-08T16:00:00Z"
+      },
+      {
+        "name": "WARM UP",
+        "start": "2026-08-09T08:40:00Z",
+        "end": "2026-08-09T09:40:00Z"
+      },
+      {
+        "name": "CARRERA",
+        "start": "2026-08-09T12:00:00Z",
+        "end": "2026-08-09T13:00:00Z"
+      }
+    ]
+  },
+  {
+    "title": "🏍️ GP de Aragón",
+    "location": "MotorLand Aragón, Alcañiz, Spain",
+    "geo_lat": 41.08,
+    "geo_lon": -0.134,
+    "url": "https://www.motogp.com",
+    "broadcasters": [
+      "DAZN"
+    ],
+    "categories": [
+      "MotoGP",
+      "Motorsport"
+    ],
+    "status": "CONFIRMED",
+    "description": "Ronda 14.",
+    "sessions": [
+      {
+        "name": "FP1",
+        "start": "2026-08-28T08:45:00Z",
+        "end": "2026-08-28T09:45:00Z"
+      },
+      {
+        "name": "PRÁCTICA",
+        "start": "2026-08-28T13:00:00Z",
+        "end": "2026-08-28T14:00:00Z"
+      },
+      {
+        "name": "FP2",
+        "start": "2026-08-29T08:10:00Z",
+        "end": "2026-08-29T09:10:00Z"
+      },
+      {
+        "name": "Q1",
+        "start": "2026-08-29T08:50:00Z",
+        "end": "2026-08-29T09:50:00Z"
+      },
+      {
+        "name": "Q2",
+        "start": "2026-08-29T09:15:00Z",
+        "end": "2026-08-29T10:15:00Z"
+      },
+      {
+        "name": "SPRINT",
+        "start": "2026-08-29T13:00:00Z",
+        "end": "2026-08-29T14:00:00Z"
+      },
+      {
+        "name": "WARM UP",
+        "start": "2026-08-30T07:40:00Z",
+        "end": "2026-08-30T08:40:00Z"
+      },
+      {
+        "name": "CARRERA",
+        "start": "2026-08-30T12:00:00Z",
+        "end": "2026-08-30T13:00:00Z"
+      }
+    ]
+  },
+  {
+    "title": "🏍️ GP de San Marino",
+    "location": "Misano World Circuit Marco Simoncelli, Misano Adriatico, Italy",
+    "geo_lat": 43.962,
+    "geo_lon": 12.684,
+    "url": "https://www.motogp.com",
+    "broadcasters": [
+      "DAZN"
+    ],
+    "categories": [
+      "MotoGP",
+      "Motorsport"
+    ],
+    "status": "CONFIRMED",
+    "description": "Ronda 15.",
+    "sessions": [
+      {
+        "name": "FP1",
+        "start": "2026-09-11T08:45:00Z",
+        "end": "2026-09-11T09:45:00Z"
+      },
+      {
+        "name": "PRÁCTICA",
+        "start": "2026-09-11T13:00:00Z",
+        "end": "2026-09-11T14:00:00Z"
+      },
+      {
+        "name": "FP2",
+        "start": "2026-09-12T08:10:00Z",
+        "end": "2026-09-12T09:10:00Z"
+      },
+      {
+        "name": "Q1",
+        "start": "2026-09-12T08:50:00Z",
+        "end": "2026-09-12T09:50:00Z"
+      },
+      {
+        "name": "Q2",
+        "start": "2026-09-12T09:15:00Z",
+        "end": "2026-09-12T10:15:00Z"
+      },
+      {
+        "name": "SPRINT",
+        "start": "2026-09-12T13:00:00Z",
+        "end": "2026-09-12T14:00:00Z"
+      },
+      {
+        "name": "WARM UP",
+        "start": "2026-09-13T07:40:00Z",
+        "end": "2026-09-13T08:40:00Z"
+      },
+      {
+        "name": "CARRERA",
+        "start": "2026-09-13T12:00:00Z",
+        "end": "2026-09-13T13:00:00Z"
+      }
+    ]
+  },
+  {
+    "title": "🏍️ GP de Austria",
+    "location": "Red Bull Ring, Spielberg, Austria",
+    "geo_lat": 47.219,
+    "geo_lon": 14.764,
+    "url": "https://www.motogp.com",
+    "broadcasters": [
+      "DAZN"
+    ],
+    "categories": [
+      "MotoGP",
+      "Motorsport"
+    ],
+    "status": "CONFIRMED",
+    "description": "Ronda 16.",
+    "sessions": [
+      {
+        "name": "FP1",
+        "start": "2026-09-18T08:45:00Z",
+        "end": "2026-09-18T09:45:00Z"
+      },
+      {
+        "name": "PRÁCTICA",
+        "start": "2026-09-18T13:00:00Z",
+        "end": "2026-09-18T14:00:00Z"
+      },
+      {
+        "name": "FP2",
+        "start": "2026-09-19T08:10:00Z",
+        "end": "2026-09-19T09:10:00Z"
+      },
+      {
+        "name": "Q1",
+        "start": "2026-09-19T08:50:00Z",
+        "end": "2026-09-19T09:50:00Z"
+      },
+      {
+        "name": "Q2",
+        "start": "2026-09-19T09:15:00Z",
+        "end": "2026-09-19T10:15:00Z"
+      },
+      {
+        "name": "SPRINT",
+        "start": "2026-09-19T13:00:00Z",
+        "end": "2026-09-19T14:00:00Z"
+      },
+      {
+        "name": "WARM UP",
+        "start": "2026-09-20T07:40:00Z",
+        "end": "2026-09-20T08:40:00Z"
+      },
+      {
+        "name": "CARRERA",
+        "start": "2026-09-20T12:00:00Z",
+        "end": "2026-09-20T13:00:00Z"
+      }
+    ]
+  },
+  {
+    "title": "🏍️ GP de Japón",
+    "location": "Mobility Resort Motegi, Motegi, Japan",
+    "geo_lat": 36.533,
+    "geo_lon": 140.226,
+    "url": "https://www.motogp.com",
+    "broadcasters": [
+      "DAZN"
+    ],
+    "categories": [
+      "MotoGP",
+      "Motorsport"
+    ],
+    "status": "CONFIRMED",
+    "description": "Ronda 17.",
+    "sessions": [
+      {
+        "name": "FP1",
+        "start": "2026-10-02T01:45:00Z",
+        "end": "2026-10-02T02:45:00Z"
+      },
+      {
+        "name": "PRÁCTICA",
+        "start": "2026-10-02T06:00:00Z",
+        "end": "2026-10-02T07:00:00Z"
+      },
+      {
+        "name": "FP2",
+        "start": "2026-10-03T01:10:00Z",
+        "end": "2026-10-03T02:10:00Z"
+      },
+      {
+        "name": "Q1",
+        "start": "2026-10-03T01:50:00Z",
+        "end": "2026-10-03T02:50:00Z"
+      },
+      {
+        "name": "Q2",
+        "start": "2026-10-03T02:15:00Z",
+        "end": "2026-10-03T03:15:00Z"
+      },
+      {
+        "name": "SPRINT",
+        "start": "2026-10-03T06:00:00Z",
+        "end": "2026-10-03T07:00:00Z"
+      },
+      {
+        "name": "WARM UP",
+        "start": "2026-10-04T00:40:00Z",
+        "end": "2026-10-04T01:40:00Z"
+      },
+      {
+        "name": "CARRERA",
+        "start": "2026-10-04T05:00:00Z",
+        "end": "2026-10-04T06:00:00Z"
+      }
+    ]
+  },
+  {
+    "title": "🏍️ GP de Indonesia",
+    "location": "Pertamina Mandalika International Circuit, Lombok, Indonesia",
+    "geo_lat": -8.891,
+    "geo_lon": 116.312,
+    "url": "https://www.motogp.com",
+    "broadcasters": [
+      "DAZN"
+    ],
+    "categories": [
+      "MotoGP",
+      "Motorsport"
+    ],
+    "status": "CONFIRMED",
+    "description": "Ronda 18.",
+    "sessions": [
+      {
+        "name": "FP1",
+        "start": "2026-10-09T02:45:00Z",
+        "end": "2026-10-09T03:45:00Z"
+      },
+      {
+        "name": "PRÁCTICA",
+        "start": "2026-10-09T07:00:00Z",
+        "end": "2026-10-09T08:00:00Z"
+      },
+      {
+        "name": "FP2",
+        "start": "2026-10-10T02:10:00Z",
+        "end": "2026-10-10T03:10:00Z"
+      },
+      {
+        "name": "Q1",
+        "start": "2026-10-10T02:50:00Z",
+        "end": "2026-10-10T03:50:00Z"
+      },
+      {
+        "name": "Q2",
+        "start": "2026-10-10T03:15:00Z",
+        "end": "2026-10-10T04:15:00Z"
+      },
+      {
+        "name": "SPRINT",
+        "start": "2026-10-10T07:00:00Z",
+        "end": "2026-10-10T08:00:00Z"
+      },
+      {
+        "name": "WARM UP",
+        "start": "2026-10-11T02:40:00Z",
+        "end": "2026-10-11T03:40:00Z"
+      },
+      {
+        "name": "CARRERA",
+        "start": "2026-10-11T07:00:00Z",
+        "end": "2026-10-11T08:00:00Z"
+      }
+    ]
+  },
+  {
+    "title": "🏍️ GP de Australia",
+    "location": "Phillip Island Grand Prix Circuit, Phillip Island, Australia",
+    "geo_lat": -38.503,
+    "geo_lon": 145.23,
+    "url": "https://www.motogp.com",
+    "broadcasters": [
+      "DAZN"
+    ],
+    "categories": [
+      "MotoGP",
+      "Motorsport"
+    ],
+    "status": "CONFIRMED",
+    "description": "Ronda 19.",
+    "sessions": [
+      {
+        "name": "FP1",
+        "start": "2026-10-22T23:45:00Z",
+        "end": "2026-10-23T00:45:00Z"
+      },
+      {
+        "name": "PRÁCTICA",
+        "start": "2026-10-23T04:00:00Z",
+        "end": "2026-10-23T05:00:00Z"
+      },
+      {
+        "name": "FP2",
+        "start": "2026-10-23T23:10:00Z",
+        "end": "2026-10-24T00:10:00Z"
+      },
+      {
+        "name": "Q1",
+        "start": "2026-10-23T23:50:00Z",
+        "end": "2026-10-24T00:50:00Z"
+      },
+      {
+        "name": "Q2",
+        "start": "2026-10-24T00:15:00Z",
+        "end": "2026-10-24T01:15:00Z"
+      },
+      {
+        "name": "SPRINT",
+        "start": "2026-10-24T04:00:00Z",
+        "end": "2026-10-24T05:00:00Z"
+      },
+      {
+        "name": "WARM UP",
+        "start": "2026-10-24T22:40:00Z",
+        "end": "2026-10-24T23:40:00Z"
+      },
+      {
+        "name": "CARRERA",
+        "start": "2026-10-25T03:00:00Z",
+        "end": "2026-10-25T04:00:00Z"
+      }
+    ]
+  },
+  {
+    "title": "🏍️ GP de Malasia",
+    "location": "Petronas Sepang International Circuit, Sepang, Malaysia",
+    "geo_lat": 2.76,
+    "geo_lon": 101.738,
+    "url": "https://www.motogp.com",
+    "broadcasters": [
+      "DAZN"
+    ],
+    "categories": [
+      "MotoGP",
+      "Motorsport"
+    ],
+    "status": "CONFIRMED",
+    "description": "Ronda 20.",
+    "sessions": [
+      {
+        "name": "FP1",
+        "start": "2026-10-30T02:45:00Z",
+        "end": "2026-10-30T03:45:00Z"
+      },
+      {
+        "name": "PRÁCTICA",
+        "start": "2026-10-30T07:00:00Z",
+        "end": "2026-10-30T08:00:00Z"
+      },
+      {
+        "name": "FP2",
+        "start": "2026-10-31T02:10:00Z",
+        "end": "2026-10-31T03:10:00Z"
+      },
+      {
+        "name": "Q1",
+        "start": "2026-10-31T02:50:00Z",
+        "end": "2026-10-31T03:50:00Z"
+      },
+      {
+        "name": "Q2",
+        "start": "2026-10-31T03:15:00Z",
+        "end": "2026-10-31T04:15:00Z"
+      },
+      {
+        "name": "SPRINT",
+        "start": "2026-10-31T07:00:00Z",
+        "end": "2026-10-31T08:00:00Z"
+      },
+      {
+        "name": "WARM UP",
+        "start": "2026-11-01T02:40:00Z",
+        "end": "2026-11-01T03:40:00Z"
+      },
+      {
+        "name": "CARRERA",
+        "start": "2026-11-01T07:00:00Z",
+        "end": "2026-11-01T08:00:00Z"
+      }
+    ]
+  },
+  {
+    "title": "🏍️ GP de Portugal",
+    "location": "Autódromo Internacional do Algarve, Portimão, Portugal",
+    "geo_lat": 37.231,
+    "geo_lon": -8.628,
+    "url": "https://www.motogp.com",
+    "broadcasters": [
+      "DAZN"
+    ],
+    "categories": [
+      "MotoGP",
+      "Motorsport"
+    ],
+    "status": "CONFIRMED",
+    "description": "Ronda 21.",
+    "sessions": [
+      {
+        "name": "FP1",
+        "start": "2026-11-13T10:45:00Z",
+        "end": "2026-11-13T11:45:00Z"
+      },
+      {
+        "name": "PRÁCTICA",
+        "start": "2026-11-13T15:00:00Z",
+        "end": "2026-11-13T16:00:00Z"
+      },
+      {
+        "name": "FP2",
+        "start": "2026-11-14T10:10:00Z",
+        "end": "2026-11-14T11:10:00Z"
+      },
+      {
+        "name": "Q1",
+        "start": "2026-11-14T10:50:00Z",
+        "end": "2026-11-14T11:50:00Z"
+      },
+      {
+        "name": "Q2",
+        "start": "2026-11-14T11:15:00Z",
+        "end": "2026-11-14T12:15:00Z"
+      },
+      {
+        "name": "SPRINT",
+        "start": "2026-11-14T15:00:00Z",
+        "end": "2026-11-14T16:00:00Z"
+      },
+      {
+        "name": "WARM UP",
+        "start": "2026-11-15T09:40:00Z",
+        "end": "2026-11-15T10:40:00Z"
+      },
+      {
+        "name": "CARRERA",
+        "start": "2026-11-15T13:00:00Z",
+        "end": "2026-11-15T14:00:00Z"
+      }
+    ]
+  },
+  {
+    "title": "🏍️ GP de Valencia",
+    "location": "Circuit Ricardo Tormo, Cheste, Spain",
+    "geo_lat": 39.484,
+    "geo_lon": -0.626,
+    "url": "https://www.motogp.com",
+    "broadcasters": [
+      "DAZN"
+    ],
+    "categories": [
+      "MotoGP",
+      "Motorsport"
+    ],
+    "status": "CONFIRMED",
+    "description": "Ronda 22. Gran final de la temporada.",
+    "sessions": [
+      {
+        "name": "FP1",
+        "start": "2026-11-20T09:45:00Z",
+        "end": "2026-11-20T10:45:00Z"
+      },
+      {
+        "name": "PRÁCTICA",
+        "start": "2026-11-20T14:00:00Z",
+        "end": "2026-11-20T15:00:00Z"
+      },
+      {
+        "name": "FP2",
+        "start": "2026-11-21T09:10:00Z",
+        "end": "2026-11-21T10:10:00Z"
+      },
+      {
+        "name": "Q1",
+        "start": "2026-11-21T09:50:00Z",
+        "end": "2026-11-21T10:50:00Z"
+      },
+      {
+        "name": "Q2",
+        "start": "2026-11-21T10:15:00Z",
+        "end": "2026-11-21T11:15:00Z"
+      },
+      {
+        "name": "SPRINT",
+        "start": "2026-11-21T14:00:00Z",
+        "end": "2026-11-21T15:00:00Z"
+      },
+      {
+        "name": "WARM UP",
+        "start": "2026-11-22T08:40:00Z",
+        "end": "2026-11-22T09:40:00Z"
+      },
+      {
+        "name": "CARRERA",
+        "start": "2026-11-22T13:00:00Z",
+        "end": "2026-11-22T14:00:00Z"
+      }
+    ]
+  }
+]

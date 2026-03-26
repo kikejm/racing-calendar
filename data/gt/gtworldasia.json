@@ -1,0 +1,68 @@
+[
+  {
+    "title": "🏁 GT Asia Round 1 & 2: Sepang",
+    "location": "Sepang International Circuit (Selangor, Malasia)",
+    "categories": ["GT", "Sprint", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "ADN de doble carrera sprint de 60 minutos.",
+    "sessions": [
+      {"name": "Carrera 1", "start": "2026-04-04T12:00:00Z", "end": "2026-04-04T13:00:00Z"},
+      {"name": "Carrera 2", "start": "2026-04-05T12:00:00Z", "end": "2026-04-05T13:00:00Z"}
+    ]
+  },
+  {
+    "title": "🏁 GT Asia Round 3 & 4: Mandalika",
+    "location": "Pertamina Mandalika International Circuit (Lombok, Indonesia)",
+    "categories": ["GT", "Sprint", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "ADN de doble carrera sprint de 60 minutos.",
+    "sessions": [
+      {"name": "Carrera 1", "start": "2026-05-02T12:00:00Z", "end": "2026-05-02T13:00:00Z"},
+      {"name": "Carrera 2", "start": "2026-05-03T12:00:00Z", "end": "2026-05-03T13:00:00Z"}
+    ]
+  },
+  {
+    "title": "🏁 GT Asia Round 5 & 6: Shanghai",
+    "location": "Shanghai International Circuit (Jiading, Shanghai, China)",
+    "categories": ["GT", "Sprint", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "ADN de doble carrera sprint de 60 minutos.",
+    "sessions": [
+      {"name": "Carrera 1", "start": "2026-06-05T12:00:00Z", "end": "2026-06-05T13:00:00Z"},
+      {"name": "Carrera 2", "start": "2026-06-06T12:00:00Z", "end": "2026-06-06T13:00:00Z"}
+    ]
+  },
+  {
+    "title": "🏁 GT Asia Round 7 & 8: Fuji",
+    "location": "Fuji Speedway (Oyama, Shizuoka, Japón)",
+    "categories": ["GT", "Sprint", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "ADN de doble carrera sprint de 60 minutos.",
+    "sessions": [
+      {"name": "Carrera 1", "start": "2026-07-11T12:00:00Z", "end": "2026-07-11T13:00:00Z"},
+      {"name": "Carrera 2", "start": "2026-07-12T12:00:00Z", "end": "2026-07-12T13:00:00Z"}
+    ]
+  },
+  {
+    "title": "🏁 GT Asia Round 9 & 10: Okayama",
+    "location": "Okayama International Circuit (Mimasaka, Okayama, Japón)",
+    "categories": ["GT", "Sprint", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "ADN de doble carrera sprint de 60 minutos.",
+    "sessions": [
+      {"name": "Carrera 1", "start": "2026-08-29T12:00:00Z", "end": "2026-08-29T13:00:00Z"},
+      {"name": "Carrera 2", "start": "2026-08-30T12:00:00Z", "end": "2026-08-30T13:00:00Z"}
+    ]
+  },
+  {
+    "title": "🏁 GT Asia Round 11 & 12: Beijing",
+    "location": "Beijing Street Circuit (Beijing, China)",
+    "categories": ["GT", "Sprint", "Motorsport", "Finale"],
+    "status": "CONFIRMED",
+    "description": "Anomalía logística severa en circuito urbano.",
+    "sessions": [
+      {"name": "Carrera 1", "start": "2026-10-17T12:00:00Z", "end": "2026-10-17T13:00:00Z"},
+      {"name": "Carrera 2", "start": "2026-10-18T12:00:00Z", "end": "2026-10-18T13:00:00Z"}
+    ]
+  }
+]

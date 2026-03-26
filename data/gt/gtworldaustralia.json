@@ -1,0 +1,68 @@
+[
+  {
+    "title": "🏁 GT Australia Round 1 & 2: GT Festival Phillip Island",
+    "location": "Phillip Island Grand Prix Circuit (Victoria)",
+    "categories": ["GT", "Sprint", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Evento continental de doble carrera.",
+    "sessions": [
+      {"name": "Carrera 1", "start": "2026-03-28T12:00:00Z", "end": "2026-03-28T13:00:00Z"},
+      {"name": "Carrera 2", "start": "2026-03-29T12:00:00Z", "end": "2026-03-29T13:00:00Z"}
+    ]
+  },
+  {
+    "title": "🏁 GT Australia Round 3 & 4: GT Festival The Bend",
+    "location": "Shell V-Power Motorsport Park (Tailem Bend, SA)",
+    "categories": ["GT", "Sprint", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Evento continental de doble carrera.",
+    "sessions": [
+      {"name": "Carrera 1", "start": "2026-05-09T12:00:00Z", "end": "2026-05-09T13:00:00Z"},
+      {"name": "Carrera 2", "start": "2026-05-10T12:00:00Z", "end": "2026-05-10T13:00:00Z"}
+    ]
+  },
+  {
+    "title": "🏁 GT Australia Round 5 & 6: GT Festival Queensland",
+    "location": "Queensland Raceway (Ipswich, Queensland)",
+    "categories": ["GT", "Sprint", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Evento continental de doble carrera.",
+    "sessions": [
+      {"name": "Carrera 1", "start": "2026-06-13T12:00:00Z", "end": "2026-06-13T13:00:00Z"},
+      {"name": "Carrera 2", "start": "2026-06-14T12:00:00Z", "end": "2026-06-14T13:00:00Z"}
+    ]
+  },
+  {
+    "title": "🏁 GT Australia Round 7 & 8: GT Festival Darwin",
+    "location": "Hidden Valley Raceway (Darwin, NT)",
+    "categories": ["GT", "Sprint", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Evento continental de doble carrera.",
+    "sessions": [
+      {"name": "Carrera 1", "start": "2026-07-25T12:00:00Z", "end": "2026-07-25T13:00:00Z"},
+      {"name": "Carrera 2", "start": "2026-07-26T12:00:00Z", "end": "2026-07-26T13:00:00Z"}
+    ]
+  },
+  {
+    "title": "🏁 GT Australia Round 9 & 10: GT Festival Sydney",
+    "location": "Sydney Motorsport Park (Eastern Creek, NSW)",
+    "categories": ["GT", "Sprint", "Motorsport"],
+    "status": "CONFIRMED",
+    "description": "Evento continental de doble carrera.",
+    "sessions": [
+      {"name": "Carrera 1", "start": "2026-09-19T12:00:00Z", "end": "2026-09-19T13:00:00Z"},
+      {"name": "Carrera 2", "start": "2026-09-20T12:00:00Z", "end": "2026-09-20T13:00:00Z"}
+    ]
+  },
+  {
+    "title": "🏁 GT Australia Round 11 & 12: Adelaide Grand Final",
+    "location": "Adelaide Street Circuit (Adelaida, SA)",
+    "categories": ["GT", "Sprint", "Motorsport", "Finale"],
+    "status": "CONFIRMED",
+    "description": "Cenit estratégico. Pista híbrida temporal con chicanes ciegas.",
+    "sessions": [
+      {"name": "Carrera 1", "start": "2026-12-05T12:00:00Z", "end": "2026-12-05T13:00:00Z"},
+      {"name": "Carrera 2", "start": "2026-12-06T12:00:00Z", "end": "2026-12-06T13:00:00Z"}
+    ]
+  }
+]
